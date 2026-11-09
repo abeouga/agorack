@@ -2,52 +2,56 @@ import { EvidenceSchema } from "@agorack/contracts";
 import { describe, expect, it } from "vitest";
 import { extractEvidence } from "./index.js";
 
-import aggregate from "./__fixtures__/fuminosuke/aggregate.json" with { type: "json" };
+import aggregateMax from "./__fixtures__/fuminosuke/aggregate_max.json" with { type: "json" };
+import aggregateSum from "./__fixtures__/fuminosuke/aggregate_sum.json" with { type: "json" };
+import errorNotFound from "./__fixtures__/fuminosuke/error_not_found.json" with { type: "json" };
 import getDocument from "./__fixtures__/fuminosuke/get_document.json" with { type: "json" };
 import listTemplates from "./__fixtures__/fuminosuke/list_templates.json" with { type: "json" };
 import searchDocuments from "./__fixtures__/fuminosuke/search_documents.json" with { type: "json" };
+import extractSource from "./extract.ts?raw";
+import indexSource from "./index.ts?raw";
 
-/** 文之助の MCP が実際に返した道具の結果（CallToolResult）。 */
-const fuminosuke: Record<string, { structuredContent: unknown }> = {
-  aggregate,
+/** 文之助の MCP が実際に返した道具の結果（CallToolResult）。呼んだ道具と入力は calls.json にある。 */
+const fuminosuke = {
+  aggregate_max: aggregateMax,
+  aggregate_sum: aggregateSum,
+  error_not_found: errorNotFound,
   get_document: getDocument,
   list_templates: listTemplates,
   search_documents: searchDocuments,
-};
+} satisfies Record<string, { structuredContent: unknown }>;
 
 /** 道具の結果の structuredContent を取り出す。 */
-function structuredContentOf(tool: string): unknown {
-  const result = fuminosuke[tool];
-  if (!result) throw new Error(`見本がない：${tool}`);
-  return result.structuredContent;
+function structuredContentOf(name: keyof typeof fuminosuke): unknown {
+  return fuminosuke[name].structuredContent;
 }
 
 const SOURCE = "fuminosuke";
+const RECORD = "1d0c139e-5175-43d5-bba6-1d2b76d69977";
 
 describe("実際の道具の結果から根拠を取り出す", () => {
   it("get_document：上の段と、入れ子の奥にある根拠をすべて取り出す", () => {
-    const { evidence, discarded } = extractEvidence(SOURCE, structuredContentOf("get_document"));
+    const content = structuredContentOf("get_document");
+    const { evidence, discarded } = extractEvidence(SOURCE, content);
 
     expect(discarded).toBe(0);
-    // 上の段の2つと、入れ子の奥の 4×7
-    expect(evidence).toHaveLength(2 + 4 * 7);
+    // 上の段の26と、入れ子の奥の 7×7・9×4・0×4
+    expect(evidence).toHaveLength(26 + 7 * 7 + 9 * 4);
     for (const item of evidence) {
       expect(EvidenceSchema.parse(item)).toEqual(item);
-      expect(item.sourceId).toBe(SOURCE);
-      expect(item.recordId).toBe("0c82497c-4702-4d4f-a525-8ac3074b133b");
-      expect(item.kind).toBe("document");
+      expect(item).toMatchObject({ kind: "document", sourceId: SOURCE, recordId: RECORD });
     }
   });
 
   it("部品の source_id を recordId に名前を変え、location と value をそのまま運ぶ", () => {
     const { evidence } = extractEvidence(SOURCE, structuredContentOf("get_document"));
-    const item = evidence.find((e) => e.label === "繁殖台帳1021「はじめ」の毛色");
+    const item = evidence.find((e) => e.label === "繁殖台帳1021「こよみ」の毛色");
 
     expect(item).toMatchObject({
       kind: "document",
       sourceId: SOURCE,
-      recordId: "0c82497c-4702-4d4f-a525-8ac3074b133b",
-      value: "黒",
+      recordId: RECORD,
+      value: "褐",
       location: { box: { x: 411, y: 311, width: 256, height: 44 } },
     });
     expect(item).not.toHaveProperty("source_id");
@@ -56,34 +60,54 @@ describe("実際の道具の結果から根拠を取り出す", () => {
   it("値が null の根拠も、null のまま取り出す", () => {
     const { evidence } = extractEvidence(SOURCE, structuredContentOf("get_document"));
 
-    expect(evidence.filter((e) => e.value === null)).toHaveLength(1);
+    expect(evidence.filter((e) => e.value === null)).toHaveLength(20);
   });
 
-  it("aggregate：結果の中で2回出る同じ根拠は1つにまとめる", () => {
-    const content = structuredContentOf("aggregate") as {
-      used: unknown[];
-      at: unknown[];
-    };
+  it("aggregate（sum）：計算に使った値の根拠を取り出す", () => {
+    const { evidence, discarded } = extractEvidence(SOURCE, structuredContentOf("aggregate_sum"));
+
+    expect(discarded).toBe(0);
+    expect(evidence).toHaveLength(7);
+    expect(evidence.every((e) => e.recordId === RECORD)).toBe(true);
+  });
+
+  it("aggregate（max）：結果の中で2回出る同じ根拠は1つにまとめる", () => {
+    const content = structuredContentOf("aggregate_max") as { used: unknown[]; at: unknown[] };
     const { evidence, discarded } = extractEvidence(SOURCE, content);
 
-    expect(content.used).toHaveLength(11);
+    expect(content.used).toHaveLength(7);
     expect(content.at).toHaveLength(1);
     expect(discarded).toBe(0);
-    expect(evidence).toHaveLength(11);
-    expect(new Set(evidence.map((e) => e.recordId))).toEqual(
-      new Set(["0c82497c-4702-4d4f-a525-8ac3074b133b", "1d0c139e-5175-43d5-bba6-1d2b76d69977"]),
-    );
+    expect(evidence).toHaveLength(7);
   });
 
-  it.each(["list_templates", "search_documents"])(
+  it.each(["list_templates", "search_documents"] as const)(
     "根拠を持たない結果（%s）では空になる",
-    (tool) => {
-      expect(extractEvidence(SOURCE, structuredContentOf(tool))).toEqual({
+    (name) => {
+      expect(extractEvidence(SOURCE, structuredContentOf(name))).toEqual({
         evidence: [],
         discarded: 0,
       });
     },
   );
+
+  it("道具が失敗した結果（isError、structuredContent が null）でも投げずに空を返す", () => {
+    expect(extractEvidence(SOURCE, structuredContentOf("error_not_found"))).toEqual({
+      evidence: [],
+      discarded: 0,
+    });
+    expect(extractEvidence(SOURCE, errorNotFound)).toEqual({ evidence: [], discarded: 0 });
+  });
+});
+
+describe("部品ごとの決まりを知らない", () => {
+  it.each([
+    ["extract.ts", extractSource],
+    ["index.ts", indexSource],
+  ])("%s に、部品に固有の名前（欄・表・書類など）を使っていない", (_, source) => {
+    expect(source).toContain("extractEvidence");
+    expect(source).not.toMatch(/欄|表|書類|帳票|テンプレート|field|table|template|document/i);
+  });
 });
 
 const envelope = {

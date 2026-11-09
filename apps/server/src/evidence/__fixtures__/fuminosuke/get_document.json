@@ -1,28 +1,321 @@
 {
+  "_meta": null,
   "content": [
     {
       "type": "text",
-      "text": "繁殖台帳1021「はじめ」（書類ID 0c82497c-4702-4d4f-a525-8ac3074b133b、版3、確定 2026-10-25T12:06:08+09:00）\n欄：\n- 導入年月日・金額［売却子牛一覧］：空欄　field_id=layout_c_24b3427ead3545ad808f\n- 毛色［基本項目］：黒（保存値 黒2）　field_id=layout_c_3da4d668b0a74c0b80f2_c_faf58b28d7c54857b2b3\n表「売却子牛一覧」 値のある行 4：\n- 1行目：産次=1〔layout_c_9a2f87827fe54906b749〕、日令=300〔layout_c_61fc1ce5d16745d7a0cf〕、体重=300〔layout_c_6b1bd27b52be41adab57〕、価格=100,000〔layout_c_72cf81b11c1149769242〕、種雄牛名=光晴重〔layout_c_3ddf6baf31044b36b15a〕、売却日=6/12〔layout_c_d4945e77a32d4c44abb1〕、備考=♀あきこ〔layout_c_17cbcb9e8cf0462ebd9a〕\n- 2行目：産次=2〔layout_c_b067e1cc2a834b5dbd8a〕、日令=320〔layout_c_2017897694674a3a8043〕、体重=400〔layout_c_53fe8e73e5db4e26be61〕、価格=120,000〔layout_c_9f29d76c6ecc48d68747〕、種雄牛名=百合茂〔layout_c_dc8e27a52aae4733a95b〕、売却日=6/12/3〔layout_c_8f70daf9b71d4a9096a7〕、備考=♂〔layout_c_605df8b385c94d719d60〕\n- 3行目：産次=3〔layout_c_5a7dcaee4840430ca780〕、日令=297〔layout_c_c0fa25ff026248078466〕、体重=291〔layout_c_fec1d5d9755943bd8b8c〕、価格=150,000〔layout_c_3f04ae295f18461e8fc8〕、種雄牛名=勝忠重〔layout_c_b6b570ffbe4a40018351〕、売却日=6/14/2〔layout_c_f5e1f715ccb64e788b7b〕、備考=♀〔layout_c_eae371316eea41bfb1da〕\n- 4行目：産次=4〔layout_c_68333dae04d34fb5a9ff〕、日令=292〔layout_c_988ad016e4cc4315a194〕、体重=361〔layout_c_e9d993123ea94bc88d96〕、価格=200,000〔layout_c_acb4a48856364c37acc0〕、種雄牛名=光晴重〔layout_c_9e35da575ae349218a6d〕、売却日=3/2/1〔layout_c_a99af9c1d0cc40febd2c〕、備考=♀〔layout_c_7c862d62984945b2a4bb〕\n切り抜き画像は get_field_image(document_id, field_id) で見られます。"
+      "text": "繁殖台帳1021「こよみ」（書類ID 1d0c139e-5175-43d5-bba6-1d2b76d69977、版1、確定 2026-10-23T00:22:28+09:00）\n欄：\n- 統一耳標［統一耳標］：13554-8052-3　field_id=layout_c_2dd4eb0f6efa4d1fb445\n- 名号［母牛］：こよみ　field_id=layout_c_ffd40162d1a441859b36\n- 生年月日［母牛］：26年9月27日　field_id=layout_c_a1c4080b1f6c4886aa55\n- 登録No.の区分（高・特・繁殖・産肉・黒高）［母牛］：繁殖　field_id=layout_c_b65e10eb996744dd80b5_c_aed061c1069444bb9caa\n- 登録No.（高・特・繁殖・産肉・黒高）［母牛］：27093(85)　field_id=layout_c_57854e5cad7e42d6a914\n- 登録No.の区分（黒原・黒）［母牛］：空欄　field_id=layout_c_7cd2c7b94aa04a5298b7\n- 登録No.（黒原・黒）［母牛］：空欄　field_id=layout_c_2bc76706e41a43d2a19e\n- 繁殖者（県・郡市・町村）［母牛］：空欄　field_id=layout_c_16e7843bfbf74c37830b\n- 繁殖者所在地［母牛］：空欄　field_id=layout_c_3fe171b65afb4391b3cc\n- 所有者［母牛］：空欄　field_id=layout_c_abf7bc71c2fc4b3e9544\n- 導入年月日・金額［売却子牛一覧］：空欄　field_id=layout_c_24b3427ead3545ad808f\n- 毛色［基本項目］：褐　field_id=layout_c_3da4d668b0a74c0b80f2_c_faf58b28d7c54857b2b3\n- 父の名号［基本項目］：幸泉　field_id=layout_c_7ba5a7f511ef48dfb494\n- 父の登録（黒高・高・特・繁殖）［基本項目］：空欄　field_id=layout_c_ab466f4b94054d96bdcf_c_5d213ce001f64eaf9933\n- 父の登録（黒原・黒）［基本項目］：空欄　field_id=layout_c_97313e39f003474ab441_c_5aede31b31ec474f8b2a\n- 祖父（父方）の名号［基本項目］：空欄　field_id=layout_c_e824156dc2dd4214a998\n- 祖父（父方）の登録（高・特・黒原・黒高・黒）［基本項目］：空欄　field_id=layout_c_71a24d0fddf3459699e6_c_5bf79aca6c5547ebacb8\n- 祖母（父方）の名号［基本項目］：空欄　field_id=layout_c_6c0460902be34ff59d00\n- 祖母（父方）の登録（高・特・黒原・黒高・黒）［基本項目］：空欄　field_id=layout_c_6095ffc48d184738883a_c_bd3b0af91dc64edbae27\n- 母の名号［母］：みつえい　field_id=layout_c_93e6d7a360764f7c8cc7\n- 母の登録（育高・高・特・繁殖・産肉・黒高）［母］：空欄　field_id=layout_c_c30ca9932bfc40c7a117_c_a8bb25b7f4bc4a408f38\n- 母の登録（黒原・黒）［母］：空欄　field_id=layout_c_7256680f9d4142a69294_c_6191b3fd2ee54d7594f1\n- 祖父（母方）の名号［祖父(母方)］：空欄　field_id=layout_c_f17b740db44043c99ca1\n- 祖父（母方）の登録（高・特・黒原・黒高・黒）［祖父(母方)］：空欄　field_id=layout_c_763d64db2ae248839128_c_7d320ca86d404374bda5\n- 祖母（母方）の名号［祖母(母方)］：空欄　field_id=layout_c_fd51a95707984dd8ab39\n- 祖母（母方）の登録（高・特・黒原・黒高・黒）［祖母(母方)］：空欄　field_id=layout_c_2a0a29156d0b427497f8_c_25c81fccd74b42a389a7\n表「売却子牛一覧」 値のある行 7：\n- 2行目：産次=2〔layout_c_b067e1cc2a834b5dbd8a〕、日令=空欄〔layout_c_2017897694674a3a8043〕、体重=空欄〔layout_c_53fe8e73e5db4e26be61〕、価格=540,000〔layout_c_9f29d76c6ecc48d68747〕、種雄牛名=光晴重〔layout_c_dc8e27a52aae4733a95b〕、売却日=30/8/10〔layout_c_8f70daf9b71d4a9096a7〕、備考=♀なみえ〔layout_c_605df8b385c94d719d60〕\n- 3行目：産次=3〔layout_c_5a7dcaee4840430ca780〕、日令=277〔layout_c_c0fa25ff026248078466〕、体重=323〔layout_c_fec1d5d9755943bd8b8c〕、価格=770,000〔layout_c_3f04ae295f18461e8fc8〕、種雄牛名=光晴重〔layout_c_b6b570ffbe4a40018351〕、売却日=1/11/6〔layout_c_f5e1f715ccb64e788b7b〕、備考=♂〔layout_c_eae371316eea41bfb1da〕\n- 4行目：産次=4〔layout_c_68333dae04d34fb5a9ff〕、日令=270〔layout_c_988ad016e4cc4315a194〕、体重=307〔layout_c_e9d993123ea94bc88d96〕、価格=762,300〔layout_c_acb4a48856364c37acc0〕、種雄牛名=光晴重〔layout_c_9e35da575ae349218a6d〕、売却日=2/10/7〔layout_c_a99af9c1d0cc40febd2c〕、備考=♂〔layout_c_7c862d62984945b2a4bb〕\n- 5行目：産次=5〔layout_c_0c1f712bb6a44dbfb05c〕、日令=297〔layout_c_90e9bdeaccd24fe8af09〕、体重=329〔layout_c_fc3a4d9cb13e43e4a434〕、価格=826,100〔layout_c_cc5d5e82cf4c4ad2add6〕、種雄牛名=勝忠平ET〔layout_c_3d65311736574bee9f93〕、売却日=3/10/7〔layout_c_db7111e30a2b4d0e99ff〕、備考=♂〔layout_c_90ef8d5dcd9f4295b4dd〕\n- 6行目：産次=6〔layout_c_163ba75799c64b679c10〕、日令=284〔layout_c_a6a6d986b38644138735〕、体重=262〔layout_c_faf722a1e8de481b851c〕、価格=456,500〔layout_c_1916e80fb53e4346816c〕、種雄牛名=光晴重〔layout_c_f76f6ba3fc934e979b78〕、売却日=4/10/5〔layout_c_cfe5bab642b442f19067〕、備考=♀〔layout_c_74ad31789ac04daead3c〕\n- 7行目：産次=7〔layout_c_bb62bdba12f545d8ab79〕、日令=292〔layout_c_b90cbdfd455e4a48aa2c〕、体重=259〔layout_c_a13b2541e5a04d678fff〕、価格=435,600〔layout_c_659e4bee5088460fac2d〕、種雄牛名=重波泉〔layout_c_9f0446577d5a4dd48dc9〕、売却日=5/11/16〔layout_c_1a3f8ffe79c94971983a〕、備考=♀〔layout_c_c4fc7686f7f34ea896d1〕\n- 8行目：産次=8〔layout_c_8c5322de36cc49049601〕、日令=302〔layout_c_1b8df32a07da40efb855〕、体重=342〔layout_c_ea9be06d049c4cd3838f〕、価格=708,400〔layout_c_c917545cc5f94bb7b8d5〕、種雄牛名=百合茂ET〔layout_c_1afdab81a6dd423c8525〕、売却日=6/11/7〔layout_c_a19b8e6077f8423f8e2d〕、備考=♂〔layout_c_a9d75c18f6db4959a254〕\n表「繁殖関係（産歴1〜10）」 値のある行 9：\n- 1行目：産歴=1〔layout_c_0226116c35ce45479c1b〕、分娩年月日=28/7/25〔layout_c_5e43b114eb764019b844〕、分娩状況=♀・死産〔layout_c_362a05c0199d477c99d7_c_aa70094826074cbabd86〕、備考=勝忠平ET〔layout_c_9fef4201090540aabc3c〕\n- 2行目：産歴=2〔layout_c_abd92513ae9c4ef18ea3〕、分娩年月日=29/9/9〔layout_c_f130d26cbbf54905bef4〕、分娩状況=♀〔layout_c_5f5cd7c0d41e417c82e5_c_66d715f126854230ab51〕、備考=光晴雲〔layout_c_eb9d948b8b0d46688a41〕\n- 3行目：産歴=3〔layout_c_b461e1141925442caa70〕、分娩年月日=31/2/2〔layout_c_6b0739f9a1b24a9aa8d5〕、分娩状況=♂〔layout_c_80972c4fc72e4e1290c3_c_cb8170785a1d4c8f8a7e〕、備考=光晴雲〔layout_c_93f4d0b3f5ae4096a030〕\n- 4行目：産歴=4〔layout_c_4e584c9018b14b2ea78a〕、分娩年月日=2/1/11〔layout_c_6334e17331a64964bb46〕、分娩状況=♂〔layout_c_bca0c9cf6d0146e9a5c6_c_cc9bd4d53ed74f21aba1〕、備考=光晴雲〔layout_c_470d40afe3fb40b8b475〕\n- 5行目：産歴=5〔layout_c_91e193825322499385ca〕、分娩年月日=2/12/14〔layout_c_0e345ba451a54eda8d47〕、分娩状況=♂〔layout_c_e14bf2ccc43d48049724_c_c600f20bde3f4bd59bc3〕、備考=勝忠平ET〔layout_c_b9cc324dc05e4f33bc5b〕\n- 6行目：産歴=6〔layout_c_2762001a834d4a198d0c〕、分娩年月日=3/12/26〔layout_c_77924a4651fb47a8a4e1〕、分娩状況=♀〔layout_c_3b789547c89b4837a348_c_e7e10c2bb7bd42b3b21a〕、備考=光晴雲〔layout_c_11700a3eac044adc9ee7〕\n- 7行目：産歴=7〔layout_c_bc6fee1a93914787bbe2〕、分娩年月日=5/1/28〔layout_c_8bfd761a3129499eae67〕、分娩状況=♀〔layout_c_54e3c4d83f8b4c828389_c_793b52ffb8ce433aafef〕、備考=重波泉〔layout_c_0442b147dba9409e8b68〕\n- 8行目：産歴=8〔layout_c_55f584be39ab48b59ae5〕、分娩年月日=6/1/10〔layout_c_0dfdbb9dc20140b39b67〕、分娩状況=♂〔layout_c_01ef14ae3cac491f9023_c_6f3f905ea2f64a89b9f0〕、備考=百合茂〔layout_c_ba0219a540034b339448〕\n- 9行目：産歴=9〔layout_c_2075529a83fb4a3e834c〕、分娩年月日=6/11/19〔layout_c_7b5f5dc1584c4d049615〕、分娩状況=♂〔layout_c_03de860d21324dcf9200_c_e1ce26d7e837412caca6〕、備考=第2光晴〔layout_c_e2d1032348114cad833e〕\n表「繁殖関係（産歴11〜20）」 値のある行 0：\n切り抜き画像は get_field_image(document_id, field_id) で見られます。",
+      "annotations": null,
+      "_meta": null
     }
   ],
   "structuredContent": {
     "document": {
-      "document_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-      "document_name": "はじめ",
+      "document_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+      "document_name": "こよみ",
       "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
       "template_name": "繁殖台帳1021",
-      "version": 3,
-      "confirmed_at": "2026-10-25T12:06:08+09:00"
+      "version": 1,
+      "confirmed_at": "2026-10-23T00:22:28+09:00"
     },
     "fields": [
       {
         "kind": "document",
-        "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-        "label": "繁殖台帳1021「はじめ」の導入年月日・金額",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の統一耳標",
         "location": {
           "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
           "template_name": "繁殖台帳1021",
-          "document_name": "はじめ",
+          "document_name": "こよみ",
+          "field_id": "layout_c_2dd4eb0f6efa4d1fb445",
+          "field_label": "統一耳標",
+          "section": "統一耳標",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 933.0,
+            "y": 104.0,
+            "width": 298.0,
+            "height": 60.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_2dd4eb0f6efa4d1fb445.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": "13554-8052-3",
+        "stored_value": null,
+        "status": "readable"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の名号",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_ffd40162d1a441859b36",
+          "field_label": "名号",
+          "section": "母牛",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 137.0,
+            "y": 214.0,
+            "width": 530.0,
+            "height": 97.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_ffd40162d1a441859b36.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": "こよみ",
+        "stored_value": null,
+        "status": "readable"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の生年月日",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_a1c4080b1f6c4886aa55",
+          "field_label": "生年月日",
+          "section": "母牛",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 137.0,
+            "y": 304.0,
+            "width": 274.0,
+            "height": 50.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_a1c4080b1f6c4886aa55.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": "26年9月27日",
+        "stored_value": null,
+        "status": "readable"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の登録No.の区分",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_b65e10eb996744dd80b5_c_aed061c1069444bb9caa",
+          "field_label": "登録No.の区分（高・特・繁殖・産肉・黒高）",
+          "section": "母牛",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 213.0,
+            "y": 352.0,
+            "width": 202.0,
+            "height": 45.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_b65e10eb996744dd80b5_c_aed061c1069444bb9caa.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": "繁殖",
+        "stored_value": null,
+        "status": "readable"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の登録No.（高・特・繁殖・産肉・黒高）",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_57854e5cad7e42d6a914",
+          "field_label": "登録No.（高・特・繁殖・産肉・黒高）",
+          "section": "母牛",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 415.0,
+            "y": 357.0,
+            "width": 249.0,
+            "height": 39.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_57854e5cad7e42d6a914.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": "27093(85)",
+        "stored_value": null,
+        "status": "readable"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の登録No.の区分（黒原・黒）",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_7cd2c7b94aa04a5298b7",
+          "field_label": "登録No.の区分（黒原・黒）",
+          "section": "母牛",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 213.0,
+            "y": 397.0,
+            "width": 202.0,
+            "height": 44.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_7cd2c7b94aa04a5298b7.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": null,
+        "stored_value": null,
+        "status": "blank"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の登録No.（黒原・黒）",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_2bc76706e41a43d2a19e",
+          "field_label": "登録No.（黒原・黒）",
+          "section": "母牛",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 416.0,
+            "y": 395.0,
+            "width": 248.0,
+            "height": 45.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_2bc76706e41a43d2a19e.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": null,
+        "stored_value": null,
+        "status": "blank"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の繁殖者（県・郡市・町村）",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_16e7843bfbf74c37830b",
+          "field_label": "繁殖者（県・郡市・町村）",
+          "section": "母牛",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 212.0,
+            "y": 442.0,
+            "width": 455.0,
+            "height": 45.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_16e7843bfbf74c37830b.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": null,
+        "stored_value": null,
+        "status": "blank"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の繁殖者所在地",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_3fe171b65afb4391b3cc",
+          "field_label": "繁殖者所在地",
+          "section": "母牛",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 213.0,
+            "y": 487.0,
+            "width": 454.0,
+            "height": 57.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_3fe171b65afb4391b3cc.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": null,
+        "stored_value": null,
+        "status": "blank"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の所有者",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_abf7bc71c2fc4b3e9544",
+          "field_label": "所有者",
+          "section": "母牛",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 213.0,
+            "y": 543.0,
+            "width": 454.0,
+            "height": 80.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_abf7bc71c2fc4b3e9544.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": null,
+        "stored_value": null,
+        "status": "blank"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の導入年月日・金額",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
           "field_id": "layout_c_24b3427ead3545ad808f",
           "field_label": "導入年月日・金額",
           "section": "売却子牛一覧",
@@ -37,21 +330,21 @@
             "width": 518.0,
             "height": 48.0
           },
-          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_24b3427ead3545ad808f.alignedColor",
-          "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_24b3427ead3545ad808f.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
         },
         "value": null,
         "stored_value": null,
-        "status": "uncertain"
+        "status": "blank"
       },
       {
         "kind": "document",
-        "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-        "label": "繁殖台帳1021「はじめ」の毛色",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の毛色",
         "location": {
           "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
           "template_name": "繁殖台帳1021",
-          "document_name": "はじめ",
+          "document_name": "こよみ",
           "field_id": "layout_c_3da4d668b0a74c0b80f2_c_faf58b28d7c54857b2b3",
           "field_label": "毛色",
           "section": "基本項目",
@@ -66,12 +359,418 @@
             "width": 256.0,
             "height": 44.0
           },
-          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_3da4d668b0a74c0b80f2_c_faf58b28d7c54857b2b3.alignedColor",
-          "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_3da4d668b0a74c0b80f2_c_faf58b28d7c54857b2b3.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
         },
-        "value": "黒",
-        "stored_value": "黒2",
+        "value": "褐",
+        "stored_value": null,
         "status": "readable"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の父の名号",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_7ba5a7f511ef48dfb494",
+          "field_label": "父の名号",
+          "section": "基本項目",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 181.0,
+            "y": 685.0,
+            "width": 329.0,
+            "height": 56.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_7ba5a7f511ef48dfb494.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": "幸泉",
+        "stored_value": null,
+        "status": "readable"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の父の登録",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_ab466f4b94054d96bdcf_c_5d213ce001f64eaf9933",
+          "field_label": "父の登録（黒高・高・特・繁殖）",
+          "section": "基本項目",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 176.0,
+            "y": 746.0,
+            "width": 492.0,
+            "height": 63.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_ab466f4b94054d96bdcf_c_5d213ce001f64eaf9933.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": null,
+        "stored_value": null,
+        "status": "blank"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の父の登録",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_97313e39f003474ab441_c_5aede31b31ec474f8b2a",
+          "field_label": "父の登録（黒原・黒）",
+          "section": "基本項目",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 179.0,
+            "y": 810.0,
+            "width": 485.0,
+            "height": 40.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_97313e39f003474ab441_c_5aede31b31ec474f8b2a.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": null,
+        "stored_value": null,
+        "status": "blank"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の祖父（父方）の名号",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_e824156dc2dd4214a998",
+          "field_label": "祖父（父方）の名号",
+          "section": "基本項目",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 741.0,
+            "y": 682.0,
+            "width": 446.0,
+            "height": 38.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_e824156dc2dd4214a998.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": null,
+        "stored_value": null,
+        "status": "blank"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の祖父（父方）の登録",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_71a24d0fddf3459699e6_c_5bf79aca6c5547ebacb8",
+          "field_label": "祖父（父方）の登録（高・特・黒原・黒高・黒）",
+          "section": "基本項目",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 663.0,
+            "y": 722.0,
+            "width": 568.0,
+            "height": 40.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_71a24d0fddf3459699e6_c_5bf79aca6c5547ebacb8.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": null,
+        "stored_value": null,
+        "status": "blank"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の祖母（父方）の名号",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_6c0460902be34ff59d00",
+          "field_label": "祖母（父方）の名号",
+          "section": "基本項目",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 739.0,
+            "y": 759.0,
+            "width": 450.0,
+            "height": 42.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_6c0460902be34ff59d00.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": null,
+        "stored_value": null,
+        "status": "blank"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の祖母（父方）の登録",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_6095ffc48d184738883a_c_bd3b0af91dc64edbae27",
+          "field_label": "祖母（父方）の登録（高・特・黒原・黒高・黒）",
+          "section": "基本項目",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 666.0,
+            "y": 807.0,
+            "width": 541.0,
+            "height": 34.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_6095ffc48d184738883a_c_bd3b0af91dc64edbae27.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": null,
+        "stored_value": null,
+        "status": "blank"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の母の名号",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_93e6d7a360764f7c8cc7",
+          "field_label": "母の名号",
+          "section": "母",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 183.0,
+            "y": 851.0,
+            "width": 328.0,
+            "height": 56.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_93e6d7a360764f7c8cc7.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": "みつえい",
+        "stored_value": null,
+        "status": "readable"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の母の登録",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_c30ca9932bfc40c7a117_c_a8bb25b7f4bc4a408f38",
+          "field_label": "母の登録（育高・高・特・繁殖・産肉・黒高）",
+          "section": "母",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 180.0,
+            "y": 903.0,
+            "width": 488.0,
+            "height": 67.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_c30ca9932bfc40c7a117_c_a8bb25b7f4bc4a408f38.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": null,
+        "stored_value": null,
+        "status": "blank"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の母の登録",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_7256680f9d4142a69294_c_6191b3fd2ee54d7594f1",
+          "field_label": "母の登録（黒原・黒）",
+          "section": "母",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 178.0,
+            "y": 983.0,
+            "width": 487.0,
+            "height": 32.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_7256680f9d4142a69294_c_6191b3fd2ee54d7594f1.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": null,
+        "stored_value": null,
+        "status": "blank"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の祖父（母方）の名号",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_f17b740db44043c99ca1",
+          "field_label": "祖父（母方）の名号",
+          "section": "祖父(母方)",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 737.0,
+            "y": 846.0,
+            "width": 471.0,
+            "height": 41.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_f17b740db44043c99ca1.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": null,
+        "stored_value": null,
+        "status": "blank"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の祖父（母方）の登録",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_763d64db2ae248839128_c_7d320ca86d404374bda5",
+          "field_label": "祖父（母方）の登録（高・特・黒原・黒高・黒）",
+          "section": "祖父(母方)",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 667.0,
+            "y": 886.0,
+            "width": 573.0,
+            "height": 34.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_763d64db2ae248839128_c_7d320ca86d404374bda5.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": null,
+        "stored_value": null,
+        "status": "blank"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の祖母（母方）の名号",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_fd51a95707984dd8ab39",
+          "field_label": "祖母（母方）の名号",
+          "section": "祖母(母方)",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 739.0,
+            "y": 926.0,
+            "width": 494.0,
+            "height": 40.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_fd51a95707984dd8ab39.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": null,
+        "stored_value": null,
+        "status": "blank"
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の祖母（母方）の登録",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_2a0a29156d0b427497f8_c_25c81fccd74b42a389a7",
+          "field_label": "祖母（母方）の登録（高・特・黒原・黒高・黒）",
+          "section": "祖母(母方)",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 665.0,
+            "y": 969.0,
+            "width": 565.0,
+            "height": 44.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_2a0a29156d0b427497f8_c_25c81fccd74b42a389a7.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": null,
+        "stored_value": null,
+        "status": "blank"
       }
     ],
     "tables": [
@@ -81,224 +780,16 @@
         "columns": ["産次", "日令", "体重", "価格", "種雄牛名", "売却日", "備考"],
         "rows": [
           {
-            "row_number": 1,
-            "cells": {
-              "産次": {
-                "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 1行目の産次",
-                "location": {
-                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
-                  "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
-                  "field_id": "layout_c_9a2f87827fe54906b749",
-                  "field_label": "産次",
-                  "section": "売却子牛一覧",
-                  "table_id": "c_56ca44d4ff904e6bac56",
-                  "table_title": "売却子牛一覧",
-                  "row_number": 1,
-                  "column_id": "c_c893b6aae8b64e278446",
-                  "page_id": null,
-                  "box": {
-                    "x": 668.0,
-                    "y": 282.0,
-                    "width": 36.0,
-                    "height": 30.0
-                  },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_9a2f87827fe54906b749.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
-                },
-                "value": "1",
-                "stored_value": null,
-                "status": "readable"
-              },
-              "日令": {
-                "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 1行目の日令",
-                "location": {
-                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
-                  "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
-                  "field_id": "layout_c_61fc1ce5d16745d7a0cf",
-                  "field_label": "日令",
-                  "section": "売却子牛一覧",
-                  "table_id": "c_56ca44d4ff904e6bac56",
-                  "table_title": "売却子牛一覧",
-                  "row_number": 1,
-                  "column_id": "c_6e64018a482a488f8107",
-                  "page_id": null,
-                  "box": {
-                    "x": 704.0,
-                    "y": 282.0,
-                    "width": 52.0,
-                    "height": 30.0
-                  },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_61fc1ce5d16745d7a0cf.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
-                },
-                "value": "300",
-                "stored_value": null,
-                "status": "readable"
-              },
-              "体重": {
-                "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 1行目の体重",
-                "location": {
-                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
-                  "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
-                  "field_id": "layout_c_6b1bd27b52be41adab57",
-                  "field_label": "体重",
-                  "section": "売却子牛一覧",
-                  "table_id": "c_56ca44d4ff904e6bac56",
-                  "table_title": "売却子牛一覧",
-                  "row_number": 1,
-                  "column_id": "c_3299043169064edab8e0",
-                  "page_id": null,
-                  "box": {
-                    "x": 756.0,
-                    "y": 282.0,
-                    "width": 52.0,
-                    "height": 29.0
-                  },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_6b1bd27b52be41adab57.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
-                },
-                "value": "300",
-                "stored_value": null,
-                "status": "readable"
-              },
-              "価格": {
-                "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 1行目の価格",
-                "location": {
-                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
-                  "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
-                  "field_id": "layout_c_72cf81b11c1149769242",
-                  "field_label": "価格",
-                  "section": "売却子牛一覧",
-                  "table_id": "c_56ca44d4ff904e6bac56",
-                  "table_title": "売却子牛一覧",
-                  "row_number": 1,
-                  "column_id": "c_c99950d4320a4d64b172",
-                  "page_id": null,
-                  "box": {
-                    "x": 809.0,
-                    "y": 281.0,
-                    "width": 126.0,
-                    "height": 30.0
-                  },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_72cf81b11c1149769242.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
-                },
-                "value": "100,000",
-                "stored_value": null,
-                "status": "readable"
-              },
-              "種雄牛名": {
-                "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 1行目の種雄牛名",
-                "location": {
-                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
-                  "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
-                  "field_id": "layout_c_3ddf6baf31044b36b15a",
-                  "field_label": "種雄牛名",
-                  "section": "売却子牛一覧",
-                  "table_id": "c_56ca44d4ff904e6bac56",
-                  "table_title": "売却子牛一覧",
-                  "row_number": 1,
-                  "column_id": "c_3596084bb1394cf4a176",
-                  "page_id": null,
-                  "box": {
-                    "x": 935.0,
-                    "y": 280.0,
-                    "width": 86.0,
-                    "height": 31.0
-                  },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_3ddf6baf31044b36b15a.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
-                },
-                "value": "光晴重",
-                "stored_value": null,
-                "status": "readable"
-              },
-              "売却日": {
-                "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 1行目の売却日",
-                "location": {
-                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
-                  "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
-                  "field_id": "layout_c_d4945e77a32d4c44abb1",
-                  "field_label": "売却日",
-                  "section": "売却子牛一覧",
-                  "table_id": "c_56ca44d4ff904e6bac56",
-                  "table_title": "売却子牛一覧",
-                  "row_number": 1,
-                  "column_id": "c_b694ab13beb847e48772",
-                  "page_id": null,
-                  "box": {
-                    "x": 1021.0,
-                    "y": 279.0,
-                    "width": 73.0,
-                    "height": 30.0
-                  },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_d4945e77a32d4c44abb1.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
-                },
-                "value": "6/12",
-                "stored_value": null,
-                "status": "readable"
-              },
-              "備考": {
-                "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 1行目の備考",
-                "location": {
-                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
-                  "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
-                  "field_id": "layout_c_17cbcb9e8cf0462ebd9a",
-                  "field_label": "備考",
-                  "section": "売却子牛一覧",
-                  "table_id": "c_56ca44d4ff904e6bac56",
-                  "table_title": "売却子牛一覧",
-                  "row_number": 1,
-                  "column_id": "c_e2b6904efdae4451ac29",
-                  "page_id": null,
-                  "box": {
-                    "x": 1094.0,
-                    "y": 276.0,
-                    "width": 90.0,
-                    "height": 32.0
-                  },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_17cbcb9e8cf0462ebd9a.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
-                },
-                "value": "♀あきこ",
-                "stored_value": null,
-                "status": "readable"
-              }
-            }
-          },
-          {
             "row_number": 2,
             "cells": {
               "産次": {
                 "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 2行目の産次",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 2行目の産次",
                 "location": {
                   "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
                   "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
+                  "document_name": "こよみ",
                   "field_id": "layout_c_b067e1cc2a834b5dbd8a",
                   "field_label": "産次",
                   "section": "売却子牛一覧",
@@ -313,8 +804,8 @@
                     "width": 37.0,
                     "height": 29.0
                   },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_b067e1cc2a834b5dbd8a.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_b067e1cc2a834b5dbd8a.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
                 },
                 "value": "2",
                 "stored_value": null,
@@ -322,12 +813,12 @@
               },
               "日令": {
                 "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 2行目の日令",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 2行目の日令",
                 "location": {
                   "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
                   "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
+                  "document_name": "こよみ",
                   "field_id": "layout_c_2017897694674a3a8043",
                   "field_label": "日令",
                   "section": "売却子牛一覧",
@@ -342,21 +833,21 @@
                     "width": 52.0,
                     "height": 29.0
                   },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_2017897694674a3a8043.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_2017897694674a3a8043.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
                 },
-                "value": "320",
+                "value": null,
                 "stored_value": null,
-                "status": "readable"
+                "status": "blank"
               },
               "体重": {
                 "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 2行目の体重",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 2行目の体重",
                 "location": {
                   "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
                   "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
+                  "document_name": "こよみ",
                   "field_id": "layout_c_53fe8e73e5db4e26be61",
                   "field_label": "体重",
                   "section": "売却子牛一覧",
@@ -371,21 +862,21 @@
                     "width": 52.0,
                     "height": 30.0
                   },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_53fe8e73e5db4e26be61.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_53fe8e73e5db4e26be61.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
                 },
-                "value": "400",
+                "value": null,
                 "stored_value": null,
-                "status": "readable"
+                "status": "blank"
               },
               "価格": {
                 "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 2行目の価格",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 2行目の価格",
                 "location": {
                   "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
                   "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
+                  "document_name": "こよみ",
                   "field_id": "layout_c_9f29d76c6ecc48d68747",
                   "field_label": "価格",
                   "section": "売却子牛一覧",
@@ -400,21 +891,21 @@
                     "width": 126.0,
                     "height": 30.0
                   },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_9f29d76c6ecc48d68747.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_9f29d76c6ecc48d68747.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
                 },
-                "value": "120,000",
+                "value": "540,000",
                 "stored_value": null,
                 "status": "readable"
               },
               "種雄牛名": {
                 "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 2行目の種雄牛名",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 2行目の種雄牛名",
                 "location": {
                   "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
                   "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
+                  "document_name": "こよみ",
                   "field_id": "layout_c_dc8e27a52aae4733a95b",
                   "field_label": "種雄牛名",
                   "section": "売却子牛一覧",
@@ -429,21 +920,21 @@
                     "width": 86.0,
                     "height": 30.0
                   },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_dc8e27a52aae4733a95b.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_dc8e27a52aae4733a95b.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
                 },
-                "value": "百合茂",
+                "value": "光晴重",
                 "stored_value": null,
                 "status": "readable"
               },
               "売却日": {
                 "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 2行目の売却日",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 2行目の売却日",
                 "location": {
                   "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
                   "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
+                  "document_name": "こよみ",
                   "field_id": "layout_c_8f70daf9b71d4a9096a7",
                   "field_label": "売却日",
                   "section": "売却子牛一覧",
@@ -458,21 +949,21 @@
                     "width": 73.0,
                     "height": 31.0
                   },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_8f70daf9b71d4a9096a7.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_8f70daf9b71d4a9096a7.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
                 },
-                "value": "6/12/3",
+                "value": "30/8/10",
                 "stored_value": null,
                 "status": "readable"
               },
               "備考": {
                 "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 2行目の備考",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 2行目の備考",
                 "location": {
                   "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
                   "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
+                  "document_name": "こよみ",
                   "field_id": "layout_c_605df8b385c94d719d60",
                   "field_label": "備考",
                   "section": "売却子牛一覧",
@@ -487,10 +978,10 @@
                     "width": 90.0,
                     "height": 32.0
                   },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_605df8b385c94d719d60.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_605df8b385c94d719d60.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
                 },
-                "value": "♂",
+                "value": "♀なみえ",
                 "stored_value": null,
                 "status": "readable"
               }
@@ -501,12 +992,12 @@
             "cells": {
               "産次": {
                 "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 3行目の産次",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 3行目の産次",
                 "location": {
                   "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
                   "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
+                  "document_name": "こよみ",
                   "field_id": "layout_c_5a7dcaee4840430ca780",
                   "field_label": "産次",
                   "section": "売却子牛一覧",
@@ -521,8 +1012,8 @@
                     "width": 37.0,
                     "height": 30.0
                   },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_5a7dcaee4840430ca780.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_5a7dcaee4840430ca780.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
                 },
                 "value": "3",
                 "stored_value": null,
@@ -530,12 +1021,12 @@
               },
               "日令": {
                 "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 3行目の日令",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 3行目の日令",
                 "location": {
                   "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
                   "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
+                  "document_name": "こよみ",
                   "field_id": "layout_c_c0fa25ff026248078466",
                   "field_label": "日令",
                   "section": "売却子牛一覧",
@@ -550,21 +1041,21 @@
                     "width": 52.0,
                     "height": 30.0
                   },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_c0fa25ff026248078466.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_c0fa25ff026248078466.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
                 },
-                "value": "297",
+                "value": "277",
                 "stored_value": null,
                 "status": "readable"
               },
               "体重": {
                 "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 3行目の体重",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 3行目の体重",
                 "location": {
                   "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
                   "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
+                  "document_name": "こよみ",
                   "field_id": "layout_c_fec1d5d9755943bd8b8c",
                   "field_label": "体重",
                   "section": "売却子牛一覧",
@@ -579,21 +1070,21 @@
                     "width": 52.0,
                     "height": 29.0
                   },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_fec1d5d9755943bd8b8c.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_fec1d5d9755943bd8b8c.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
                 },
-                "value": "291",
+                "value": "323",
                 "stored_value": null,
                 "status": "readable"
               },
               "価格": {
                 "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 3行目の価格",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 3行目の価格",
                 "location": {
                   "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
                   "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
+                  "document_name": "こよみ",
                   "field_id": "layout_c_3f04ae295f18461e8fc8",
                   "field_label": "価格",
                   "section": "売却子牛一覧",
@@ -608,21 +1099,21 @@
                     "width": 126.0,
                     "height": 30.0
                   },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_3f04ae295f18461e8fc8.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_3f04ae295f18461e8fc8.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
                 },
-                "value": "150,000",
+                "value": "770,000",
                 "stored_value": null,
                 "status": "readable"
               },
               "種雄牛名": {
                 "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 3行目の種雄牛名",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 3行目の種雄牛名",
                 "location": {
                   "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
                   "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
+                  "document_name": "こよみ",
                   "field_id": "layout_c_b6b570ffbe4a40018351",
                   "field_label": "種雄牛名",
                   "section": "売却子牛一覧",
@@ -637,21 +1128,21 @@
                     "width": 86.0,
                     "height": 29.0
                   },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_b6b570ffbe4a40018351.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_b6b570ffbe4a40018351.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
                 },
-                "value": "勝忠重",
+                "value": "光晴重",
                 "stored_value": null,
                 "status": "readable"
               },
               "売却日": {
                 "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 3行目の売却日",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 3行目の売却日",
                 "location": {
                   "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
                   "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
+                  "document_name": "こよみ",
                   "field_id": "layout_c_f5e1f715ccb64e788b7b",
                   "field_label": "売却日",
                   "section": "売却子牛一覧",
@@ -666,21 +1157,21 @@
                     "width": 73.0,
                     "height": 30.0
                   },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_f5e1f715ccb64e788b7b.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_f5e1f715ccb64e788b7b.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
                 },
-                "value": "6/14/2",
+                "value": "1/11/6",
                 "stored_value": null,
                 "status": "readable"
               },
               "備考": {
                 "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 3行目の備考",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 3行目の備考",
                 "location": {
                   "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
                   "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
+                  "document_name": "こよみ",
                   "field_id": "layout_c_eae371316eea41bfb1da",
                   "field_label": "備考",
                   "section": "売却子牛一覧",
@@ -695,10 +1186,10 @@
                     "width": 91.0,
                     "height": 31.0
                   },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_eae371316eea41bfb1da.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_eae371316eea41bfb1da.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
                 },
-                "value": "♀",
+                "value": "♂",
                 "stored_value": null,
                 "status": "readable"
               }
@@ -709,12 +1200,12 @@
             "cells": {
               "産次": {
                 "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 4行目の産次",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 4行目の産次",
                 "location": {
                   "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
                   "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
+                  "document_name": "こよみ",
                   "field_id": "layout_c_68333dae04d34fb5a9ff",
                   "field_label": "産次",
                   "section": "売却子牛一覧",
@@ -729,8 +1220,8 @@
                     "width": 37.0,
                     "height": 30.0
                   },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_68333dae04d34fb5a9ff.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_68333dae04d34fb5a9ff.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
                 },
                 "value": "4",
                 "stored_value": null,
@@ -738,12 +1229,12 @@
               },
               "日令": {
                 "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 4行目の日令",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 4行目の日令",
                 "location": {
                   "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
                   "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
+                  "document_name": "こよみ",
                   "field_id": "layout_c_988ad016e4cc4315a194",
                   "field_label": "日令",
                   "section": "売却子牛一覧",
@@ -758,21 +1249,21 @@
                     "width": 52.0,
                     "height": 29.0
                   },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_988ad016e4cc4315a194.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_988ad016e4cc4315a194.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
                 },
-                "value": "292",
+                "value": "270",
                 "stored_value": null,
                 "status": "readable"
               },
               "体重": {
                 "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 4行目の体重",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 4行目の体重",
                 "location": {
                   "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
                   "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
+                  "document_name": "こよみ",
                   "field_id": "layout_c_e9d993123ea94bc88d96",
                   "field_label": "体重",
                   "section": "売却子牛一覧",
@@ -787,21 +1278,21 @@
                     "width": 52.0,
                     "height": 30.0
                   },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_e9d993123ea94bc88d96.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_e9d993123ea94bc88d96.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
                 },
-                "value": "361",
+                "value": "307",
                 "stored_value": null,
                 "status": "readable"
               },
               "価格": {
                 "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 4行目の価格",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 4行目の価格",
                 "location": {
                   "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
                   "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
+                  "document_name": "こよみ",
                   "field_id": "layout_c_acb4a48856364c37acc0",
                   "field_label": "価格",
                   "section": "売却子牛一覧",
@@ -816,21 +1307,21 @@
                     "width": 126.0,
                     "height": 30.0
                   },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_acb4a48856364c37acc0.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_acb4a48856364c37acc0.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
                 },
-                "value": "200,000",
+                "value": "762,300",
                 "stored_value": null,
                 "status": "readable"
               },
               "種雄牛名": {
                 "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 4行目の種雄牛名",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 4行目の種雄牛名",
                 "location": {
                   "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
                   "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
+                  "document_name": "こよみ",
                   "field_id": "layout_c_9e35da575ae349218a6d",
                   "field_label": "種雄牛名",
                   "section": "売却子牛一覧",
@@ -845,8 +1336,8 @@
                     "width": 86.0,
                     "height": 30.0
                   },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_9e35da575ae349218a6d.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_9e35da575ae349218a6d.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
                 },
                 "value": "光晴重",
                 "stored_value": null,
@@ -854,12 +1345,12 @@
               },
               "売却日": {
                 "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 4行目の売却日",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 4行目の売却日",
                 "location": {
                   "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
                   "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
+                  "document_name": "こよみ",
                   "field_id": "layout_c_a99af9c1d0cc40febd2c",
                   "field_label": "売却日",
                   "section": "売却子牛一覧",
@@ -874,21 +1365,21 @@
                     "width": 73.0,
                     "height": 30.0
                   },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_a99af9c1d0cc40febd2c.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_a99af9c1d0cc40febd2c.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
                 },
-                "value": "3/2/1",
+                "value": "2/10/7",
                 "stored_value": null,
                 "status": "readable"
               },
               "備考": {
                 "kind": "document",
-                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
-                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 4行目の備考",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 4行目の備考",
                 "location": {
                   "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
                   "template_name": "繁殖台帳1021",
-                  "document_name": "はじめ",
+                  "document_name": "こよみ",
                   "field_id": "layout_c_7c862d62984945b2a4bb",
                   "field_label": "備考",
                   "section": "売却子牛一覧",
@@ -903,10 +1394,842 @@
                     "width": 90.0,
                     "height": 31.0
                   },
-                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_7c862d62984945b2a4bb.alignedColor",
-                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_7c862d62984945b2a4bb.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "♂",
+                "stored_value": null,
+                "status": "readable"
+              }
+            }
+          },
+          {
+            "row_number": 5,
+            "cells": {
+              "産次": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 5行目の産次",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_0c1f712bb6a44dbfb05c",
+                  "field_label": "産次",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 5,
+                  "column_id": "c_c893b6aae8b64e278446",
+                  "page_id": null,
+                  "box": {
+                    "x": 667.0,
+                    "y": 401.0,
+                    "width": 37.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_0c1f712bb6a44dbfb05c.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "5",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "日令": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 5行目の日令",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_90e9bdeaccd24fe8af09",
+                  "field_label": "日令",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 5,
+                  "column_id": "c_6e64018a482a488f8107",
+                  "page_id": null,
+                  "box": {
+                    "x": 704.0,
+                    "y": 401.0,
+                    "width": 52.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_90e9bdeaccd24fe8af09.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "297",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "体重": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 5行目の体重",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_fc3a4d9cb13e43e4a434",
+                  "field_label": "体重",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 5,
+                  "column_id": "c_3299043169064edab8e0",
+                  "page_id": null,
+                  "box": {
+                    "x": 756.0,
+                    "y": 400.0,
+                    "width": 52.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_fc3a4d9cb13e43e4a434.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "329",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "価格": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 5行目の価格",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_cc5d5e82cf4c4ad2add6",
+                  "field_label": "価格",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 5,
+                  "column_id": "c_c99950d4320a4d64b172",
+                  "page_id": null,
+                  "box": {
+                    "x": 809.0,
+                    "y": 400.0,
+                    "width": 126.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_cc5d5e82cf4c4ad2add6.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "826,100",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "種雄牛名": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 5行目の種雄牛名",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_3d65311736574bee9f93",
+                  "field_label": "種雄牛名",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 5,
+                  "column_id": "c_3596084bb1394cf4a176",
+                  "page_id": null,
+                  "box": {
+                    "x": 935.0,
+                    "y": 399.0,
+                    "width": 86.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_3d65311736574bee9f93.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "勝忠平ET",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "売却日": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 5行目の売却日",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_db7111e30a2b4d0e99ff",
+                  "field_label": "売却日",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 5,
+                  "column_id": "c_b694ab13beb847e48772",
+                  "page_id": null,
+                  "box": {
+                    "x": 1021.0,
+                    "y": 398.0,
+                    "width": 73.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_db7111e30a2b4d0e99ff.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "3/10/7",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "備考": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 5行目の備考",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_90ef8d5dcd9f4295b4dd",
+                  "field_label": "備考",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 5,
+                  "column_id": "c_e2b6904efdae4451ac29",
+                  "page_id": null,
+                  "box": {
+                    "x": 1094.0,
+                    "y": 396.0,
+                    "width": 90.0,
+                    "height": 31.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_90ef8d5dcd9f4295b4dd.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "♂",
+                "stored_value": null,
+                "status": "readable"
+              }
+            }
+          },
+          {
+            "row_number": 6,
+            "cells": {
+              "産次": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 6行目の産次",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_163ba75799c64b679c10",
+                  "field_label": "産次",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 6,
+                  "column_id": "c_c893b6aae8b64e278446",
+                  "page_id": null,
+                  "box": {
+                    "x": 667.0,
+                    "y": 431.0,
+                    "width": 37.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_163ba75799c64b679c10.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "6",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "日令": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 6行目の日令",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_a6a6d986b38644138735",
+                  "field_label": "日令",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 6,
+                  "column_id": "c_6e64018a482a488f8107",
+                  "page_id": null,
+                  "box": {
+                    "x": 704.0,
+                    "y": 431.0,
+                    "width": 52.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_a6a6d986b38644138735.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "284",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "体重": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 6行目の体重",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_faf722a1e8de481b851c",
+                  "field_label": "体重",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 6,
+                  "column_id": "c_3299043169064edab8e0",
+                  "page_id": null,
+                  "box": {
+                    "x": 756.0,
+                    "y": 430.0,
+                    "width": 52.0,
+                    "height": 31.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_faf722a1e8de481b851c.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "262",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "価格": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 6行目の価格",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_1916e80fb53e4346816c",
+                  "field_label": "価格",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 6,
+                  "column_id": "c_c99950d4320a4d64b172",
+                  "page_id": null,
+                  "box": {
+                    "x": 808.0,
+                    "y": 430.0,
+                    "width": 127.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_1916e80fb53e4346816c.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "456,500",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "種雄牛名": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 6行目の種雄牛名",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_f76f6ba3fc934e979b78",
+                  "field_label": "種雄牛名",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 6,
+                  "column_id": "c_3596084bb1394cf4a176",
+                  "page_id": null,
+                  "box": {
+                    "x": 935.0,
+                    "y": 429.0,
+                    "width": 86.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_f76f6ba3fc934e979b78.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "光晴重",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "売却日": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 6行目の売却日",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_cfe5bab642b442f19067",
+                  "field_label": "売却日",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 6,
+                  "column_id": "c_b694ab13beb847e48772",
+                  "page_id": null,
+                  "box": {
+                    "x": 1021.0,
+                    "y": 428.0,
+                    "width": 73.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_cfe5bab642b442f19067.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "4/10/5",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "備考": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 6行目の備考",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_74ad31789ac04daead3c",
+                  "field_label": "備考",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 6,
+                  "column_id": "c_e2b6904efdae4451ac29",
+                  "page_id": null,
+                  "box": {
+                    "x": 1094.0,
+                    "y": 426.0,
+                    "width": 90.0,
+                    "height": 31.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_74ad31789ac04daead3c.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
                 },
                 "value": "♀",
+                "stored_value": null,
+                "status": "readable"
+              }
+            }
+          },
+          {
+            "row_number": 7,
+            "cells": {
+              "産次": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 7行目の産次",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_bb62bdba12f545d8ab79",
+                  "field_label": "産次",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 7,
+                  "column_id": "c_c893b6aae8b64e278446",
+                  "page_id": null,
+                  "box": {
+                    "x": 667.0,
+                    "y": 461.0,
+                    "width": 37.0,
+                    "height": 31.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_bb62bdba12f545d8ab79.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "7",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "日令": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 7行目の日令",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_b90cbdfd455e4a48aa2c",
+                  "field_label": "日令",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 7,
+                  "column_id": "c_6e64018a482a488f8107",
+                  "page_id": null,
+                  "box": {
+                    "x": 704.0,
+                    "y": 461.0,
+                    "width": 52.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_b90cbdfd455e4a48aa2c.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "292",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "体重": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 7行目の体重",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_a13b2541e5a04d678fff",
+                  "field_label": "体重",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 7,
+                  "column_id": "c_3299043169064edab8e0",
+                  "page_id": null,
+                  "box": {
+                    "x": 756.0,
+                    "y": 460.0,
+                    "width": 52.0,
+                    "height": 31.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_a13b2541e5a04d678fff.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "259",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "価格": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 7行目の価格",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_659e4bee5088460fac2d",
+                  "field_label": "価格",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 7,
+                  "column_id": "c_c99950d4320a4d64b172",
+                  "page_id": null,
+                  "box": {
+                    "x": 808.0,
+                    "y": 459.0,
+                    "width": 127.0,
+                    "height": 31.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_659e4bee5088460fac2d.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "435,600",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "種雄牛名": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 7行目の種雄牛名",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_9f0446577d5a4dd48dc9",
+                  "field_label": "種雄牛名",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 7,
+                  "column_id": "c_3596084bb1394cf4a176",
+                  "page_id": null,
+                  "box": {
+                    "x": 935.0,
+                    "y": 458.0,
+                    "width": 86.0,
+                    "height": 31.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_9f0446577d5a4dd48dc9.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "重波泉",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "売却日": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 7行目の売却日",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_1a3f8ffe79c94971983a",
+                  "field_label": "売却日",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 7,
+                  "column_id": "c_b694ab13beb847e48772",
+                  "page_id": null,
+                  "box": {
+                    "x": 1021.0,
+                    "y": 457.0,
+                    "width": 73.0,
+                    "height": 31.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_1a3f8ffe79c94971983a.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "5/11/16",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "備考": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 7行目の備考",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_c4fc7686f7f34ea896d1",
+                  "field_label": "備考",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 7,
+                  "column_id": "c_e2b6904efdae4451ac29",
+                  "page_id": null,
+                  "box": {
+                    "x": 1095.0,
+                    "y": 455.0,
+                    "width": 89.0,
+                    "height": 32.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_c4fc7686f7f34ea896d1.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "♀",
+                "stored_value": null,
+                "status": "readable"
+              }
+            }
+          },
+          {
+            "row_number": 8,
+            "cells": {
+              "産次": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 8行目の産次",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_8c5322de36cc49049601",
+                  "field_label": "産次",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 8,
+                  "column_id": "c_c893b6aae8b64e278446",
+                  "page_id": null,
+                  "box": {
+                    "x": 667.0,
+                    "y": 492.0,
+                    "width": 37.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_8c5322de36cc49049601.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "8",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "日令": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 8行目の日令",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_1b8df32a07da40efb855",
+                  "field_label": "日令",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 8,
+                  "column_id": "c_6e64018a482a488f8107",
+                  "page_id": null,
+                  "box": {
+                    "x": 704.0,
+                    "y": 491.0,
+                    "width": 52.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_1b8df32a07da40efb855.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "302",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "体重": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 8行目の体重",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_ea9be06d049c4cd3838f",
+                  "field_label": "体重",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 8,
+                  "column_id": "c_3299043169064edab8e0",
+                  "page_id": null,
+                  "box": {
+                    "x": 756.0,
+                    "y": 490.0,
+                    "width": 52.0,
+                    "height": 31.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_ea9be06d049c4cd3838f.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "342",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "価格": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 8行目の価格",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_c917545cc5f94bb7b8d5",
+                  "field_label": "価格",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 8,
+                  "column_id": "c_c99950d4320a4d64b172",
+                  "page_id": null,
+                  "box": {
+                    "x": 808.0,
+                    "y": 488.0,
+                    "width": 127.0,
+                    "height": 32.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_c917545cc5f94bb7b8d5.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "708,400",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "種雄牛名": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 8行目の種雄牛名",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_1afdab81a6dd423c8525",
+                  "field_label": "種雄牛名",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 8,
+                  "column_id": "c_3596084bb1394cf4a176",
+                  "page_id": null,
+                  "box": {
+                    "x": 935.0,
+                    "y": 488.0,
+                    "width": 86.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_1afdab81a6dd423c8525.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "百合茂ET",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "売却日": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 8行目の売却日",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_a19b8e6077f8423f8e2d",
+                  "field_label": "売却日",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 8,
+                  "column_id": "c_b694ab13beb847e48772",
+                  "page_id": null,
+                  "box": {
+                    "x": 1021.0,
+                    "y": 487.0,
+                    "width": 74.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_a19b8e6077f8423f8e2d.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "6/11/7",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "備考": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の売却子牛一覧 8行目の備考",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_a9d75c18f6db4959a254",
+                  "field_label": "備考",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 8,
+                  "column_id": "c_e2b6904efdae4451ac29",
+                  "page_id": null,
+                  "box": {
+                    "x": 1095.0,
+                    "y": 485.0,
+                    "width": 89.0,
+                    "height": 31.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_a9d75c18f6db4959a254.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "♂",
                 "stored_value": null,
                 "status": "readable"
               }
@@ -914,10 +2237,1114 @@
           }
         ],
         "truncated": false
+      },
+      {
+        "table_id": "c_7f28d0f252e24d0ab58e",
+        "title": "繁殖関係（産歴1〜10）",
+        "columns": ["産歴", "分娩年月日", "分娩状況", "備考"],
+        "rows": [
+          {
+            "row_number": 1,
+            "cells": {
+              "産歴": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 1行目の産歴",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_0226116c35ce45479c1b",
+                  "field_label": "産歴",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 1,
+                  "column_id": "c_2818c72e00ac419f823d",
+                  "page_id": null,
+                  "box": {
+                    "x": 143.0,
+                    "y": 1130.0,
+                    "width": 54.0,
+                    "height": 52.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_0226116c35ce45479c1b.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "1",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "分娩年月日": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 1行目の分娩年月日",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_5e43b114eb764019b844",
+                  "field_label": "分娩年月日",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 1,
+                  "column_id": "c_eaca96d7fa5a41209424",
+                  "page_id": null,
+                  "box": {
+                    "x": 197.0,
+                    "y": 1126.0,
+                    "width": 152.0,
+                    "height": 54.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_5e43b114eb764019b844.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "28/7/25",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "分娩状況": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 1行目の分娩状況",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_362a05c0199d477c99d7_c_aa70094826074cbabd86",
+                  "field_label": "分娩状況",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 1,
+                  "column_id": "c_987f20188865430ca511",
+                  "page_id": null,
+                  "box": {
+                    "x": 349.0,
+                    "y": 1122.0,
+                    "width": 210.0,
+                    "height": 54.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_362a05c0199d477c99d7_c_aa70094826074cbabd86.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "♀・死産",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "備考": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 1行目の備考",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_9fef4201090540aabc3c",
+                  "field_label": "備考",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 1,
+                  "column_id": "c_72aa97c32b354664a3bb",
+                  "page_id": null,
+                  "box": {
+                    "x": 559.0,
+                    "y": 1120.0,
+                    "width": 107.0,
+                    "height": 52.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_9fef4201090540aabc3c.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "勝忠平ET",
+                "stored_value": null,
+                "status": "readable"
+              }
+            }
+          },
+          {
+            "row_number": 2,
+            "cells": {
+              "産歴": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 2行目の産歴",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_abd92513ae9c4ef18ea3",
+                  "field_label": "産歴",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 2,
+                  "column_id": "c_2818c72e00ac419f823d",
+                  "page_id": null,
+                  "box": {
+                    "x": 144.0,
+                    "y": 1181.0,
+                    "width": 54.0,
+                    "height": 52.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_abd92513ae9c4ef18ea3.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "2",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "分娩年月日": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 2行目の分娩年月日",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_f130d26cbbf54905bef4",
+                  "field_label": "分娩年月日",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 2,
+                  "column_id": "c_eaca96d7fa5a41209424",
+                  "page_id": null,
+                  "box": {
+                    "x": 198.0,
+                    "y": 1177.0,
+                    "width": 151.0,
+                    "height": 54.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_f130d26cbbf54905bef4.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "29/9/9",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "分娩状況": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 2行目の分娩状況",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_5f5cd7c0d41e417c82e5_c_66d715f126854230ab51",
+                  "field_label": "分娩状況",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 2,
+                  "column_id": "c_987f20188865430ca511",
+                  "page_id": null,
+                  "box": {
+                    "x": 350.0,
+                    "y": 1173.0,
+                    "width": 209.0,
+                    "height": 54.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_5f5cd7c0d41e417c82e5_c_66d715f126854230ab51.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "♀",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "備考": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 2行目の備考",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_eb9d948b8b0d46688a41",
+                  "field_label": "備考",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 2,
+                  "column_id": "c_72aa97c32b354664a3bb",
+                  "page_id": null,
+                  "box": {
+                    "x": 559.0,
+                    "y": 1171.0,
+                    "width": 107.0,
+                    "height": 52.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_eb9d948b8b0d46688a41.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "光晴雲",
+                "stored_value": null,
+                "status": "readable"
+              }
+            }
+          },
+          {
+            "row_number": 3,
+            "cells": {
+              "産歴": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 3行目の産歴",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_b461e1141925442caa70",
+                  "field_label": "産歴",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 3,
+                  "column_id": "c_2818c72e00ac419f823d",
+                  "page_id": null,
+                  "box": {
+                    "x": 144.0,
+                    "y": 1231.0,
+                    "width": 55.0,
+                    "height": 52.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_b461e1141925442caa70.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "3",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "分娩年月日": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 3行目の分娩年月日",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_6b0739f9a1b24a9aa8d5",
+                  "field_label": "分娩年月日",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 3,
+                  "column_id": "c_eaca96d7fa5a41209424",
+                  "page_id": null,
+                  "box": {
+                    "x": 199.0,
+                    "y": 1227.0,
+                    "width": 150.0,
+                    "height": 54.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_6b0739f9a1b24a9aa8d5.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "31/2/2",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "分娩状況": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 3行目の分娩状況",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_80972c4fc72e4e1290c3_c_cb8170785a1d4c8f8a7e",
+                  "field_label": "分娩状況",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 3,
+                  "column_id": "c_987f20188865430ca511",
+                  "page_id": null,
+                  "box": {
+                    "x": 350.0,
+                    "y": 1223.0,
+                    "width": 209.0,
+                    "height": 54.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_80972c4fc72e4e1290c3_c_cb8170785a1d4c8f8a7e.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "♂",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "備考": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 3行目の備考",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_93f4d0b3f5ae4096a030",
+                  "field_label": "備考",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 3,
+                  "column_id": "c_72aa97c32b354664a3bb",
+                  "page_id": null,
+                  "box": {
+                    "x": 559.0,
+                    "y": 1222.0,
+                    "width": 107.0,
+                    "height": 51.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_93f4d0b3f5ae4096a030.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "光晴雲",
+                "stored_value": null,
+                "status": "readable"
+              }
+            }
+          },
+          {
+            "row_number": 4,
+            "cells": {
+              "産歴": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 4行目の産歴",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_4e584c9018b14b2ea78a",
+                  "field_label": "産歴",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 4,
+                  "column_id": "c_2818c72e00ac419f823d",
+                  "page_id": null,
+                  "box": {
+                    "x": 145.0,
+                    "y": 1281.0,
+                    "width": 54.0,
+                    "height": 52.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_4e584c9018b14b2ea78a.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "4",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "分娩年月日": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 4行目の分娩年月日",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_6334e17331a64964bb46",
+                  "field_label": "分娩年月日",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 4,
+                  "column_id": "c_eaca96d7fa5a41209424",
+                  "page_id": null,
+                  "box": {
+                    "x": 199.0,
+                    "y": 1277.0,
+                    "width": 151.0,
+                    "height": 53.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_6334e17331a64964bb46.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "2/1/11",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "分娩状況": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 4行目の分娩状況",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_bca0c9cf6d0146e9a5c6_c_cc9bd4d53ed74f21aba1",
+                  "field_label": "分娩状況",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 4,
+                  "column_id": "c_987f20188865430ca511",
+                  "page_id": null,
+                  "box": {
+                    "x": 350.0,
+                    "y": 1274.0,
+                    "width": 208.0,
+                    "height": 52.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_bca0c9cf6d0146e9a5c6_c_cc9bd4d53ed74f21aba1.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "♂",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "備考": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 4行目の備考",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_470d40afe3fb40b8b475",
+                  "field_label": "備考",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 4,
+                  "column_id": "c_72aa97c32b354664a3bb",
+                  "page_id": null,
+                  "box": {
+                    "x": 558.0,
+                    "y": 1272.0,
+                    "width": 108.0,
+                    "height": 52.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_470d40afe3fb40b8b475.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "光晴雲",
+                "stored_value": null,
+                "status": "readable"
+              }
+            }
+          },
+          {
+            "row_number": 5,
+            "cells": {
+              "産歴": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 5行目の産歴",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_91e193825322499385ca",
+                  "field_label": "産歴",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 5,
+                  "column_id": "c_2818c72e00ac419f823d",
+                  "page_id": null,
+                  "box": {
+                    "x": 146.0,
+                    "y": 1331.0,
+                    "width": 53.0,
+                    "height": 52.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_91e193825322499385ca.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "5",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "分娩年月日": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 5行目の分娩年月日",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_0e345ba451a54eda8d47",
+                  "field_label": "分娩年月日",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 5,
+                  "column_id": "c_eaca96d7fa5a41209424",
+                  "page_id": null,
+                  "box": {
+                    "x": 200.0,
+                    "y": 1327.0,
+                    "width": 150.0,
+                    "height": 54.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_0e345ba451a54eda8d47.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "2/12/14",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "分娩状況": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 5行目の分娩状況",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_e14bf2ccc43d48049724_c_c600f20bde3f4bd59bc3",
+                  "field_label": "分娩状況",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 5,
+                  "column_id": "c_987f20188865430ca511",
+                  "page_id": null,
+                  "box": {
+                    "x": 350.0,
+                    "y": 1324.0,
+                    "width": 208.0,
+                    "height": 52.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_e14bf2ccc43d48049724_c_c600f20bde3f4bd59bc3.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "♂",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "備考": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 5行目の備考",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_b9cc324dc05e4f33bc5b",
+                  "field_label": "備考",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 5,
+                  "column_id": "c_72aa97c32b354664a3bb",
+                  "page_id": null,
+                  "box": {
+                    "x": 558.0,
+                    "y": 1323.0,
+                    "width": 108.0,
+                    "height": 51.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_b9cc324dc05e4f33bc5b.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "勝忠平ET",
+                "stored_value": null,
+                "status": "readable"
+              }
+            }
+          },
+          {
+            "row_number": 6,
+            "cells": {
+              "産歴": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 6行目の産歴",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_2762001a834d4a198d0c",
+                  "field_label": "産歴",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 6,
+                  "column_id": "c_2818c72e00ac419f823d",
+                  "page_id": null,
+                  "box": {
+                    "x": 145.0,
+                    "y": 1381.0,
+                    "width": 55.0,
+                    "height": 53.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_2762001a834d4a198d0c.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "6",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "分娩年月日": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 6行目の分娩年月日",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_77924a4651fb47a8a4e1",
+                  "field_label": "分娩年月日",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 6,
+                  "column_id": "c_eaca96d7fa5a41209424",
+                  "page_id": null,
+                  "box": {
+                    "x": 199.0,
+                    "y": 1376.0,
+                    "width": 152.0,
+                    "height": 55.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_77924a4651fb47a8a4e1.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "3/12/26",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "分娩状況": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 6行目の分娩状況",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_3b789547c89b4837a348_c_e7e10c2bb7bd42b3b21a",
+                  "field_label": "分娩状況",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 6,
+                  "column_id": "c_987f20188865430ca511",
+                  "page_id": null,
+                  "box": {
+                    "x": 351.0,
+                    "y": 1374.0,
+                    "width": 207.0,
+                    "height": 52.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_3b789547c89b4837a348_c_e7e10c2bb7bd42b3b21a.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "♀",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "備考": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 6行目の備考",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_11700a3eac044adc9ee7",
+                  "field_label": "備考",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 6,
+                  "column_id": "c_72aa97c32b354664a3bb",
+                  "page_id": null,
+                  "box": {
+                    "x": 559.0,
+                    "y": 1372.0,
+                    "width": 107.0,
+                    "height": 52.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_11700a3eac044adc9ee7.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "光晴雲",
+                "stored_value": null,
+                "status": "readable"
+              }
+            }
+          },
+          {
+            "row_number": 7,
+            "cells": {
+              "産歴": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 7行目の産歴",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_bc6fee1a93914787bbe2",
+                  "field_label": "産歴",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 7,
+                  "column_id": "c_2818c72e00ac419f823d",
+                  "page_id": null,
+                  "box": {
+                    "x": 146.0,
+                    "y": 1432.0,
+                    "width": 53.0,
+                    "height": 52.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_bc6fee1a93914787bbe2.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "7",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "分娩年月日": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 7行目の分娩年月日",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_8bfd761a3129499eae67",
+                  "field_label": "分娩年月日",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 7,
+                  "column_id": "c_eaca96d7fa5a41209424",
+                  "page_id": null,
+                  "box": {
+                    "x": 200.0,
+                    "y": 1427.0,
+                    "width": 151.0,
+                    "height": 55.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_8bfd761a3129499eae67.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "5/1/28",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "分娩状況": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 7行目の分娩状況",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_54e3c4d83f8b4c828389_c_793b52ffb8ce433aafef",
+                  "field_label": "分娩状況",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 7,
+                  "column_id": "c_987f20188865430ca511",
+                  "page_id": null,
+                  "box": {
+                    "x": 351.0,
+                    "y": 1424.0,
+                    "width": 207.0,
+                    "height": 52.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_54e3c4d83f8b4c828389_c_793b52ffb8ce433aafef.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "♀",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "備考": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 7行目の備考",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_0442b147dba9409e8b68",
+                  "field_label": "備考",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 7,
+                  "column_id": "c_72aa97c32b354664a3bb",
+                  "page_id": null,
+                  "box": {
+                    "x": 559.0,
+                    "y": 1423.0,
+                    "width": 107.0,
+                    "height": 50.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_0442b147dba9409e8b68.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "重波泉",
+                "stored_value": null,
+                "status": "readable"
+              }
+            }
+          },
+          {
+            "row_number": 8,
+            "cells": {
+              "産歴": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 8行目の産歴",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_55f584be39ab48b59ae5",
+                  "field_label": "産歴",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 8,
+                  "column_id": "c_2818c72e00ac419f823d",
+                  "page_id": null,
+                  "box": {
+                    "x": 146.0,
+                    "y": 1482.0,
+                    "width": 54.0,
+                    "height": 52.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_55f584be39ab48b59ae5.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "8",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "分娩年月日": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 8行目の分娩年月日",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_0dfdbb9dc20140b39b67",
+                  "field_label": "分娩年月日",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 8,
+                  "column_id": "c_eaca96d7fa5a41209424",
+                  "page_id": null,
+                  "box": {
+                    "x": 200.0,
+                    "y": 1477.0,
+                    "width": 151.0,
+                    "height": 55.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_0dfdbb9dc20140b39b67.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "6/1/10",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "分娩状況": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 8行目の分娩状況",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_01ef14ae3cac491f9023_c_6f3f905ea2f64a89b9f0",
+                  "field_label": "分娩状況",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 8,
+                  "column_id": "c_987f20188865430ca511",
+                  "page_id": null,
+                  "box": {
+                    "x": 351.0,
+                    "y": 1474.0,
+                    "width": 208.0,
+                    "height": 53.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_01ef14ae3cac491f9023_c_6f3f905ea2f64a89b9f0.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "♂",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "備考": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 8行目の備考",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_ba0219a540034b339448",
+                  "field_label": "備考",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 8,
+                  "column_id": "c_72aa97c32b354664a3bb",
+                  "page_id": null,
+                  "box": {
+                    "x": 559.0,
+                    "y": 1473.0,
+                    "width": 107.0,
+                    "height": 51.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_ba0219a540034b339448.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "百合茂",
+                "stored_value": null,
+                "status": "readable"
+              }
+            }
+          },
+          {
+            "row_number": 9,
+            "cells": {
+              "産歴": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 9行目の産歴",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_2075529a83fb4a3e834c",
+                  "field_label": "産歴",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 9,
+                  "column_id": "c_2818c72e00ac419f823d",
+                  "page_id": null,
+                  "box": {
+                    "x": 147.0,
+                    "y": 1532.0,
+                    "width": 53.0,
+                    "height": 52.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_2075529a83fb4a3e834c.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "9",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "分娩年月日": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 9行目の分娩年月日",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_7b5f5dc1584c4d049615",
+                  "field_label": "分娩年月日",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 9,
+                  "column_id": "c_eaca96d7fa5a41209424",
+                  "page_id": null,
+                  "box": {
+                    "x": 200.0,
+                    "y": 1527.0,
+                    "width": 151.0,
+                    "height": 54.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_7b5f5dc1584c4d049615.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "6/11/19",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "分娩状況": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 9行目の分娩状況",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_03de860d21324dcf9200_c_e1ce26d7e837412caca6",
+                  "field_label": "分娩状況",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 9,
+                  "column_id": "c_987f20188865430ca511",
+                  "page_id": null,
+                  "box": {
+                    "x": 351.0,
+                    "y": 1524.0,
+                    "width": 207.0,
+                    "height": 52.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_03de860d21324dcf9200_c_e1ce26d7e837412caca6.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "♂",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "備考": {
+                "kind": "document",
+                "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+                "label": "繁殖台帳1021「こよみ」の繁殖関係（産歴1〜10） 9行目の備考",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "こよみ",
+                  "field_id": "layout_c_e2d1032348114cad833e",
+                  "field_label": "備考",
+                  "section": "繁殖関係（産歴1〜10）",
+                  "table_id": "c_7f28d0f252e24d0ab58e",
+                  "table_title": "繁殖関係（産歴1〜10）",
+                  "row_number": 9,
+                  "column_id": "c_72aa97c32b354664a3bb",
+                  "page_id": null,
+                  "box": {
+                    "x": 558.0,
+                    "y": 1522.0,
+                    "width": 107.0,
+                    "height": 52.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_e2d1032348114cad833e.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+                },
+                "value": "第2光晴",
+                "stored_value": null,
+                "status": "readable"
+              }
+            }
+          }
+        ],
+        "truncated": false
+      },
+      {
+        "table_id": "c_138e25369f044c9e83a9",
+        "title": "繁殖関係（産歴11〜20）",
+        "columns": ["産歴", "分娩年月日", "分娩状況", "備考"],
+        "rows": [],
+        "truncated": false
       }
     ],
     "not_found_fields": [],
-    "summary": "繁殖台帳1021「はじめ」（版3、確定 2026-10-25）\n導入年月日・金額：空欄、毛色：黒\n表：売却子牛一覧（値のある行 4）"
+    "summary": "繁殖台帳1021「こよみ」（版1、確定 2026-10-23）\n統一耳標：13554-8052-3、名号：こよみ、生年月日：26年9月27日、登録No.の区分：繁殖、登録No.（高・特・繁殖・産肉・黒高）：27093(85)、登録No.の区分（黒原・黒）：空欄、登録No.（黒原・黒）：空欄、繁殖者（県・郡市・町村）：空欄 ほか18欄\n表：売却子牛一覧（値のある行 7）、繁殖関係（産歴1〜10）（値のある行 9）、繁殖関係（産歴11〜20）（値のある行 0）"
   },
   "isError": false
 }

@@ -1,0 +1,13 @@
+{
+  "_meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "「存在しない書類ZZZ」という書類は見つかりませんでした。確定済みの書類だけが対象です。list_templates でテンプレートと件数を確かめてから、書類名で指定してください。",
+      "annotations": null,
+      "_meta": null
+    }
+  ],
+  "structuredContent": null,
+  "isError": true
+}
