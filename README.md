@@ -53,7 +53,24 @@ npm run dev:server                                   # http://127.0.0.1:8787 で
 - 受け付けるのは、画面の開発時の住所（`http://127.0.0.1:5174`・`http://localhost:5174`）からの要求だけです。
 - 本番用は `npm run build -w @agorack/server` で `apps/server/dist/main.js` にまとめ、`npm run start -w @agorack/server` で起動します。
 
-画面を起動するコマンドは、画面の土台（#9）で足します。
+### 画面を開く
+
+画面は `http://127.0.0.1:5174` で開きます（5173 は文之助の画面）。
+
+| コマンド | 内容 |
+|---|---|
+| `npm run dev:web` | 画面を開く。`/api` はサーバー（`http://127.0.0.1:8787`）へ中継する |
+| `npm run dev:mock -w @agorack/web` | 決まったイベントを流す偽のサーバーで画面を開く（サーバーなしで試せる） |
+| `npm run screenshots -w @agorack/web` | 偽のサーバーにつないだ画面を、手元の Microsoft Edge で撮る（出力は `apps/web/screenshots/`） |
+
+偽のサーバーは、質問の言葉で流すイベントを選びます（`apps/web/dev/mock-api/scenarios.ts`）。
+
+| 質問に含める言葉 | 流れるもの |
+|---|---|
+| （下のどれも含まない） | 根拠付きの答え（表あり） |
+| 「失敗」「見つから」 | 道具の失敗（書類が見つからない） |
+| 「障害」「エラー」 | `turn.failed`（Claude の呼び出しの失敗） |
+| 「ゆっくり」「止め」 | 時間のかかる答え（停止を試す） |
 
 ## 状態
 
