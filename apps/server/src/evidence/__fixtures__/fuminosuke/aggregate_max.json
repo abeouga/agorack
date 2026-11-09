@@ -46,6 +46,7 @@
           "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
         },
         "value": "540,000",
+        "embed_url": "http://127.0.0.1:5180/embed?job=1d0c139e-5175-43d5-bba6-1d2b76d69977&field=layout_c_9f29d76c6ecc48d68747",
         "stored_value": null,
         "status": "readable",
         "number": "540000",
@@ -77,6 +78,7 @@
           "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
         },
         "value": "770,000",
+        "embed_url": "http://127.0.0.1:5180/embed?job=1d0c139e-5175-43d5-bba6-1d2b76d69977&field=layout_c_3f04ae295f18461e8fc8",
         "stored_value": null,
         "status": "readable",
         "number": "770000",
@@ -108,6 +110,7 @@
           "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
         },
         "value": "762,300",
+        "embed_url": "http://127.0.0.1:5180/embed?job=1d0c139e-5175-43d5-bba6-1d2b76d69977&field=layout_c_acb4a48856364c37acc0",
         "stored_value": null,
         "status": "readable",
         "number": "762300",
@@ -139,6 +142,7 @@
           "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
         },
         "value": "826,100",
+        "embed_url": "http://127.0.0.1:5180/embed?job=1d0c139e-5175-43d5-bba6-1d2b76d69977&field=layout_c_cc5d5e82cf4c4ad2add6",
         "stored_value": null,
         "status": "readable",
         "number": "826100",
@@ -170,6 +174,7 @@
           "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
         },
         "value": "456,500",
+        "embed_url": "http://127.0.0.1:5180/embed?job=1d0c139e-5175-43d5-bba6-1d2b76d69977&field=layout_c_1916e80fb53e4346816c",
         "stored_value": null,
         "status": "readable",
         "number": "456500",
@@ -201,6 +206,7 @@
           "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
         },
         "value": "435,600",
+        "embed_url": "http://127.0.0.1:5180/embed?job=1d0c139e-5175-43d5-bba6-1d2b76d69977&field=layout_c_659e4bee5088460fac2d",
         "stored_value": null,
         "status": "readable",
         "number": "435600",
@@ -232,6 +238,7 @@
           "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
         },
         "value": "708,400",
+        "embed_url": "http://127.0.0.1:5180/embed?job=1d0c139e-5175-43d5-bba6-1d2b76d69977&field=layout_c_c917545cc5f94bb7b8d5",
         "stored_value": null,
         "status": "readable",
         "number": "708400",
@@ -266,6 +273,7 @@
           "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
         },
         "value": "826,100",
+        "embed_url": "http://127.0.0.1:5180/embed?job=1d0c139e-5175-43d5-bba6-1d2b76d69977&field=layout_c_cc5d5e82cf4c4ad2add6",
         "stored_value": null,
         "status": "readable",
         "number": "826100",

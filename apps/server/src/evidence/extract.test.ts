@@ -81,15 +81,33 @@ describe("実際の道具の結果から根拠を取り出す", () => {
     expect(evidence).toHaveLength(7);
   });
 
-  it.each(["list_templates", "search_documents"] as const)(
-    "根拠を持たない結果（%s）では空になる",
-    (name) => {
-      expect(extractEvidence(SOURCE, structuredContentOf(name))).toEqual({
-        evidence: [],
-        discarded: 0,
-      });
-    },
-  );
+  it("search_documents：探した条件に一致した根拠（毛色が黒の「はじめ」）を取り出す", () => {
+    const content = structuredContentOf("search_documents") as {
+      documents: { document_name: string; matched: unknown[] }[];
+    };
+    const { evidence, discarded } = extractEvidence(SOURCE, content);
+
+    expect(content.documents.map((d) => [d.document_name, d.matched.length])).toEqual([
+      ["はじめ", 1],
+    ]);
+    expect(discarded).toBe(0);
+    expect(evidence).toHaveLength(1);
+    expect(evidence[0]).toMatchObject({
+      kind: "document",
+      sourceId: SOURCE,
+      recordId: "0c82497c-4702-4d4f-a525-8ac3074b133b",
+      label: "繁殖台帳1021「はじめ」の毛色",
+      value: "黒",
+      location: { box: { x: 411, y: 311, width: 256, height: 44 } },
+    });
+  });
+
+  it("根拠を持たない結果（list_templates）では空になる", () => {
+    expect(extractEvidence(SOURCE, structuredContentOf("list_templates"))).toEqual({
+      evidence: [],
+      discarded: 0,
+    });
+  });
 
   it("道具が失敗した結果（isError、structuredContent が null）でも投げずに空を返す", () => {
     expect(extractEvidence(SOURCE, structuredContentOf("error_not_found"))).toEqual({
@@ -231,38 +249,12 @@ describe("何回かの結果の根拠をまとめる", () => {
 describe("埋め込み用の画面の住所（embed_url）", () => {
   const ORIGIN = "http://127.0.0.1:5180";
 
-  /**
-   * 文之助の MCP が embed_url を外枠に足したときの形（文之助の #65）を、実データに手で足した見本。
-   * 実データに embed_url が入ったら、書き出し直した結果に差し替える。
-   */
-  function withEmbedUrls(content: unknown): unknown {
-    const copy = structuredClone(content);
-    const visit = (node: unknown): void => {
-      if (Array.isArray(node)) return node.forEach(visit);
-      if (typeof node !== "object" || node === null) return;
-      const record = node as Record<string, unknown>;
-      if ("source_id" in record && "location" in record) {
-        const location = record.location as { field_id?: string | null };
-        const field = location.field_id ? `&field=${location.field_id}` : "";
-        record.embed_url = `${ORIGIN}/embed?job=${String(record.source_id)}${field}`;
-        return;
-      }
-      Object.values(record).forEach(visit);
-    };
-    visit(copy);
-    return copy;
-  }
+  /** 部品の設定（embed.origin）で絞ってから取り出す。sources が結果を受け取ったときと同じ順 */
+  const extractAllowed = (content: unknown, origin: string | null) =>
+    extractEvidence(SOURCE, restrictEmbedUrls(content, origin));
 
-  it("embed_url のない実データでは、全部の根拠の embedUrl が null になる", () => {
-    const { evidence } = extractEvidence(SOURCE, structuredContentOf("get_document"));
-
-    expect(evidence).toHaveLength(111);
-    expect(evidence.every((e) => e.embedUrl === null)).toBe(true);
-  });
-
-  it("embed_url のある根拠は、embedUrl に取り込む", () => {
-    const content = withEmbedUrls(structuredContentOf("get_document"));
-    const { evidence, discarded } = extractEvidence(SOURCE, restrictEmbedUrls(content, ORIGIN));
+  it("実データの embed_url を、許した住所のとき embedUrl に取り込む", () => {
+    const { evidence, discarded } = extractAllowed(structuredContentOf("get_document"), ORIGIN);
 
     expect(discarded).toBe(0);
     expect(evidence).toHaveLength(111);
@@ -275,9 +267,28 @@ describe("埋め込み用の画面の住所（embed_url）", () => {
     );
   });
 
+  it.each(["aggregate_sum", "aggregate_max", "search_documents"] as const)(
+    "%s の実データでも、全部の根拠に embedUrl が入る",
+    (name) => {
+      const { evidence } = extractAllowed(structuredContentOf(name), ORIGIN);
+
+      expect(evidence.length).toBeGreaterThan(0);
+      expect(evidence.every((e) => e.embedUrl?.startsWith(`${ORIGIN}/embed?job=`))).toBe(true);
+    },
+  );
+
+  it.each([
+    ["住所が違う", "http://localhost:5180"],
+    ["許す住所がない", null],
+  ])("部品の設定と合わない（%s）ときは、実データの embedUrl が全部 null になる", (_, origin) => {
+    const { evidence } = extractAllowed(structuredContentOf("get_document"), origin);
+
+    expect(evidence).toHaveLength(111);
+    expect(evidence.every((e) => e.embedUrl === null)).toBe(true);
+  });
+
   it("同じ根拠かどうかに embedUrl は使わない", () => {
-    const content = withEmbedUrls(structuredContentOf("aggregate_max"));
-    const { evidence } = extractEvidence(SOURCE, content);
+    const { evidence } = extractAllowed(structuredContentOf("aggregate_max"), ORIGIN);
 
     expect(evidence).toHaveLength(7);
   });
