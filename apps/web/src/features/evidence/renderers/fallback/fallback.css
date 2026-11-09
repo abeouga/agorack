@@ -1,0 +1,57 @@
+/* 知らない kind の根拠：ラベルと値だけ */
+
+.evidence-fallback {
+  display: grid;
+  gap: 4px;
+  margin: 12px;
+  padding: 14px 16px;
+  border: 1px solid #f0c9a8;
+  border-left: 4px solid #d9480f;
+  border-radius: 10px;
+  background: #fff7f0;
+}
+.evidence-fallback-source {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  color: var(--ui-text-muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+.evidence-fallback-source small {
+  padding: 0 7px;
+  border-radius: 999px;
+  background: #fff1d6;
+  color: #8a5a00;
+  font-family: ui-monospace, Consolas, monospace;
+  font-weight: 400;
+}
+.evidence-fallback-label {
+  color: var(--ui-text-secondary);
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.evidence-fallback-value {
+  color: var(--ui-text);
+  font-size: 20px;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+.evidence-fallback-value.is-empty {
+  color: var(--ui-text-muted);
+  font-size: 16px;
+  font-weight: 400;
+}
+.evidence-fallback-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin: 6px 0 0;
+  color: var(--ui-text-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.evidence-fallback-notice svg {
+  flex: none;
+  margin-top: 3px;
+}

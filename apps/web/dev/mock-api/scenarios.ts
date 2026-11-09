@@ -1,8 +1,16 @@
 import type { Evidence, SourceInfo, TurnEvent } from "@agorack/contracts";
+import {
+  KOYOMI_PRICE_TOTAL,
+  koyomiFields,
+  koyomiPrices,
+  missingImage,
+  unknownKind,
+} from "./evidence";
 
 /**
  * 偽のサーバーが流す、決まったイベントの並び。
- * 質問の言葉で並びを選ぶので、画面から根拠付きの答え・道具の失敗・停止・turn.failed を試せる。
+ * 質問の言葉で並びを選ぶので、画面から根拠付きの答え・道具の失敗・停止・turn.failed・
+ * 知らない kind の根拠・ページ画像の読めない根拠を試せる。
  */
 
 /** 1つのイベントと、その前に待つ時間（ミリ秒） */
@@ -28,39 +36,83 @@ export const mockSources: SourceInfo[] = [
   {
     id: "kabulogger",
     name: "カブロガー",
-    description: "走行の記録",
-    status: "disabled",
+    description: "走行の記録（偽のサーバーの見本）",
+    status: "connected",
     error: null,
-    toolCount: 0,
+    toolCount: 2,
   },
 ];
 
-const coat = (no: number, name: string, value: string): Evidence => ({
-  kind: "document",
-  sourceId: "fuminosuke",
-  recordId: `job-${no}`,
-  label: `繁殖台帳${no}「${name}」の毛色`,
-  location: { field_id: "coat", page_id: "p1", box: { x: 120, y: 340, width: 180, height: 40 } },
-  value,
+/** 根拠付きで答える並び：道具を1回呼び、根拠を返し、答えを流して終える */
+function answerScenario(options: {
+  keywords: string[];
+  description: string;
+  call: { sourceId: string; tool: string; input: Record<string, unknown> };
+  evidence: Evidence[];
+  summary: string;
+  answer: string;
+}): Scenario {
+  return {
+    keywords: options.keywords,
+    description: options.description,
+    steps: (turnId) => [
+      { wait: 150, event: { type: "turn.started", turnId } },
+      { wait: 300, event: { type: "tool.called", callId: "call-1", ...options.call } },
+      {
+        wait: 1600,
+        event: {
+          type: "tool.completed",
+          callId: "call-1",
+          ok: true,
+          evidence: options.evidence,
+          summary: options.summary,
+        },
+      },
+      ...deltas(options.answer),
+      {
+        wait: 100,
+        event: {
+          type: "turn.completed",
+          text: options.answer,
+          evidence: options.evidence,
+          reason: "end_turn",
+        },
+      },
+    ],
+  };
+}
+
+const priceRows = koyomiPrices.map((item) => {
+  const row = /(\d+)行目/.exec(item.label)?.[1] ?? "";
+  return `| ${row}行目 | ${String(item.value)} |`;
 });
 
-const blackCoats = [
-  coat(1021, "はじめ", "黒"),
-  coat(1034, "こよみ", "黒"),
-  coat(1052, "さくら", "黒"),
-];
-
-const evidenceAnswer = [
-  "毛色が**黒**の牛は、次の3頭です。",
-  "",
-  "| 書類 | 名前 | 毛色 |",
-  "|---|---|---|",
-  "| 繁殖台帳1021 | はじめ | 黒 |",
-  "| 繁殖台帳1034 | こよみ | 黒 |",
-  "| 繁殖台帳1052 | さくら | 黒 |",
-  "",
-  "値は文之助で確定した帳票から取り出しています。違いそうなときは、文之助の確認画面で確かめてください。",
-].join("\n");
+/** 根拠付きの答え（表あり）：文之助の aggregate（こよみの売却子牛の価格の合計） */
+const evidenceScenario = answerScenario({
+  keywords: [],
+  description: "根拠付きの答え（表あり。書類の枠が出る）",
+  call: {
+    sourceId: "fuminosuke",
+    tool: "aggregate",
+    input: {
+      template: "繁殖台帳1021",
+      document: "こよみ",
+      field: "売却子牛一覧 価格",
+      operation: "sum",
+    },
+  },
+  evidence: koyomiPrices,
+  summary: "合計を出しました（7件、空欄3件）",
+  answer: [
+    `こよみ（繁殖台帳1021）の売却子牛の価格の合計は **${KOYOMI_PRICE_TOTAL}** です（7件。空欄の3件は除いています）。`,
+    "",
+    "| 行 | 価格 |",
+    "|---|---:|",
+    ...priceRows,
+    "",
+    "値は文之助で確定した帳票から取り出しています。違いそうなときは、文之助の確認画面で確かめてください。",
+  ].join("\n"),
+});
 
 const notFoundAnswer =
   "「ゆうき」という名前の書類は、文之助で見つかりませんでした。名前の書き方を変えて、もう一度聞いてください。";
@@ -76,45 +128,47 @@ function deltas(text: string, wait = 35, size = 4): Step[] {
   return steps;
 }
 
-const evidenceScenario: Scenario = {
-  keywords: [],
-  description: "根拠付きの答え（表あり）",
-  steps: (turnId) => [
-    { wait: 150, event: { type: "turn.started", turnId } },
-    {
-      wait: 300,
-      event: {
-        type: "tool.called",
-        callId: "call-1",
-        sourceId: "fuminosuke",
-        tool: "search_documents",
-        input: { field: "毛色", value: "黒" },
-      },
-    },
-    {
-      wait: 1600,
-      event: {
-        type: "tool.completed",
-        callId: "call-1",
-        ok: true,
-        evidence: blackCoats,
-        summary: "書類を3件見つけました",
-      },
-    },
-    ...deltas(evidenceAnswer),
-    {
-      wait: 100,
-      event: {
-        type: "turn.completed",
-        text: evidenceAnswer,
-        evidence: blackCoats,
-        reason: "end_turn",
-      },
-    },
-  ],
-};
-
 export const scenarios: Scenario[] = [
+  answerScenario({
+    keywords: ["毛色", "父", "母"],
+    description: "書類の欄の根拠（get_document）",
+    call: { sourceId: "fuminosuke", tool: "get_document", input: { document: "こよみ" } },
+    evidence: koyomiFields,
+    summary: "書類を1件読みました",
+    answer: [
+      "こよみ（繁殖台帳1021）の欄は次のとおりです。",
+      "",
+      "| 欄 | 値 |",
+      "|---|---|",
+      ...koyomiFields.map((item) => {
+        const label = item.label.replace(/^.*」の/, "");
+        return `| ${label} | ${String(item.value)} |`;
+      }),
+    ].join("\n"),
+  }),
+  answerScenario({
+    keywords: ["画像"],
+    description: "ページ画像が読めない根拠（ラベルと値の表示に戻る）",
+    call: { sourceId: "fuminosuke", tool: "get_document", input: { document: "はなこ" } },
+    evidence: [missingImage],
+    summary: "書類を1件読みました",
+    answer: "はなこ（繁殖台帳1021）の毛色は **黒** です。",
+  }),
+  answerScenario({
+    keywords: ["走行"],
+    description: "画面が表示を知らない kind の根拠（ラベルと値だけ）",
+    call: { sourceId: "kabulogger", tool: "get_ride", input: { date: "2026-11-03" } },
+    evidence: unknownKind,
+    summary: "走行を1件見つけました",
+    answer: [
+      "11月3日の朝の走行は次のとおりです。",
+      "",
+      "| 項目 | 値 |",
+      "|---|---|",
+      "| 距離 | 12.4 km |",
+      "| 平均速度 | 39 km/h |",
+    ].join("\n"),
+  }),
   {
     keywords: ["失敗", "見つから"],
     description: "道具の失敗（書類が見つからない）",

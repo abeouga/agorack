@@ -44,3 +44,19 @@ export function evidenceForRow(cells: string[], evidence: Evidence[]): Evidence[
     );
   });
 }
+
+/**
+ * 右の欄に出す根拠：ホバーしているもの → 選んだもの → 最初のもの の順。
+ * キーが答えの根拠にないとき（別の答えのキーが残っているなど）は次へ進む。
+ */
+export function focusedEvidence(
+  evidence: readonly Evidence[],
+  hovered: readonly string[],
+  selected: readonly string[],
+): Evidence | null {
+  for (const key of [...hovered, ...selected]) {
+    const found = evidence.find((item) => evidenceKey(item) === key);
+    if (found) return found;
+  }
+  return evidence[0] ?? null;
+}
