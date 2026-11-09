@@ -1,9 +1,15 @@
-import { ApiErrorResponseSchema, HealthResponseSchema, apiPaths } from "@agorack/contracts";
+import {
+  ApiErrorResponseSchema,
+  HealthResponseSchema,
+  SourcesResponseSchema,
+  apiPaths,
+  type SourceInfo,
+} from "@agorack/contracts";
 import { describe, expect, it, vi } from "vitest";
 import { createHttpApp } from "./app.js";
 
 const allowedOrigins = ["http://127.0.0.1:5174", "http://localhost:5174"];
-const app = createHttpApp({ allowedOrigins });
+const app = createHttpApp({ allowedOrigins, listSources: () => [] });
 const healthUrl = `http://127.0.0.1:8787${apiPaths.health()}`;
 
 describe("GET /api/health", () => {
@@ -67,7 +73,7 @@ describe("許していない相手の拒否", () => {
 describe("想定外の失敗", () => {
   it("500 と契約のエラーの形を返し、中身は記録だけする", async () => {
     const logError = vi.fn();
-    const failing = createHttpApp({ allowedOrigins, logError });
+    const failing = createHttpApp({ allowedOrigins, listSources: () => [], logError });
     failing.get("/api/boom", () => {
       throw new Error("内部の詳細");
     });
@@ -77,5 +83,42 @@ describe("想定外の失敗", () => {
     expect(body.error.code).toBe("INTERNAL_ERROR");
     expect(body.error.message).not.toContain("内部の詳細");
     expect(logError).toHaveBeenCalledOnce();
+  });
+});
+
+describe("GET /api/sources", () => {
+  it("部品の一覧と状態を、契約の形で返す", async () => {
+    const sources: SourceInfo[] = [
+      {
+        id: "fuminosuke",
+        name: "文之助",
+        description: "帳票",
+        status: "connected",
+        error: null,
+        toolCount: 6,
+      },
+      {
+        id: "broken",
+        name: "壊れた部品",
+        description: "",
+        status: "failed",
+        error: "起動できません",
+        toolCount: 0,
+      },
+      {
+        id: "off",
+        name: "止めた部品",
+        description: "",
+        status: "disabled",
+        error: null,
+        toolCount: 0,
+      },
+    ];
+    const withSources = createHttpApp({ allowedOrigins, listSources: () => sources });
+
+    const res = await withSources.request(`http://127.0.0.1:8787${apiPaths.sources()}`);
+
+    expect(res.status).toBe(200);
+    expect(SourcesResponseSchema.parse(await res.json())).toEqual({ sources });
   });
 });

@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { serve } from "@hono/node-server";
 import { ConfigError, loadConfig, type AppConfig } from "./config/index.js";
 import { createHttpApp } from "./http/app.js";
+import { SourceCatalog, createMcpConnector } from "./sources/index.js";
 
 /** apps/server。開発時（src/main.ts）もビルド後（dist/main.js）も1つ上になる */
 const serverDir = fileURLToPath(new URL("..", import.meta.url));
@@ -26,15 +27,26 @@ function readConfig(): AppConfig {
 }
 
 const config = readConfig();
-const app = createHttpApp({ allowedOrigins: config.server.allowedOrigins });
+
+// 部品へつなぐ。つなげない部品は失敗として残し、残りで動く（設計 §6.3）
+const sources = new SourceCatalog(config.sources.list, createMcpConnector());
+await sources.start();
+
+const app = createHttpApp({
+  allowedOrigins: config.server.allowedOrigins,
+  listSources: () => sources.status(),
+});
 
 const { host, port } = config.server;
 const shownHost = host.includes(":") ? `[${host}]` : host;
 const server = serve({ fetch: app.fetch, hostname: host, port }, () => {
   const enabled = config.sources.list.filter((source) => source.enabled).length;
+  const connected = sources.status().filter((source) => source.status === "connected").length;
   console.log(`Agorack のサーバーを http://${shownHost}:${port} で開きました`);
   console.log(`受け付ける画面の住所：${config.server.allowedOrigins.join("、")}`);
-  console.log(`部品の設定：${config.sources.path}（つなぐ部品 ${enabled} 件）`);
+  console.log(
+    `部品の設定：${config.sources.path}（つなぐ部品 ${enabled} 件、つながった部品 ${connected} 件）`,
+  );
   if (config.anthropic.apiKey === null) {
     console.warn("ANTHROPIC_API_KEY がまだないため、Claude を使う会話は失敗します。");
   }
@@ -48,11 +60,18 @@ server.on("error", (error: NodeJS.ErrnoException) => {
   } else {
     console.error("待ち受けを始められません。", error);
   }
-  process.exit(1);
+  void exitAfterClosingSources(1);
 });
 
+/** 部品の接続を閉じて（手元で起動した部品の子のプロセスを止めて）から終える */
+async function exitAfterClosingSources(code: number): Promise<never> {
+  await sources.close();
+  process.exit(code);
+}
+
 function shutdown() {
-  server.close(() => process.exit(0));
+  server.close();
+  void exitAfterClosingSources(0);
 }
 process.once("SIGINT", shutdown);
 process.once("SIGTERM", shutdown);
