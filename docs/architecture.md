@@ -348,7 +348,7 @@ iframe が開けない（部品が止まっている・書類が見つからな�
 **Agorack の側の約束**
 
 - 埋め込みを許す住所（origin）は、部品の設定（`config/sources.json` の `embed.origin`）に書き、`GET /api/sources` で画面に渡す。`embedUrl` の住所がこの一覧にないときは iframe を使わない。
-- iframe には `sandbox="allow-scripts allow-same-origin allow-popups"` だけを付ける。上の画面を動かす権限やフォームを送る権限は与えない。
+- iframe には `sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"` だけを付ける。上の画面を動かす権限やフォームを送る権限は与えない。`allow-popups-to-escape-sandbox` は、「部品で開く」で開いた部品の普通の画面に sandbox の制限が引き継がれ、ダウンロードや確認の小窓が止まるのを防ぐため。
 - 同じ記録の中で強調する場所だけが変わるときは、iframe を読み直さず `postMessage` で伝える。
 - Agorack の画面と部品の画面の住所は、どちらも `127.0.0.1` か、どちらも `localhost` にそろえる。片方だけ違うと、ブラウザーが別のサイトと見なし、埋め込んだ画面の保存領域や Cookie が使えないおそれがある。
 - Agorack の画面は 5174 に固定し（Vite の `strictPort` で、空いていなければ起動を止める）、部品の画面と番号が入れ替わらないようにする。
