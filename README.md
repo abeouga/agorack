@@ -40,7 +40,20 @@ npm run check        # 型の検査・静的検査・書式の検査・試験を
 | `npm run format:check` | 書式がそろっているかだけを確かめる |
 | `npm test` | 全部の workspace の試験（Vitest） |
 
-画面とサーバーを起動するコマンドは、サーバーの土台（#3）と画面の土台（#9）で足します。
+### サーバーを起動する
+
+```bash
+cp config/sources.example.json config/sources.json   # つなぐ部品の設定。手元の場所に合わせて直す
+cp apps/server/.env.example apps/server/.env         # サーバーの設定（API キー・モデル・待ち受けの番号など）
+npm run dev:server                                   # http://127.0.0.1:8787 で待ち受ける（tsx watch）
+```
+
+- `GET /api/health` が `{"status":"ok"}` を返せば動いています。
+- 設定が足りない・形が違うときは、どのファイルのどの項目が悪いかを出して止まります。
+- 受け付けるのは、画面の開発時の住所（`http://127.0.0.1:5174`・`http://localhost:5174`）からの要求だけです。
+- 本番用は `npm run build -w @agorack/server` で `apps/server/dist/main.js` にまとめ、`npm run start -w @agorack/server` で起動します。
+
+画面を起動するコマンドは、画面の土台（#9）で足します。
 
 ## 状態
 

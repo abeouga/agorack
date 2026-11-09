@@ -19,7 +19,7 @@ export default tseslint.config(
   js.configs.recommended,
   ...tseslint.configs.strict,
   {
-    files: ["apps/server/**/*.{ts,tsx}"],
+    files: ["apps/server/**/*.{ts,tsx,mjs}"],
     languageOptions: { globals: globals.node },
     rules: {
       "no-restricted-imports": [

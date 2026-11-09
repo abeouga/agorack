@@ -5,10 +5,21 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "tsx watch --clear-screen=false --include .env --include ../../config/sources.json src/main.ts",
+    "build": "node scripts/build.mjs",
+    "start": "node --enable-source-maps dist/main.js",
     "typecheck": "tsc -p tsconfig.json",
     "test": "vitest run"
   },
   "dependencies": {
-    "@agorack/contracts": "*"
+    "@agorack/contracts": "*",
+    "@hono/node-server": "^2.1.6",
+    "hono": "^4.13.17",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "esbuild": "^0.28.2",
+    "tsx": "^4.23.15"
   }
 }
