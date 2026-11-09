@@ -74,6 +74,23 @@ export function extractEvidence(sourceId: string, structuredContent: unknown): E
   return { evidence, discarded };
 }
 
+/**
+ * 何回かの道具の結果から取り出した根拠を1つの並びにし、同じ根拠は最初に出たもの1つにまとめる。
+ * 同じかどうかの決まりは extractEvidence と同じ（sourceId・recordId・kind・location）。
+ */
+export function mergeEvidence(lists: readonly (readonly Evidence[])[]): Evidence[] {
+  const seenKeys = new Set<string>();
+  const merged: Evidence[] = [];
+  for (const item of lists.flat()) {
+    const key = identityKey(item);
+    if (!seenKeys.has(key)) {
+      seenKeys.add(key);
+      merged.push(item);
+    }
+  }
+  return merged;
+}
+
 /** 同じ根拠かどうかを決める鍵。`location` はキーの順に左右されないよう並べ替えて文字列にする。 */
 function identityKey(item: Evidence): string {
   return JSON.stringify([item.sourceId, item.recordId, item.kind, canonical(item.location)]);
