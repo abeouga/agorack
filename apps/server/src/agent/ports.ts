@@ -110,16 +110,29 @@ export type CatalogTool = ModelToolDefinition & {
   tool: string;
 };
 
-/** 部品の説明。指示に、部品の名前を付けて足す */
-export type SourceInstructions = {
-  sourceId: string;
-  /** 部品の名前（設定の name。例：文之助） */
-  name: string;
-  /** 部品の MCP サーバーが公開する説明（instructions）。ないときは null */
-  instructions: string | null;
-};
+/**
+ * 部品の説明と状態。指示に、部品の名前を付けて足す。
+ * - `connected`：つながっている。部品の説明（instructions）を足す
+ * - `unavailable`：つながっていない（起動できない・切れてつなぎ直せない）。道具はなく、名前と理由を足す
+ */
+export type SourceInstructions =
+  | {
+      sourceId: string;
+      /** 部品の名前（設定の name。例：文之助） */
+      name: string;
+      status: "connected";
+      /** 部品の MCP サーバーが公開する説明（instructions）。ないときは null */
+      instructions: string | null;
+    }
+  | {
+      sourceId: string;
+      name: string;
+      status: "unavailable";
+      /** つながらない理由（GET /api/sources の error と同じ） */
+      reason: string;
+    };
 
-/** 1ターンで使える道具と、部品の説明 */
+/** 1ターンで使える道具と、部品の説明・状態 */
 export type ToolListing = {
   tools: readonly CatalogTool[];
   sources: readonly SourceInstructions[];
@@ -138,7 +151,9 @@ export type ToolCallResult = {
 export interface ToolCatalog {
   /**
    * いま使える道具と部品の説明を返す。ターンの始めに1回呼ぶ。
-   * 切れた部品は、ここでつなぎ直してよい。つなげない部品は一覧から外す。
+   * 切れた部品は、ここでつなぎ直してよい。つなげない部品の道具は一覧から外し、
+   * 部品は `unavailable` として理由つきで返す（Claude が、どの部品が止まっているかを伝えられるように）。
+   * 設定で止めた部品は返さない。
    */
   list(signal: AbortSignal): Promise<ToolListing>;
 

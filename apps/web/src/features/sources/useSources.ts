@@ -1,8 +1,12 @@
 import { type SourceInfo, SourcesResponseSchema, apiPaths } from "@agorack/contracts";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ApiError, requestJson } from "../../shared/http";
 
-/** 部品の状態（GET /api/sources）。サーバーにつながらないときは、しばらく待って聞き直す */
+/**
+ * 部品の状態（GET /api/sources）。サーバーにつながらないときは、しばらく待って聞き直す。
+ * ターンが終わるたびにも聞き直す（サーバーはターンの始めに切れた部品をつなぎ直し、
+ * ターンの途中で切れることもあるため）。
+ */
 
 export type SourcesState =
   | { kind: "loading" }
@@ -17,8 +21,9 @@ export async function fetchSources(): Promise<SourceInfo[]> {
   return parsed.data.sources;
 }
 
-export function useSources(): SourcesState {
+export function useSources(turnRunning = false): SourcesState {
   const [state, setState] = useState<SourcesState>({ kind: "loading" });
+  const checkRef = useRef<() => void>(() => {});
   useEffect(() => {
     let stopped = false;
     let timer: number | undefined;
@@ -36,6 +41,7 @@ export function useSources(): SourcesState {
           timer = window.setTimeout(check, RETRY_MS);
         });
     };
+    checkRef.current = check;
     check();
     // 画面に戻ってきたら最新の状態にする
     const back = () => {
@@ -48,6 +54,14 @@ export function useSources(): SourcesState {
       document.removeEventListener("visibilitychange", back);
     };
   }, []);
+
+  // ターンが終わったら聞き直す
+  const wasRunning = useRef(turnRunning);
+  useEffect(() => {
+    if (wasRunning.current && !turnRunning) checkRef.current();
+    wasRunning.current = turnRunning;
+  }, [turnRunning]);
+
   return state;
 }
 

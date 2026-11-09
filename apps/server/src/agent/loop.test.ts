@@ -1,6 +1,6 @@
 import type { TurnEvent } from "@agorack/contracts";
 import { describe, expect, it } from "vitest";
-import { buildSystemPrompt } from "./instructions.js";
+import { buildSystemPrompt, UNAVAILABLE_SOURCES_HEADING } from "./instructions.js";
 import { runTurn, type TurnOptions } from "./loop.js";
 import type {
   CatalogTool,
@@ -420,7 +420,7 @@ describe("道具を使うループ", () => {
       { role: "assistant", content: [{ type: "text", text: "前の答え" }] },
     ];
     const catalog = new FakeCatalog({ part__step: async () => ok("結果") }, [
-      { sourceId: "part", name: "部品", instructions: "部品の使い方" },
+      { sourceId: "part", name: "部品", status: "connected", instructions: "部品の使い方" },
     ]);
     const model = new FakeModel([
       () => [
@@ -457,10 +457,52 @@ describe("指示", () => {
   it("共通の指示に、説明のある部品だけを名前付きで足す", () => {
     expect(
       buildSystemPrompt(" 共通 ", [
-        { sourceId: "a", name: "部品A", instructions: " A の使い方 " },
-        { sourceId: "b", name: "部品B", instructions: null },
-        { sourceId: "c", name: "部品C", instructions: "  " },
+        { sourceId: "a", name: "部品A", status: "connected", instructions: " A の使い方 " },
+        { sourceId: "b", name: "部品B", status: "connected", instructions: null },
+        { sourceId: "c", name: "部品C", status: "connected", instructions: "  " },
       ]),
     ).toBe("共通\n\n## 部品「部品A」（a）の説明\n\nA の使い方");
+  });
+
+  it("つながっていない部品は、名前と理由をまとめて足す", () => {
+    const prompt = buildSystemPrompt("共通", [
+      { sourceId: "a", name: "部品A", status: "connected", instructions: "A の使い方" },
+      {
+        sourceId: "fuminosuke",
+        name: "文之助",
+        status: "unavailable",
+        reason: "起動するコマンドが見つかりません：\nC:/missing/python.exe",
+      },
+      { sourceId: "cub", name: "カブロガー", status: "unavailable", reason: "接続が切れました" },
+    ]);
+    const [common, connected, unavailable] = prompt.split("\n\n## ");
+    expect(common).toBe("共通");
+    expect(connected).toBe("部品「部品A」（a）の説明\n\nA の使い方");
+    expect(`## ${unavailable}`).toMatch(new RegExp(`^${UNAVAILABLE_SOURCES_HEADING}\n\n`));
+    expect(unavailable).toContain("推測で答えない");
+    expect(unavailable).toMatch(
+      /\n\n- 文之助（fuminosuke）：起動するコマンドが見つかりません： C:\/missing\/python\.exe\n- カブロガー（cub）：接続が切れました$/,
+    );
+  });
+
+  it("つながっている部品だけなら、つながっていない部品の指示は足さない", () => {
+    expect(
+      buildSystemPrompt("共通", [
+        { sourceId: "a", name: "部品A", status: "connected", instructions: null },
+      ]),
+    ).toBe("共通");
+  });
+
+  it("つながらない部品の名前と理由が、モデルへの指示に入る（偽の ToolCatalog）", async () => {
+    const catalog = new FakeCatalog({}, [
+      { sourceId: "fuminosuke", name: "文之助", status: "unavailable", reason: "接続が切れました" },
+    ]);
+    const model = new FakeModel([() => [text("文之助につながっていません。"), stop("end_turn")]]);
+
+    await run(model, catalog);
+
+    expect(model.requests[0]?.tools).toEqual([]);
+    expect(model.requests[0]?.system).toContain(UNAVAILABLE_SOURCES_HEADING);
+    expect(model.requests[0]?.system).toContain("- 文之助（fuminosuke）：接続が切れました");
   });
 });

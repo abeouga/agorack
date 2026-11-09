@@ -116,7 +116,12 @@ describe("部品の接続と道具の一覧", () => {
       },
     ]);
     expect(listing.sources).toEqual([
-      { sourceId: "fuminosuke", name: "部品fuminosuke", instructions: "部品の使い方" },
+      {
+        sourceId: "fuminosuke",
+        name: "部品fuminosuke",
+        status: "connected",
+        instructions: "部品の使い方",
+      },
     ]);
   });
 
@@ -154,6 +159,16 @@ describe("部品の接続と道具の一覧", () => {
     ]);
     const listing = await catalog.list(signal());
     expect(listing.tools.map((t) => t.name)).toEqual(["good__find"]);
+    // つながらない部品は、道具は外し、理由つきで部品の一覧に残す。設定で止めた部品は入れない
+    expect(listing.sources).toEqual([
+      { sourceId: "good", name: "部品good", status: "connected", instructions: null },
+      {
+        sourceId: "broken",
+        name: "部品broken",
+        status: "unavailable",
+        reason: "起動できません（spawn broken.exe ENOENT）",
+      },
+    ]);
     expect(await catalog.call("good__find", {}, signal())).toEqual(ok("find の結果"));
   });
 
