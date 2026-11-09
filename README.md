@@ -11,15 +11,35 @@
 
 ## 構成
 
-| 場所 | 役目 |
-|---|---|
-| `apps/web` | 画面（Vite + React + TypeScript） |
-| `apps/server` | サーバー（Node + TypeScript）。会話のループ・Claude の呼び出し・部品（MCP）の接続・根拠の取り出し |
-| `packages/contracts` | 画面とサーバーの共通の契約（HTTP・SSE のイベント・根拠の型） |
-| `config/` | つなぐ部品の設定の見本 |
-| `docs/` | 設計と決めごとの記録 |
+| 場所                 | 役目                                                                                              |
+| -------------------- | ------------------------------------------------------------------------------------------------- |
+| `apps/web`           | 画面（Vite + React + TypeScript）                                                                 |
+| `apps/server`        | サーバー（Node + TypeScript）。会話のループ・Claude の呼び出し・部品（MCP）の接続・根拠の取り出し |
+| `packages/contracts` | 画面とサーバーの共通の契約（HTTP・SSE のイベント・根拠の型）                                      |
+| `config/`            | つなぐ部品の設定の見本                                                                            |
+| `docs/`              | 設計と決めごとの記録                                                                              |
 
 詳しくは [設計](docs/architecture.md) と [決めごとの記録](docs/decisions/) を読んでください。
+
+## 最初に打つコマンド
+
+Node 22.12 以上と npm が要ります。
+
+```bash
+npm install          # 全部の workspace の依存を入れる
+npm run check        # 型の検査・静的検査・書式の検査をまとめて行う
+```
+
+個別に回すときは次のとおりです。
+
+| コマンド | 内容 |
+|---|---|
+| `npm run typecheck` | 全部の workspace の型の検査（`tsc`） |
+| `npm run lint` | 静的検査（ESLint）。画面とサーバーが互いを import していないかも確かめる |
+| `npm run format` | 書式をそろえる（Prettier） |
+| `npm run format:check` | 書式がそろっているかだけを確かめる |
+
+画面とサーバーを起動するコマンドは、サーバーの土台（#3）と画面の土台（#9）で足します。
 
 ## 状態
 
