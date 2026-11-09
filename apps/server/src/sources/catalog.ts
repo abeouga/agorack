@@ -1,5 +1,11 @@
 import type { SourceInfo } from "@agorack/contracts";
-import type { CatalogTool, ToolCallResult, ToolCatalog, ToolListing } from "../agent/ports.js";
+import type {
+  CatalogTool,
+  SourceInstructions,
+  ToolCallResult,
+  ToolCatalog,
+  ToolListing,
+} from "../agent/ports.js";
 import type { SourceConfig } from "../config/index.js";
 import { restrictEmbedUrls } from "../evidence/index.js";
 import type { Connector, SourceConnection } from "./connection.js";
@@ -87,16 +93,27 @@ export class SourceCatalog implements ToolCatalog {
     await this.reconnectLost();
     signal.throwIfAborted();
     const tools: CatalogTool[] = [];
-    const sources = [];
+    const sources: SourceInstructions[] = [];
     for (const source of this.sources) {
       const state = this.stateOf(source.id);
-      if (state.kind !== "connected") continue;
-      tools.push(...state.tools.map((tool) => tool.definition));
-      sources.push({
-        sourceId: source.id,
-        name: source.name,
-        instructions: state.connection.instructions,
-      });
+      const base = { sourceId: source.id, name: source.name };
+      switch (state.kind) {
+        case "connected":
+          tools.push(...state.tools.map((tool) => tool.definition));
+          sources.push({
+            ...base,
+            status: "connected",
+            instructions: state.connection.instructions,
+          });
+          break;
+        case "failed":
+        case "connecting":
+          // つながらない部品も、どの部品が止まっているかを Claude が伝えられるよう、理由つきで返す
+          sources.push({ ...base, status: "unavailable", reason: reasonOf(state) });
+          break;
+        case "disabled":
+          break;
+      }
     }
     return { tools, sources };
   }
@@ -252,6 +269,11 @@ export class SourceCatalog implements ToolCatalog {
       }),
     );
   }
+}
+
+/** つながっていない部品の理由（GET /api/sources の error と同じ文） */
+function reasonOf(state: Extract<SourceState, { kind: "failed" | "connecting" }>): string {
+  return state.kind === "failed" ? state.error : "つないでいるところです";
 }
 
 function describe(error: unknown): string {

@@ -23,9 +23,9 @@ function storedSidebar(): boolean {
 
 /** 画面全体の枠：上部バーと、左（履歴）・中央（チャット）・右（根拠）の3列 */
 export function App() {
-  const sources = useSources();
   const [history, dispatch] = useHistory();
   const chat = useChat(history, dispatch);
+  const sources = useSources(chat.busy);
   const evidence = useEvidenceSelection();
   const [sidebar, setSidebarState] = useState(storedSidebar);
   const setSidebar = (open: boolean) => {
