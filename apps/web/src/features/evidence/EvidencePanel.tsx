@@ -6,7 +6,7 @@ import { EvidenceView } from "./renderers";
 import { evidenceKey, focusedEvidence, valueText } from "./selection";
 
 /**
- * 右の欄：選んだ根拠の表示（kind ごとに renderers で選ぶ）と、根拠の一覧。
+ * 右の欄：選んだ根拠の表示（部品の埋め込み用の画面 → kind ごと → ラベルと値 の順に renderers で選ぶ）と、根拠の一覧。
  * 表の行・一覧のホバーで強調し、押すと選ぶ。出す根拠は ホバー → 選んだもの → 最初のもの の順に決める。
  */
 export function EvidencePanel({
@@ -17,6 +17,7 @@ export function EvidencePanel({
   hovered,
   selected,
   sourceName,
+  embedOriginOf,
   onHover,
   onSelect,
 }: {
@@ -30,6 +31,8 @@ export function EvidencePanel({
   hovered: readonly string[];
   selected: readonly string[];
   sourceName: (sourceId: string) => string;
+  /** 部品の埋め込み用の画面を許す住所 */
+  embedOriginOf: (sourceId: string) => string | null;
   onHover: (key: string | null) => void;
   onSelect: (key: string) => void;
 }) {
@@ -78,6 +81,7 @@ export function EvidencePanel({
               siblings={evidence}
               highlighted={highlighted}
               sourceName={sourceName(focus.sourceId)}
+              embedOrigin={embedOriginOf(focus.sourceId)}
               onPick={onSelect}
             />
           </section>

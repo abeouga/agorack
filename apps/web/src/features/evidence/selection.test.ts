@@ -114,6 +114,13 @@ describe("答えの文章から最初に出す根拠", () => {
     expect(focusedEvidence(prices, [], [key], "826,100")).toBe(prices[2]);
   });
 
+  it("太字の中に値が出てくる根拠を、文章のほかの所に出てくるものより先に出す", () => {
+    const name = { ...evidence(1034, "こよみ", "こよみ"), label: "繁殖台帳1034「こよみ」の名号" };
+    const coat = { ...evidence(1034, "こよみ", "褐"), label: "繁殖台帳1034「こよみ」の毛色" };
+    expect(focusedEvidence([name, coat], [], [], "こよみの毛色は **褐** です。")).toBe(coat);
+    expect(focusedEvidence([name, coat], [], [], "こよみの毛色は褐です。")).toBe(name);
+  });
+
   it("どれの値も出てこなければ最初のもの", () => {
     expect(focusedEvidence(prices, [], [], "合計は 3,074,500 です。")).toBe(prices[0]);
   });

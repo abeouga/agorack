@@ -5,7 +5,7 @@
  *
  * ブラウザーはダウンロードせず、手元の Microsoft Edge（Playwright の channel: "msedge"）を使う。
  * 出力先は apps/web/screenshots/（Git に入れない）。
- * 書類のページ画像は手元の文之助（127.0.0.1:8010）から読む。止まっていると evidence-01・02 は撮れない。
+ * 書類のページ画像は手元の文之助（127.0.0.1:8010）から読む。止まっていると embed-*・chat-03・05 は撮れない。
  */
 import { mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
@@ -57,25 +57,40 @@ try {
 
   // 根拠付きの答え（表の行にホバーして、右の欄の根拠を強調）
   await waitAnswered(page);
-  await waitPageImage(page);
+  await waitEmbedReady(page);
   await page.locator("tr.has-source").nth(1).hover();
   await page.locator(".evidence-item.is-highlighted").waitFor({ timeout: TIMEOUT });
   await shoot("chat-03-evidence", { moveAway: false });
 
-  // ---- 右の欄（#10） ----
+  // ---- 右の欄：部品の埋め込み用の画面（#14） ----
 
-  // ① 書類のページに枠が出ている（拡大して、選んだ欄の枠を見えるところへ）
+  // ① 右の欄に埋め込み用の画面が出て、欄が強調されている（2行目の価格）
   await page.mouse.move(0, 0);
-  await page.getByRole("button", { name: "拡大" }).click();
-  await page.getByRole("button", { name: "拡大" }).click();
   await settle(page);
-  await shoot("evidence-01-document");
+  await shoot("embed-01-embedded");
 
-  // ② 表の別の行を選ぶと枠が替わる（6行目を押す）
+  // ② 別の行（6行目）を選ぶと、iframe を読み直さずに強調が替わる
+  const frameBefore = await page.locator("iframe.embed-frame").elementHandle();
   await page.locator("tr.has-source").nth(4).click();
   await page.locator(".evidence-item.is-selected").waitFor({ timeout: TIMEOUT });
   await settle(page);
-  await shoot("evidence-02-row-selected");
+  const sameFrame = await page.evaluate(
+    (before) => before === document.querySelector("iframe.embed-frame"),
+    frameBefore,
+  );
+  if (!sameFrame) throw new Error("別の行を選んだら iframe が作り直された");
+  await shoot("embed-02-highlight-without-reload");
+
+  // ③ 埋め込めない（部品の画面が応えない）ときは、時間切れでページ画像に枠の表示に戻る
+  await newConversation(page);
+  await ask(page, "埋め込めないときのこよみの毛色は？");
+  await waitAnswered(page);
+  await page.locator(".embed-fallback-notice").waitFor({ timeout: TIMEOUT });
+  await waitPageImage(page);
+  await settle(page);
+  await shoot("embed-03-fallback-to-page-image");
+
+  // ---- 右の欄：kind ごとの表示（#10） ----
 
   // ③ 知らない kind の根拠（ラベルと値だけ）
   await newConversation(page);
@@ -110,7 +125,7 @@ try {
   await page.getByText("接続中").first().waitFor({ timeout: TIMEOUT });
   await page.locator(".history-item", { hasText: "こよみの売却子牛の価格の合計は？" }).click();
   await page.locator("tr.has-source").first().waitFor({ timeout: TIMEOUT });
-  await waitPageImage(page);
+  await waitEmbedReady(page);
   await shoot("chat-05-reloaded");
 } finally {
   await browser.close();
@@ -134,6 +149,11 @@ async function waitAnswered(page: Page) {
 /** 書類のページ画像が読み込まれ、枠が描かれるまで待つ */
 async function waitPageImage(page: Page) {
   await page.locator(".document-box.is-focus").waitFor({ timeout: TIMEOUT });
+}
+
+/** 部品の埋め込み用の画面が embed:ready を送り、表示されるまで待つ */
+async function waitEmbedReady(page: Page) {
+  await page.locator("iframe.embed-frame.is-ready").waitFor({ timeout: TIMEOUT });
 }
 
 /** 枠を見えるところへ動かす滑らかなスクロールが終わるのを待つ */
