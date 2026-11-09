@@ -1,6 +1,6 @@
 import { EvidenceSchema } from "@agorack/contracts";
 import { describe, expect, it } from "vitest";
-import { extractEvidence, mergeEvidence } from "./index.js";
+import { extractEvidence, mergeEvidence, restrictEmbedUrls } from "./index.js";
 
 import aggregateMax from "./__fixtures__/fuminosuke/aggregate_max.json" with { type: "json" };
 import aggregateSum from "./__fixtures__/fuminosuke/aggregate_sum.json" with { type: "json" };
@@ -138,6 +138,7 @@ describe("取り出し方の決まり", () => {
         label: "7月1日の走行",
         location: { from: 10, to: 20 },
         value: 12.5,
+        embedUrl: null,
       },
     ]);
   });
@@ -146,7 +147,7 @@ describe("取り出し方の決まり", () => {
     const { evidence } = extractEvidence(SOURCE, [{ ...envelope, status: "readable", note: "x" }]);
 
     expect(Object.keys(evidence[0] ?? {}).sort()).toEqual(
-      ["kind", "label", "location", "recordId", "sourceId", "value"].sort(),
+      ["embedUrl", "kind", "label", "location", "recordId", "sourceId", "value"].sort(),
     );
   });
 
@@ -224,5 +225,119 @@ describe("何回かの結果の根拠をまとめる", () => {
       ["part_a", "ride-8", "7月1日の走行"],
       ["part_b", "ride-7", "7月1日の走行"],
     ]);
+  });
+});
+
+describe("埋め込み用の画面の住所（embed_url）", () => {
+  const ORIGIN = "http://127.0.0.1:5180";
+
+  /**
+   * 文之助の MCP が embed_url を外枠に足したときの形（文之助の #65）を、実データに手で足した見本。
+   * 実データに embed_url が入ったら、書き出し直した結果に差し替える。
+   */
+  function withEmbedUrls(content: unknown): unknown {
+    const copy = structuredClone(content);
+    const visit = (node: unknown): void => {
+      if (Array.isArray(node)) return node.forEach(visit);
+      if (typeof node !== "object" || node === null) return;
+      const record = node as Record<string, unknown>;
+      if ("source_id" in record && "location" in record) {
+        const location = record.location as { field_id?: string | null };
+        const field = location.field_id ? `&field=${location.field_id}` : "";
+        record.embed_url = `${ORIGIN}/embed?job=${String(record.source_id)}${field}`;
+        return;
+      }
+      Object.values(record).forEach(visit);
+    };
+    visit(copy);
+    return copy;
+  }
+
+  it("embed_url のない実データでは、全部の根拠の embedUrl が null になる", () => {
+    const { evidence } = extractEvidence(SOURCE, structuredContentOf("get_document"));
+
+    expect(evidence).toHaveLength(111);
+    expect(evidence.every((e) => e.embedUrl === null)).toBe(true);
+  });
+
+  it("embed_url のある根拠は、embedUrl に取り込む", () => {
+    const content = withEmbedUrls(structuredContentOf("get_document"));
+    const { evidence, discarded } = extractEvidence(SOURCE, restrictEmbedUrls(content, ORIGIN));
+
+    expect(discarded).toBe(0);
+    expect(evidence).toHaveLength(111);
+    const coat = evidence.find((e) => e.label === "繁殖台帳1021「こよみ」の毛色");
+    expect(coat?.embedUrl).toBe(
+      `${ORIGIN}/embed?job=${RECORD}&field=${String(coat?.location.field_id)}`,
+    );
+    expect(evidence.every((e) => e.embedUrl?.startsWith(`${ORIGIN}/embed?job=${RECORD}`))).toBe(
+      true,
+    );
+  });
+
+  it("同じ根拠かどうかに embedUrl は使わない", () => {
+    const content = withEmbedUrls(structuredContentOf("aggregate_max"));
+    const { evidence } = extractEvidence(SOURCE, content);
+
+    expect(evidence).toHaveLength(7);
+  });
+
+  it.each([
+    ["ない", undefined],
+    ["null", null],
+    ["相対の住所", "/embed?job=1"],
+    ["http・https でない", "javascript:alert(1)"],
+    ["住所でない", "埋め込み"],
+    ["文字列でない", 5180],
+  ])("embed_url が%sときは、根拠は捨てずに embedUrl を null にする", (_, embedUrl) => {
+    const { evidence, discarded } = extractEvidence(SOURCE, [{ ...envelope, embed_url: embedUrl }]);
+
+    expect(discarded).toBe(0);
+    expect(evidence).toEqual([expect.objectContaining({ recordId: "ride-7", embedUrl: null })]);
+  });
+
+  describe("部品の設定で許した住所（embed.origin）だけを残す", () => {
+    const at = (url: unknown) => ({ items: [{ ...envelope, embed_url: url }] });
+    const urlAfter = (content: unknown) =>
+      (content as { items: { embed_url?: unknown }[] }).items[0]?.embed_url;
+
+    it("許した住所の embed_url は残す", () => {
+      const url = `${ORIGIN}/embed?job=1&field=a`;
+      expect(urlAfter(restrictEmbedUrls(at(url), ORIGIN))).toBe(url);
+    });
+
+    it.each([
+      ["番号が違う", "http://127.0.0.1:5181/embed?job=1"],
+      ["名前が違う（localhost と 127.0.0.1）", "http://localhost:5180/embed?job=1"],
+      ["http と https が違う", "https://127.0.0.1:5180/embed?job=1"],
+      ["ほかのサイト", "https://evil.example/embed?job=1"],
+      ["住所の形でない", "javascript:alert(1)"],
+    ])("住所が合わない（%s）embed_url は null にする", (_, url) => {
+      expect(urlAfter(restrictEmbedUrls(at(url), ORIGIN))).toBeNull();
+    });
+
+    it("許す住所のない部品は、全部の embed_url を null にする", () => {
+      expect(urlAfter(restrictEmbedUrls(at(`${ORIGIN}/embed?job=1`), null))).toBeNull();
+    });
+
+    it("元の値は変えず、embed_url のない根拠には足さない", () => {
+      const original = { items: [{ ...envelope, embed_url: "https://evil.example/" }, envelope] };
+      const snapshot = structuredClone(original);
+
+      const restricted = restrictEmbedUrls(original, ORIGIN) as {
+        items: Record<string, unknown>[];
+      };
+
+      expect(original).toEqual(snapshot);
+      expect(restricted.items[0]?.embed_url).toBeNull();
+      expect(restricted.items[1]).not.toHaveProperty("embed_url");
+    });
+
+    it.each([null, undefined, "text", 0])(
+      "オブジェクトでない結果（%s）はそのまま返す",
+      (content) => {
+        expect(restrictEmbedUrls(content, ORIGIN)).toBe(content);
+      },
+    );
   });
 });

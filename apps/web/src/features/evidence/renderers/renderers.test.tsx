@@ -35,6 +35,7 @@ const price = (row: number, value: string, y: number): Evidence => ({
     image_url: "http://127.0.0.1:8010/api/v1/jobs/1d0c139e/artifacts/alignedSource",
   },
   value,
+  embedUrl: null,
 });
 
 const row2 = price(2, "540,000", 311);
@@ -47,6 +48,7 @@ const ride: Evidence = {
   label: "朝の走行の距離",
   location: { segment: { from: "07:12", to: "07:31" } },
   value: "12.4 km",
+  embedUrl: null,
 };
 
 const props = (evidence: Evidence, siblings: Evidence[] = [evidence]): EvidenceViewProps => ({

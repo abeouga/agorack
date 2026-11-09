@@ -134,6 +134,7 @@ describe("部品の接続と道具の一覧", () => {
         status: "connected",
         error: null,
         toolCount: 1,
+        embedOrigin: null,
       },
       {
         id: "broken",
@@ -142,6 +143,7 @@ describe("部品の接続と道具の一覧", () => {
         status: "failed",
         error: "起動できません（spawn broken.exe ENOENT）",
         toolCount: 0,
+        embedOrigin: null,
       },
       {
         id: "off",
@@ -150,6 +152,7 @@ describe("部品の接続と道具の一覧", () => {
         status: "disabled",
         error: null,
         toolCount: 0,
+        embedOrigin: null,
       },
     ]);
     const listing = await catalog.list(signal());
@@ -337,5 +340,52 @@ describe("終了", () => {
     await catalog.close();
 
     expect([a.closed, b.closed]).toEqual([true, true]);
+  });
+});
+
+describe("埋め込み", () => {
+  const ORIGIN = "http://127.0.0.1:5180";
+  const evidenceAt = (url: string) => ({
+    content: [{ type: "text" as const, text: "結果" }],
+    structuredContent: {
+      items: [{ kind: "note", source_id: "n-1", label: "メモ", location: {}, embed_url: url }],
+    },
+    isError: false,
+  });
+  const embedUrlOf = (result: ToolCallResult) =>
+    (result.structuredContent as { items: { embed_url: unknown }[] }).items[0]?.embed_url;
+
+  it("部品の状態に、設定の embed.origin を出す（ない部品は null）", async () => {
+    const catalog = await started(
+      [stdio("with", { embed: { origin: ORIGIN } }), stdio("without")],
+      connector({ with: () => new FakeConnection([]), without: () => new FakeConnection([]) }),
+    );
+
+    expect(catalog.status().map((s) => [s.id, s.embedOrigin])).toEqual([
+      ["with", ORIGIN],
+      ["without", null],
+    ]);
+  });
+
+  it("道具の結果の embed_url は、その部品の embed.origin の住所のものだけを残す", async () => {
+    const urls: Record<string, string> = {
+      same: `${ORIGIN}/embed?job=1`,
+      other: "http://127.0.0.1:9999/embed?job=1",
+    };
+    const handlers = {
+      same: async () => evidenceAt(urls.same ?? ""),
+      other: async () => evidenceAt(urls.other ?? ""),
+    };
+    const catalog = await started(
+      [stdio("with", { embed: { origin: ORIGIN } }), stdio("without")],
+      connector({
+        with: () => new FakeConnection([tool("same"), tool("other")], handlers),
+        without: () => new FakeConnection([tool("same")], handlers),
+      }),
+    );
+
+    expect(embedUrlOf(await catalog.call("with__same", {}, signal()))).toBe(urls.same);
+    expect(embedUrlOf(await catalog.call("with__other", {}, signal()))).toBeNull();
+    expect(embedUrlOf(await catalog.call("without__same", {}, signal()))).toBeNull();
   });
 });

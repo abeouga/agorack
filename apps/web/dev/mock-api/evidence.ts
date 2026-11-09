@@ -49,6 +49,8 @@ function documentEvidence(
       image_url: `${jobUrl}/alignedSource`,
     },
     value: field.value,
+    // 埋め込み用の画面は #14 で見る。それまでは kind ごとの表示を確かめる
+    embedUrl: null,
   };
 }
 
@@ -158,6 +160,7 @@ export const unknownKind: Evidence[] = [
     label: "11月3日 朝の走行（自宅→牛舎）の距離",
     location: { segment: { from: "07:12", to: "07:31" } },
     value: "12.4 km",
+    embedUrl: null,
   },
   {
     kind: "ride",
@@ -166,5 +169,6 @@ export const unknownKind: Evidence[] = [
     label: "11月3日 朝の走行（自宅→牛舎）の平均速度",
     location: { segment: { from: "07:12", to: "07:31" } },
     value: "39 km/h",
+    embedUrl: null,
   },
 ];
