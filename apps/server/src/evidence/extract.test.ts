@@ -1,6 +1,6 @@
 import { EvidenceSchema } from "@agorack/contracts";
 import { describe, expect, it } from "vitest";
-import { extractEvidence } from "./index.js";
+import { extractEvidence, mergeEvidence } from "./index.js";
 
 import aggregateMax from "./__fixtures__/fuminosuke/aggregate_max.json" with { type: "json" };
 import aggregateSum from "./__fixtures__/fuminosuke/aggregate_sum.json" with { type: "json" };
@@ -208,5 +208,21 @@ describe("取り出し方の決まり", () => {
     delete partial.kind;
 
     expect(extractEvidence(SOURCE, { items: [partial] })).toEqual({ evidence: [], discarded: 0 });
+  });
+});
+
+describe("何回かの結果の根拠をまとめる", () => {
+  it("同じ根拠は最初に出たもの1つにし、順は保つ", () => {
+    const first = extractEvidence("part_a", [envelope, { ...envelope, source_id: "ride-8" }]);
+    const second = extractEvidence("part_a", [{ ...envelope, label: "あとの説明" }]);
+    const other = extractEvidence("part_b", [envelope]);
+
+    const merged = mergeEvidence([first.evidence, second.evidence, other.evidence]);
+
+    expect(merged.map((e) => [e.sourceId, e.recordId, e.label])).toEqual([
+      ["part_a", "ride-7", "7月1日の走行"],
+      ["part_a", "ride-8", "7月1日の走行"],
+      ["part_b", "ride-7", "7月1日の走行"],
+    ]);
   });
 });
