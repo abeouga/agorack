@@ -65,6 +65,8 @@
 }
 .chat-msg.bot .chat-bubble {
   display: grid;
+  /* 長い1行（道具の要約・書類 ID）で列が広がり、吹き出しからはみ出さないように */
+  grid-template-columns: minmax(0, 1fr);
   gap: 12px;
   min-width: 0;
   padding: 16px 20px;
@@ -156,6 +158,8 @@
 /* 道具の呼び出しの進み具合 */
 .chat-tools {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
   gap: 6px;
   margin: 0;
   padding: 0;
@@ -163,10 +167,18 @@
 }
 .chat-tool {
   display: flex;
+  min-width: 0;
   align-items: center;
   gap: 8px;
   color: var(--ui-text-secondary);
   font-size: 14px;
+}
+/* 部品の要約は長いことがあるので1行に収め、全文は title で出す */
+.chat-tool span:not(.busy-spinner) {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .chat-tool svg {
   flex: none;

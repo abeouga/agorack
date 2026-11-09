@@ -6,6 +6,7 @@ import { useEvidenceSelection } from "../features/evidence/useEvidenceSelection"
 import { HistorySidebar } from "../features/history/HistorySidebar";
 import { currentConversation, listedConversations } from "../features/history/historyReducer";
 import { useHistory } from "../features/history/useHistory";
+import { SourcesNotice } from "../features/sources/SourcesNotice";
 import { sourceName, useSources } from "../features/sources/useSources";
 import { TopBar } from "./TopBar";
 
@@ -46,6 +47,7 @@ export function App() {
   return (
     <div className="app">
       <TopBar sources={sources} />
+      <SourcesNotice state={sources} />
       <main className={sidebar ? "workspace with-history" : "workspace with-rail"}>
         <HistorySidebar
           open={sidebar}
@@ -83,6 +85,7 @@ export function App() {
         />
         <EvidencePanel
           question={shownTurn?.question ?? null}
+          answer={shownTurn?.text ?? ""}
           evidence={shownTurn?.evidence ?? []}
           pending={shownTurn?.status === "pending"}
           hovered={shownTurn?.id === selection.turnId ? selection.hovered : []}

@@ -24,7 +24,9 @@ export function ToolProgress({
           {call.status === "succeeded" && <FiCheck aria-hidden="true" />}
           {call.status === "failed" && <FiAlertTriangle aria-hidden="true" />}
           {call.status === "cancelled" && <FiMinusCircle aria-hidden="true" />}
-          <span>{progressText(call, sourceName(call.sourceId))}</span>
+          <span title={progressText(call, sourceName(call.sourceId))}>
+            {progressText(call, sourceName(call.sourceId))}
+          </span>
         </li>
       ))}
     </ul>

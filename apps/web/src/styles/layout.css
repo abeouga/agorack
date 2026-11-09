@@ -108,6 +108,38 @@
   box-shadow: 0 0 0 3px #d04a3a26;
 }
 
+/* つながっていない部品の知らせ */
+.sources-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 12px 16px 0;
+  padding: 10px 14px;
+  border: 1px solid #efc9c0;
+  border-radius: 12px;
+  background: #fff5f3;
+  color: var(--ui-danger);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.sources-notice svg {
+  flex: none;
+  margin-top: 4px;
+}
+.sources-notice strong {
+  margin-right: 6px;
+}
+.sources-notice span {
+  color: var(--ui-text-secondary);
+}
+.sources-notice ul {
+  margin: 2px 0 0;
+  padding-left: 1.2em;
+  color: var(--ui-text-secondary);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
 /* 3列 */
 .workspace {
   flex: 1;
