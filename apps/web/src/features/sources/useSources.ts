@@ -70,3 +70,9 @@ export function sourceName(state: SourcesState, sourceId: string): string {
   if (state.kind !== "loaded") return sourceId;
   return state.sources.find((source) => source.id === sourceId)?.name ?? sourceId;
 }
+
+/** 部品の埋め込み用の画面を許す住所（読めていない・埋め込まない部品は null） */
+export function embedOriginOf(state: SourcesState, sourceId: string): string | null {
+  if (state.kind !== "loaded") return null;
+  return state.sources.find((source) => source.id === sourceId)?.embedOrigin ?? null;
+}

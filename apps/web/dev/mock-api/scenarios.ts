@@ -1,7 +1,9 @@
 import type { Evidence, SourceInfo, TurnEvent } from "@agorack/contracts";
+import { MOCK_EMBED_ORIGIN } from "./embed-origin";
 import {
   KOYOMI_PRICE_TOTAL,
   koyomiFields,
+  koyomiFieldsSilent,
   koyomiPrices,
   missingImage,
   unknownKind,
@@ -32,7 +34,8 @@ export const mockSources: SourceInfo[] = [
     status: "connected",
     error: null,
     toolCount: 6,
-    embedOrigin: null,
+    // 文之助の埋め込み用の画面の代わりに、偽の埋め込み用の画面（別の住所）を許す
+    embedOrigin: MOCK_EMBED_ORIGIN,
   },
   {
     id: "kabulogger",
@@ -131,6 +134,14 @@ function deltas(text: string, wait = 35, size = 4): Step[] {
 }
 
 export const scenarios: Scenario[] = [
+  answerScenario({
+    keywords: ["埋め込めない"],
+    description: "埋め込み用の画面が応えない根拠（時間切れで、ページ画像に枠の表示に戻る）",
+    call: { sourceId: "fuminosuke", tool: "get_document", input: { document: "こよみ" } },
+    evidence: koyomiFieldsSilent,
+    summary: "書類を1件読みました",
+    answer: "こよみ（繁殖台帳1021）の毛色は **褐** です。",
+  }),
   answerScenario({
     keywords: ["毛色", "父", "母"],
     description: "書類の欄の根拠（get_document）",

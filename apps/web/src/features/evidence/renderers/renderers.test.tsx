@@ -9,6 +9,8 @@ import {
 } from "./document/DocumentEvidence";
 import { boxStyle, documentLocation } from "./document/location";
 import { FallbackEvidence } from "./fallback/FallbackEvidence";
+import { EMBED_SANDBOX } from "./embed/EmbedEvidence";
+import { embedTarget } from "./embed/embedTarget";
 import { EvidenceView, rendererFor } from "./index";
 import type { EvidenceViewProps } from "./types";
 
@@ -56,6 +58,7 @@ const props = (evidence: Evidence, siblings: Evidence[] = [evidence]): EvidenceV
   siblings,
   highlighted: new Set(),
   sourceName: "文之助",
+  embedOrigin: null,
   onPick: () => undefined,
 });
 
@@ -138,5 +141,53 @@ describe("書類の表示", () => {
 
   it("根拠のキーは書類の枠の選択に使える", () => {
     expect(evidenceKey(row2)).not.toBe(evidenceKey(row3));
+  });
+});
+
+describe("部品の埋め込み用の画面", () => {
+  const EMBED = "http://127.0.0.1:5180";
+  const embedded: Evidence = {
+    ...row2,
+    embedUrl: `${EMBED}/embed?job=1d0c139e&field=field-2`,
+  };
+
+  it("embedUrl の住所が許した住所と同じときだけ使う", () => {
+    expect(embedTarget(embedded, EMBED)).toEqual({
+      url: `${EMBED}/embed?job=1d0c139e&field=field-2`,
+      origin: EMBED,
+      recordKey: "fuminosuke\u00001d0c139e-5175-43d5-bba6-1d2b76d69977",
+      fieldId: "field-2",
+    });
+    expect(embedTarget(embedded, null)).toBeNull();
+    expect(embedTarget(embedded, "http://127.0.0.1:5181")).toBeNull();
+    expect(embedTarget(embedded, "http://localhost:5180")).toBeNull();
+    expect(embedTarget({ ...embedded, embedUrl: null }, EMBED)).toBeNull();
+  });
+
+  it("同じ記録の根拠は同じ記録のキー、欄の ID は location.field_id", () => {
+    const other = { ...row3, embedUrl: `${EMBED}/embed?job=1d0c139e&field=field-3` };
+    expect(embedTarget(other, EMBED)?.recordKey).toBe(embedTarget(embedded, EMBED)?.recordKey);
+    expect(embedTarget(other, EMBED)?.fieldId).toBe("field-3");
+    expect(embedTarget({ ...embedded, location: {} }, EMBED)?.fieldId).toBeNull();
+  });
+
+  it("埋め込めるときは、決めた権限だけを付けた iframe を出す", () => {
+    const html = renderToStaticMarkup(<EvidenceView {...props(embedded)} embedOrigin={EMBED} />);
+    expect(html).toContain(`<iframe`);
+    expect(html).toContain(`src="${EMBED}/embed?job=1d0c139e&amp;field=field-2"`);
+    expect(html).toContain(`sandbox="${EMBED_SANDBOX}"`);
+    expect(EMBED_SANDBOX).toBe(
+      "allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox",
+    );
+    // 準備ができるまでは回る輪を出す
+    expect(html).toContain("文之助の画面を開いています");
+  });
+
+  it("許していない住所の embedUrl は使わず、kind ごとの表示（ページ画像）を出す", () => {
+    const html = renderToStaticMarkup(
+      <EvidenceView {...props(embedded)} embedOrigin="http://127.0.0.1:9999" />,
+    );
+    expect(html).not.toContain("<iframe");
+    expect(html).toContain("alignedSource");
   });
 });

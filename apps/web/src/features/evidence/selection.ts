@@ -61,7 +61,7 @@ export function evidenceForRow(cells: string[], evidence: Evidence[]): Evidence[
 }
 
 /**
- * 右の欄に出す根拠：ホバーしているもの → 選んだもの → 答えの文章に値が出てくるもの → 最初のもの の順。
+ * 右の欄に出す根拠：ホバーしているもの → 選んだもの → 答えの文章に値が出てくるもの（太字の中を先に）→ 最初のもの の順。
  * キーが答えの根拠にないとき（別の答えのキーが残っているなど）は次へ進む。
  * （例：「いちばん高い価格は 826,100」なら、7件の価格の根拠のうち 826,100 の欄を最初に出す）
  */
@@ -75,12 +75,15 @@ export function focusedEvidence(
     const found = evidence.find((item) => evidenceKey(item) === key);
     if (found) return found;
   }
-  const text = normalize(answer);
-  const mentioned = text
-    ? evidence.find((item) => {
-        const value = valueText(item.value);
-        return value !== null && text.includes(normalize(value));
-      })
-    : undefined;
-  return mentioned ?? evidence[0] ?? null;
+  // 太字（**…**）は答えの値であることが多いので先に照らし、次に文章の全体で照らす
+  const emphasized = [...answer.matchAll(/\*\*(.+?)\*\*/g)].map((match) => match[1] ?? "");
+  for (const text of [...emphasized, answer].map(normalize)) {
+    if (!text) continue;
+    const mentioned = evidence.find((item) => {
+      const value = valueText(item.value);
+      return value !== null && text.includes(normalize(value));
+    });
+    if (mentioned) return mentioned;
+  }
+  return evidence[0] ?? null;
 }

@@ -7,7 +7,7 @@ import { HistorySidebar } from "../features/history/HistorySidebar";
 import { currentConversation, listedConversations } from "../features/history/historyReducer";
 import { useHistory } from "../features/history/useHistory";
 import { SourcesNotice } from "../features/sources/SourcesNotice";
-import { sourceName, useSources } from "../features/sources/useSources";
+import { embedOriginOf, sourceName, useSources } from "../features/sources/useSources";
 import { TopBar } from "./TopBar";
 
 const SIDEBAR_KEY = "agorack.sidebar";
@@ -91,6 +91,7 @@ export function App() {
           hovered={shownTurn?.id === selection.turnId ? selection.hovered : []}
           selected={shownTurn?.id === selection.turnId ? selection.selected : []}
           sourceName={nameOf}
+          embedOriginOf={(sourceId) => embedOriginOf(sources, sourceId)}
           onHover={(key) => shownTurn && evidence.hover(shownTurn.id, key ? [key] : [])}
           onSelect={(key) => shownTurn && evidence.select(shownTurn.id, [key])}
         />

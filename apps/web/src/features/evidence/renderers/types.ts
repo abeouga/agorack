@@ -2,7 +2,7 @@ import type { Evidence } from "@agorack/contracts";
 import type { ComponentType } from "react";
 
 /**
- * 根拠の表示（kind ごと）に渡すもの。表示を足すときは、この形の部品を作って renderers/index.ts に登録する。
+ * 根拠の表示（埋め込み・kind ごと）に渡すもの。表示を足すときは、この形の部品を作って renderers/index.ts に登録する。
  */
 export type EvidenceViewProps = {
   /** 出す根拠（選んだもの・ホバーしているもの、なければ最初のもの） */
@@ -13,6 +13,8 @@ export type EvidenceViewProps = {
   highlighted: ReadonlySet<string>;
   /** 部品の名前（例：文之助） */
   sourceName: string;
+  /** その部品の埋め込み用の画面を許す住所（GET /api/sources の embedOrigin）。埋め込まない部品は null */
+  embedOrigin: string | null;
   /** 表示の中で根拠を選んだ（書類の枠を押したなど） */
   onPick: (key: string) => void;
 };

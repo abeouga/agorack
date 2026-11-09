@@ -1,11 +1,16 @@
 import type { Evidence } from "@agorack/contracts";
+import { MOCK_EMBED_ORIGIN } from "./embed-origin";
 
 /**
  * 偽のサーバーが返す根拠。
  * 書類の根拠は、文之助の MCP が実際に返したもの（apps/server の試験の見本：get_document・aggregate）から、
  * サーバーが取り出したあとの形（recordId・sourceId）に直して写した。apps/server は import しない。
  * image_url は手元の文之助（127.0.0.1:8010）の本物のページ画像を指す。box はその画像の画素。
+ * embed_url は、文之助の埋め込み用の画面（/embed?job=…&field=…）と同じ形で、偽の埋め込み用の画面を指す。
  */
+
+/** 埋め込み用の画面の扱い：使う・応えない画面を指す（部品が止まっているときを試す）・付けない */
+type EmbedMode = "embed" | "silent" | "none";
 
 const FUMINOSUKE = "http://127.0.0.1:8010";
 const KOYOMI_JOB = "1d0c139e-5175-43d5-bba6-1d2b76d69977";
@@ -27,7 +32,12 @@ function documentEvidence(
   jobId: string,
   document: { template_id: string; template_name: string; document_name: string },
   field: Field,
+  embed: EmbedMode = "embed",
 ): Evidence {
+  const embedUrl = new URL("/embed", MOCK_EMBED_ORIGIN);
+  embedUrl.searchParams.set("job", jobId);
+  embedUrl.searchParams.set("field", field.field_id);
+  if (embed === "silent") embedUrl.searchParams.set("mock", "silent");
   const jobUrl = `${FUMINOSUKE}/api/v1/jobs/${jobId}/artifacts`;
   return {
     kind: "document",
@@ -49,8 +59,7 @@ function documentEvidence(
       image_url: `${jobUrl}/alignedSource`,
     },
     value: field.value,
-    // 埋め込み用の画面は #14 で見る。それまでは kind ごとの表示を確かめる
-    embedUrl: null,
+    embedUrl: embed === "none" ? null : embedUrl.href,
   };
 }
 
@@ -134,6 +143,17 @@ export const koyomiFields: Evidence[] = [
   }),
 ];
 
+/**
+ * 埋め込み用の画面が応えない根拠（部品の画面が止まっているときの代わり）。
+ * 時間切れで、ページ画像に枠の表示に戻ることを確かめる
+ */
+export const koyomiFieldsSilent: Evidence[] = koyomiFields.map((item) => {
+  if (!item.embedUrl) return item;
+  const url = new URL(item.embedUrl);
+  url.searchParams.set("mock", "silent");
+  return { ...item, embedUrl: url.href };
+});
+
 /** ページ画像が読めない根拠（文之助にない書類 ID を指す）。ラベルと値の表示に戻ることを確かめる */
 export const missingImage: Evidence = documentEvidence(
   "00000000-0000-4000-8000-000000000000",
@@ -146,6 +166,7 @@ export const missingImage: Evidence = documentEvidence(
     value: "黒",
     label: "繁殖台帳1021「はなこ」の毛色",
   },
+  "none",
 );
 
 /**
