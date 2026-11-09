@@ -85,9 +85,10 @@ export function App() {
           question={shownTurn?.question ?? null}
           evidence={shownTurn?.evidence ?? []}
           pending={shownTurn?.status === "pending"}
-          highlighted={new Set(shownTurn?.id === selection.turnId ? selection.hovered : [])}
-          selected={new Set(shownTurn?.id === selection.turnId ? selection.selected : [])}
+          hovered={shownTurn?.id === selection.turnId ? selection.hovered : []}
+          selected={shownTurn?.id === selection.turnId ? selection.selected : []}
           sourceName={nameOf}
+          onHover={(key) => shownTurn && evidence.hover(shownTurn.id, key ? [key] : [])}
           onSelect={(key) => shownTurn && evidence.select(shownTurn.id, [key])}
         />
       </main>

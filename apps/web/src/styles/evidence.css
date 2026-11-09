@@ -55,77 +55,81 @@
   font-size: 14px;
   line-height: 1.7;
 }
-.evidence-list {
-  flex: 1;
+/* 選んだ根拠の表示（kind ごとの表示が中に入る） */
+.evidence-view {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
   min-height: 0;
+  overflow: auto;
+}
+
+/* 根拠の一覧 */
+.evidence-list {
+  flex: none;
+  max-height: clamp(96px, 26vh, 260px);
+  min-height: 92px;
   overflow-y: auto;
   display: grid;
   align-content: start;
-  gap: 8px;
+  gap: 4px;
   margin: 0;
-  padding: 12px;
+  padding: 8px 12px 12px;
+  border-top: 1px solid var(--ui-border);
   list-style: none;
   background: var(--ui-surface-muted);
 }
 .evidence-item {
   display: grid;
-  gap: 6px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 10px;
   width: 100%;
-  padding: 10px 12px;
-  border: 1px solid var(--ui-border);
-  border-left: 4px solid var(--ui-border);
-  border-radius: 10px;
-  background: #fff;
+  padding: 6px 10px;
+  border: 1px solid transparent;
+  border-left: 3px solid transparent;
+  border-radius: 8px;
+  background: transparent;
   color: inherit;
   text-align: left;
   cursor: pointer;
   transition:
     background-color 0.15s,
-    border-color 0.15s,
-    box-shadow 0.15s;
+    border-color 0.15s;
 }
 .evidence-item:hover {
-  border-color: #9bbbd2;
+  background: #fff;
+  border-color: var(--ui-border);
+}
+.evidence-item.is-focus {
+  border-color: #f0c9a8;
+  border-left-color: #d9480f;
+  background: #fff;
+}
+.evidence-item.is-highlighted {
+  border-color: var(--ui-highlight-border);
+  border-left-color: #d9480f;
+  background: var(--ui-highlight);
 }
 .evidence-item.is-selected {
   border-color: var(--ui-highlight-border);
   border-left-color: #d9480f;
   background: var(--ui-highlight-strong);
 }
-.evidence-item.is-highlighted {
-  border-color: var(--ui-highlight-border);
-  border-left-color: #d9480f;
-  background: var(--ui-highlight);
-  box-shadow: 0 0 0 3px #e8a25a40;
-}
-.evidence-source {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  color: var(--ui-text-muted);
-  font-size: 12px;
-  font-weight: 700;
-}
-.evidence-source small {
-  font-family: ui-monospace, Consolas, monospace;
-  font-weight: 400;
-}
-.evidence-fallback {
-  display: grid;
-  gap: 2px;
-}
-.evidence-label {
+.evidence-item-label {
+  overflow: hidden;
   color: var(--ui-text-secondary);
-  font-size: 14px;
-  overflow-wrap: anywhere;
+  font-size: 13px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
-.evidence-value {
+.evidence-item-value {
   color: var(--ui-text);
-  font-size: 17px;
+  font-size: 14px;
   font-weight: 800;
-  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
 }
-.evidence-value.is-empty {
+.evidence-item-value.is-empty {
   color: var(--ui-text-muted);
   font-weight: 400;
 }

@@ -1,6 +1,6 @@
 import type { Evidence } from "@agorack/contracts";
 import { describe, expect, it } from "vitest";
-import { evidenceForRow, evidenceKey, valueText } from "./selection";
+import { evidenceForRow, evidenceKey, focusedEvidence, valueText } from "./selection";
 
 const evidence = (no: number, name: string, value: unknown): Evidence => ({
   kind: "document",
@@ -65,5 +65,18 @@ describe("根拠の見分けと値", () => {
     [{ a: 1 }, '{"a":1}'],
   ])("%j を %j にする", (value, text) => {
     expect(valueText(value)).toBe(text);
+  });
+});
+
+describe("右の欄に出す根拠", () => {
+  it("ホバー → 選んだもの → 最初のもの の順に選ぶ", () => {
+    expect(focusedEvidence(all, [], [])).toBe(hajime);
+    expect(focusedEvidence(all, [], [evidenceKey(sakura)])).toBe(sakura);
+    expect(focusedEvidence(all, [evidenceKey(koyomi)], [evidenceKey(sakura)])).toBe(koyomi);
+  });
+
+  it("答えにないキーは飛ばす。根拠がなければ null", () => {
+    expect(focusedEvidence(all, ["ない"], [evidenceKey(sakura)])).toBe(sakura);
+    expect(focusedEvidence([], [], [])).toBeNull();
   });
 });
