@@ -1,0 +1,27 @@
+{
+  "sources": [
+    {
+      "id": "fuminosuke",
+      "name": "文之助",
+      "description": "帳票（台帳・申込書）の確定済みの値",
+      "transport": {
+        "type": "stdio",
+        "command": "C:/path/to/fuminosuke/backend/.venv/Scripts/python.exe",
+        "args": ["-m", "app.mcp_server"],
+        "cwd": "C:/path/to/fuminosuke/backend",
+        "env": {
+          "FUMINOSUKE_API_URL": "http://127.0.0.1:8010",
+          "FUMINOSUKE_WEB_URL": "http://127.0.0.1:5180"
+        }
+      },
+      "embed": { "origin": "http://127.0.0.1:5180" }
+    },
+    {
+      "id": "cub",
+      "name": "カブロガー",
+      "description": "走行の記録",
+      "transport": { "type": "http", "url": "https://example.invalid/mcp" },
+      "enabled": false
+    }
+  ]
+}
