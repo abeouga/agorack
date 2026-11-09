@@ -10,6 +10,7 @@
     "node": ">=22.12"
   },
   "scripts": {
+    "dev": "concurrently --raw --kill-others-on-fail \"npm:dev:server\" \"npm:dev:web\"",
     "dev:server": "npm run dev -w @agorack/server",
     "dev:web": "npm run dev -w @agorack/web",
     "typecheck": "npm run typecheck --workspaces --if-present",
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "concurrently": "^10.0.7",
     "eslint": "^10.14.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react-hooks": "^7.1.1",

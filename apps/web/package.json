@@ -10,7 +10,8 @@
     "build": "vite build",
     "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.node.json",
     "test": "vitest run",
-    "screenshots": "node scripts/screenshots.ts"
+    "screenshots": "node scripts/screenshots.ts",
+    "end-to-end": "node scripts/end-to-end.ts"
   },
   "dependencies": {
     "@agorack/contracts": "^0.0.0",

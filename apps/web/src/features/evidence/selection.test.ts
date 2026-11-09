@@ -30,8 +30,24 @@ describe("表の行と根拠の対応", () => {
     expect(evidenceForRow(["はじめ", "褐"], all)).toEqual([]);
   });
 
-  it("値しか合わない行（合計など）は選ばない", () => {
+  it("値しか合わず、同じ値の根拠が2つ以上ある行（合計など）は選ばない", () => {
     expect(evidenceForRow(["合計", "黒"], all)).toEqual([]);
+  });
+
+  it("同じ値の根拠が1つしかなければ、値だけで選ぶ（行の番号だけを書いた表）", () => {
+    const price = (row: number, value: string): Evidence => ({
+      ...evidence(1034, "こよみ", value),
+      label: `繁殖台帳1034「こよみ」の売却子牛一覧 ${row}行目の価格`,
+    });
+    const prices = [price(2, "540,000"), price(3, "770,000")];
+    expect(evidenceForRow(["2", "540,000"], prices)).toEqual([prices[0]]);
+    expect(evidenceForRow(["3", "770,000"], prices)).toEqual([prices[1]]);
+    expect(evidenceForRow(["合計", "1,310,000"], prices)).toEqual([]);
+  });
+
+  it("行のほかの欄が別の根拠を指していれば、値だけでは選ばない", () => {
+    // 褐はさくらだけだが、行は「はじめ」を指している
+    expect(evidenceForRow(["はじめ", "褐"], all)).toEqual([]);
   });
 
   it("1文字の欄では照らさない（取り違えを防ぐ）", () => {
@@ -78,5 +94,26 @@ describe("右の欄に出す根拠", () => {
   it("答えにないキーは飛ばす。根拠がなければ null", () => {
     expect(focusedEvidence(all, ["ない"], [evidenceKey(sakura)])).toBe(sakura);
     expect(focusedEvidence([], [], [])).toBeNull();
+  });
+});
+
+describe("答えの文章から最初に出す根拠", () => {
+  const price = (row: number, value: string): Evidence => ({
+    ...evidence(1034, "こよみ", value),
+    label: `繁殖台帳1034「こよみ」の売却子牛一覧 ${row}行目の価格`,
+  });
+  const prices = [price(2, "540,000"), price(5, "826,100"), price(8, "708,400")];
+
+  it("答えに値が出てくる根拠を、最初のものより先に出す", () => {
+    expect(focusedEvidence(prices, [], [], "いちばん高い価格は826,100です。")).toBe(prices[1]);
+  });
+
+  it("ホバー・選んだものは、答えの文章より先", () => {
+    const key = evidenceKey(prices[2] as Evidence);
+    expect(focusedEvidence(prices, [], [key], "826,100")).toBe(prices[2]);
+  });
+
+  it("どれの値も出てこなければ最初のもの", () => {
+    expect(focusedEvidence(prices, [], [], "合計は 3,074,500 です。")).toBe(prices[0]);
   });
 });

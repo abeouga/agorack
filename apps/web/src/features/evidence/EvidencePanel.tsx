@@ -11,6 +11,7 @@ import { evidenceKey, focusedEvidence, valueText } from "./selection";
  */
 export function EvidencePanel({
   question,
+  answer,
   evidence,
   pending,
   hovered,
@@ -21,6 +22,8 @@ export function EvidencePanel({
 }: {
   /** どの質問の根拠か。まだ質問がなければ null */
   question: string | null;
+  /** 答えの文章（最初に出す根拠を選ぶのに使う） */
+  answer: string;
   evidence: Evidence[];
   /** 答えを待っている（根拠がこれから増える） */
   pending: boolean;
@@ -30,7 +33,7 @@ export function EvidencePanel({
   onHover: (key: string | null) => void;
   onSelect: (key: string) => void;
 }) {
-  const focus = focusedEvidence(evidence, hovered, selected);
+  const focus = focusedEvidence(evidence, hovered, selected, answer);
   const focusKey = focus ? evidenceKey(focus) : null;
   const highlighted = new Set(hovered);
   const chosen = new Set(selected);
