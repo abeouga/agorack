@@ -3,6 +3,8 @@ import {
   apiPaths,
   type ApiErrorResponse,
   type HealthResponse,
+  type SourceInfo,
+  type SourcesResponse,
 } from "@agorack/contracts";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
@@ -16,11 +18,17 @@ import { originGuard } from "./originGuard.js";
 export type HttpAppDeps = {
   /** 要求を受け付ける画面の住所（origin） */
   allowedOrigins: readonly string[];
+  /** 部品の一覧と接続の状態（GET /api/sources） */
+  listSources: () => SourceInfo[];
   /** 想定外の失敗を記録する */
   logError?: (error: unknown) => void;
 };
 
-export function createHttpApp({ allowedOrigins, logError = console.error }: HttpAppDeps): Hono {
+export function createHttpApp({
+  allowedOrigins,
+  listSources,
+  logError = console.error,
+}: HttpAppDeps): Hono {
   const app = new Hono();
 
   app.use("*", originGuard(allowedOrigins));
@@ -35,6 +43,7 @@ export function createHttpApp({ allowedOrigins, logError = console.error }: Http
   );
 
   app.get(apiPaths.health(), (c) => c.json({ status: "ok" } satisfies HealthResponse));
+  app.get(apiPaths.sources(), (c) => c.json({ sources: listSources() } satisfies SourcesResponse));
 
   app.onError((error, c) => {
     if (error instanceof HTTPException) return error.getResponse();
