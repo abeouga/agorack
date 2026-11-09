@@ -1,0 +1,24 @@
+# 依存とビルドの出力
+node_modules/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+.vite/
+
+# 秘密と手元の設定
+.env
+.env.*
+!.env.example
+config/sources.json
+
+# ログ
+*.log
+npm-debug.log*
+
+# エディターと OS
+.vscode/
+.idea/
+.claude/
+.DS_Store
+Thumbs.db

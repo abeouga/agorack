@@ -1,0 +1,59 @@
+name: Epic
+description: 複数のIssueにまたがる大きな作業をまとめる親Issue
+title: "[Epic] "
+labels:
+  - Epic
+
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: ゴール
+      description: この一連の作業で何ができるようになるか記載してください。
+      placeholder: 例）チャットから文之助とカブロガーの両方に質問できる
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: なぜ今やるか
+      description: この作業に取り組む理由を、技術や業務の言葉で記載してください。
+      placeholder: 例）部品の MCP がそろったので、親のチャットから呼び分けられるようにする
+    validations:
+      required: true
+
+  - type: textarea
+    id: stages
+    attributes:
+      label: 段階と子Issue
+      description: 段階ごとに子Issueを記載してください。子Issueを作ったら番号を入れてください。
+      value: |
+        - [ ] 段階1：#
+        - [ ] 段階2：#
+        - [ ] 段階3：#
+    validations:
+      required: true
+
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: 今回やらないこと
+      description: この一連の作業では扱わないことを記載してください。
+      placeholder: |
+        例）
+        - 会話の保存
+        - ログイン
+
+  - type: textarea
+    id: related
+    attributes:
+      label: 関連する設計
+      description: 関連する設計の節や決めごとの記録があれば記載してください。
+      placeholder: 例）docs/architecture.md
+
+  - type: input
+    id: deadline
+    attributes:
+      label: 期限
+      placeholder: 例）2026-12-01

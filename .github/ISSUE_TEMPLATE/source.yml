@@ -1,0 +1,92 @@
+name: Source
+description: 部品（MCP サーバー）を Agorack につなぐ、又はつなぎ方を変える
+title: "[Source] "
+labels:
+  - Source
+
+body:
+  - type: textarea
+    id: source
+    attributes:
+      label: つなぐ部品と役目
+      description: 部品の名前と、利用者のどんな質問に使うかを記載してください。
+      placeholder: 例）カブロガー：走行の記録（距離・時間・区間）についての質問に使う
+    validations:
+      required: true
+
+  - type: input
+    id: source_id
+    attributes:
+      label: 設定の id
+      description: 道具の名前の接頭辞になります（英数字と _ だけ）。
+      placeholder: 例）cub
+    validations:
+      required: true
+
+  - type: dropdown
+    id: transport
+    attributes:
+      label: つなぎ方
+      options:
+        - stdio（手元で起動する）
+        - http（Streamable HTTP の住所へつなぐ）
+    validations:
+      required: true
+
+  - type: textarea
+    id: tools
+    attributes:
+      label: 部品の道具
+      description: 部品の MCP サーバーが公開している道具と、その説明を記載してください。
+      placeholder: |
+        例）
+        - list_rides：走行の一覧
+        - get_ride：1回の走行の区間と値
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 根拠の形
+      description: 道具が返す根拠の kind と location の中身を記載してください。外枠（kind・source_id・label・location・value）がそろっているかも確かめてください。
+      placeholder: |
+        例）
+        - kind: ride
+        - location: { start, end, segment_id }
+    validations:
+      required: true
+
+  - type: textarea
+    id: display
+    attributes:
+      label: 右の欄の表示
+      description: 新しい kind なら、どう表示するかを記載してください。知らない kind はラベルと値だけで出ます。
+      placeholder: 例）地図に区間の線を引き、グラフの時間帯を強調する
+
+  - type: dropdown
+    id: permission
+    attributes:
+      label: 権限
+      options:
+        - 読み取りだけ
+        - 書き込みあり（理由を補足に書く）
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 完了条件
+      value: |
+        - [ ] 設定ファイルに足すだけでつながり、GET /api/sources に状態が出る
+        - [ ] 部品の説明（instructions）が指示に入る
+        - [ ] 部品の道具を呼んだ答えに根拠が付き、右の欄に出る
+        - [ ] Agorack の agent・conversations を変えていない
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 補足

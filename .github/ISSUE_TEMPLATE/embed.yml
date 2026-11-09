@@ -1,0 +1,61 @@
+name: Embed
+description: 部品の画面を右の欄に iframe で埋め込む
+title: "[Embed] "
+labels:
+  - Embed
+
+body:
+  - type: textarea
+    id: screen
+    attributes:
+      label: 埋め込む画面
+      description: どの部品のどんな画面を埋め込むのか記載してください。
+      placeholder: 例）文之助の、書類を開いて指定した欄を強調するだけの画面
+    validations:
+      required: true
+
+  - type: input
+    id: kind
+    attributes:
+      label: 対象の根拠の kind
+      placeholder: 例）document
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: URLの決まり
+      description: 部品の側で決まっている URL を記載してください。
+      placeholder: 例）/embed/document/{書類ID}?field={欄ID}
+    validations:
+      required: true
+
+  - type: textarea
+    id: messages
+    attributes:
+      label: 部品の画面とのやり取り（postMessage）
+      value: |
+        | 向き | 内容 |
+        |---|---|
+        | Agorack → 部品の画面 | 例）この欄を強調して |
+        | 部品の画面 → Agorack | 例）高さが変わった、確認画面を開きたい |
+    validations:
+      required: true
+
+  - type: textarea
+    id: auth
+    attributes:
+      label: ログインの受け渡し
+      description: 埋め込み画面がどうやってログイン状態を得るか記載してください。
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 完了条件
+      value: |
+        - [ ] 右の欄に表示できる
+        - [ ] 替えたのは features/evidence/renderers/ の中だけ
+        - [ ] 部品の画面のオリジン以外からのメッセージを受け付けない
+    validations:
+      required: true

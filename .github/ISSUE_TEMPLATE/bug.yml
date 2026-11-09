@@ -1,0 +1,64 @@
+name: Bug
+description: 不具合や想定外の動作を報告する
+title: "[Bug] "
+labels:
+  - Bug
+
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: 不具合の概要
+      description: 何が問題なのか簡潔に記載してください。
+      placeholder: 例）停止を押しても、道具の呼び出しが続く
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 再現手順
+      description: 不具合を再現する手順を記載してください。
+      placeholder: |
+        例）
+        1. 「こよみの子牛の価格の合計は？」と送る
+        2. 「文之助で集計しています」と出たら停止を押す
+        3. サーバーのログを見る
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期待する動作
+      description: 本来どう動くべきか記載してください。
+      placeholder: 例）停止の後、部品の呼び出しも Claude への要求も行われない
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: 実際の動作
+      description: 実際に発生している動作を記載してください。
+      placeholder: 例）停止の後に次の道具の呼び出しが行われている
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: 発生環境
+      description: 必要であれば OS・ブラウザー・ブランチ・つないでいた部品を記載してください。
+      placeholder: |
+        例）
+        - Windows 11
+        - Chrome
+        - 文之助（stdio）
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: エラー・ログ
+      description: エラーメッセージやログがあれば記載してください。
+      render: shell

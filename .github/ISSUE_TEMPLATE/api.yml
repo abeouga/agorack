@@ -1,0 +1,79 @@
+name: API
+description: 画面がサーバーを呼ぶ HTTP の API・SSE のイベントを追加・変更する
+title: "[API] "
+labels:
+  - API
+
+body:
+  - type: input
+    id: endpoint
+    attributes:
+      label: メソッドとパス
+      placeholder: 例）POST /api/conversations/:id/turns
+    validations:
+      required: true
+
+  - type: textarea
+    id: purpose
+    attributes:
+      label: 役目と呼び出す側
+      description: 何をする API か、誰が呼ぶかを記載してください。
+      placeholder: 例）質問を送り、答えを SSE で流す。チャットの画面が呼ぶ
+    validations:
+      required: true
+
+  - type: textarea
+    id: request
+    attributes:
+      label: 要求
+      description: 引数とその型・既定値・上限を記載してください。型は packages/contracts に置きます。
+      render: json
+    validations:
+      required: true
+
+  - type: textarea
+    id: response
+    attributes:
+      label: 応答
+      description: 返す項目、SSE ならイベントの名前と中身を記載してください。値を返すときは根拠も返してください。
+      render: json
+    validations:
+      required: true
+
+  - type: textarea
+    id: errors
+    attributes:
+      label: エラー
+      value: |
+        | 状態 | コード | どんなとき | 返す中身 |
+        |---|---|---|---|
+        | 400 |  |  |  |
+        | 404 |  |  |  |
+    validations:
+      required: true
+
+  - type: dropdown
+    id: access
+    attributes:
+      label: 受け付ける要求
+      options:
+        - 手元の画面・同じPCからだけ（最初の版）
+        - ログインした利用者
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 完了条件
+      value: |
+        - [ ] 要求と応答の型が packages/contracts にあり、画面とサーバーが同じ検証を使う
+        - [ ] エラーの表のとおりに返る
+        - [ ] 既存の API の応答が変わらない
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 補足
