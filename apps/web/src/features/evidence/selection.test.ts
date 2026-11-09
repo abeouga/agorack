@@ -9,6 +9,7 @@ const evidence = (no: number, name: string, value: unknown): Evidence => ({
   label: `繁殖台帳${no}「${name}」の毛色`,
   location: {},
   value,
+  embedUrl: null,
 });
 
 const hajime = evidence(1021, "はじめ", "黒");

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { EmbedUrlSchema } from "./embed.js";
 
 /**
  * 部品の id（設定の `id`）。道具の名前の接頭辞にも使うので、英数字と `_` だけ（設計 §6.1）。
@@ -23,5 +24,10 @@ export const EvidenceSchema = z.object({
   location: z.record(z.string(), z.unknown()),
   /** 値。空欄は null */
   value: z.unknown(),
+  /**
+   * 部品の埋め込み用の画面の絶対URL（設計 §7.4）。埋め込めないときは null。
+   * サーバーが、部品の設定（embed.origin）で許した住所のものだけを残す。
+   */
+  embedUrl: EmbedUrlSchema.nullable(),
 });
 export type Evidence = z.infer<typeof EvidenceSchema>;

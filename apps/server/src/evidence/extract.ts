@@ -1,4 +1,4 @@
-import { EvidenceSchema, type Evidence } from "@agorack/contracts";
+import { EmbedUrlSchema, EvidenceSchema, type Evidence } from "@agorack/contracts";
 
 /** 道具の結果から取り出した根拠と、形が合わずに捨てた数。 */
 export type ExtractedEvidence = {
@@ -18,11 +18,36 @@ const isPlainObject = (value: unknown): value is PlainObject =>
 const hasEnvelope = (value: PlainObject): boolean => ENVELOPE_KEYS.every((key) => key in value);
 
 /**
+ * 入れ子のオブジェクト・配列の奥まで探し、根拠の外枠を持つ要素を、出てきた順に渡す。
+ * 根拠の中（`location` など）はそれ以上探さない。
+ */
+function forEachEnvelope(content: unknown, visitor: (envelope: PlainObject) => void): void {
+  const visited = new Set<object>();
+  const visit = (node: unknown): void => {
+    if (typeof node !== "object" || node === null || visited.has(node)) return;
+    visited.add(node);
+    if (Array.isArray(node)) {
+      node.forEach(visit);
+      return;
+    }
+    if (!isPlainObject(node)) return;
+    if (hasEnvelope(node)) {
+      visitor(node);
+      return;
+    }
+    Object.values(node).forEach(visit);
+  };
+  visit(content);
+}
+
+/**
  * 道具の結果の構造化データ（`structuredContent`）から根拠を取り出し、共通の形にそろえる。
  *
  * - 入れ子のオブジェクト・配列の奥まで探し、外枠を持つ要素を根拠として取り出す。
  *   根拠の中（`location` など）はそれ以上探さない。
  * - 部品の `source_id`（記録の ID）は `recordId` に名前を変え、`sourceId` には呼んだ部品の id を付ける。
+ * - 部品の `embed_url` は `embedUrl` にする。ない・http か https の絶対URLでないときは null。
+ *   部品の設定で許した住所かどうかは、ここでは見ない（restrictEmbedUrls で先に外す）。
  * - `location` の中身は解釈しない。部品ごとの決まりは知らない。
  * - 同じ根拠（sourceId・recordId・kind・location が同じ）は、最初に出たもの1つにまとめる。
  * - 外枠を持つのに共通の形に合わないものは捨て、その数を返す。
@@ -33,45 +58,59 @@ const hasEnvelope = (value: PlainObject): boolean => ENVELOPE_KEYS.every((key) =
 export function extractEvidence(sourceId: string, structuredContent: unknown): ExtractedEvidence {
   const evidence: Evidence[] = [];
   const seenKeys = new Set<string>();
-  const visited = new Set<object>();
   let discarded = 0;
 
-  const visit = (node: unknown): void => {
-    if (typeof node !== "object" || node === null || visited.has(node)) return;
-    visited.add(node);
-
-    if (Array.isArray(node)) {
-      node.forEach(visit);
+  forEachEnvelope(structuredContent, (node) => {
+    const parsed = EvidenceSchema.safeParse({
+      kind: node.kind,
+      sourceId,
+      recordId: node.source_id,
+      label: node.label,
+      location: node.location,
+      value: node.value ?? null,
+      embedUrl: embedUrlOf(node.embed_url),
+    });
+    if (!parsed.success) {
+      discarded += 1;
       return;
     }
-    if (!isPlainObject(node)) return;
-
-    if (hasEnvelope(node)) {
-      const parsed = EvidenceSchema.safeParse({
-        kind: node.kind,
-        sourceId,
-        recordId: node.source_id,
-        label: node.label,
-        location: node.location,
-        value: node.value ?? null,
-      });
-      if (!parsed.success) {
-        discarded += 1;
-        return;
-      }
-      const key = identityKey(parsed.data);
-      if (!seenKeys.has(key)) {
-        seenKeys.add(key);
-        evidence.push(parsed.data);
-      }
-      return;
+    const key = identityKey(parsed.data);
+    if (!seenKeys.has(key)) {
+      seenKeys.add(key);
+      evidence.push(parsed.data);
     }
+  });
 
-    Object.values(node).forEach(visit);
-  };
-
-  visit(structuredContent);
   return { evidence, discarded };
+}
+
+/** 埋め込み用の画面の住所として使える値（http か https の絶対URL）だけを残す。ほかは null */
+function embedUrlOf(value: unknown): string | null {
+  return EmbedUrlSchema.safeParse(value).success ? (value as string) : null;
+}
+
+/**
+ * 根拠の `embed_url` のうち、部品の設定で埋め込みを許した住所（embed.origin）のもの以外を null にする（設計 §7.4）。
+ * 元の値は変えず、写しを返す。許す住所がない部品（null）は、全部を null にする。
+ *
+ * 部品の設定を知っている側（sources）が、道具の結果を受け取ったときに使う。
+ */
+export function restrictEmbedUrls(
+  structuredContent: unknown,
+  allowedOrigin: string | null,
+): unknown {
+  if (typeof structuredContent !== "object" || structuredContent === null) return structuredContent;
+  const copy: unknown = structuredClone(structuredContent);
+  forEachEnvelope(copy, (node) => {
+    if (!("embed_url" in node)) return;
+    const url = embedUrlOf(node.embed_url);
+    node.embed_url = url !== null && originOf(url) === allowedOrigin ? url : null;
+  });
+  return copy;
+}
+
+function originOf(url: string): string | null {
+  return URL.canParse(url) ? new URL(url).origin : null;
 }
 
 /**

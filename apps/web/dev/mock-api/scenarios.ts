@@ -32,6 +32,7 @@ export const mockSources: SourceInfo[] = [
     status: "connected",
     error: null,
     toolCount: 6,
+    embedOrigin: null,
   },
   {
     id: "kabulogger",
@@ -40,6 +41,7 @@ export const mockSources: SourceInfo[] = [
     status: "connected",
     error: null,
     toolCount: 2,
+    embedOrigin: null,
   },
 ];
 

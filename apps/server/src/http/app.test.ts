@@ -107,6 +107,7 @@ describe("GET /api/sources", () => {
         status: "connected",
         error: null,
         toolCount: 6,
+        embedOrigin: "http://127.0.0.1:5180",
       },
       {
         id: "broken",
@@ -115,6 +116,7 @@ describe("GET /api/sources", () => {
         status: "failed",
         error: "起動できません",
         toolCount: 0,
+        embedOrigin: null,
       },
       {
         id: "off",
@@ -123,6 +125,7 @@ describe("GET /api/sources", () => {
         status: "disabled",
         error: null,
         toolCount: 0,
+        embedOrigin: null,
       },
     ];
     const withSources = createHttpApp({

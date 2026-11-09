@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { EmbedOriginSchema } from "./embed.js";
 import { SourceIdSchema } from "./evidence.js";
 
 /**
@@ -46,6 +47,8 @@ export const SourceInfoSchema = z.object({
   error: z.string().nullable(),
   /** 使える道具の数。つながっていないときは 0 */
   toolCount: z.number().int().nonnegative(),
+  /** 部品の埋め込み用の画面を許す住所（設定の embed.origin）。埋め込まない部品は null（設計 §7.4） */
+  embedOrigin: EmbedOriginSchema.nullable(),
 });
 export type SourceInfo = z.infer<typeof SourceInfoSchema>;
 

@@ -1,6 +1,7 @@
 import type { SourceInfo } from "@agorack/contracts";
 import type { CatalogTool, ToolCallResult, ToolCatalog, ToolListing } from "../agent/ports.js";
 import type { SourceConfig } from "../config/index.js";
+import { restrictEmbedUrls } from "../evidence/index.js";
 import type { Connector, SourceConnection } from "./connection.js";
 import { compileInputValidator, type InputValidator } from "./mcp/inputValidation.js";
 import { errorResult } from "./mcp/results.js";
@@ -63,7 +64,12 @@ export class SourceCatalog implements ToolCatalog {
   status(): SourceInfo[] {
     return this.sources.map((source) => {
       const state = this.stateOf(source.id);
-      const base = { id: source.id, name: source.name, description: source.description };
+      const base = {
+        id: source.id,
+        name: source.name,
+        description: source.description,
+        embedOrigin: source.embed?.origin ?? null,
+      };
       switch (state.kind) {
         case "connected":
           return { ...base, status: "connected", error: null, toolCount: state.tools.length };
@@ -116,7 +122,13 @@ export class SourceCatalog implements ToolCatalog {
     }
 
     try {
-      return await state.connection.call(tool.definition.tool, input, signal);
+      const result = await state.connection.call(tool.definition.tool, input, signal);
+      // 埋め込み用の画面の住所は、部品の設定で許した住所（embed.origin）のものだけを残す（設計 §7.4）
+      const embedOrigin = source.embed?.origin ?? null;
+      return {
+        ...result,
+        structuredContent: restrictEmbedUrls(result.structuredContent, embedOrigin),
+      };
     } catch (error) {
       if (signal.aborted) throw error;
       return errorResult(`部品の道具を呼べませんでした：${describe(error)}`);

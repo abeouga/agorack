@@ -15,6 +15,7 @@ const coat = (no: number, name: string): Evidence => ({
   label: `繁殖台帳${no}「${name}」の毛色`,
   location: { field_id: "coat" },
   value: "黒",
+  embedUrl: null,
 });
 
 const hajime = coat(1021, "はじめ");
