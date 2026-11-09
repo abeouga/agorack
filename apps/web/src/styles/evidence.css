@@ -1,0 +1,131 @@
+/* 右の欄：根拠の一覧 */
+
+.evidence-panel {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid #c2cdd7;
+  border-radius: 14px;
+  background: var(--ui-surface);
+  box-shadow:
+    0 1px 2px #1d354514,
+    0 8px 24px #1d354512;
+}
+.evidence-head {
+  display: grid;
+  gap: 2px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--ui-border);
+}
+.evidence-head h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+}
+.evidence-head h2 svg {
+  color: var(--ui-text-muted);
+}
+.evidence-count {
+  padding: 1px 9px;
+  border-radius: 999px;
+  background: var(--ui-primary-soft);
+  color: var(--ui-primary-dark);
+  font-size: 12px;
+}
+.evidence-question {
+  margin: 0;
+  overflow: hidden;
+  color: var(--ui-text-muted);
+  font-size: 13px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.evidence-empty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 16px;
+  color: var(--ui-text-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.evidence-list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  margin: 0;
+  padding: 12px;
+  list-style: none;
+  background: var(--ui-surface-muted);
+}
+.evidence-item {
+  display: grid;
+  gap: 6px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--ui-border);
+  border-left: 4px solid var(--ui-border);
+  border-radius: 10px;
+  background: #fff;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color 0.15s,
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+.evidence-item:hover {
+  border-color: #9bbbd2;
+}
+.evidence-item.is-selected {
+  border-color: var(--ui-highlight-border);
+  border-left-color: #d9480f;
+  background: var(--ui-highlight-strong);
+}
+.evidence-item.is-highlighted {
+  border-color: var(--ui-highlight-border);
+  border-left-color: #d9480f;
+  background: var(--ui-highlight);
+  box-shadow: 0 0 0 3px #e8a25a40;
+}
+.evidence-source {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  color: var(--ui-text-muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+.evidence-source small {
+  font-family: ui-monospace, Consolas, monospace;
+  font-weight: 400;
+}
+.evidence-fallback {
+  display: grid;
+  gap: 2px;
+}
+.evidence-label {
+  color: var(--ui-text-secondary);
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.evidence-value {
+  color: var(--ui-text);
+  font-size: 17px;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+.evidence-value.is-empty {
+  color: var(--ui-text-muted);
+  font-weight: 400;
+}

@@ -1,0 +1,585 @@
+/* チャットの欄：会話・答え・入力欄（文之助のチャット ask.css から移した） */
+
+.chat-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid #c2cdd7;
+  border-radius: 14px;
+  background: var(--ui-surface);
+  box-shadow:
+    0 1px 2px #1d354514,
+    0 8px 24px #1d354512;
+}
+.chat-messages {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px clamp(14px, 3vw, 32px);
+  background: #eef2f6;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+.chat-messages::-webkit-scrollbar {
+  display: none;
+}
+
+/* 1つの発言 */
+.chat-msg {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+.chat-msg.user {
+  align-self: flex-end;
+  justify-items: end;
+  max-width: min(78%, 640px);
+  animation: chat-user-in 0.38s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.chat-msg.user .chat-bubble {
+  padding: 11px 18px;
+  border-radius: 20px 20px 6px 20px;
+  background: var(--ui-primary);
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  box-shadow: 0 4px 12px #23699e26;
+}
+.chat-msg.bot {
+  align-self: stretch;
+  grid-template-columns: 36px minmax(0, 1fr);
+  align-items: start;
+  gap: 14px;
+  max-width: 920px;
+  isolation: isolate;
+  animation: chat-rise 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.chat-msg.bot .chat-bubble {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  padding: 16px 20px;
+  border: 1px solid #d2dbe3;
+  border-radius: 6px 20px 20px 20px;
+  background: #fff;
+  box-shadow:
+    0 1px 2px #1d354512,
+    0 4px 14px #1d35450f;
+}
+.chat-msg.bot.failed .chat-bubble {
+  border-color: #efc9c0;
+  background: #fffaf9;
+}
+.chat-msg.bot.pending .chat-bubble:not(:has(.chat-answer, .chat-tools)) {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+  padding: 8px 0;
+}
+
+/* 答える側の印。考えている間は周りの輪が回る */
+.chat-avatar {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  background: linear-gradient(150deg, #2f6f9f, #173f60);
+  box-shadow: 0 3px 10px #173f6033;
+}
+.chat-avatar b {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1;
+}
+.chat-avatar.thinking::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  z-index: -1;
+  border-radius: 14px;
+  background: conic-gradient(from var(--chat-angle, 0deg), #2f6f9f, #6fb3d9, #2bb59a, #2f6f9f);
+  animation: chat-ring 1.4s linear infinite;
+}
+.chat-avatar.thinking::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: 12px;
+  background: #eef2f6;
+}
+.chat-avatar.thinking b {
+  animation: chat-ink 1.6s ease-in-out infinite;
+}
+@property --chat-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* 考え中のきらめき */
+.chat-thinking {
+  display: grid;
+  gap: 10px;
+  width: min(100%, 560px);
+  padding-top: 4px;
+}
+.chat-thinking i {
+  display: block;
+  height: 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #e3ebfb 0%, #c9d8fb 20%, #e2d4fb 40%, #e3ebfb 60%);
+  background-size: 300% 100%;
+  animation: chat-shimmer 1.6s linear infinite;
+}
+.chat-thinking i:nth-child(2) {
+  width: 86%;
+  animation-delay: 0.12s;
+}
+.chat-thinking i:nth-child(3) {
+  width: 58%;
+  animation-delay: 0.24s;
+}
+
+/* 道具の呼び出しの進み具合 */
+.chat-tools {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.chat-tool {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ui-text-secondary);
+  font-size: 14px;
+}
+.chat-tool svg {
+  flex: none;
+}
+.chat-tool.running {
+  color: var(--ui-primary-dark);
+  font-weight: 700;
+}
+.chat-tool.succeeded svg {
+  color: var(--ui-success);
+}
+.chat-tool.failed {
+  color: var(--ui-danger);
+}
+.chat-tool.cancelled {
+  color: var(--ui-text-muted);
+}
+.chat-tools + .chat-answer,
+.chat-tools + .chat-thinking {
+  padding-top: 10px;
+  border-top: 1px solid #e6ebef;
+}
+
+/* 答えの Markdown */
+.chat-answer {
+  margin: 0;
+  color: var(--ui-text);
+  font-size: 16px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+.chat-answer > * {
+  margin: 0;
+}
+.chat-answer > * + * {
+  margin-top: 0.7em;
+}
+.chat-answer strong {
+  padding: 0 1px;
+  color: #0f3a5c;
+  font-weight: 800;
+  background: linear-gradient(transparent 62%, #cfe3f5 62%);
+}
+.chat-answer em {
+  font-style: normal;
+  color: var(--ui-primary-dark);
+  font-weight: 700;
+}
+.chat-answer code {
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: #eef3f7;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.88em;
+}
+.chat-answer h3,
+.chat-answer h4,
+.chat-answer h5 {
+  font-size: 1.05em;
+  font-weight: 800;
+}
+.chat-answer ul,
+.chat-answer ol {
+  padding-left: 1.4em;
+}
+.chat-answer li + li {
+  margin-top: 0.25em;
+}
+
+/* 答えの表。根拠のある行は、ホバーで右の欄の根拠を強調し、押すと選ぶ */
+.md-table-wrap {
+  max-height: 360px;
+  overflow: auto;
+  border: 1px solid var(--ui-border);
+  border-radius: 10px;
+}
+.md-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+}
+.md-table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--ui-border);
+  background: #f2f5f8;
+  color: var(--ui-text-secondary);
+  font-weight: 700;
+  text-align: left;
+  white-space: nowrap;
+}
+.md-table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid #e6ebef;
+  vertical-align: top;
+}
+.md-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+.md-table tbody tr:hover td {
+  background: #f7fafc;
+}
+.md-table tbody tr.has-source {
+  cursor: pointer;
+}
+.md-table tbody tr.has-source:hover td {
+  background: var(--ui-highlight);
+}
+.md-table tbody tr.has-source.active td {
+  background: var(--ui-highlight-strong);
+}
+.md-empty {
+  color: #a3b0bb;
+}
+
+/* 途中で終わった知らせ・失敗 */
+.chat-caveat {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid #efd7a8;
+  border-radius: 10px;
+  background: #fff8ea;
+  color: #74480b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.chat-caveat svg,
+.chat-failed svg {
+  flex: none;
+  margin-top: 4px;
+}
+.chat-failed {
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+}
+.chat-failed p {
+  display: flex;
+  gap: 7px;
+  margin: 0;
+  color: var(--ui-danger);
+  font-size: 15px;
+  line-height: 1.7;
+}
+.chat-msg.bot.stopped .chat-failed p {
+  color: var(--ui-text-muted);
+}
+.chat-answer + .chat-failed {
+  padding-top: 10px;
+  border-top: 1px dashed #e0c4bd;
+}
+
+/* 答えの下：根拠を右の欄に出すボタン */
+.chat-turn-actions {
+  grid-column: 2;
+  display: flex;
+  gap: 6px;
+  margin-top: -2px;
+}
+.chat-evidence-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 30px;
+  padding: 3px 12px;
+  border: 1px solid #c8d8e4;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ui-text-secondary);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.chat-evidence-button:hover,
+.chat-evidence-button.active {
+  border-color: var(--ui-primary);
+  background: var(--ui-primary-soft);
+  color: var(--ui-primary-dark);
+}
+
+/* 会話が空のとき */
+.chat-welcome {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  max-width: 640px;
+  margin: auto;
+  padding: 24px 8px;
+  text-align: center;
+}
+.chat-welcome h2 {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  font-size: clamp(30px, 4.2vw, 44px);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+}
+.chat-welcome p {
+  margin: 0;
+  color: var(--ui-text-secondary);
+  font-size: 15px;
+}
+.chat-welcome-hello,
+.chat-welcome-ask {
+  display: block;
+  opacity: 0;
+  animation: chat-rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+.chat-welcome-hello {
+  background: linear-gradient(90deg, #4f8df7, #9b72f2 45%, #e8758f 70%, #4f8df7);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation:
+    chat-rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards,
+    chat-flow 6s linear infinite;
+}
+.chat-welcome-ask {
+  color: #a5b2be;
+  animation-delay: 0.18s;
+}
+
+/* 入力欄 */
+.chat-composer {
+  --chat-row-radius: 28px;
+  position: relative;
+  z-index: 0;
+  display: grid;
+  gap: 6px;
+  padding: 12px clamp(12px, 2vw, 20px) 12px;
+  background: #eef2f6;
+}
+.chat-composer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-top: 1px solid #d2dbe3;
+  border-radius: 40px 40px 0 0;
+  background: #fff;
+}
+.chat-input-row {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 8px 8px 8px 20px;
+  border: 2px solid #b7c5d2;
+  border-radius: var(--chat-row-radius);
+  background: #fff;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.3s;
+}
+.chat-input-row:focus-within {
+  border-color: transparent;
+  box-shadow: 0 8px 28px #4f8df724;
+}
+.chat-input-row:focus-within::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  z-index: -1;
+  border-radius: calc(var(--chat-row-radius) + 4px);
+  background: linear-gradient(90deg, #4f8df7, #9b72f2, #e8758f, #4f8df7);
+  background-size: 200% 100%;
+  animation: chat-flow 4s linear infinite;
+}
+.chat-input-row:focus-within::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: calc(var(--chat-row-radius) + 1px);
+  background: #fff;
+}
+.chat-input-row textarea {
+  flex: 1;
+  min-width: 0;
+  max-height: 168px;
+  padding: 7px 0;
+  border: 0;
+  outline: none;
+  resize: none;
+  background: transparent;
+  color: var(--ui-text);
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.chat-round-button {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+}
+.chat-send {
+  background: linear-gradient(135deg, #4f8df7, #7b6ff0);
+  color: #fff;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+.chat-send:hover:not(:disabled) {
+  background: linear-gradient(135deg, #3f7de6, #6b5fe0);
+  transform: scale(1.06);
+  box-shadow: 0 6px 16px #4f8df755;
+}
+.chat-send:disabled {
+  background: #c9d4dd;
+  cursor: default;
+}
+/* 答えている間は、送信のボタンが停止のボタン（塗りの四角）になる */
+.chat-stop-mark {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 2.5px;
+  background: currentColor;
+}
+.chat-composer-foot {
+  margin: 0 8px;
+  color: var(--ui-text-muted);
+  font-size: 13px;
+  text-align: right;
+}
+.chat-composer-foot.is-danger {
+  color: var(--ui-danger);
+  font-weight: 700;
+}
+
+@keyframes chat-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes chat-user-in {
+  from {
+    opacity: 0;
+    transform: translate(16px, 6px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes chat-ring {
+  to {
+    --chat-angle: 360deg;
+  }
+}
+@keyframes chat-ink {
+  0%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(0.88);
+  }
+}
+@keyframes chat-shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+@keyframes chat-flow {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 200% 50%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chat-msg.user,
+  .chat-msg.bot,
+  .chat-welcome-hello,
+  .chat-welcome-ask {
+    animation: none;
+    opacity: 1;
+  }
+  .chat-avatar.thinking::before,
+  .chat-avatar.thinking b,
+  .chat-input-row:focus-within::before {
+    animation: none;
+  }
+  .chat-thinking i {
+    animation-duration: 3s;
+  }
+}

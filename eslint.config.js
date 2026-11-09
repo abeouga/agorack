@@ -1,6 +1,7 @@
 // @ts-check
 import js from "@eslint/js";
 import prettier from "eslint-config-prettier";
+import reactHooks from "eslint-plugin-react-hooks";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
@@ -51,6 +52,15 @@ export default tseslint.config(
         },
       ],
     },
+  },
+  {
+    files: ["apps/web/src/**/*.{ts,tsx}"],
+    ...reactHooks.configs.flat.recommended,
+  },
+  {
+    // 画面の開発用の道具（Vite の設定・偽のサーバー・スクショの手順）は Node で動く
+    files: ["apps/web/vite.config.ts", "apps/web/dev/**/*.ts", "apps/web/scripts/**/*.ts"],
+    languageOptions: { globals: globals.node },
   },
   {
     files: ["packages/contracts/**/*.ts"],
