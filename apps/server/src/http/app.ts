@@ -9,6 +9,8 @@ import {
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { HTTPException } from "hono/http-exception";
+import type { ConversationService } from "../conversations/index.js";
+import { addConversationRoutes } from "./conversations.js";
 import { originGuard } from "./originGuard.js";
 
 /**
@@ -20,6 +22,8 @@ export type HttpAppDeps = {
   allowedOrigins: readonly string[];
   /** 部品の一覧と接続の状態（GET /api/sources） */
   listSources: () => SourceInfo[];
+  /** 会話の窓口 */
+  conversations: ConversationService;
   /** 想定外の失敗を記録する */
   logError?: (error: unknown) => void;
 };
@@ -27,6 +31,7 @@ export type HttpAppDeps = {
 export function createHttpApp({
   allowedOrigins,
   listSources,
+  conversations,
   logError = console.error,
 }: HttpAppDeps): Hono {
   const app = new Hono();
@@ -44,6 +49,7 @@ export function createHttpApp({
 
   app.get(apiPaths.health(), (c) => c.json({ status: "ok" } satisfies HealthResponse));
   app.get(apiPaths.sources(), (c) => c.json({ sources: listSources() } satisfies SourcesResponse));
+  addConversationRoutes(app, conversations);
 
   app.onError((error, c) => {
     if (error instanceof HTTPException) return error.getResponse();

@@ -4,8 +4,10 @@ import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { serve } from "@hono/node-server";
 import { ConfigError, loadConfig, type AppConfig } from "./config/index.js";
+import { InMemoryConversations } from "./conversations/index.js";
 import { createHttpApp } from "./http/app.js";
 import { SourceCatalog, createMcpConnector } from "./sources/index.js";
+import { createAnthropicModelClient } from "./model/anthropic/index.js";
 
 /** apps/server。開発時（src/main.ts）もビルド後（dist/main.js）も1つ上になる */
 const serverDir = fileURLToPath(new URL("..", import.meta.url));
@@ -32,9 +34,15 @@ const config = readConfig();
 const sources = new SourceCatalog(config.sources.list, createMcpConnector());
 await sources.start();
 
+const conversations = new InMemoryConversations({
+  ports: { model: createAnthropicModelClient(config.anthropic), catalog: sources },
+  options: { maxToolCalls: config.agent.maxToolCalls },
+});
+
 const app = createHttpApp({
   allowedOrigins: config.server.allowedOrigins,
   listSources: () => sources.status(),
+  conversations,
 });
 
 const { host, port } = config.server;

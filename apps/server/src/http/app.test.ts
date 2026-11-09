@@ -6,10 +6,16 @@ import {
   type SourceInfo,
 } from "@agorack/contracts";
 import { describe, expect, it, vi } from "vitest";
+import { InMemoryConversations } from "../conversations/index.js";
+import { FakeCatalog, FakeModel } from "../testing/fakePorts.js";
 import { createHttpApp } from "./app.js";
 
 const allowedOrigins = ["http://127.0.0.1:5174", "http://localhost:5174"];
-const app = createHttpApp({ allowedOrigins, listSources: () => [] });
+const conversations = new InMemoryConversations({
+  ports: { model: new FakeModel([]), catalog: new FakeCatalog() },
+  options: { maxToolCalls: 5 },
+});
+const app = createHttpApp({ allowedOrigins, listSources: () => [], conversations });
 const healthUrl = `http://127.0.0.1:8787${apiPaths.health()}`;
 
 describe("GET /api/health", () => {
@@ -73,7 +79,12 @@ describe("許していない相手の拒否", () => {
 describe("想定外の失敗", () => {
   it("500 と契約のエラーの形を返し、中身は記録だけする", async () => {
     const logError = vi.fn();
-    const failing = createHttpApp({ allowedOrigins, listSources: () => [], logError });
+    const failing = createHttpApp({
+      allowedOrigins,
+      listSources: () => [],
+      conversations,
+      logError,
+    });
     failing.get("/api/boom", () => {
       throw new Error("内部の詳細");
     });
@@ -114,7 +125,11 @@ describe("GET /api/sources", () => {
         toolCount: 0,
       },
     ];
-    const withSources = createHttpApp({ allowedOrigins, listSources: () => sources });
+    const withSources = createHttpApp({
+      allowedOrigins,
+      listSources: () => sources,
+      conversations,
+    });
 
     const res = await withSources.request(`http://127.0.0.1:8787${apiPaths.sources()}`);
 
