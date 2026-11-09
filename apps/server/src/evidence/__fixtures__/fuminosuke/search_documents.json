@@ -1,0 +1,52 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "条件に合う確定済みの書類は2件です。\n- はじめ（書類ID 0c82497c-4702-4d4f-a525-8ac3074b133b、繁殖台帳1021、名号=はじめ、生年月日=R8年6月12日、版3、確定 2026-10-25）\n- こよみ（書類ID 1d0c139e-5175-43d5-bba6-1d2b76d69977、繁殖台帳1021、名号=こよみ、生年月日=26年9月27日、版1、確定 2026-10-23）"
+    }
+  ],
+  "structuredContent": {
+    "documents": [
+      {
+        "document_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+        "document_name": "はじめ",
+        "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+        "template_name": "繁殖台帳1021",
+        "version": 3,
+        "confirmed_at": "2026-10-25T12:06:08+09:00",
+        "identity": [
+          {
+            "label": "名号",
+            "value": "はじめ"
+          },
+          {
+            "label": "生年月日",
+            "value": "R8年6月12日"
+          }
+        ]
+      },
+      {
+        "document_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "document_name": "こよみ",
+        "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+        "template_name": "繁殖台帳1021",
+        "version": 1,
+        "confirmed_at": "2026-10-23T00:22:28+09:00",
+        "identity": [
+          {
+            "label": "名号",
+            "value": "こよみ"
+          },
+          {
+            "label": "生年月日",
+            "value": "26年9月27日"
+          }
+        ]
+      }
+    ],
+    "total": 2,
+    "truncated": false,
+    "summary": "条件に合う確定済みの書類は2件です。"
+  },
+  "isError": false
+}

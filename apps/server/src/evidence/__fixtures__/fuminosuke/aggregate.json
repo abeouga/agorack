@@ -1,0 +1,400 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "繁殖台帳1021の確定済みの書類2件の売却子牛一覧 価格の最大は 826,100 です（11件、空欄9件）。\n最大の値だった欄：繁殖台帳1021「こよみ」の売却子牛一覧 5行目の価格\n使った値：\n- 繁殖台帳1021「はじめ」の売却子牛一覧 1行目の価格：100,000　書類ID 0c82497c-4702-4d4f-a525-8ac3074b133b、field_id=layout_c_72cf81b11c1149769242\n- 繁殖台帳1021「はじめ」の売却子牛一覧 2行目の価格：120,000　書類ID 0c82497c-4702-4d4f-a525-8ac3074b133b、field_id=layout_c_9f29d76c6ecc48d68747\n- 繁殖台帳1021「はじめ」の売却子牛一覧 3行目の価格：150,000　書類ID 0c82497c-4702-4d4f-a525-8ac3074b133b、field_id=layout_c_3f04ae295f18461e8fc8\n- 繁殖台帳1021「はじめ」の売却子牛一覧 4行目の価格：200,000　書類ID 0c82497c-4702-4d4f-a525-8ac3074b133b、field_id=layout_c_acb4a48856364c37acc0\n- 繁殖台帳1021「こよみ」の売却子牛一覧 2行目の価格：540,000　書類ID 1d0c139e-5175-43d5-bba6-1d2b76d69977、field_id=layout_c_9f29d76c6ecc48d68747\n- 繁殖台帳1021「こよみ」の売却子牛一覧 3行目の価格：770,000　書類ID 1d0c139e-5175-43d5-bba6-1d2b76d69977、field_id=layout_c_3f04ae295f18461e8fc8\n- 繁殖台帳1021「こよみ」の売却子牛一覧 4行目の価格：762,300　書類ID 1d0c139e-5175-43d5-bba6-1d2b76d69977、field_id=layout_c_acb4a48856364c37acc0\n- 繁殖台帳1021「こよみ」の売却子牛一覧 5行目の価格：826,100　書類ID 1d0c139e-5175-43d5-bba6-1d2b76d69977、field_id=layout_c_cc5d5e82cf4c4ad2add6\n- 繁殖台帳1021「こよみ」の売却子牛一覧 6行目の価格：456,500　書類ID 1d0c139e-5175-43d5-bba6-1d2b76d69977、field_id=layout_c_1916e80fb53e4346816c\n- 繁殖台帳1021「こよみ」の売却子牛一覧 7行目の価格：435,600　書類ID 1d0c139e-5175-43d5-bba6-1d2b76d69977、field_id=layout_c_659e4bee5088460fac2d\n- 繁殖台帳1021「こよみ」の売却子牛一覧 8行目の価格：708,400　書類ID 1d0c139e-5175-43d5-bba6-1d2b76d69977、field_id=layout_c_c917545cc5f94bb7b8d5"
+    }
+  ],
+  "structuredContent": {
+    "operation": "max",
+    "field": "売却子牛一覧 価格",
+    "template": {
+      "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+      "name": "繁殖台帳1021"
+    },
+    "result": "826100",
+    "count_used": 11,
+    "blank": 9,
+    "documents": 2,
+    "used": [
+      {
+        "kind": "document",
+        "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+        "label": "繁殖台帳1021「はじめ」の売却子牛一覧 1行目の価格",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "はじめ",
+          "field_id": "layout_c_72cf81b11c1149769242",
+          "field_label": "価格",
+          "section": "売却子牛一覧",
+          "table_id": "c_56ca44d4ff904e6bac56",
+          "table_title": "売却子牛一覧",
+          "row_number": 1,
+          "column_id": "c_c99950d4320a4d64b172",
+          "page_id": null,
+          "box": {
+            "x": 809.0,
+            "y": 281.0,
+            "width": 126.0,
+            "height": 30.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_72cf81b11c1149769242.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+        },
+        "value": "100,000",
+        "stored_value": null,
+        "status": "readable",
+        "number": "100000",
+        "note": null
+      },
+      {
+        "kind": "document",
+        "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+        "label": "繁殖台帳1021「はじめ」の売却子牛一覧 2行目の価格",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "はじめ",
+          "field_id": "layout_c_9f29d76c6ecc48d68747",
+          "field_label": "価格",
+          "section": "売却子牛一覧",
+          "table_id": "c_56ca44d4ff904e6bac56",
+          "table_title": "売却子牛一覧",
+          "row_number": 2,
+          "column_id": "c_c99950d4320a4d64b172",
+          "page_id": null,
+          "box": {
+            "x": 809.0,
+            "y": 311.0,
+            "width": 126.0,
+            "height": 30.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_9f29d76c6ecc48d68747.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+        },
+        "value": "120,000",
+        "stored_value": null,
+        "status": "readable",
+        "number": "120000",
+        "note": null
+      },
+      {
+        "kind": "document",
+        "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+        "label": "繁殖台帳1021「はじめ」の売却子牛一覧 3行目の価格",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "はじめ",
+          "field_id": "layout_c_3f04ae295f18461e8fc8",
+          "field_label": "価格",
+          "section": "売却子牛一覧",
+          "table_id": "c_56ca44d4ff904e6bac56",
+          "table_title": "売却子牛一覧",
+          "row_number": 3,
+          "column_id": "c_c99950d4320a4d64b172",
+          "page_id": null,
+          "box": {
+            "x": 809.0,
+            "y": 340.0,
+            "width": 126.0,
+            "height": 30.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_3f04ae295f18461e8fc8.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+        },
+        "value": "150,000",
+        "stored_value": null,
+        "status": "readable",
+        "number": "150000",
+        "note": null
+      },
+      {
+        "kind": "document",
+        "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+        "label": "繁殖台帳1021「はじめ」の売却子牛一覧 4行目の価格",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "はじめ",
+          "field_id": "layout_c_acb4a48856364c37acc0",
+          "field_label": "価格",
+          "section": "売却子牛一覧",
+          "table_id": "c_56ca44d4ff904e6bac56",
+          "table_title": "売却子牛一覧",
+          "row_number": 4,
+          "column_id": "c_c99950d4320a4d64b172",
+          "page_id": null,
+          "box": {
+            "x": 809.0,
+            "y": 370.0,
+            "width": 126.0,
+            "height": 30.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_acb4a48856364c37acc0.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+        },
+        "value": "200,000",
+        "stored_value": null,
+        "status": "readable",
+        "number": "200000",
+        "note": null
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の売却子牛一覧 2行目の価格",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_9f29d76c6ecc48d68747",
+          "field_label": "価格",
+          "section": "売却子牛一覧",
+          "table_id": "c_56ca44d4ff904e6bac56",
+          "table_title": "売却子牛一覧",
+          "row_number": 2,
+          "column_id": "c_c99950d4320a4d64b172",
+          "page_id": null,
+          "box": {
+            "x": 809.0,
+            "y": 311.0,
+            "width": 126.0,
+            "height": 30.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_9f29d76c6ecc48d68747.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": "540,000",
+        "stored_value": null,
+        "status": "readable",
+        "number": "540000",
+        "note": null
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の売却子牛一覧 3行目の価格",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_3f04ae295f18461e8fc8",
+          "field_label": "価格",
+          "section": "売却子牛一覧",
+          "table_id": "c_56ca44d4ff904e6bac56",
+          "table_title": "売却子牛一覧",
+          "row_number": 3,
+          "column_id": "c_c99950d4320a4d64b172",
+          "page_id": null,
+          "box": {
+            "x": 809.0,
+            "y": 340.0,
+            "width": 126.0,
+            "height": 30.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_3f04ae295f18461e8fc8.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": "770,000",
+        "stored_value": null,
+        "status": "readable",
+        "number": "770000",
+        "note": null
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の売却子牛一覧 4行目の価格",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_acb4a48856364c37acc0",
+          "field_label": "価格",
+          "section": "売却子牛一覧",
+          "table_id": "c_56ca44d4ff904e6bac56",
+          "table_title": "売却子牛一覧",
+          "row_number": 4,
+          "column_id": "c_c99950d4320a4d64b172",
+          "page_id": null,
+          "box": {
+            "x": 809.0,
+            "y": 370.0,
+            "width": 126.0,
+            "height": 30.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_acb4a48856364c37acc0.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": "762,300",
+        "stored_value": null,
+        "status": "readable",
+        "number": "762300",
+        "note": null
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の売却子牛一覧 5行目の価格",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_cc5d5e82cf4c4ad2add6",
+          "field_label": "価格",
+          "section": "売却子牛一覧",
+          "table_id": "c_56ca44d4ff904e6bac56",
+          "table_title": "売却子牛一覧",
+          "row_number": 5,
+          "column_id": "c_c99950d4320a4d64b172",
+          "page_id": null,
+          "box": {
+            "x": 809.0,
+            "y": 400.0,
+            "width": 126.0,
+            "height": 30.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_cc5d5e82cf4c4ad2add6.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": "826,100",
+        "stored_value": null,
+        "status": "readable",
+        "number": "826100",
+        "note": null
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の売却子牛一覧 6行目の価格",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_1916e80fb53e4346816c",
+          "field_label": "価格",
+          "section": "売却子牛一覧",
+          "table_id": "c_56ca44d4ff904e6bac56",
+          "table_title": "売却子牛一覧",
+          "row_number": 6,
+          "column_id": "c_c99950d4320a4d64b172",
+          "page_id": null,
+          "box": {
+            "x": 808.0,
+            "y": 430.0,
+            "width": 127.0,
+            "height": 30.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_1916e80fb53e4346816c.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": "456,500",
+        "stored_value": null,
+        "status": "readable",
+        "number": "456500",
+        "note": null
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の売却子牛一覧 7行目の価格",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_659e4bee5088460fac2d",
+          "field_label": "価格",
+          "section": "売却子牛一覧",
+          "table_id": "c_56ca44d4ff904e6bac56",
+          "table_title": "売却子牛一覧",
+          "row_number": 7,
+          "column_id": "c_c99950d4320a4d64b172",
+          "page_id": null,
+          "box": {
+            "x": 808.0,
+            "y": 459.0,
+            "width": 127.0,
+            "height": 31.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_659e4bee5088460fac2d.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": "435,600",
+        "stored_value": null,
+        "status": "readable",
+        "number": "435600",
+        "note": null
+      },
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の売却子牛一覧 8行目の価格",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_c917545cc5f94bb7b8d5",
+          "field_label": "価格",
+          "section": "売却子牛一覧",
+          "table_id": "c_56ca44d4ff904e6bac56",
+          "table_title": "売却子牛一覧",
+          "row_number": 8,
+          "column_id": "c_c99950d4320a4d64b172",
+          "page_id": null,
+          "box": {
+            "x": 808.0,
+            "y": 488.0,
+            "width": 127.0,
+            "height": 32.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_c917545cc5f94bb7b8d5.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": "708,400",
+        "stored_value": null,
+        "status": "readable",
+        "number": "708400",
+        "note": null
+      }
+    ],
+    "excluded": [],
+    "at": [
+      {
+        "kind": "document",
+        "source_id": "1d0c139e-5175-43d5-bba6-1d2b76d69977",
+        "label": "繁殖台帳1021「こよみ」の売却子牛一覧 5行目の価格",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "こよみ",
+          "field_id": "layout_c_cc5d5e82cf4c4ad2add6",
+          "field_label": "価格",
+          "section": "売却子牛一覧",
+          "table_id": "c_56ca44d4ff904e6bac56",
+          "table_title": "売却子牛一覧",
+          "row_number": 5,
+          "column_id": "c_c99950d4320a4d64b172",
+          "page_id": null,
+          "box": {
+            "x": 809.0,
+            "y": 400.0,
+            "width": 126.0,
+            "height": 30.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/fieldCrop.layout_c_cc5d5e82cf4c4ad2add6.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/1d0c139e-5175-43d5-bba6-1d2b76d69977/artifacts/alignedSource"
+        },
+        "value": "826,100",
+        "stored_value": null,
+        "status": "readable",
+        "number": "826100",
+        "note": null
+      }
+    ],
+    "truncated": false,
+    "summary": "繁殖台帳1021の確定済みの書類2件の売却子牛一覧 価格の最大は 826,100 です（11件、空欄9件）。\n最大の値だった欄：繁殖台帳1021「こよみ」の売却子牛一覧 5行目の価格"
+  },
+  "isError": false
+}

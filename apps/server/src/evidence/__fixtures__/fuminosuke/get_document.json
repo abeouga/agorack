@@ -1,0 +1,923 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "繁殖台帳1021「はじめ」（書類ID 0c82497c-4702-4d4f-a525-8ac3074b133b、版3、確定 2026-10-25T12:06:08+09:00）\n欄：\n- 導入年月日・金額［売却子牛一覧］：空欄　field_id=layout_c_24b3427ead3545ad808f\n- 毛色［基本項目］：黒（保存値 黒2）　field_id=layout_c_3da4d668b0a74c0b80f2_c_faf58b28d7c54857b2b3\n表「売却子牛一覧」 値のある行 4：\n- 1行目：産次=1〔layout_c_9a2f87827fe54906b749〕、日令=300〔layout_c_61fc1ce5d16745d7a0cf〕、体重=300〔layout_c_6b1bd27b52be41adab57〕、価格=100,000〔layout_c_72cf81b11c1149769242〕、種雄牛名=光晴重〔layout_c_3ddf6baf31044b36b15a〕、売却日=6/12〔layout_c_d4945e77a32d4c44abb1〕、備考=♀あきこ〔layout_c_17cbcb9e8cf0462ebd9a〕\n- 2行目：産次=2〔layout_c_b067e1cc2a834b5dbd8a〕、日令=320〔layout_c_2017897694674a3a8043〕、体重=400〔layout_c_53fe8e73e5db4e26be61〕、価格=120,000〔layout_c_9f29d76c6ecc48d68747〕、種雄牛名=百合茂〔layout_c_dc8e27a52aae4733a95b〕、売却日=6/12/3〔layout_c_8f70daf9b71d4a9096a7〕、備考=♂〔layout_c_605df8b385c94d719d60〕\n- 3行目：産次=3〔layout_c_5a7dcaee4840430ca780〕、日令=297〔layout_c_c0fa25ff026248078466〕、体重=291〔layout_c_fec1d5d9755943bd8b8c〕、価格=150,000〔layout_c_3f04ae295f18461e8fc8〕、種雄牛名=勝忠重〔layout_c_b6b570ffbe4a40018351〕、売却日=6/14/2〔layout_c_f5e1f715ccb64e788b7b〕、備考=♀〔layout_c_eae371316eea41bfb1da〕\n- 4行目：産次=4〔layout_c_68333dae04d34fb5a9ff〕、日令=292〔layout_c_988ad016e4cc4315a194〕、体重=361〔layout_c_e9d993123ea94bc88d96〕、価格=200,000〔layout_c_acb4a48856364c37acc0〕、種雄牛名=光晴重〔layout_c_9e35da575ae349218a6d〕、売却日=3/2/1〔layout_c_a99af9c1d0cc40febd2c〕、備考=♀〔layout_c_7c862d62984945b2a4bb〕\n切り抜き画像は get_field_image(document_id, field_id) で見られます。"
+    }
+  ],
+  "structuredContent": {
+    "document": {
+      "document_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+      "document_name": "はじめ",
+      "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+      "template_name": "繁殖台帳1021",
+      "version": 3,
+      "confirmed_at": "2026-10-25T12:06:08+09:00"
+    },
+    "fields": [
+      {
+        "kind": "document",
+        "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+        "label": "繁殖台帳1021「はじめ」の導入年月日・金額",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "はじめ",
+          "field_id": "layout_c_24b3427ead3545ad808f",
+          "field_label": "導入年月日・金額",
+          "section": "売却子牛一覧",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 667.0,
+            "y": 574.0,
+            "width": 518.0,
+            "height": 48.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_24b3427ead3545ad808f.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+        },
+        "value": null,
+        "stored_value": null,
+        "status": "uncertain"
+      },
+      {
+        "kind": "document",
+        "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+        "label": "繁殖台帳1021「はじめ」の毛色",
+        "location": {
+          "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+          "template_name": "繁殖台帳1021",
+          "document_name": "はじめ",
+          "field_id": "layout_c_3da4d668b0a74c0b80f2_c_faf58b28d7c54857b2b3",
+          "field_label": "毛色",
+          "section": "基本項目",
+          "table_id": null,
+          "table_title": null,
+          "row_number": null,
+          "column_id": null,
+          "page_id": null,
+          "box": {
+            "x": 411.0,
+            "y": 311.0,
+            "width": 256.0,
+            "height": 44.0
+          },
+          "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_3da4d668b0a74c0b80f2_c_faf58b28d7c54857b2b3.alignedColor",
+          "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+        },
+        "value": "黒",
+        "stored_value": "黒2",
+        "status": "readable"
+      }
+    ],
+    "tables": [
+      {
+        "table_id": "c_56ca44d4ff904e6bac56",
+        "title": "売却子牛一覧",
+        "columns": ["産次", "日令", "体重", "価格", "種雄牛名", "売却日", "備考"],
+        "rows": [
+          {
+            "row_number": 1,
+            "cells": {
+              "産次": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 1行目の産次",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_9a2f87827fe54906b749",
+                  "field_label": "産次",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 1,
+                  "column_id": "c_c893b6aae8b64e278446",
+                  "page_id": null,
+                  "box": {
+                    "x": 668.0,
+                    "y": 282.0,
+                    "width": 36.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_9a2f87827fe54906b749.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "1",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "日令": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 1行目の日令",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_61fc1ce5d16745d7a0cf",
+                  "field_label": "日令",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 1,
+                  "column_id": "c_6e64018a482a488f8107",
+                  "page_id": null,
+                  "box": {
+                    "x": 704.0,
+                    "y": 282.0,
+                    "width": 52.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_61fc1ce5d16745d7a0cf.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "300",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "体重": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 1行目の体重",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_6b1bd27b52be41adab57",
+                  "field_label": "体重",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 1,
+                  "column_id": "c_3299043169064edab8e0",
+                  "page_id": null,
+                  "box": {
+                    "x": 756.0,
+                    "y": 282.0,
+                    "width": 52.0,
+                    "height": 29.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_6b1bd27b52be41adab57.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "300",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "価格": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 1行目の価格",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_72cf81b11c1149769242",
+                  "field_label": "価格",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 1,
+                  "column_id": "c_c99950d4320a4d64b172",
+                  "page_id": null,
+                  "box": {
+                    "x": 809.0,
+                    "y": 281.0,
+                    "width": 126.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_72cf81b11c1149769242.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "100,000",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "種雄牛名": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 1行目の種雄牛名",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_3ddf6baf31044b36b15a",
+                  "field_label": "種雄牛名",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 1,
+                  "column_id": "c_3596084bb1394cf4a176",
+                  "page_id": null,
+                  "box": {
+                    "x": 935.0,
+                    "y": 280.0,
+                    "width": 86.0,
+                    "height": 31.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_3ddf6baf31044b36b15a.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "光晴重",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "売却日": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 1行目の売却日",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_d4945e77a32d4c44abb1",
+                  "field_label": "売却日",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 1,
+                  "column_id": "c_b694ab13beb847e48772",
+                  "page_id": null,
+                  "box": {
+                    "x": 1021.0,
+                    "y": 279.0,
+                    "width": 73.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_d4945e77a32d4c44abb1.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "6/12",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "備考": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 1行目の備考",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_17cbcb9e8cf0462ebd9a",
+                  "field_label": "備考",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 1,
+                  "column_id": "c_e2b6904efdae4451ac29",
+                  "page_id": null,
+                  "box": {
+                    "x": 1094.0,
+                    "y": 276.0,
+                    "width": 90.0,
+                    "height": 32.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_17cbcb9e8cf0462ebd9a.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "♀あきこ",
+                "stored_value": null,
+                "status": "readable"
+              }
+            }
+          },
+          {
+            "row_number": 2,
+            "cells": {
+              "産次": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 2行目の産次",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_b067e1cc2a834b5dbd8a",
+                  "field_label": "産次",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 2,
+                  "column_id": "c_c893b6aae8b64e278446",
+                  "page_id": null,
+                  "box": {
+                    "x": 667.0,
+                    "y": 312.0,
+                    "width": 37.0,
+                    "height": 29.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_b067e1cc2a834b5dbd8a.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "2",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "日令": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 2行目の日令",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_2017897694674a3a8043",
+                  "field_label": "日令",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 2,
+                  "column_id": "c_6e64018a482a488f8107",
+                  "page_id": null,
+                  "box": {
+                    "x": 704.0,
+                    "y": 312.0,
+                    "width": 52.0,
+                    "height": 29.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_2017897694674a3a8043.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "320",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "体重": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 2行目の体重",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_53fe8e73e5db4e26be61",
+                  "field_label": "体重",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 2,
+                  "column_id": "c_3299043169064edab8e0",
+                  "page_id": null,
+                  "box": {
+                    "x": 756.0,
+                    "y": 311.0,
+                    "width": 52.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_53fe8e73e5db4e26be61.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "400",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "価格": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 2行目の価格",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_9f29d76c6ecc48d68747",
+                  "field_label": "価格",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 2,
+                  "column_id": "c_c99950d4320a4d64b172",
+                  "page_id": null,
+                  "box": {
+                    "x": 809.0,
+                    "y": 311.0,
+                    "width": 126.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_9f29d76c6ecc48d68747.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "120,000",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "種雄牛名": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 2行目の種雄牛名",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_dc8e27a52aae4733a95b",
+                  "field_label": "種雄牛名",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 2,
+                  "column_id": "c_3596084bb1394cf4a176",
+                  "page_id": null,
+                  "box": {
+                    "x": 935.0,
+                    "y": 310.0,
+                    "width": 86.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_dc8e27a52aae4733a95b.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "百合茂",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "売却日": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 2行目の売却日",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_8f70daf9b71d4a9096a7",
+                  "field_label": "売却日",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 2,
+                  "column_id": "c_b694ab13beb847e48772",
+                  "page_id": null,
+                  "box": {
+                    "x": 1021.0,
+                    "y": 308.0,
+                    "width": 73.0,
+                    "height": 31.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_8f70daf9b71d4a9096a7.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "6/12/3",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "備考": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 2行目の備考",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_605df8b385c94d719d60",
+                  "field_label": "備考",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 2,
+                  "column_id": "c_e2b6904efdae4451ac29",
+                  "page_id": null,
+                  "box": {
+                    "x": 1094.0,
+                    "y": 306.0,
+                    "width": 90.0,
+                    "height": 32.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_605df8b385c94d719d60.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "♂",
+                "stored_value": null,
+                "status": "readable"
+              }
+            }
+          },
+          {
+            "row_number": 3,
+            "cells": {
+              "産次": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 3行目の産次",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_5a7dcaee4840430ca780",
+                  "field_label": "産次",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 3,
+                  "column_id": "c_c893b6aae8b64e278446",
+                  "page_id": null,
+                  "box": {
+                    "x": 667.0,
+                    "y": 341.0,
+                    "width": 37.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_5a7dcaee4840430ca780.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "3",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "日令": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 3行目の日令",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_c0fa25ff026248078466",
+                  "field_label": "日令",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 3,
+                  "column_id": "c_6e64018a482a488f8107",
+                  "page_id": null,
+                  "box": {
+                    "x": 704.0,
+                    "y": 341.0,
+                    "width": 52.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_c0fa25ff026248078466.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "297",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "体重": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 3行目の体重",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_fec1d5d9755943bd8b8c",
+                  "field_label": "体重",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 3,
+                  "column_id": "c_3299043169064edab8e0",
+                  "page_id": null,
+                  "box": {
+                    "x": 756.0,
+                    "y": 341.0,
+                    "width": 52.0,
+                    "height": 29.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_fec1d5d9755943bd8b8c.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "291",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "価格": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 3行目の価格",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_3f04ae295f18461e8fc8",
+                  "field_label": "価格",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 3,
+                  "column_id": "c_c99950d4320a4d64b172",
+                  "page_id": null,
+                  "box": {
+                    "x": 809.0,
+                    "y": 340.0,
+                    "width": 126.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_3f04ae295f18461e8fc8.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "150,000",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "種雄牛名": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 3行目の種雄牛名",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_b6b570ffbe4a40018351",
+                  "field_label": "種雄牛名",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 3,
+                  "column_id": "c_3596084bb1394cf4a176",
+                  "page_id": null,
+                  "box": {
+                    "x": 935.0,
+                    "y": 340.0,
+                    "width": 86.0,
+                    "height": 29.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_b6b570ffbe4a40018351.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "勝忠重",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "売却日": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 3行目の売却日",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_f5e1f715ccb64e788b7b",
+                  "field_label": "売却日",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 3,
+                  "column_id": "c_b694ab13beb847e48772",
+                  "page_id": null,
+                  "box": {
+                    "x": 1021.0,
+                    "y": 339.0,
+                    "width": 73.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_f5e1f715ccb64e788b7b.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "6/14/2",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "備考": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 3行目の備考",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_eae371316eea41bfb1da",
+                  "field_label": "備考",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 3,
+                  "column_id": "c_e2b6904efdae4451ac29",
+                  "page_id": null,
+                  "box": {
+                    "x": 1094.0,
+                    "y": 336.0,
+                    "width": 91.0,
+                    "height": 31.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_eae371316eea41bfb1da.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "♀",
+                "stored_value": null,
+                "status": "readable"
+              }
+            }
+          },
+          {
+            "row_number": 4,
+            "cells": {
+              "産次": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 4行目の産次",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_68333dae04d34fb5a9ff",
+                  "field_label": "産次",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 4,
+                  "column_id": "c_c893b6aae8b64e278446",
+                  "page_id": null,
+                  "box": {
+                    "x": 667.0,
+                    "y": 371.0,
+                    "width": 37.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_68333dae04d34fb5a9ff.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "4",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "日令": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 4行目の日令",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_988ad016e4cc4315a194",
+                  "field_label": "日令",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 4,
+                  "column_id": "c_6e64018a482a488f8107",
+                  "page_id": null,
+                  "box": {
+                    "x": 704.0,
+                    "y": 371.0,
+                    "width": 52.0,
+                    "height": 29.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_988ad016e4cc4315a194.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "292",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "体重": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 4行目の体重",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_e9d993123ea94bc88d96",
+                  "field_label": "体重",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 4,
+                  "column_id": "c_3299043169064edab8e0",
+                  "page_id": null,
+                  "box": {
+                    "x": 756.0,
+                    "y": 370.0,
+                    "width": 52.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_e9d993123ea94bc88d96.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "361",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "価格": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 4行目の価格",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_acb4a48856364c37acc0",
+                  "field_label": "価格",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 4,
+                  "column_id": "c_c99950d4320a4d64b172",
+                  "page_id": null,
+                  "box": {
+                    "x": 809.0,
+                    "y": 370.0,
+                    "width": 126.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_acb4a48856364c37acc0.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "200,000",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "種雄牛名": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 4行目の種雄牛名",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_9e35da575ae349218a6d",
+                  "field_label": "種雄牛名",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 4,
+                  "column_id": "c_3596084bb1394cf4a176",
+                  "page_id": null,
+                  "box": {
+                    "x": 935.0,
+                    "y": 369.0,
+                    "width": 86.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_9e35da575ae349218a6d.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "光晴重",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "売却日": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 4行目の売却日",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_a99af9c1d0cc40febd2c",
+                  "field_label": "売却日",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 4,
+                  "column_id": "c_b694ab13beb847e48772",
+                  "page_id": null,
+                  "box": {
+                    "x": 1021.0,
+                    "y": 368.0,
+                    "width": 73.0,
+                    "height": 30.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_a99af9c1d0cc40febd2c.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "3/2/1",
+                "stored_value": null,
+                "status": "readable"
+              },
+              "備考": {
+                "kind": "document",
+                "source_id": "0c82497c-4702-4d4f-a525-8ac3074b133b",
+                "label": "繁殖台帳1021「はじめ」の売却子牛一覧 4行目の備考",
+                "location": {
+                  "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+                  "template_name": "繁殖台帳1021",
+                  "document_name": "はじめ",
+                  "field_id": "layout_c_7c862d62984945b2a4bb",
+                  "field_label": "備考",
+                  "section": "売却子牛一覧",
+                  "table_id": "c_56ca44d4ff904e6bac56",
+                  "table_title": "売却子牛一覧",
+                  "row_number": 4,
+                  "column_id": "c_e2b6904efdae4451ac29",
+                  "page_id": null,
+                  "box": {
+                    "x": 1094.0,
+                    "y": 366.0,
+                    "width": 90.0,
+                    "height": 31.0
+                  },
+                  "crop_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/fieldCrop.layout_c_7c862d62984945b2a4bb.alignedColor",
+                  "image_url": "http://127.0.0.1:8010/api/v1/jobs/0c82497c-4702-4d4f-a525-8ac3074b133b/artifacts/alignedSource"
+                },
+                "value": "♀",
+                "stored_value": null,
+                "status": "readable"
+              }
+            }
+          }
+        ],
+        "truncated": false
+      }
+    ],
+    "not_found_fields": [],
+    "summary": "繁殖台帳1021「はじめ」（版3、確定 2026-10-25）\n導入年月日・金額：空欄、毛色：黒\n表：売却子牛一覧（値のある行 4）"
+  },
+  "isError": false
+}

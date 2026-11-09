@@ -1,0 +1,38 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "使用中のテンプレートは4種類、確定済みの書類は6件です。\n- 繁殖台帳1021（ID 937a209a-22e3-477e-8199-1d3d1e9a48ca）：2件、最新の確定 2026-10-25\n- 給水装置台帳等複写申込書1018（ID 78b02210-05c2-498a-9d2d-c14f4919c0a4）：2件、最新の確定 2026-10-21\n- セル内チェックボックス検証用・申請受付（ID eeccf11e-8663-483a-a634-5a70022afb92）：1件、最新の確定 2026-10-04\n- チェックリスト検証用・申請受付（ID 042cfc9b-771d-4264-9fc4-5724b7795971）：1件、最新の確定 2026-10-04"
+    }
+  ],
+  "structuredContent": {
+    "templates": [
+      {
+        "template_id": "937a209a-22e3-477e-8199-1d3d1e9a48ca",
+        "name": "繁殖台帳1021",
+        "document_count": 2,
+        "latest_confirmed_at": "2026-10-25T12:06:08+09:00"
+      },
+      {
+        "template_id": "78b02210-05c2-498a-9d2d-c14f4919c0a4",
+        "name": "給水装置台帳等複写申込書1018",
+        "document_count": 2,
+        "latest_confirmed_at": "2026-10-21T14:41:46+09:00"
+      },
+      {
+        "template_id": "eeccf11e-8663-483a-a634-5a70022afb92",
+        "name": "セル内チェックボックス検証用・申請受付",
+        "document_count": 1,
+        "latest_confirmed_at": "2026-10-04T23:24:58+09:00"
+      },
+      {
+        "template_id": "042cfc9b-771d-4264-9fc4-5724b7795971",
+        "name": "チェックリスト検証用・申請受付",
+        "document_count": 1,
+        "latest_confirmed_at": "2026-10-04T23:16:01+09:00"
+      }
+    ],
+    "summary": "使用中のテンプレートは4種類、確定済みの書類は6件です。"
+  },
+  "isError": false
+}
