@@ -14,7 +14,8 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check": "npm run typecheck && npm run lint && npm run format:check"
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm test",
+    "test": "npm run test --workspaces --if-present"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -23,7 +24,8 @@
     "globals": "^17.14.0",
     "prettier": "^3.9.10",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.72.1"
+    "typescript-eslint": "^8.72.1",
+    "vitest": "^5.1.0"
   },
   "overrides": {
     "minimatch": "^11.0.5"
