@@ -1,0 +1,59 @@
+[
+  {
+    "file": "list_templates.json",
+    "tool": "list_templates",
+    "arguments": {},
+    "isError": false
+  },
+  {
+    "file": "get_document.json",
+    "tool": "get_document",
+    "arguments": {
+      "document": "こよみ"
+    },
+    "isError": false
+  },
+  {
+    "file": "search_documents.json",
+    "tool": "search_documents",
+    "arguments": {
+      "field_equals": [
+        {
+          "field": "毛色",
+          "value": "黒"
+        }
+      ]
+    },
+    "isError": false
+  },
+  {
+    "file": "aggregate_sum.json",
+    "tool": "aggregate",
+    "arguments": {
+      "template": "繁殖台帳1021",
+      "document": "こよみ",
+      "field": "売却子牛一覧 価格",
+      "operation": "sum"
+    },
+    "isError": false
+  },
+  {
+    "file": "aggregate_max.json",
+    "tool": "aggregate",
+    "arguments": {
+      "template": "繁殖台帳1021",
+      "document": "こよみ",
+      "field": "売却子牛一覧 価格",
+      "operation": "max"
+    },
+    "isError": false
+  },
+  {
+    "file": "error_not_found.json",
+    "tool": "get_document",
+    "arguments": {
+      "document": "存在しない書類ZZZ"
+    },
+    "isError": true
+  }
+]
