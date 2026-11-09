@@ -16,11 +16,16 @@ Agorack は、業務の部品（文之助：帳票、カブロガー：走行の
 - 会話のループ（Claude の Messages API で道具を選ばせ、MCP で部品を呼び、結果を返して繰り返す）
 - 部品の接続（設定ファイルに書いた MCP サーバーにつなぐ。最初は文之助だけ）
 - 根拠の抽出と表示（部品が返した根拠を共通の形にそろえ、右の欄に出す。最初は書類だけ）
+- 部品の画面の埋め込み（右の欄に、部品の「埋め込み用の画面」を iframe で出す。最初は文之助の書類の画面。§7.4）
+
+最初の版は次の順で作る。iframe の埋め込みは、チャットと根拠の表示が通しで動いてから取りかかる。
+
+1. 土台・サーバー・画面（ページ画像に枠を描く右の欄まで）を作り、通しで確かめる
+2. 部品の埋め込み用の画面（文之助の側）と、右の欄の iframe（Agorack の側）を作る
 
 **最初の版で作らないもの**
 
 - カブロガーの接続と走行の表示（カブロガーの MCP の仕様が決まってから）
-- 部品の画面の iframe 埋め込み（部品側に埋め込み用の画面ができてから）
 - 会話の保存（最初はサーバーのメモリとブラウザーの中だけ）
 - ログイン・利用者の区別（最初は手元の PC だけで動かす）
 - 画像の受け取りと部品への取込の依頼
@@ -150,10 +155,13 @@ apps/web/src/
 │  │  ├─ state/             会話の状態（ターン・回答・根拠）
 │  │  └─ api/               サーバーとの通信（ターンの開始・SSE の受け取り）
 │  ├─ history/              会話の履歴（サイドバー）
+│  ├─ sources/              部品の状態（上部バー）
 │  └─ evidence/             右の欄
-│     ├─ EvidencePanel.tsx  根拠の kind を見て表示を選ぶ
+│     ├─ EvidencePanel.tsx  根拠の一覧と、選んだ根拠の表示（embedUrl・kind を見て表示を選ぶ）
+│     ├─ selection.ts       どの根拠を選んでいるか（表の行のホバー・クリックとつなぐ）
 │     └─ renderers/
-│        ├─ document/       書類（ページ画像に欄の枠を描く。あとで部品の埋め込み画面に替える）
+│        ├─ embed/          部品の埋め込み用の画面（iframe と postMessage のやり取り）
+│        ├─ document/       書類（ページ画像に欄の枠を描く。埋め込めないときに使う）
 │        └─ fallback/       知らない kind（ラベルと値だけを出す）
 ├─ shared/                  機能をまたいで使う部品（Markdown の表示・回る輪など）
 └─ styles/
@@ -245,7 +253,8 @@ sequenceDiagram
         "args": ["-m", "app.mcp_server"],
         "cwd": "C:/path/to/fuminosuke/backend",
         "env": { "FUMINOSUKE_API_URL": "http://127.0.0.1:8010" }
-      }
+      },
+      "embed": { "origin": "http://127.0.0.1:5173" }
     },
     {
       "id": "cub",
@@ -260,6 +269,7 @@ sequenceDiagram
 
 - `transport.type` は `stdio`（手元で起動する）と `http`（Streamable HTTP の住所へつなぐ）の2種類。
 - `id` は道具の名前の接頭辞になる（§6.2）。英数字と `_` だけ。
+- `embed.origin` は、その部品の埋め込み用の画面の住所（§7.4）。書かない部品は iframe で埋め込まない。
 
 ### 6.2 道具の名前
 
@@ -287,10 +297,11 @@ type Evidence = {
   label: string;           // 人が読める説明（例：繁殖台帳1021「はじめ」の毛色）
   location: Record<string, unknown>; // 部品ごとの位置の情報
   value: unknown;          // 値
+  embedUrl: string | null; // 部品の埋め込み用の画面の絶対URL（埋め込めないときは null）
 };
 ```
 
-部品の MCP は `kind`・`source_id`・`label`・`location`・`value` を返す（文之助の MCP はこの形）。名前の対応は次のとおり。
+部品の MCP は `kind`・`source_id`・`label`・`location`・`value`・`embed_url` を返す（文之助の MCP は `embed_url` 以外はこの形。`embed_url` は埋め込みの段階で足す）。名前の対応は次のとおり。
 
 | 部品の MCP が返す名前 | Agorack の型 | 意味 |
 |---|---|---|
@@ -299,6 +310,7 @@ type Evidence = {
 | `label` | `label` | 人が読める説明 |
 | `location` | `location` | 部品ごとの位置の情報 |
 | `value` | `value` | 値 |
+| `embed_url`（なくてもよい） | `embedUrl` | 埋め込み用の画面の住所。ないときは `null` にそろえる |
 | （なし） | `sourceId` | どの部品か。Agorack が、どの部品の道具を呼んだかから付ける |
 
 部品の `source_id` は「記録の出どころ」の意味で、Agorack の `sourceId`（部品の id）とは別物なので、取り込むときに `recordId` へ名前を変える。
@@ -309,15 +321,42 @@ type Evidence = {
 
 ### 7.3 画面での表示
 
-右の欄は `kind` を見て表示を選ぶ。
+右の欄は、根拠の一覧と、選んだ根拠の表示からなる。表示は次の順で選ぶ。
 
-| kind | 表示 | 最初の版 |
+| 条件 | 表示 | 最初の版 |
 |---|---|---|
-| `document` | 書類のページ画像（`location.image_url`）に欄の枠（`location.box`）を描く | 作る |
-| `ride` | 地図に区間の線、グラフの時間帯を強調 | あとで（カブロガーの仕様が決まってから） |
+| `embedUrl` があり、その住所が埋め込みを許した部品のもの | 部品の埋め込み用の画面を iframe で出す（§7.4） | 作る（最後の段階） |
+| `kind` が `document` | 書類のページ画像（`location.image_url`）に欄の枠（`location.box`）を描く | 作る |
+| `kind` が `ride` | 地図に区間の線、グラフの時間帯を強調 | あとで（カブロガーの仕様が決まってから） |
 | それ以外 | ラベルと値だけを出す | 作る |
 
-部品に埋め込み用の画面ができたら、`document` などの表示を iframe（部品の画面）に替える。替えるのは `features/evidence/renderers/` の中だけで済むようにする。
+iframe が開けない（部品が止まっている・書類が見つからない）ときは、`kind` ごとの表示に戻す。表示を足すのは `features/evidence/renderers/` の中だけで済むようにする。
+
+### 7.4 部品の画面の埋め込み
+
+部品は、根拠を1つ見せるための「埋め込み用の画面」を URL で公開する。Agorack はその画面を右の欄に iframe で出す。部品の画面を Agorack の React のビルドに取り込まないので、部品ごとに別々に直せる。
+
+**部品の側の約束**
+
+- 埋め込み用の画面は見るだけにする。値の修正・確定の操作は出さない（§3 の「値を直さない」）。修正したいときのために、部品の普通の画面を別のタブで開くリンクだけを置く。
+- `Content-Security-Policy: frame-ancestors` で、設定に書いた住所（Agorack の画面）だけに埋め込みを許す。
+- 根拠に `embed_url`（その根拠を見せる画面の絶対URL）を付けて返す。
+
+**Agorack の側の約束**
+
+- 埋め込みを許す住所（origin）は、部品の設定（`config/sources.json` の `embed.origin`）に書き、`GET /api/sources` で画面に渡す。`embedUrl` の住所がこの一覧にないときは iframe を使わない。
+- iframe には `sandbox="allow-scripts allow-same-origin allow-popups"` だけを付ける。上の画面を動かす権限やフォームを送る権限は与えない。
+- 同じ記録の中で強調する場所だけが変わるときは、iframe を読み直さず `postMessage` で伝える。
+
+**やり取り（postMessage）**
+
+| 向き | メッセージ | 意味 |
+|---|---|---|
+| Agorack → 部品 | `{ type: "agorack:highlight", fieldId }` | 強調する場所を替える |
+| 部品 → Agorack | `{ type: "embed:ready" }` | 表示の準備ができた |
+| 部品 → Agorack | `{ type: "embed:error", code }` | 記録が見つからない・表示できない |
+
+受け取る側は、相手の origin が許した住所であることを必ず確かめる。メッセージの形は `packages/contracts` に置き、zod で検証する。
 
 ---
 
@@ -328,7 +367,7 @@ type Evidence = {
 | メソッド | パス | 内容 |
 |---|---|---|
 | GET | `/api/health` | サーバーが動いているか |
-| GET | `/api/sources` | 部品の一覧と状態（接続中・失敗の理由・道具の数） |
+| GET | `/api/sources` | 部品の一覧と状態（接続中・失敗の理由・道具の数・埋め込みを許す住所） |
 | POST | `/api/conversations` | 会話を始める。会話の ID を返す |
 | POST | `/api/conversations/:id/turns` | 質問を送る。応答は SSE で流す |
 | POST | `/api/conversations/:id/turns/current/stop` | 進行中のターンを止める |
@@ -358,7 +397,7 @@ type Evidence = {
 | つなぐ部品 | `config/sources.json` | 入れない（`sources.example.json` だけ入れる） |
 | サーバーの住所 | `127.0.0.1` だけで待ち受ける（最初の版） | — |
 
-画面からの要求は、開発時の画面の住所（Vite）からだけ受け付ける。
+画面からの要求は、開発時の画面の住所（Vite、`http://127.0.0.1:5174`）からだけ受け付ける。文之助の画面が 5173 を使うので、Agorack の画面は 5174 で開く。
 
 ---
 
@@ -368,13 +407,15 @@ type Evidence = {
 - `agent` のループは、偽の ModelClient と ToolCatalog で、道具の呼び出し・並行・エラー・回数の上限・停止を確かめる。
 - `evidence` の取り出しは、文之助の MCP が実際に返した結果を保存したもので確かめる。
 - 通しの確認は、手元の文之助（8010）と文之助の MCP サーバーにつなぎ、帳票の質問（値・合計・最大・条件で探す）に根拠付きで答え、右の欄に枠が出ることを確かめる。Claude の API を使うので、回数を記録する。
+- 埋め込みの段階では、右の欄に文之助の埋め込み用の画面が出ること、根拠を替えると強調する欄が替わること、文之助を止めるとページ画像の表示に戻ることを確かめる。
+- 画面は、サーバーができる前から、決まったイベントを流す偽のサーバーで作って確かめる。
 
 ---
 
 ## 11. 次の版で考えること
 
 - カブロガーの接続と `ride` の表示
-- 部品の埋め込み画面（iframe）と、`postMessage` でのやり取り（強調する欄・高さ）
+- ログインがある部品（Cognito など）の画面を iframe で埋め込むときの、ログインの状態の受け渡し
 - 会話の保存（データベース）
 - 部品の MCP を HTTP で公開したときの認証（機械用の鍵）
 - 道具の結果が大きいときの扱い（Claude には要約だけを渡し、根拠の詳細は画面にだけ流す）
