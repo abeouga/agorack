@@ -10,7 +10,7 @@ import {
 import { boxStyle, documentLocation } from "./document/location";
 import { FallbackEvidence } from "./fallback/FallbackEvidence";
 import { EMBED_SANDBOX } from "./embed/EmbedEvidence";
-import { embedTarget } from "./embed/embedTarget";
+import { embedFailureKey, embedFailureOf, embedTarget } from "./embed/embedTarget";
 import { EvidenceView, rendererFor } from "./index";
 import type { EvidenceViewProps } from "./types";
 
@@ -189,5 +189,20 @@ describe("部品の埋め込み用の画面", () => {
     );
     expect(html).not.toContain("<iframe");
     expect(html).toContain("alignedSource");
+  });
+});
+
+describe("埋め込みの失敗を覚える単位", () => {
+  it("欄がない（FIELD_NOT_FOUND）ときはその欄だけ、ほかの失敗は記録の全部", () => {
+    const failures = new Map([
+      [embedFailureKey("FIELD_NOT_FOUND", row2), { code: "FIELD_NOT_FOUND" }],
+    ]);
+    expect(embedFailureOf(failures, row2)).toEqual({ code: "FIELD_NOT_FOUND" });
+    // 同じ記録のほかの欄は埋め込みを続ける
+    expect(embedFailureOf(failures, row3)).toBeUndefined();
+
+    const recordFailures = new Map([[embedFailureKey("timeout", row2), { code: "timeout" }]]);
+    expect(embedFailureOf(recordFailures, row3)).toEqual({ code: "timeout" });
+    expect(embedFailureOf(recordFailures, { ...ride })).toBeUndefined();
   });
 });

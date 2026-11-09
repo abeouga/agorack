@@ -3,7 +3,7 @@ import { createElement, useState } from "react";
 import { FiInfo } from "react-icons/fi";
 import { DocumentEvidence } from "./document/DocumentEvidence";
 import { type EmbedFailure, EmbedEvidence } from "./embed/EmbedEvidence";
-import { embedTarget } from "./embed/embedTarget";
+import { embedFailureKey, embedFailureOf, embedTarget } from "./embed/embedTarget";
 import { FallbackEvidence } from "./fallback/FallbackEvidence";
 import type { EvidenceRenderer, EvidenceViewProps } from "./types";
 
@@ -30,19 +30,24 @@ const FAILURE_TEXT: Record<string, string> = {
 
 /**
  * 根拠を出す。埋め込めるときは部品の画面を、埋め込めない・失敗したときは kind ごとの表示を出す。
- * 埋め込みに失敗した記録は覚えておき、同じ記録では埋め込みを試し直さない。
+ * 埋め込みに失敗したことは覚えておき、試し直さない（覚える単位は embedFailureKey。
+ * 欄がないときはその欄だけ、記録が開けないときは記録の全部）。
  */
 export function EvidenceView(props: EvidenceViewProps) {
   const [failures, setFailures] = useState<ReadonlyMap<string, EmbedFailure>>(new Map());
   const target = embedTarget(props.evidence, props.embedOrigin);
-  const failure = target ? failures.get(target.recordKey) : undefined;
+  const failure = target ? embedFailureOf(failures, props.evidence) : undefined;
   if (target && !failure) {
     return (
       <EmbedEvidence
         key={target.recordKey}
         target={target}
         sourceName={props.sourceName}
-        onFailed={(next) => setFailures((current) => new Map(current).set(target.recordKey, next))}
+        onFailed={(next) =>
+          setFailures((current) =>
+            new Map(current).set(embedFailureKey(next.code, props.evidence), next),
+          )
+        }
       />
     );
   }
