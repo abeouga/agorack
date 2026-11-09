@@ -269,7 +269,7 @@ sequenceDiagram
 
 - `transport.type` は `stdio`（手元で起動する）と `http`（Streamable HTTP の住所へつなぐ）の2種類。
 - `id` は道具の名前の接頭辞になる（§6.2）。英数字と `_` だけ。
-- `embed.origin` は、その部品の埋め込み用の画面の住所（§7.4）。書かない部品は iframe で埋め込まない。
+- `embed.origin` は、その部品の埋め込み用の画面の住所（§7.4）。書かない部品は iframe で埋め込まない。文之助の画面の番号は起動の仕方で変わる（起動の手順では 5173 から空いている番号、プレビューでは 5180）ので、実際に動いている住所に合わせる。
 
 ### 6.2 道具の名前
 
@@ -347,6 +347,8 @@ iframe が開けない（部品が止まっている・書類が見つからな�
 - 埋め込みを許す住所（origin）は、部品の設定（`config/sources.json` の `embed.origin`）に書き、`GET /api/sources` で画面に渡す。`embedUrl` の住所がこの一覧にないときは iframe を使わない。
 - iframe には `sandbox="allow-scripts allow-same-origin allow-popups"` だけを付ける。上の画面を動かす権限やフォームを送る権限は与えない。
 - 同じ記録の中で強調する場所だけが変わるときは、iframe を読み直さず `postMessage` で伝える。
+- Agorack の画面と部品の画面の住所は、どちらも `127.0.0.1` か、どちらも `localhost` にそろえる。片方だけ違うと、ブラウザーが別のサイトと見なし、埋め込んだ画面の保存領域や Cookie が使えないおそれがある。
+- Agorack の画面は 5174 に固定し（空いていなければ起動を止める）、部品の画面と番号が入れ替わらないようにする。
 
 **やり取り（postMessage）**
 
