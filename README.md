@@ -27,7 +27,7 @@ Node 22.12 以上と npm が要ります。
 
 ```bash
 npm install          # 全部の workspace の依存を入れる
-npm run check        # 型の検査・静的検査・書式の検査をまとめて行う
+npm run check        # 型の検査・静的検査・書式の検査・試験をまとめて行う
 ```
 
 個別に回すときは次のとおりです。
@@ -38,6 +38,7 @@ npm run check        # 型の検査・静的検査・書式の検査をまとめ
 | `npm run lint` | 静的検査（ESLint）。画面とサーバーが互いを import していないかも確かめる |
 | `npm run format` | 書式をそろえる（Prettier） |
 | `npm run format:check` | 書式がそろっているかだけを確かめる |
+| `npm test` | 全部の workspace の試験（Vitest） |
 
 画面とサーバーを起動するコマンドは、サーバーの土台（#3）と画面の土台（#9）で足します。
 
