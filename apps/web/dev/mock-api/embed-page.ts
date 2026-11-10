@@ -1,12 +1,18 @@
-import type { Evidence } from "@agorack/contracts";
+import {
+  type Evidence,
+  HIGHLIGHT_FIELD_IDS_MAX,
+  HIGHLIGHT_FIELD_ID_MAX_LENGTH,
+} from "@agorack/contracts";
 import { MOCK_EMBED_ORIGIN } from "./embed-origin";
 import { koyomiFields, koyomiPrices } from "./evidence";
 
 /**
  * 偽の埋め込み用の画面（文之助の /embed?job=…&field=… の代わり）。偽のサーバーと別の住所で配る。
- * 文之助の埋め込み用の画面と同じく、ページ画像に欄の枠を描き、postMessage の3種に答える。
- * - 親 → 画面：agorack:highlight（読み直さずに枠を移す）
- * - 画面 → 親：embed:ready（画像を出した）・embed:error（DOCUMENT_NOT_FOUND・FIELD_NOT_FOUND）
+ * 文之助の埋め込み用の画面と同じく、ページ画像に欄の枠を描き、postMessage に答える。
+ * - 親 → 画面：agorack:highlight（読み直さずに枠を移す。fieldIds があれば、その欄をまとめて薄く囲む。
+ *   fieldIds が契約に合わない（500 個を超える・1〜200 文字の文字列でない）ときは、メッセージごと捨てる）
+ * - 画面 → 親：embed:ready（画像を出した）・embed:error（DOCUMENT_NOT_FOUND・FIELD_NOT_FOUND）・
+ *   embed:close（右上の × を押した）
  * - mock=silent を付けると何も送らない（部品が止まっているときの、時間切れを試す）
  * 中身は見本で、文之助の画面の仕様ではない。
  */
@@ -53,6 +59,7 @@ export function renderEmbedPage(requestUrl: string): EmbedResponse {
     field: url.searchParams.get("field"),
     silent: url.searchParams.get("mock") === "silent",
     allowed: ALLOWED_PARENTS,
+    limits: { ids: HIGHLIGHT_FIELD_IDS_MAX, length: HIGHLIGHT_FIELD_ID_MAX_LENGTH },
   };
   // </script> で閉じられないよう < を逃がす
   const json = JSON.stringify(data).replace(/</g, "\\u003c");
@@ -71,6 +78,9 @@ function page(json: string): string {
   body { margin: 0; display: flex; flex-direction: column; height: 100vh; background: #f5f7f9; }
   header { display: flex; justify-content: space-between; gap: 8px; padding: 8px 12px; border-bottom: 1px solid #cbd5de; background: #fff; font-size: 13px; }
   header b { font-size: 14px; }
+  header button { min-width: 28px; height: 28px; border: 0; border-radius: 6px; background: transparent; color: #5f6f7d; font-size: 18px; cursor: pointer; }
+  header button:hover { background: #e6edf4; }
+  .mark { position: absolute; border: 2px solid #d9480fcc; background: #ffb02e2e; pointer-events: none; }
   header small { color: #5f6f7d; }
   .stage-wrap { flex: 1; min-height: 0; overflow: auto; padding: 10px; background: #dfe5ea; }
   .stage { position: relative; width: 200%; background: #fff; box-shadow: 0 2px 10px #1d354533; }
@@ -83,8 +93,8 @@ function page(json: string): string {
 </style>
 </head>
 <body>
-<header><span><b>偽の埋め込み用の画面</b> <span id="title"></span></span><small id="opened"></small></header>
-<div class="stage-wrap" id="wrap"><div class="stage" id="stage"><img id="page" alt="ページ画像"><div id="box"></div></div></div>
+<header><span><b>偽の埋め込み用の画面</b> <span id="title"></span></span><span><small id="opened"></small> <button type="button" id="close" aria-label="閉じる" title="閉じる">×</button></span></header>
+<div class="stage-wrap" id="wrap"><div class="stage" id="stage"><img id="page" alt="ページ画像"><div id="marks"></div><div id="box"></div></div></div>
 <footer><span id="label"></span><strong id="value"></strong><small id="count"></small></footer>
 <script>
 const DATA = ${json};
@@ -99,6 +109,32 @@ const send = (message) => {
   if (DATA.silent || !parentOrigin) return;
   window.parent.postMessage(message, parentOrigin);
 };
+document.getElementById("close").addEventListener("click", () => send({ type: "embed:close" }));
+// 根拠の欄の全部（fieldIds）。届くまでは選んだ欄だけ
+let marked = [];
+const place = (element, b) => {
+  element.style.left = (b.x / size.width) * 100 + "%";
+  element.style.top = (b.y / size.height) * 100 + "%";
+  element.style.width = (b.width / size.width) * 100 + "%";
+  element.style.height = (b.height / size.height) * 100 + "%";
+};
+const showMarks = () => {
+  const marks = document.getElementById("marks");
+  marks.replaceChildren();
+  if (!size) return;
+  for (const id of marked) {
+    const field = DATA.record.fields[id];
+    if (!field) continue;
+    const mark = document.createElement("div");
+    mark.className = "mark";
+    place(mark, field.box);
+    marks.append(mark);
+  }
+};
+const validIds = (ids) =>
+  Array.isArray(ids) &&
+  ids.length <= DATA.limits.ids &&
+  ids.every((id) => typeof id === "string" && id.length >= 1 && id.length <= DATA.limits.length);
 const showCount = () => {
   document.getElementById("count").textContent = "強調を替えた回数 " + highlights + "（画面は読み直していません）";
 };
@@ -113,12 +149,8 @@ const show = (fieldId) => {
   document.getElementById("label").textContent = field.label;
   document.getElementById("value").textContent = field.value ?? "（空欄）";
   if (!size) return;
-  const b = field.box;
   box.style.display = "block";
-  box.style.left = (b.x / size.width) * 100 + "%";
-  box.style.top = (b.y / size.height) * 100 + "%";
-  box.style.width = (b.width / size.width) * 100 + "%";
-  box.style.height = (b.height / size.height) * 100 + "%";
+  place(box, field.box);
   setTimeout(() => box.scrollIntoView({ block: "center", inline: "center" }), 220);
 };
 let current = DATA.field;
@@ -141,8 +173,12 @@ window.addEventListener("message", (event) => {
   if (event.source !== window.parent || event.origin !== parentOrigin) return;
   const data = event.data;
   if (!data || data.type !== "agorack:highlight" || typeof data.fieldId !== "string") return;
+  // 決まりに合わない fieldIds は、メッセージごと捨てる（一部だけを使わない）
+  if (data.fieldIds !== undefined && !validIds(data.fieldIds)) return;
   highlights += 1;
   current = data.fieldId;
+  marked = data.fieldIds ?? [];
+  showMarks();
   show(current);
   showCount();
 });
