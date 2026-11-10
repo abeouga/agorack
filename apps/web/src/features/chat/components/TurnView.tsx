@@ -1,7 +1,9 @@
 import type { TurnEndReason } from "@agorack/contracts";
-import { FiAlertTriangle, FiFileText, FiRefreshCw } from "react-icons/fi";
+import { useState } from "react";
+import { FiAlertTriangle, FiChevronDown, FiFileText, FiRefreshCw } from "react-icons/fi";
 import { Markdown, type TableRowBinding } from "../../../shared/markdown/Markdown";
 import type { Turn } from "../state/conversation";
+import { EvidenceList, type EvidenceListState } from "./EvidenceList";
 import { ToolProgress } from "./ToolProgress";
 
 /** 答えが途中で終わった理由の知らせ（end_turn は出さない） */
@@ -12,15 +14,18 @@ const END_NOTES: Partial<Record<TurnEndReason, string>> = {
   refusal: "この質問には答えられませんでした。",
 };
 
-/** 1回のやり取り：質問と、答え（進み具合・Markdown・失敗・根拠への案内） */
+/** 1回のやり取り：質問と、答え（進み具合・Markdown・失敗）と、答えの下の根拠の一覧 */
 export function TurnView({
   turn,
   latest,
   busy,
   showingEvidence,
+  evidenceState,
   rows,
   sourceName,
   onShowEvidence,
+  onHoverEvidence,
+  onSelectEvidence,
   onRetry,
 }: {
   turn: Turn;
@@ -28,11 +33,18 @@ export function TurnView({
   busy: boolean;
   /** 右の欄にこのターンの根拠を出している */
   showingEvidence: boolean;
+  evidenceState: EvidenceListState;
   rows: TableRowBinding;
   sourceName: (sourceId: string) => string;
+  /** 右の欄にこのターンの根拠を出す */
   onShowEvidence: () => void;
+  onHoverEvidence: (key: string | null) => void;
+  /** 根拠を選んで右の欄に出す */
+  onSelectEvidence: (key: string) => void;
   onRetry: () => void;
 }) {
+  const [listOpen, setListOpen] = useState(false);
+  const listId = `evidence-${turn.id}`;
   const pending = turn.status === "pending";
   const stopped = turn.failure?.code === "stopped";
   const classes = [
@@ -87,14 +99,29 @@ export function TurnView({
           <div className="chat-turn-actions">
             <button
               type="button"
-              className={showingEvidence ? "chat-evidence-button active" : "chat-evidence-button"}
-              aria-pressed={showingEvidence}
-              onClick={onShowEvidence}
+              className={listOpen ? "chat-evidence-button active" : "chat-evidence-button"}
+              aria-expanded={listOpen}
+              aria-controls={listOpen ? listId : undefined}
+              onClick={() => {
+                setListOpen(!listOpen);
+                if (!showingEvidence) onShowEvidence();
+              }}
             >
               <FiFileText aria-hidden="true" />
               根拠 {turn.evidence.length}件
+              <FiChevronDown className="chat-evidence-chevron" aria-hidden="true" />
             </button>
           </div>
+        )}
+        {listOpen && turn.evidence.length > 0 && (
+          <EvidenceList
+            id={listId}
+            evidence={turn.evidence}
+            answer={turn.text}
+            state={evidenceState}
+            onHover={onHoverEvidence}
+            onSelect={onSelectEvidence}
+          />
         )}
       </div>
     </>

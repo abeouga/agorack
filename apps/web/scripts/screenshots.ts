@@ -55,11 +55,12 @@ try {
   await page.getByText("文之助で値を集計しています").waitFor({ timeout: TIMEOUT });
   await shoot("chat-02-streaming");
 
-  // 根拠付きの答え（表の行にホバーして、右の欄の根拠を強調）
+  // 根拠付きの答え（答えの下の根拠の一覧を開き、表の行にホバーして、右の欄と一覧の根拠を強調）
   await waitAnswered(page);
   await waitEmbedReady(page);
+  await page.locator(".chat-evidence-button").last().click();
   await page.locator("tr.has-source").nth(1).hover();
-  await page.locator(".evidence-item.is-highlighted").waitFor({ timeout: TIMEOUT });
+  await page.locator(".chat-evidence-item.is-highlighted").waitFor({ timeout: TIMEOUT });
   await shoot("chat-03-evidence", { moveAway: false });
 
   // ---- 右の欄：部品の埋め込み用の画面（#14） ----
@@ -72,7 +73,7 @@ try {
   // ② 別の行（6行目）を選ぶと、iframe を読み直さずに強調が替わる
   const frameBefore = await page.locator("iframe.embed-frame").elementHandle();
   await page.locator("tr.has-source").nth(4).click();
-  await page.locator(".evidence-item.is-selected").waitFor({ timeout: TIMEOUT });
+  await page.locator(".chat-evidence-item.is-selected").waitFor({ timeout: TIMEOUT });
   await settle(page);
   const sameFrame = await page.evaluate(
     (before) => before === document.querySelector("iframe.embed-frame"),

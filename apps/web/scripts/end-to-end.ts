@@ -6,6 +6,8 @@
  *   npm run end-to-end -w @agorack/web -- 1 3    # 1問目と3問目だけ（Claude を呼ぶ回数を減らすため）
  *
  * 質問ごとに新しい会話で送る。Claude の API を使うので、回すたびに呼び出しが増える。
+ * 答えの下の根拠の一覧を開いて撮る。表の行を押したあと（-row.png）と、根拠が2つ以上の書類にまたがるときに
+ * 一覧で2つめの書類に切り替えたあと（-doc.png）も撮る。
  * 出力は apps/web/screenshots/（Git に入れない）：e2e-<番号>.png と e2e-<番号>.json（頭は AGORACK_E2E_PREFIX で替えられる）。
  * ブラウザーは手元の Microsoft Edge（Playwright の channel: "msedge"）を使う。
  */
@@ -63,10 +65,17 @@ try {
       .first()
       .waitFor({ timeout: 30_000 });
     await page.waitForTimeout(1500);
+
+    // 答えの下の根拠の一覧を開く
+    const bot = page.locator(".chat-msg.bot").last();
+    const evidenceButton = bot.locator(".chat-evidence-button");
+    if ((await evidenceButton.count()) > 0) {
+      await evidenceButton.click();
+      await bot.locator(".chat-evidence").waitFor({ timeout: 5_000 });
+    }
     await page.mouse.move(0, 0);
 
-    const bot = page.locator(".chat-msg.bot").last();
-    const linkedRows = await page.locator("tr.has-source").count();
+    const linkedRows = await bot.locator("tr.has-source").count();
     const record: Record<string, unknown> = {
       number,
       question,
@@ -74,14 +83,16 @@ try {
       answer: (await textOf(bot.locator(".chat-answer"))) ?? "",
       failure: await textOf(bot.locator(".chat-failed")),
       tools: await bot.locator(".chat-tool").allTextContents(),
-      evidenceCount: await page.locator(".evidence-item").count(),
+      evidenceCount: Number(/根拠 (\d+)件/.exec((await textOf(evidenceButton)) ?? "")?.[1] ?? 0),
+      documents: await bot.locator(".chat-evidence-record-title").allTextContents(),
+      activeRow: await textOf(bot.locator("tr.has-source.active")),
       linkedRows,
       embed: await embedState(page),
       boxes: await page.locator(".document-box").count(),
       focusBox: (await page.locator(".document-box.is-focus").count()) > 0,
       documentTitle: await textOf(page.locator(".document-title")),
       notice: await textOf(page.locator(".document-notice, .evidence-fallback-notice")),
-      evidence: await page.locator(".evidence-item").allTextContents(),
+      evidence: await bot.locator(".chat-evidence-item").allTextContents(),
     };
     await page.screenshot({ path: `${outDir}${prefix}-${number}.png` });
 
@@ -93,11 +104,11 @@ try {
         .locator("iframe.embed-frame")
         .elementHandle()
         .catch(() => null);
-      await page.locator("tr.has-source").nth(index).click();
+      await bot.locator("tr.has-source").nth(index).click();
       await page.waitForTimeout(1500);
       await page.mouse.move(0, 0);
       record.selectedRow = index + 1;
-      record.selectedEvidence = await textOf(page.locator(".evidence-item.is-selected"));
+      record.selectedEvidence = await textOf(bot.locator(".chat-evidence-item.is-selected"));
       record.sameFrameAfterSelect = before
         ? await page.evaluate(
             (frame) => frame === document.querySelector("iframe.embed-frame"),
@@ -105,6 +116,23 @@ try {
           )
         : null;
       await page.screenshot({ path: `${outDir}${prefix}-${number}-row.png` });
+    }
+
+    // 根拠が2つ以上の書類にまたがるなら、答えの下の一覧で2つめの書類に切り替えて撮る
+    const records = bot.locator(".chat-evidence-record");
+    if ((await records.count()) >= 2) {
+      await records.nth(1).click();
+      await page.waitForTimeout(1500);
+      await page.mouse.move(0, 0);
+      record.switchedDocument = await textOf(
+        bot.locator(".chat-evidence-record.active .chat-evidence-record-title"),
+      );
+      record.evidenceAfterSwitch = await bot.locator(".chat-evidence-item").allTextContents();
+      record.embedAfterSwitch = await page
+        .locator("iframe.embed-frame")
+        .getAttribute("src")
+        .catch(() => null);
+      await page.screenshot({ path: `${outDir}${prefix}-${number}-doc.png` });
     }
     await writeFile(
       `${outDir}${prefix}-${number}.json`,
