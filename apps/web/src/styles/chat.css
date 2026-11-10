@@ -248,7 +248,10 @@
   margin-top: 0.25em;
 }
 
-/* 答えの表。根拠のある行は、ホバーで右の欄の根拠を強調し、押すと選ぶ */
+/*
+ * 答えの表。文之助のチャットの答えの表（ask.css の .ask-table）と同じ色にする。
+ * 根拠のある行（has-source）は、ホバーで右の欄の欄を強調し、押すと選ぶ。右の欄に出している欄の行が active
+ */
 .md-table-wrap {
   max-height: 360px;
   overflow: auto;
@@ -294,6 +297,12 @@
 .md-table tbody tr.has-source.active td {
   background: var(--ui-highlight-strong);
 }
+/* 表の中の太字は、答えの文章の太字の下線を引かない（行の色と重ねない） */
+.md-table strong {
+  padding: 0;
+  background: none;
+  color: inherit;
+}
 .md-empty {
   color: #a3b0bb;
 }
@@ -338,7 +347,7 @@
   border-top: 1px dashed #e0c4bd;
 }
 
-/* 答えの下：根拠を右の欄に出すボタン */
+/* 答えの下：根拠の一覧を開くボタン */
 .chat-turn-actions {
   grid-column: 2;
   display: flex;
@@ -350,7 +359,7 @@
   align-items: center;
   gap: 6px;
   min-height: 30px;
-  padding: 3px 12px;
+  padding: 3px 10px 3px 12px;
   border: 1px solid #c8d8e4;
   border-radius: 999px;
   background: #fff;
@@ -364,6 +373,142 @@
   border-color: var(--ui-primary);
   background: var(--ui-primary-soft);
   color: var(--ui-primary-dark);
+}
+.chat-evidence-chevron {
+  transition: transform 0.15s;
+}
+.chat-evidence-button.active .chat-evidence-chevron {
+  transform: rotate(180deg);
+}
+
+/* 答えの下：根拠の一覧。押した根拠を右の欄に出し、ホバーで右の欄の欄を強調する */
+.chat-evidence {
+  grid-column: 2;
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  padding: 10px 12px 12px;
+  border: 1px solid #d2dbe3;
+  border-radius: 12px;
+  background: var(--ui-surface-muted);
+}
+.chat-evidence-title {
+  margin: 0;
+  overflow: hidden;
+  color: var(--ui-text-secondary);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/* 根拠が2つ以上の書類にまたがるときの、書類の切り替え */
+.chat-evidence-records {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.chat-evidence-record {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  min-height: 30px;
+  padding: 3px 6px 3px 12px;
+  border: 1px solid #c8d8e4;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ui-text-secondary);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.chat-evidence-record:hover {
+  border-color: var(--ui-primary);
+  color: var(--ui-primary-dark);
+}
+.chat-evidence-record.active {
+  border-color: var(--ui-primary);
+  background: var(--ui-primary);
+  color: #fff;
+  cursor: default;
+}
+.chat-evidence-record-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.chat-evidence-record-count {
+  min-width: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--ui-primary-soft);
+  color: var(--ui-primary-dark);
+  font-size: 12px;
+  text-align: center;
+}
+.chat-evidence-list {
+  display: grid;
+  align-content: start;
+  gap: 2px;
+  max-height: 260px;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+.chat-evidence-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 10px;
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid transparent;
+  border-left: 3px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color 0.15s,
+    border-color 0.15s;
+}
+.chat-evidence-item:hover {
+  border-color: var(--ui-border);
+  background: #fff;
+}
+.chat-evidence-item.is-focus {
+  border-color: #f0c9a8;
+  border-left-color: #d9480f;
+  background: #fff;
+}
+.chat-evidence-item.is-highlighted {
+  border-color: var(--ui-highlight-border);
+  border-left-color: #d9480f;
+  background: var(--ui-highlight);
+}
+.chat-evidence-item.is-selected {
+  border-color: var(--ui-highlight-border);
+  border-left-color: #d9480f;
+  background: var(--ui-highlight-strong);
+}
+.chat-evidence-item-label {
+  overflow: hidden;
+  color: var(--ui-text-secondary);
+  font-size: 13px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.chat-evidence-item-value {
+  color: var(--ui-text);
+  font-size: 14px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.chat-evidence-item-value.is-empty {
+  color: var(--ui-text-muted);
+  font-weight: 400;
 }
 
 /* 会話が空のとき */

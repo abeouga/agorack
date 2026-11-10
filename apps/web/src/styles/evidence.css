@@ -1,4 +1,4 @@
-/* 右の欄：根拠の一覧 */
+/* 右の欄：選んだ根拠の表示（根拠の一覧は答えの下、chat.css） */
 
 .evidence-panel {
   display: flex;
@@ -62,74 +62,4 @@
   flex: 1 1 auto;
   min-height: 0;
   overflow: auto;
-}
-
-/* 根拠の一覧 */
-.evidence-list {
-  flex: none;
-  max-height: clamp(96px, 26vh, 260px);
-  min-height: 92px;
-  overflow-y: auto;
-  display: grid;
-  align-content: start;
-  gap: 4px;
-  margin: 0;
-  padding: 8px 12px 12px;
-  border-top: 1px solid var(--ui-border);
-  list-style: none;
-  background: var(--ui-surface-muted);
-}
-.evidence-item {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: baseline;
-  gap: 10px;
-  width: 100%;
-  padding: 6px 10px;
-  border: 1px solid transparent;
-  border-left: 3px solid transparent;
-  border-radius: 8px;
-  background: transparent;
-  color: inherit;
-  text-align: left;
-  cursor: pointer;
-  transition:
-    background-color 0.15s,
-    border-color 0.15s;
-}
-.evidence-item:hover {
-  background: #fff;
-  border-color: var(--ui-border);
-}
-.evidence-item.is-focus {
-  border-color: #f0c9a8;
-  border-left-color: #d9480f;
-  background: #fff;
-}
-.evidence-item.is-highlighted {
-  border-color: var(--ui-highlight-border);
-  border-left-color: #d9480f;
-  background: var(--ui-highlight);
-}
-.evidence-item.is-selected {
-  border-color: var(--ui-highlight-border);
-  border-left-color: #d9480f;
-  background: var(--ui-highlight-strong);
-}
-.evidence-item-label {
-  overflow: hidden;
-  color: var(--ui-text-secondary);
-  font-size: 13px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.evidence-item-value {
-  color: var(--ui-text);
-  font-size: 14px;
-  font-weight: 800;
-  font-variant-numeric: tabular-nums;
-}
-.evidence-item-value.is-empty {
-  color: var(--ui-text-muted);
-  font-weight: 400;
 }

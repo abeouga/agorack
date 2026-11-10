@@ -43,6 +43,9 @@ export function App() {
   // 右の欄に出すターン：選んだもの、なければ最後のもの
   const shownTurn =
     conversation.turns.find((turn) => turn.id === selection.turnId) ?? conversation.turns.at(-1);
+  const shownSelection = shownTurn?.id === selection.turnId;
+  const hovered = shownSelection ? selection.hovered : [];
+  const selected = shownSelection ? selection.selected : [];
 
   return (
     <div className="app">
@@ -72,7 +75,8 @@ export function App() {
           conversation={conversation}
           busy={chat.busy}
           shownTurnId={shownTurn?.id ?? null}
-          selectedKeys={new Set(selection.selected)}
+          hoveredKeys={hovered}
+          selectedKeys={selected}
           sourceName={nameOf}
           onSend={(question) => {
             evidence.reset();
@@ -88,11 +92,10 @@ export function App() {
           answer={shownTurn?.text ?? ""}
           evidence={shownTurn?.evidence ?? []}
           pending={shownTurn?.status === "pending"}
-          hovered={shownTurn?.id === selection.turnId ? selection.hovered : []}
-          selected={shownTurn?.id === selection.turnId ? selection.selected : []}
+          hovered={hovered}
+          selected={selected}
           sourceName={nameOf}
           embedOriginOf={(sourceId) => embedOriginOf(sources, sourceId)}
-          onHover={(key) => shownTurn && evidence.hover(shownTurn.id, key ? [key] : [])}
           onSelect={(key) => shownTurn && evidence.select(shownTurn.id, [key])}
         />
       </main>
