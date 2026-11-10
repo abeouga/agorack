@@ -53,7 +53,8 @@ export function EmbedEvidence({
       });
       if (!message) return;
       if (message.type === "embed:ready") setReady(true);
-      else failed.current({ code: message.code });
+      else if (message.type === "embed:error") failed.current({ code: message.code });
+      // embed:close（右の欄を閉じる）は、右の欄の開け閉めを持つ側で扱う。ここでは何もしない
     };
     window.addEventListener("message", receive);
     return () => window.removeEventListener("message", receive);

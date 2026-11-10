@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 /**
- * 部品の画面の埋め込み（設計 §7.4、決定 0004）。
+ * 部品の画面の埋め込み（設計 §7.4、決定 0004・0005）。
  * 住所の形と、Agorack の画面と部品の埋め込み用の画面のあいだの postMessage の形を決める。
  */
 
@@ -21,11 +21,28 @@ export const EmbedOriginSchema = z
 
 // ---- postMessage ----
 
-/** Agorack → 部品：強調する場所を替える。同じ記録の中なら、iframe を読み直さずにこれで伝える */
+/** 根拠の欄の一覧の上限。答えの根拠のうち同じ記録のものだけを送るので、ふつうはずっと少ない */
+export const HIGHLIGHT_FIELD_IDS_MAX = 500;
+/** 強調する場所の ID の長さの上限 */
+export const HIGHLIGHT_FIELD_ID_MAX_LENGTH = 200;
+
+/** 強調する場所の ID（根拠の location にある、部品が決めた ID） */
+const FieldIdSchema = z.string().min(1).max(HIGHLIGHT_FIELD_ID_MAX_LENGTH);
+
+/**
+ * Agorack → 部品：強調する場所を替える（決定 0005）。同じ記録の中なら、iframe を読み直さずにこれで伝える。
+ * Agorack は embed:ready を受けたあとと、根拠や選んだ場所が替わったときに送る。
+ * 部品は、この形に合わないメッセージを丸ごと捨てる（一部だけを使わない）。
+ */
 const HighlightMessageSchema = z.object({
   type: z.literal("agorack:highlight"),
-  /** 強調する場所の ID（根拠の location にある、部品が決めた ID） */
-  fieldId: z.string().min(1),
+  /** 選んだ場所。根拠の欄のうち、いちばん強く強調する1つ */
+  fieldId: FieldIdSchema,
+  /**
+   * この答えの根拠のうち、同じ記録の場所の ID の全部（なくてもよい）。部品はこれらをまとめて強調する。
+   * ないときは、選んだ場所だけを強調する（fieldIds を足す前と同じ動き）。
+   */
+  fieldIds: z.array(FieldIdSchema).max(HIGHLIGHT_FIELD_IDS_MAX).optional(),
 });
 
 /** 部品 → Agorack：表示の準備ができた */
@@ -44,9 +61,15 @@ const EmbedErrorMessageSchema = z.object({
 export const AgorackToEmbedMessageSchema = z.discriminatedUnion("type", [HighlightMessageSchema]);
 export type AgorackToEmbedMessage = z.infer<typeof AgorackToEmbedMessageSchema>;
 
+/** 部品 → Agorack：部品の画面の × が押された。Agorack は右の欄を閉じる（決定 0005） */
+const EmbedCloseMessageSchema = z.object({
+  type: z.literal("embed:close"),
+});
+
 /** 部品の埋め込み用の画面から、Agorack の画面へ届くメッセージ */
 export const EmbedToAgorackMessageSchema = z.discriminatedUnion("type", [
   EmbedReadyMessageSchema,
   EmbedErrorMessageSchema,
+  EmbedCloseMessageSchema,
 ]);
 export type EmbedToAgorackMessage = z.infer<typeof EmbedToAgorackMessageSchema>;

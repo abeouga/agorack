@@ -22,6 +22,9 @@ describe("埋め込み用の画面からのメッセージ", () => {
         expected,
       ),
     ).toEqual({ type: "embed:error", code: "DOCUMENT_NOT_FOUND" });
+    expect(
+      readEmbedMessage({ source: frame, origin: ORIGIN, data: { type: "embed:close" } }, expected),
+    ).toEqual({ type: "embed:close" });
   });
 
   it.each([
