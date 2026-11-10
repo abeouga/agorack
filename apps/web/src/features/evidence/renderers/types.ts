@@ -15,6 +15,8 @@ export type EvidenceViewProps = {
   sourceName: string;
   /** その部品の埋め込み用の画面を許す住所（GET /api/sources の embedOrigin）。埋め込まない部品は null */
   embedOrigin: string | null;
+  /** 部品の画面を埋め込めず、この表示に切り替えたときの知らせ。表示の中に小さく出す */
+  notice?: string;
   /** 表示の中で根拠を選んだ（書類の枠を押したなど） */
   onPick: (key: string) => void;
 };

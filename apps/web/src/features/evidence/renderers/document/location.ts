@@ -28,7 +28,9 @@ const LocationSchema = z.object({
 export type DocumentLocation = {
   imageUrl: string;
   box: Box;
-  /** 書類の名前（例：繁殖台帳1021「こよみ」）。わからなければ null */
+  /** 書類の名前（例：こよみ）。わからなければ null */
+  documentName: string | null;
+  /** 様式の名前を添えた書類の名前（例：繁殖台帳1021「こよみ」）。わからなければ null */
   documentTitle: string | null;
   fieldLabel: string | null;
 };
@@ -41,7 +43,13 @@ export function documentLocation(evidence: Evidence): DocumentLocation | null {
     template_name && document_name
       ? `${template_name}「${document_name}」`
       : (document_name ?? template_name ?? null);
-  return { imageUrl: image_url, box, documentTitle, fieldLabel: field_label ?? null };
+  return {
+    imageUrl: image_url,
+    box,
+    documentName: document_name ?? null,
+    documentTitle,
+    fieldLabel: field_label ?? null,
+  };
 }
 
 /** 画素の矩形を、画像の大きさに対する割合（CSS の %）にする */

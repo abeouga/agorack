@@ -1,29 +1,41 @@
-/* 書類の根拠：ページ画像と欄の枠（枠の色は文之助の画面にそろえた） */
+/*
+ * 書類の根拠：ページ画像と欄の枠。
+ * 部品の画面の中の書類の表示（文之助の shelf-viewer・shelf-box）と同じ色・大きさにそろえ、
+ * 埋め込めるときと埋め込めないときで、右の欄の見た目が変わらないようにする。
+ * 外の枠線・角の丸みは右の欄が描くので、ここでは描かない。
+ */
 
 .document-evidence {
   display: flex;
   flex-direction: column;
   flex: 1;
   min-height: 0;
+  overflow: hidden;
+  background: var(--ui-surface);
 }
-.document-focus {
-  display: grid;
-  gap: 4px;
-  margin: 12px 12px 0;
-  padding: 10px 12px;
-  border: 1px solid #f0c9a8;
-  border-left: 4px solid #d9480f;
-  border-radius: 10px;
-  background: #fff7f0;
+
+/* 道具の行：左に書類の名前、右に拡大・縮小 */
+.document-tools {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  min-height: 48px;
+  padding: 6px 8px 6px 14px;
+  border-bottom: 1px solid var(--ui-border);
+  background: var(--ui-surface-muted);
 }
 .document-title {
   display: flex;
+  flex: 1;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   min-width: 0;
-  color: var(--ui-text-secondary);
-  font-size: 13px;
-  font-weight: 700;
+  margin: 0;
+  color: var(--ui-text);
+  font-size: 16px;
+  font-weight: 800;
 }
 .document-title svg {
   flex: none;
@@ -34,59 +46,30 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.document-field {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 4px 12px;
-  color: var(--ui-text-secondary);
-  font-size: 14px;
-}
-.document-field strong {
-  color: var(--ui-text);
-  font-size: 19px;
-  font-weight: 800;
-  overflow-wrap: anywhere;
-}
-.document-field strong.is-empty {
-  color: var(--ui-text-muted);
-  font-size: 15px;
-  font-weight: 400;
-}
-
-.document-tools {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 8px 12px 6px;
-}
-.document-source {
-  color: var(--ui-text-muted);
-  font-size: 12px;
-}
 .document-zoom {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 6px;
+}
+.document-zoom span {
+  min-width: 42px;
   color: var(--ui-text-secondary);
   font-size: 12px;
   font-variant-numeric: tabular-nums;
-}
-.document-zoom span {
-  min-width: 40px;
   text-align: center;
 }
 .document-zoom button {
   display: grid;
   place-items: center;
-  width: 28px;
-  height: 28px;
-  padding: 0;
+  min-width: 30px;
+  height: 30px;
+  min-height: 0;
+  padding: 0 8px;
   border: 1px solid var(--ui-border);
   border-radius: 7px;
   background: #fff;
-  color: var(--ui-text-muted);
+  color: var(--ui-text-secondary);
+  font-size: 13px;
   cursor: pointer;
 }
 .document-zoom button:hover:not(:disabled) {
@@ -94,18 +77,36 @@
   color: var(--ui-primary);
 }
 .document-zoom button:disabled {
-  opacity: 0.4;
+  opacity: 0.45;
   cursor: default;
 }
 
+/* 埋め込めず、この表示に切り替えたときの知らせ（道具の行の下に小さく） */
+.document-notice {
+  display: flex;
+  flex: none;
+  align-items: flex-start;
+  gap: 6px;
+  margin: 0;
+  padding: 5px 14px;
+  border-bottom: 1px solid var(--ui-border);
+  background: var(--ui-surface);
+  color: var(--ui-text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.document-notice svg {
+  flex: none;
+  margin-top: 2px;
+}
+
+/* ページ画像の下地：右の欄の高さいっぱい */
 .document-scroll {
   position: relative;
   flex: 1;
   min-height: 160px;
   overflow: auto;
-  margin: 0 12px 12px;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 12px;
   background: #dfe5ea;
 }
 .document-loading {
@@ -132,31 +133,29 @@
   height: auto;
   user-select: none;
 }
-/* 同じ答えのほかの根拠の枠 */
+
+/* 同じ答えの根拠の欄（文之助の shelf-box.marked） */
 .document-box {
   position: absolute;
+  min-height: 0;
   padding: 0;
-  border: 2px solid #d9480f99;
+  border: 2px solid #d9480fcc;
   border-radius: 2px;
-  background: #ffb02e1f;
+  background: #ffb02e2e;
   cursor: pointer;
 }
-.document-box:hover {
+.document-box:hover,
+/* 表の行・一覧のホバーで強調している根拠の欄 */
+.document-box.is-highlighted {
   border-color: #d9480f;
   background: #ffb02e4d;
 }
-/* 出している根拠の枠 */
+/* 出している根拠の欄（文之助の shelf-box.marked.active）：太くして光らせる */
 .document-box.is-focus {
   z-index: 1;
-  border: 3px solid #d9480f;
-  background: #ffb02e40;
+  border-color: #d9480f;
+  background: #ffb02e33;
   box-shadow:
     0 0 0 3px #fff9,
-    0 0 0 6px #d9480f55;
-}
-/* 表の行・一覧のホバーで強調している根拠の枠 */
-.document-box.is-highlighted {
-  z-index: 2;
-  border-color: #d9480f;
-  background: #ffb02e59;
+    0 0 0 6px #d9480f40;
 }

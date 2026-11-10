@@ -67,6 +67,7 @@ describe("書類の location", () => {
     expect(documentLocation(row2)).toEqual({
       imageUrl: "http://127.0.0.1:8010/api/v1/jobs/1d0c139e/artifacts/alignedSource",
       box: { x: 809, y: 311, width: 126, height: 30 },
+      documentName: "こよみ",
       documentTitle: "繁殖台帳1021「こよみ」",
       fieldLabel: "価格",
     });
@@ -125,9 +126,22 @@ describe("書類の表示", () => {
     expect(html).toContain(
       'src="http://127.0.0.1:8010/api/v1/jobs/1d0c139e/artifacts/alignedSource"',
     );
-    expect(html).toContain("繁殖台帳1021「こよみ」");
-    expect(html).toContain("540,000");
+    // 道具の行に書類の名前（様式の名前は添え書きに）、欄と値は読み上げ用に
+    expect(html).toMatch(/class="document-title" title="繁殖台帳1021「こよみ」">.*こよみ/);
+    expect(html).toContain("価格：540,000");
     expect(html).not.toContain(IMAGE_FAILED_NOTICE);
+  });
+
+  it("埋め込めなかった知らせは、道具の行の下・ページ画像の上に出す", () => {
+    const notice = "文之助の画面を埋め込めませんでした（欄が見つかりません）。";
+    const html = renderToStaticMarkup(<DocumentEvidence {...props(row2)} notice={notice} />);
+    const at = (text: string) => html.indexOf(text);
+    expect(at(notice)).toBeGreaterThan(at('class="document-tools"'));
+    expect(at(notice)).toBeLessThan(at('class="document-scroll"'));
+    // 知らせがなければ出さない
+    expect(renderToStaticMarkup(<DocumentEvidence {...props(row2)} />)).not.toContain(
+      "document-notice",
+    );
   });
 
   it("ページ画像の場所がない書類の根拠は、ラベルと値の表示に戻す", () => {
@@ -137,6 +151,15 @@ describe("書類の表示", () => {
     expect(html).toContain(NO_LOCATION_NOTICE);
     expect(html).toContain("540,000");
     expect(html).not.toContain("<img");
+  });
+
+  it("ラベルと値の表示に戻すときも、埋め込めなかった知らせを残す", () => {
+    const notice = "文之助の画面を埋め込めませんでした（応答がありません）。";
+    const html = renderToStaticMarkup(
+      <DocumentEvidence {...props({ ...row2, location: {} })} notice={notice} />,
+    );
+    expect(html).toContain(notice);
+    expect(html).toContain(NO_LOCATION_NOTICE);
   });
 
   it("根拠のキーは書類の枠の選択に使える", () => {

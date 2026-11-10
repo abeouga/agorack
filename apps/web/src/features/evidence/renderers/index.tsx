@@ -1,6 +1,5 @@
 import type { Evidence } from "@agorack/contracts";
 import { createElement, useState } from "react";
-import { FiInfo } from "react-icons/fi";
 import { DocumentEvidence } from "./document/DocumentEvidence";
 import { type EmbedFailure, EmbedEvidence } from "./embed/EmbedEvidence";
 import { embedFailureKey, embedFailureOf, embedTarget } from "./embed/embedTarget";
@@ -51,18 +50,11 @@ export function EvidenceView(props: EvidenceViewProps) {
       />
     );
   }
-  const kindView = createElement(rendererFor(props.evidence), props);
-  if (!failure) return kindView;
-  return (
-    <>
-      <p className="embed-fallback-notice" role="status">
-        <FiInfo aria-hidden="true" />
-        {props.sourceName}の画面を埋め込めませんでした（{FAILURE_TEXT[failure.code] ?? failure.code}
-        ）。代わりの表示に切り替えています。
-      </p>
-      {kindView}
-    </>
-  );
+  // 埋め込めなかった知らせは、kind ごとの表示の中（書類なら道具の行の下）に出してもらう
+  const notice = failure
+    ? `${props.sourceName}の画面を埋め込めませんでした（${FAILURE_TEXT[failure.code] ?? failure.code}）。代わりの表示に切り替えています。`
+    : undefined;
+  return createElement(rendererFor(props.evidence), { ...props, notice });
 }
 
 export type { EvidenceRenderer, EvidenceViewProps } from "./types";

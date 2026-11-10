@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { FiFileText, FiMinus, FiPlus } from "react-icons/fi";
+import { FiFileText, FiInfo, FiMinus, FiPlus } from "react-icons/fi";
 import { Spinner } from "../../../../shared/Spinner";
 import { evidenceKey, valueText } from "../../selection";
 import { FallbackEvidence } from "../fallback/FallbackEvidence";
@@ -14,25 +14,38 @@ export const NO_LOCATION_NOTICE = "この根拠には、ページ画像の場所
 export const IMAGE_FAILED_NOTICE =
   "ページ画像を読めませんでした。部品（文之助など）が止まっているか、書類の画像がありません。";
 
+/** 埋め込めなかった知らせと、ラベルと値の表示に戻した理由を、1つの知らせにまとめる */
+const joinNotices = (...notices: (string | undefined)[]) => notices.filter(Boolean).join(" ");
+
 /**
  * 書類の根拠：ページ画像（location.image_url）に欄の枠（location.box）を描く（設計 §7.3）。
- * 同じページにある、同じ答えのほかの根拠の枠も描き、出している根拠の枠を一番強くする。
+ * 見た目は、部品の画面の中の書類の表示（文之助の PageViewer）にそろえる：
+ * 上に道具の行（左に書類の名前、右に拡大・縮小）、その下にページ画像を右の欄の高さいっぱいに出す。
+ * 同じページにある、同じ答えの根拠の枠をまとめて強調し、出している根拠の枠を一番強くする。
  * 画像の場所がない・読めないときは、ラベルと値の表示に戻す。
  * ページ画像は部品のサーバーから直に読む（文之助は 127.0.0.1:8010）。
  */
 export function DocumentEvidence(props: EvidenceViewProps) {
-  const { evidence, sourceName } = props;
+  const { evidence, sourceName, notice } = props;
   const location = documentLocation(evidence);
   // 読めなかった画像（同じ画像を何度も読みに行かない）
   const [failed, setFailed] = useState<ReadonlySet<string>>(new Set());
   if (!location) {
     return (
-      <FallbackEvidence evidence={evidence} sourceName={sourceName} notice={NO_LOCATION_NOTICE} />
+      <FallbackEvidence
+        evidence={evidence}
+        sourceName={sourceName}
+        notice={joinNotices(notice, NO_LOCATION_NOTICE)}
+      />
     );
   }
   if (failed.has(location.imageUrl)) {
     return (
-      <FallbackEvidence evidence={evidence} sourceName={sourceName} notice={IMAGE_FAILED_NOTICE} />
+      <FallbackEvidence
+        evidence={evidence}
+        sourceName={sourceName}
+        notice={joinNotices(notice, IMAGE_FAILED_NOTICE)}
+      />
     );
   }
   return (
@@ -50,6 +63,7 @@ function DocumentPage({
   siblings,
   highlighted,
   sourceName,
+  notice,
   onPick,
   location,
   onFailed,
@@ -100,18 +114,11 @@ function DocumentPage({
   const zoomIndex = ZOOMS.indexOf(zoom as (typeof ZOOMS)[number]);
   return (
     <div className="document-evidence">
-      <div className="document-focus">
-        <span className="document-title">
-          <FiFileText aria-hidden="true" />
-          <span>{location.documentTitle ?? sourceName}</span>
-        </span>
-        <span className="document-field">
-          {location.fieldLabel ?? evidence.label}
-          <strong className={value === null ? "is-empty" : undefined}>{value ?? "（空欄）"}</strong>
-        </span>
-      </div>
       <div className="document-tools">
-        <span className="document-source">{sourceName}のページ画像</span>
+        <h2 className="document-title" title={location.documentTitle ?? undefined}>
+          <FiFileText aria-hidden="true" />
+          <span>{location.documentName ?? location.documentTitle ?? sourceName}</span>
+        </h2>
         <div className="document-zoom" role="group" aria-label="表示の倍率">
           <button
             type="button"
@@ -132,6 +139,17 @@ function DocumentPage({
           </button>
         </div>
       </div>
+      {notice && (
+        <p className="document-notice" role="status">
+          <FiInfo aria-hidden="true" />
+          {notice}
+        </p>
+      )}
+      {/* 枠は目で見るだけなので、出している欄と値を読み上げ用に添える */}
+      <p className="sr-only" aria-live="polite">
+        {location.documentTitle ?? sourceName}の{location.fieldLabel ?? evidence.label}：
+        {value ?? "空欄"}
+      </p>
       <div className="document-scroll" ref={frame}>
         {!size && (
           <p className="document-loading" role="status">
@@ -165,7 +183,7 @@ function DocumentPage({
                   key={key}
                   type="button"
                   tabIndex={-1}
-                  className={classes.join(" ").trim()}
+                  className={classes.join(" ").replace(/\s+/g, " ").trim()}
                   style={boxStyle(box, size)}
                   title={`${item.label}：${valueText(item.value) ?? "空欄"}`}
                   aria-label={`${item.label}を選ぶ`}
