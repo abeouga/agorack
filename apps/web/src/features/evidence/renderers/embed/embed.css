@@ -35,21 +35,3 @@
   flex-direction: column;
   background: var(--ui-surface);
 }
-/* 埋め込めず、kind ごとの表示に戻したときの知らせ */
-.embed-fallback-notice {
-  display: flex;
-  align-items: flex-start;
-  gap: 6px;
-  margin: 10px 12px 0;
-  padding: 8px 12px;
-  border: 1px solid var(--ui-border);
-  border-radius: 10px;
-  background: var(--ui-surface-muted);
-  color: var(--ui-text-muted);
-  font-size: 13px;
-  line-height: 1.6;
-}
-.embed-fallback-notice svg {
-  flex: none;
-  margin-top: 3px;
-}

@@ -42,6 +42,7 @@ export function EvidenceView(props: EvidenceViewProps) {
       <EmbedEvidence
         key={target.recordKey}
         target={target}
+        siblings={props.siblings}
         title={paneTitle(props.evidence, props.sourceName)}
         sourceName={props.sourceName}
         onClose={props.onClose}

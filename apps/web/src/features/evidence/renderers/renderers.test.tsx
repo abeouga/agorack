@@ -1,4 +1,4 @@
-import type { Evidence } from "@agorack/contracts";
+import { type Evidence, HIGHLIGHT_FIELD_IDS_MAX } from "@agorack/contracts";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { evidenceKey } from "../selection";
@@ -10,7 +10,12 @@ import {
 import { boxStyle, documentLocation } from "./document/location";
 import { FallbackEvidence } from "./fallback/FallbackEvidence";
 import { EMBED_SANDBOX } from "./embed/EmbedEvidence";
-import { embedFailureKey, embedFailureOf, embedTarget } from "./embed/embedTarget";
+import {
+  embedFailureKey,
+  embedFailureOf,
+  embedTarget,
+  highlightMessage,
+} from "./embed/embedTarget";
 import { EvidenceView, rendererFor } from "./index";
 import type { EvidenceViewProps } from "./types";
 
@@ -237,6 +242,59 @@ describe("部品の埋め込み用の画面", () => {
     );
     expect(html).not.toContain("<iframe");
     expect(html).toContain("alignedSource");
+  });
+});
+
+describe("埋め込み用の画面に送る強調（agorack:highlight）", () => {
+  const EMBED = "http://127.0.0.1:5180";
+  const withEmbed = (item: Evidence): Evidence => ({
+    ...item,
+    embedUrl: `${EMBED}/embed?job=1d0c139e&field=${String(item.location.field_id)}`,
+  });
+  const prices = [2, 3, 4, 5, 6, 7, 8].map((row) => withEmbed(price(row, "1", 300 + row)));
+  const targetOf = (item: Evidence) => {
+    const target = embedTarget(item, EMBED);
+    if (!target) throw new Error("埋め込めない根拠");
+    return target;
+  };
+
+  it("選んだ欄と、同じ記録の根拠の欄の全部を送る（選んだ欄を先に、重なりは除く）", () => {
+    const chosen = prices[2] as Evidence;
+    expect(highlightMessage(targetOf(chosen), [...prices, chosen])).toEqual({
+      type: "agorack:highlight",
+      fieldId: "field-4",
+      fieldIds: ["field-4", "field-2", "field-3", "field-5", "field-6", "field-7", "field-8"],
+    });
+  });
+
+  it("ほかの記録・ほかの部品の根拠の欄は入れない", () => {
+    const otherRecord = { ...withEmbed(price(9, "1", 1)), recordId: "other-job" };
+    const otherSource = { ...withEmbed(price(10, "1", 1)), sourceId: "kabulogger" };
+    const message = highlightMessage(targetOf(prices[0] as Evidence), [
+      ...prices.slice(0, 2),
+      otherRecord,
+      otherSource,
+    ]);
+    expect(message?.fieldIds).toEqual(["field-2", "field-3"]);
+  });
+
+  it("選んだ欄がない根拠では送らない", () => {
+    const noField = withEmbed({ ...row2, location: { ...row2.location, field_id: null } });
+    expect(highlightMessage(targetOf(noField), prices)).toBeNull();
+  });
+
+  it("契約の上限を超えない（個数は上限まで、長すぎる ID は入れない、選んだ欄は必ず残す）", () => {
+    const many = Array.from({ length: HIGHLIGHT_FIELD_IDS_MAX + 20 }, (_, index) =>
+      withEmbed({ ...row2, location: { ...row2.location, field_id: `f-${String(index)}` } }),
+    );
+    const long = withEmbed({ ...row2, location: { ...row2.location, field_id: "x".repeat(201) } });
+    const chosen = many.at(-1) as Evidence;
+    const message = highlightMessage(targetOf(chosen), [long, ...many]);
+    expect(message?.fieldIds).toHaveLength(HIGHLIGHT_FIELD_IDS_MAX);
+    expect(message?.fieldIds?.[0]).toBe(chosen.location.field_id);
+    expect(message?.fieldIds).not.toContain("x".repeat(201));
+    // 選んだ欄の ID が契約に合わないときは送らない
+    expect(highlightMessage(targetOf(long), many)).toBeNull();
   });
 });
 
