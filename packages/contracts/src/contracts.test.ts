@@ -4,6 +4,8 @@ import {
   ApiErrorResponseSchema,
   EmbedToAgorackMessageSchema,
   EvidenceSchema,
+  HIGHLIGHT_FIELD_ID_MAX_LENGTH,
+  HIGHLIGHT_FIELD_IDS_MAX,
   SourceInfoSchema,
   MAX_QUESTION_LENGTH,
   StartTurnRequestSchema,
@@ -173,12 +175,39 @@ describe("部品の状態", () => {
 });
 
 describe("埋め込みの postMessage", () => {
-  it("Agorack から部品へは、強調する場所を替えるメッセージだけを受け付ける", () => {
+  it("Agorack から部品へは、強調する場所を替えるメッセージを受け付ける", () => {
     const message = { type: "agorack:highlight", fieldId: "coat" };
     expect(AgorackToEmbedMessageSchema.parse(message)).toEqual(message);
   });
 
-  it("部品から Agorack へは、準備ができた・失敗のメッセージを受け付ける", () => {
+  it("強調する場所に、根拠の欄の一覧（fieldIds）を添えられる", () => {
+    const message = { type: "agorack:highlight", fieldId: "coat", fieldIds: ["coat", "birth"] };
+    expect(AgorackToEmbedMessageSchema.parse(message)).toEqual(message);
+  });
+
+  it("fieldIds がないときは、選んだ場所だけのメッセージとして受け付ける", () => {
+    const parsed = AgorackToEmbedMessageSchema.parse({
+      type: "agorack:highlight",
+      fieldId: "coat",
+    });
+    expect(parsed).not.toHaveProperty("fieldIds");
+  });
+
+  it("fieldIds は空の一覧でも受け付ける", () => {
+    const message = { type: "agorack:highlight", fieldId: "coat", fieldIds: [] };
+    expect(AgorackToEmbedMessageSchema.parse(message)).toEqual(message);
+  });
+
+  it(`fieldIds は上限ちょうど（${HIGHLIGHT_FIELD_IDS_MAX} 個）、ID は上限ちょうど（${HIGHLIGHT_FIELD_ID_MAX_LENGTH} 文字）まで受け付ける`, () => {
+    const longId = "a".repeat(HIGHLIGHT_FIELD_ID_MAX_LENGTH);
+    const fieldIds = Array.from({ length: HIGHLIGHT_FIELD_IDS_MAX }, (_, i) =>
+      i === 0 ? longId : `field-${i}`,
+    );
+    const message = { type: "agorack:highlight", fieldId: longId, fieldIds };
+    expect(AgorackToEmbedMessageSchema.parse(message)).toEqual(message);
+  });
+
+  it("部品から Agorack へは、準備ができた・失敗・閉じるのメッセージを受け付ける", () => {
     expect(EmbedToAgorackMessageSchema.parse({ type: "embed:ready" })).toEqual({
       type: "embed:ready",
     });
@@ -186,11 +215,57 @@ describe("埋め込みの postMessage", () => {
       type: "embed:error",
       code: "not_found",
     });
+    expect(EmbedToAgorackMessageSchema.parse({ type: "embed:close" })).toEqual({
+      type: "embed:close",
+    });
   });
 
   it.each([
     ["強調する場所がない", AgorackToEmbedMessageSchema, { type: "agorack:highlight" }],
     ["強調する場所が空", AgorackToEmbedMessageSchema, { type: "agorack:highlight", fieldId: "" }],
+    [
+      "強調する場所が長すぎる",
+      AgorackToEmbedMessageSchema,
+      { type: "agorack:highlight", fieldId: "a".repeat(HIGHLIGHT_FIELD_ID_MAX_LENGTH + 1) },
+    ],
+    [
+      "fieldIds が上限を超えた",
+      AgorackToEmbedMessageSchema,
+      {
+        type: "agorack:highlight",
+        fieldId: "coat",
+        fieldIds: Array.from({ length: HIGHLIGHT_FIELD_IDS_MAX + 1 }, (_, i) => `field-${i}`),
+      },
+    ],
+    [
+      "fieldIds に空文字がある",
+      AgorackToEmbedMessageSchema,
+      { type: "agorack:highlight", fieldId: "coat", fieldIds: ["coat", ""] },
+    ],
+    [
+      "fieldIds の ID が長すぎる",
+      AgorackToEmbedMessageSchema,
+      {
+        type: "agorack:highlight",
+        fieldId: "coat",
+        fieldIds: ["coat", "a".repeat(HIGHLIGHT_FIELD_ID_MAX_LENGTH + 1)],
+      },
+    ],
+    [
+      "fieldIds が配列でない",
+      AgorackToEmbedMessageSchema,
+      { type: "agorack:highlight", fieldId: "coat", fieldIds: "coat" },
+    ],
+    [
+      "fieldIds に文字列でないものがある",
+      AgorackToEmbedMessageSchema,
+      { type: "agorack:highlight", fieldId: "coat", fieldIds: ["coat", 1] },
+    ],
+    [
+      "fieldIds が null",
+      AgorackToEmbedMessageSchema,
+      { type: "agorack:highlight", fieldId: "coat", fieldIds: null },
+    ],
     ["向きが逆（部品のメッセージを部品へ）", AgorackToEmbedMessageSchema, { type: "embed:ready" }],
     ["失敗の種類がない", EmbedToAgorackMessageSchema, { type: "embed:error" }],
     ["失敗の種類が文字列でない", EmbedToAgorackMessageSchema, { type: "embed:error", code: 404 }],
@@ -199,6 +274,7 @@ describe("埋め込みの postMessage", () => {
       EmbedToAgorackMessageSchema,
       { type: "agorack:highlight", fieldId: "coat" },
     ],
+    ["向きが逆（閉じるを部品へ）", AgorackToEmbedMessageSchema, { type: "embed:close" }],
     ["知らない種類", EmbedToAgorackMessageSchema, { type: "embed:unknown" }],
     ["オブジェクトでない", EmbedToAgorackMessageSchema, "embed:ready"],
     ["null", EmbedToAgorackMessageSchema, null],

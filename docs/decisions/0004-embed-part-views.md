@@ -34,6 +34,7 @@
 ## 決定
 
 1. 右の欄は、部品の「埋め込み用の画面」を iframe で出す。埋め込めないとき（`embed_url` がない・部品が止まっている）は、`kind` ごとの表示（書類ならページ画像に枠）に戻す。
+   - 2026-11-10 追記：右の欄の組み立て（外の枠は Agorack が描き、iframe は枠線なしで中いっぱいに置く。根拠の一覧は答えの下へ移す）と、postMessage の `fieldIds`・`embed:close` を足した。理由と使い方は [0005](0005-evidence-panel-document-pane.md)。
 2. 部品の MCP は、根拠の外枠に `embed_url` を付けて返す。Agorack の型では `embedUrl` と呼ぶ。
 3. 埋め込みを許す住所は、Agorack では部品の設定（`embed.origin`）に、部品では `Content-Security-Policy: frame-ancestors` に書く。どちらにもない住所とは、埋め込みも postMessage もしない。
 4. 埋め込み用の画面は見るだけにし、修正したいときは部品の普通の画面を別のタブで開く。
