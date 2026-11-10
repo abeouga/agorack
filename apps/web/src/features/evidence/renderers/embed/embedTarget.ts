@@ -1,4 +1,11 @@
-import { type Evidence, EmbedUrlSchema } from "@agorack/contracts";
+import {
+  type AgorackToEmbedMessage,
+  AgorackToEmbedMessageSchema,
+  type Evidence,
+  EmbedUrlSchema,
+  HIGHLIGHT_FIELD_IDS_MAX,
+  HIGHLIGHT_FIELD_ID_MAX_LENGTH,
+} from "@agorack/contracts";
 import { evidenceKey } from "../../selection";
 
 /**
@@ -36,6 +43,44 @@ export function embedTarget(evidence: Evidence, embedOrigin: string | null): Emb
     recordKey: recordKeyOf(evidence),
     fieldId: typeof fieldId === "string" && fieldId.length > 0 ? fieldId : null,
   };
+}
+
+/** 契約に合う場所の ID か（1〜HIGHLIGHT_FIELD_ID_MAX_LENGTH 文字の文字列） */
+function fieldIdOf(evidence: Evidence): string | null {
+  const fieldId = evidence.location.field_id;
+  return typeof fieldId === "string" &&
+    fieldId.length > 0 &&
+    fieldId.length <= HIGHLIGHT_FIELD_ID_MAX_LENGTH
+    ? fieldId
+    : null;
+}
+
+/**
+ * 埋め込み用の画面に送る agorack:highlight（設計 §7.4、決定 0005）。
+ * - fieldId：選んだ場所（target.fieldId）
+ * - fieldIds：この答えの根拠（siblings）のうち、同じ記録の場所の ID の全部。重なりは除き、選んだ場所を必ず含める。
+ *   上限（HIGHLIGHT_FIELD_IDS_MAX）を超えるときは、選んだ場所と、答えの順に前から残す
+ * 選んだ場所がない・契約の形に合わないときは null（送らない）。送る前に契約の zod で確かめる。
+ */
+export function highlightMessage(
+  target: EmbedTarget,
+  siblings: readonly Evidence[],
+): AgorackToEmbedMessage | null {
+  const fieldId = target.fieldId;
+  if (!fieldId) return null;
+  const others = new Set<string>();
+  for (const item of siblings) {
+    if (recordKeyOf(item) !== target.recordKey) continue;
+    const id = fieldIdOf(item);
+    if (id && id !== fieldId) others.add(id);
+  }
+  const fieldIds = [fieldId, ...[...others].slice(0, HIGHLIGHT_FIELD_IDS_MAX - 1)];
+  const parsed = AgorackToEmbedMessageSchema.safeParse({
+    type: "agorack:highlight",
+    fieldId,
+    fieldIds,
+  });
+  return parsed.success ? parsed.data : null;
 }
 
 export function recordKeyOf(evidence: Evidence): string {
