@@ -59,11 +59,14 @@ try {
       .waitFor({ state: "detached", timeout: ANSWER_TIMEOUT });
     const seconds = Math.round((Date.now() - started) / 1000);
 
-    // 右の欄の表示が落ち着くまで待つ。部品の埋め込み用の画面は、準備ができるか、代わりの表示に戻るまで待つ
-    await page
-      .locator(".embed-frame.is-ready, .document-box.is-focus, .evidence-fallback, .evidence-empty")
-      .first()
-      .waitFor({ timeout: 30_000 });
+    // 右の欄の表示が落ち着くまで待つ。部品の埋め込み用の画面は、準備ができるか、代わりの表示に戻るまで待つ。
+    // 根拠のない答えでは右の欄を開かないので、待たない
+    if ((await page.locator(".evidence-panel").count()) > 0) {
+      await page
+        .locator(".embed-frame.is-ready, .document-box.is-focus, .evidence-fallback")
+        .first()
+        .waitFor({ timeout: 30_000 });
+    }
     await page.waitForTimeout(1500);
 
     // 答えの下の根拠の一覧を開く

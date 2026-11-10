@@ -150,10 +150,36 @@
   transition: grid-template-columns 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .workspace.with-history {
-  grid-template-columns: 268px minmax(0, 1fr) minmax(300px, 0.75fr);
+  grid-template-columns: 268px minmax(0, 1fr);
 }
 .workspace.with-rail {
-  grid-template-columns: 56px minmax(0, 1fr) minmax(300px, 0.75fr);
+  grid-template-columns: 56px minmax(0, 1fr);
+}
+
+/*
+ * 右の欄を開いたとき：チャットと右の欄を一続きの枠にする（文之助の .ask-layout.with-document と同じ）。
+ * 間は1本の線（右の欄の左の枠線とつまみ）で、チャットの右の角は丸めない。
+ * 幅はチャットの割合（--chat-share・--evidence-share、App が境目のつまみの値から決める）で分ける。
+ * 左の欄との間は、列の間ではなく左の欄の右の余白（16px）であける。
+ */
+.workspace.with-evidence {
+  column-gap: 0;
+}
+.workspace.with-evidence.with-history {
+  grid-template-columns: 284px minmax(300px, var(--chat-share)) minmax(280px, var(--evidence-share));
+}
+.workspace.with-evidence.with-rail {
+  grid-template-columns: 72px minmax(300px, var(--chat-share)) minmax(280px, var(--evidence-share));
+}
+.workspace.with-evidence .history-side {
+  margin-right: 16px;
+}
+.workspace.with-evidence .chat-panel {
+  border-right: 0;
+  border-radius: 14px 0 0 14px;
+}
+body.split-resizing .workspace {
+  transition: none;
 }
 
 /* 左の欄：レール（閉じたとき）と履歴（開いたとき）を重ね、幅を滑らせて切り替える */
@@ -362,7 +388,14 @@
 @media (max-width: 1100px) {
   .workspace.with-history,
   .workspace.with-rail {
-    grid-template-columns: 56px minmax(0, 1fr) minmax(260px, 0.7fr);
+    grid-template-columns: 56px minmax(0, 1fr);
+  }
+  .workspace.with-evidence.with-history,
+  .workspace.with-evidence.with-rail {
+    grid-template-columns: 72px minmax(300px, var(--chat-share)) minmax(
+        280px,
+        var(--evidence-share)
+      );
   }
   /* 狭い画面では、履歴は画面の上に引き出す */
   .history-side {
@@ -387,6 +420,30 @@
   }
   .history-side.open .history {
     transform: none;
+  }
+}
+
+/*
+ * 狭い画面：文之助と同じく、左にレールを残し、右にチャットと右の欄を上下に半分ずつ積む。
+ * チャットも右の欄も四隅を丸めた別々の枠に戻す。
+ */
+@media (max-width: 900px) {
+  .workspace.with-evidence.with-history,
+  .workspace.with-evidence.with-rail {
+    grid-template-columns: 56px minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 16px;
+  }
+  .workspace.with-evidence .history-side {
+    grid-row: 1 / span 2;
+    margin-right: 0;
+  }
+  .workspace.with-evidence .chat-panel {
+    border-right: 1px solid #c2cdd7;
+    border-radius: 14px;
+  }
+  .workspace.with-evidence :is(.chat-panel, .evidence-panel) {
+    grid-column: 2;
   }
 }
 

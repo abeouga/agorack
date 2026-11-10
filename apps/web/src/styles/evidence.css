@@ -1,60 +1,101 @@
-/* 右の欄：選んだ根拠の表示（根拠の一覧は答えの下、chat.css） */
+/*
+ * 右の欄：文之助のチャットの書類の欄（ask-document-panel）と同じ外の枠（根拠の一覧は答えの下、chat.css）。
+ * 枠線・角の丸み・チャットとの境目をここで描き、中の表示（部品の画面の iframe・書類の表示など）は枠いっぱいに置く。
+ * 余白（padding）は 0 にし、上の行や画像のまわりの余白は中の表示が持つ（文之助の書類の欄も padding は 0）。
+ */
 
 .evidence-panel {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-width: 0;
   min-height: 0;
+  padding: 0;
   overflow: hidden;
   border: 1px solid #c2cdd7;
-  border-radius: 14px;
+  border-radius: 0 14px 14px 0;
   background: var(--ui-surface);
-  box-shadow:
-    0 1px 2px #1d354514,
-    0 8px 24px #1d354512;
+  box-shadow: 0 6px 18px #1d354508;
+  animation: evidence-panel-in 0.38s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.evidence-head {
-  display: grid;
-  gap: 2px;
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--ui-border);
+@keyframes evidence-panel-in {
+  from {
+    opacity: 0;
+    transform: translateX(36px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
-.evidence-head h2 {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0;
-  font-size: 16px;
-  font-weight: 800;
+
+/* チャットとの境目のつまみ（文之助の ask-splitter）：1本の線で、つまむと太く青くなる */
+.evidence-splitter {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -1px;
+  z-index: 5;
+  width: 11px;
+  cursor: col-resize;
+  touch-action: none;
 }
-.evidence-head h2 svg {
-  color: var(--ui-text-muted);
+.evidence-splitter::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: var(--ui-border);
+  transition:
+    background-color 0.15s,
+    width 0.15s;
 }
-.evidence-count {
-  padding: 1px 9px;
-  border-radius: 999px;
-  background: var(--ui-primary-soft);
-  color: var(--ui-primary-dark);
-  font-size: 12px;
+.evidence-splitter:hover::before,
+.evidence-splitter:focus-visible::before,
+.evidence-splitter.dragging::before {
+  width: 3px;
+  background: var(--ui-primary);
 }
-.evidence-question {
-  margin: 0;
-  overflow: hidden;
-  color: var(--ui-text-muted);
-  font-size: 13px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+.evidence-splitter:focus-visible {
+  outline: none;
 }
-.evidence-empty {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0;
-  padding: 16px;
-  color: var(--ui-text-muted);
-  font-size: 14px;
-  line-height: 1.7;
+/* ドラッグしている間は、iframe にポインターを取られないようにし、幅の動きを止めずに追う */
+body.split-resizing {
+  cursor: col-resize;
+  user-select: none;
 }
+body.split-resizing iframe {
+  pointer-events: none;
+}
+
+/* 狭い画面では、右の欄をチャットの下に積んで出す（文之助と同じ。並べ方は layout.css） */
+@media (max-width: 900px) {
+  .evidence-panel {
+    border-radius: 14px;
+    animation-name: evidence-panel-up;
+  }
+  @keyframes evidence-panel-up {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .evidence-splitter {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .evidence-panel {
+    animation: none;
+  }
+}
+
 /* 選んだ根拠の表示（kind ごとの表示が中に入る） */
 .evidence-view {
   display: flex;
