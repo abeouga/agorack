@@ -19,6 +19,8 @@ export type EvidenceViewProps = {
   notice?: string;
   /** 表示の中で根拠を選んだ（書類の枠を押したなど） */
   onPick: (key: string) => void;
+  /** 右の欄を閉じる。表示の上の行の右の端に × を置いて呼ぶ（埋め込みの中の × は embed:close で届く） */
+  onClose: () => void;
 };
 
 export type EvidenceRenderer = ComponentType<EvidenceViewProps>;

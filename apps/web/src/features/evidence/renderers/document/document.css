@@ -14,7 +14,7 @@
   background: var(--ui-surface);
 }
 
-/* 道具の行：左に書類の名前、右に拡大・縮小 */
+/* 道具の行：左に書類の名前、右に拡大・縮小と × */
 .document-tools {
   display: flex;
   flex: none;
@@ -109,17 +109,12 @@
   padding: 12px;
   background: #dfe5ea;
 }
+/* 読み込み中：文之助のチャットの書類の欄と同じく、道具の行の下に案内の文を出す（ask-panel-lead） */
 .document-loading {
   position: absolute;
   inset: 0;
   z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin: 0;
-  color: var(--ui-text-muted);
-  font-size: 13px;
+  background: var(--ui-surface);
 }
 .document-stage {
   position: relative;

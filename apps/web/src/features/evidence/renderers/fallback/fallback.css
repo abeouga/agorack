@@ -1,5 +1,13 @@
 /* 知らない kind の根拠：ラベルと値だけ */
 
+.evidence-fallback-pane {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
 .evidence-fallback {
   display: grid;
   gap: 4px;
