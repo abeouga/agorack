@@ -1,6 +1,7 @@
 import type { AgorackToEmbedMessage } from "@agorack/contracts";
 import { useEffect, useRef, useState } from "react";
 import { Spinner } from "../../../../shared/Spinner";
+import { PaneHead, PaneLead } from "../pane/PaneHead";
 import type { EmbedTarget } from "./embedTarget";
 import { readEmbedMessage } from "./messages";
 import "./embed.css";
@@ -19,20 +20,26 @@ export const EMBED_SANDBOX =
 export type EmbedFailure = { code: string };
 
 /**
- * 部品の埋め込み用の画面を iframe で出す。
- * - embed:ready が届くまで回る輪を出す。embed:error が届く・EMBED_READY_TIMEOUT_MS で届かないときは onFailed
+ * 部品の埋め込み用の画面を iframe で出す。iframe は枠線なしで右の欄いっぱいに置く（外の枠は右の欄が描く）。
+ * - embed:ready が届くまで、文之助のチャットの書類の欄と同じく、上の行（書類の名前と ×）と案内の文を重ねて出す。embed:error が届く・EMBED_READY_TIMEOUT_MS で届かないときは onFailed
  * - 同じ記録の中で強調する欄だけが替わるときは、読み直さずに agorack:highlight を送る
  *   （記録が替わったら、親が key を替えて作り直す）
  * - 受け取るのは、この iframe から、許した住所（target.origin）で、形が合うメッセージだけ
  */
 export function EmbedEvidence({
   target,
+  title,
   sourceName,
   onFailed,
+  onClose,
 }: {
   target: EmbedTarget;
+  /** 開いている間の上の行に出す名前（書類の名前など） */
+  title: string;
   sourceName: string;
   onFailed: (failure: EmbedFailure) => void;
+  /** 右の欄を閉じる（開いている間の上の行の ×） */
+  onClose: () => void;
 }) {
   const frame = useRef<HTMLIFrameElement>(null);
   // 記録の画面を開いた最初の住所。欄が替わっても src は替えない（読み直さない）
@@ -78,15 +85,15 @@ export function EmbedEvidence({
 
   return (
     <div className="embed-evidence">
-      <div className="embed-tools">
-        <span>{sourceName}の画面</span>
-      </div>
       <div className="embed-stage">
         {!ready && (
-          <p className="embed-loading" role="status">
-            <Spinner />
-            {sourceName}の画面を開いています…
-          </p>
+          <div className="embed-loading">
+            <PaneHead title={title} onClose={onClose} />
+            <PaneLead>
+              <Spinner />
+              {sourceName}の画面を開いています…
+            </PaneLead>
+          </div>
         )}
         <iframe
           ref={frame}

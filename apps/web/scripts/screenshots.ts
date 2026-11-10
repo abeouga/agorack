@@ -86,7 +86,7 @@ try {
   await newConversation(page);
   await ask(page, "埋め込めないときのこよみの毛色は？");
   await waitAnswered(page);
-  await page.locator(".embed-fallback-notice").waitFor({ timeout: TIMEOUT });
+  await page.locator(".document-notice").waitFor({ timeout: TIMEOUT });
   await waitPageImage(page);
   await settle(page);
   await shoot("embed-03-fallback-to-page-image");

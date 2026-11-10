@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { type CSSProperties, useState } from "react";
 import { ChatPanel } from "../features/chat/components/ChatPanel";
 import { useChat } from "../features/chat/useChat";
 import { EvidencePanel } from "../features/evidence/EvidencePanel";
+import { readSplit, splitStorage, writeSplit } from "../features/evidence/split";
 import { useEvidenceSelection } from "../features/evidence/useEvidenceSelection";
 import { HistorySidebar } from "../features/history/HistorySidebar";
 import { currentConversation, listedConversations } from "../features/history/historyReducer";
@@ -21,7 +22,10 @@ function storedSidebar(): boolean {
   }
 }
 
-/** 画面全体の枠：上部バーと、左（履歴）・中央（チャット）・右（根拠）の3列 */
+/**
+ * 画面全体の枠：上部バーと、左（履歴）・中央（チャット）・右（根拠）の列。
+ * 右の欄は、出している答えに根拠があるとき自動で開き、× で閉じるとチャットが広がる（設計 §7.3）。
+ */
 export function App() {
   const [history, dispatch] = useHistory();
   const chat = useChat(history, dispatch);
@@ -36,6 +40,11 @@ export function App() {
       // 開け閉めを覚えておけなくても使える
     }
   };
+  const [split, setSplitState] = useState(() => readSplit(splitStorage()));
+  const setSplit = (ratio: number) => {
+    setSplitState(ratio);
+    writeSplit(splitStorage(), ratio);
+  };
 
   const conversation = currentConversation(history);
   const nameOf = (sourceId: string) => sourceName(sources, sourceId);
@@ -46,12 +55,23 @@ export function App() {
   const shownSelection = shownTurn?.id === selection.turnId;
   const hovered = shownSelection ? selection.hovered : [];
   const selected = shownSelection ? selection.selected : [];
+  const evidenceOpen = !selection.closed && (shownTurn?.evidence.length ?? 0) > 0;
+  // チャットと右の欄の幅の分け方（layout.css の .workspace.with-evidence で使う）
+  const splitStyle = {
+    "--chat-share": `${split}fr`,
+    "--evidence-share": `${1 - split}fr`,
+  } as CSSProperties;
+  const workspaceClass = [
+    "workspace",
+    sidebar ? "with-history" : "with-rail",
+    evidenceOpen ? "with-evidence" : "",
+  ].join(" ");
 
   return (
     <div className="app">
       <TopBar sources={sources} />
       <SourcesNotice state={sources} />
-      <main className={sidebar ? "workspace with-history" : "workspace with-rail"}>
+      <main className={workspaceClass.trim()} style={evidenceOpen ? splitStyle : undefined}>
         <HistorySidebar
           open={sidebar}
           conversations={listedConversations(history)}
@@ -87,17 +107,20 @@ export function App() {
           onHoverEvidence={evidence.hover}
           onSelectEvidence={evidence.select}
         />
-        <EvidencePanel
-          question={shownTurn?.question ?? null}
-          answer={shownTurn?.text ?? ""}
-          evidence={shownTurn?.evidence ?? []}
-          pending={shownTurn?.status === "pending"}
-          hovered={hovered}
-          selected={selected}
-          sourceName={nameOf}
-          embedOriginOf={(sourceId) => embedOriginOf(sources, sourceId)}
-          onSelect={(key) => shownTurn && evidence.select(shownTurn.id, [key])}
-        />
+        {evidenceOpen && shownTurn && (
+          <EvidencePanel
+            answer={shownTurn.text}
+            evidence={shownTurn.evidence}
+            hovered={hovered}
+            selected={selected}
+            sourceName={nameOf}
+            embedOriginOf={(sourceId) => embedOriginOf(sources, sourceId)}
+            split={split}
+            onResize={setSplit}
+            onSelect={(key) => evidence.select(shownTurn.id, [key])}
+            onClose={evidence.close}
+          />
+        )}
       </main>
     </div>
   );

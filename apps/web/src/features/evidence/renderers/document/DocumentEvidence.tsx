@@ -3,6 +3,7 @@ import { FiFileText, FiInfo, FiMinus, FiPlus } from "react-icons/fi";
 import { Spinner } from "../../../../shared/Spinner";
 import { evidenceKey, valueText } from "../../selection";
 import { FallbackEvidence } from "../fallback/FallbackEvidence";
+import { PaneClose, PaneLead } from "../pane/PaneHead";
 import type { EvidenceViewProps } from "../types";
 import { type DocumentLocation, boxStyle, documentLocation } from "./location";
 import "./document.css";
@@ -20,13 +21,13 @@ const joinNotices = (...notices: (string | undefined)[]) => notices.filter(Boole
 /**
  * 書類の根拠：ページ画像（location.image_url）に欄の枠（location.box）を描く（設計 §7.3）。
  * 見た目は、部品の画面の中の書類の表示（文之助の PageViewer）にそろえる：
- * 上に道具の行（左に書類の名前、右に拡大・縮小）、その下にページ画像を右の欄の高さいっぱいに出す。
+ * 上に道具の行（左に書類の名前、右に拡大・縮小と、右の欄を閉じる ×）、その下にページ画像を右の欄の高さいっぱいに出す。
  * 同じページにある、同じ答えの根拠の枠をまとめて強調し、出している根拠の枠を一番強くする。
  * 画像の場所がない・読めないときは、ラベルと値の表示に戻す。
  * ページ画像は部品のサーバーから直に読む（文之助は 127.0.0.1:8010）。
  */
 export function DocumentEvidence(props: EvidenceViewProps) {
-  const { evidence, sourceName, notice } = props;
+  const { evidence, sourceName, notice, onClose } = props;
   const location = documentLocation(evidence);
   // 読めなかった画像（同じ画像を何度も読みに行かない）
   const [failed, setFailed] = useState<ReadonlySet<string>>(new Set());
@@ -36,6 +37,7 @@ export function DocumentEvidence(props: EvidenceViewProps) {
         evidence={evidence}
         sourceName={sourceName}
         notice={joinNotices(notice, NO_LOCATION_NOTICE)}
+        onClose={onClose}
       />
     );
   }
@@ -45,6 +47,7 @@ export function DocumentEvidence(props: EvidenceViewProps) {
         evidence={evidence}
         sourceName={sourceName}
         notice={joinNotices(notice, IMAGE_FAILED_NOTICE)}
+        onClose={onClose}
       />
     );
   }
@@ -65,6 +68,7 @@ function DocumentPage({
   sourceName,
   notice,
   onPick,
+  onClose,
   location,
   onFailed,
 }: EvidenceViewProps & { location: DocumentLocation; onFailed: (imageUrl: string) => void }) {
@@ -138,6 +142,7 @@ function DocumentPage({
             <FiPlus aria-hidden="true" />
           </button>
         </div>
+        <PaneClose onClose={onClose} />
       </div>
       {notice && (
         <p className="document-notice" role="status">
@@ -152,10 +157,12 @@ function DocumentPage({
       </p>
       <div className="document-scroll" ref={frame}>
         {!size && (
-          <p className="document-loading" role="status">
-            <Spinner />
-            ページ画像を読み込んでいます…
-          </p>
+          <div className="document-loading">
+            <PaneLead>
+              <Spinner />
+              ページ画像を読み込んでいます…
+            </PaneLead>
+          </div>
         )}
         <div className="document-stage" style={{ width: `${zoom * 100}%` }}>
           <img

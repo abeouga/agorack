@@ -4,6 +4,7 @@ import { DocumentEvidence } from "./document/DocumentEvidence";
 import { type EmbedFailure, EmbedEvidence } from "./embed/EmbedEvidence";
 import { embedFailureKey, embedFailureOf, embedTarget } from "./embed/embedTarget";
 import { FallbackEvidence } from "./fallback/FallbackEvidence";
+import { paneTitle } from "./pane/PaneHead";
 import type { EvidenceRenderer, EvidenceViewProps } from "./types";
 
 /**
@@ -41,7 +42,9 @@ export function EvidenceView(props: EvidenceViewProps) {
       <EmbedEvidence
         key={target.recordKey}
         target={target}
+        title={paneTitle(props.evidence, props.sourceName)}
         sourceName={props.sourceName}
+        onClose={props.onClose}
         onFailed={(next) =>
           setFailures((current) =>
             new Map(current).set(embedFailureKey(next.code, props.evidence), next),

@@ -6,23 +6,13 @@
   flex: 1;
   min-height: 0;
 }
-.embed-tools {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 14px 6px;
-  color: var(--ui-text-muted);
-  font-size: 12px;
-}
+/* 外の枠線・角の丸み・余白は右の欄が描くので、ここでは描かない */
 .embed-stage {
   position: relative;
   flex: 1;
   min-height: 280px;
-  margin: 0 12px 12px;
   overflow: hidden;
-  border: 1px solid var(--ui-border);
-  border-radius: 10px;
-  background: #dfe5ea;
+  background: var(--ui-surface);
 }
 .embed-frame {
   display: block;
@@ -36,17 +26,14 @@
 .embed-frame.is-ready {
   opacity: 1;
 }
+/* 開いている間：上の行（書類の名前と ×）と案内の文を、iframe の上に重ねる */
 .embed-loading {
   position: absolute;
   inset: 0;
   z-index: 1;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin: 0;
-  color: var(--ui-text-muted);
-  font-size: 13px;
+  flex-direction: column;
+  background: var(--ui-surface);
 }
 /* 埋め込めず、kind ごとの表示に戻したときの知らせ */
 .embed-fallback-notice {

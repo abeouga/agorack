@@ -60,7 +60,11 @@ const props = (evidence: Evidence, siblings: Evidence[] = [evidence]): EvidenceV
   sourceName: "文之助",
   embedOrigin: null,
   onPick: () => undefined,
+  onClose: () => undefined,
 });
+
+/** 右の欄を閉じる × の数 */
+const closeButtons = (html: string) => html.split('aria-label="根拠を閉じる"').length - 1;
 
 describe("書類の location", () => {
   it("文之助の location からページ画像・枠・書類の名前を読む", () => {
@@ -108,6 +112,9 @@ describe("表示の選び方", () => {
     expect(html).toContain("朝の走行の距離");
     expect(html).toContain("12.4 km");
     expect(html).toContain("カブロガー");
+    // 上の行に名前と、右の欄を閉じる ×
+    expect(html).toContain('class="pane-head"');
+    expect(closeButtons(html)).toBe(1);
   });
 
   it("値が文字でない・空欄の根拠も出せる", () => {
@@ -132,6 +139,17 @@ describe("書類の表示", () => {
     expect(html).not.toContain(IMAGE_FAILED_NOTICE);
   });
 
+  it("道具の行の右の端（拡大・縮小の右）に、右の欄を閉じる × を置く", () => {
+    const html = renderToStaticMarkup(<DocumentEvidence {...props(row2)} />);
+    expect(closeButtons(html)).toBe(1);
+    const tools = html.slice(html.indexOf('class="document-tools"'), html.indexOf("</div></div>"));
+    expect(tools.indexOf('aria-label="拡大"')).toBeLessThan(tools.indexOf("根拠を閉じる"));
+    // 画像を読み込む間は、道具の行の下に案内の文を出す
+    expect(html).toMatch(
+      /class="document-loading"><p class="pane-lead"[^>]*>.*ページ画像を読み込んでいます/,
+    );
+  });
+
   it("埋め込めなかった知らせは、道具の行の下・ページ画像の上に出す", () => {
     const notice = "文之助の画面を埋め込めませんでした（欄が見つかりません）。";
     const html = renderToStaticMarkup(<DocumentEvidence {...props(row2)} notice={notice} />);
@@ -151,6 +169,9 @@ describe("書類の表示", () => {
     expect(html).toContain(NO_LOCATION_NOTICE);
     expect(html).toContain("540,000");
     expect(html).not.toContain("<img");
+    // ラベルと値の表示に戻しても、書類の名前と × の行を出す
+    expect(html).toMatch(/class="pane-title"[^>]*>.*文之助/);
+    expect(closeButtons(html)).toBe(1);
   });
 
   it("ラベルと値の表示に戻すときも、埋め込めなかった知らせを残す", () => {
@@ -202,8 +223,12 @@ describe("部品の埋め込み用の画面", () => {
     expect(EMBED_SANDBOX).toBe(
       "allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox",
     );
-    // 準備ができるまでは回る輪を出す
-    expect(html).toContain("文之助の画面を開いています");
+    // 準備ができるまでは、書類の名前と × の行、その下に案内の文を出す（文之助のチャットの書類の欄と同じ形）
+    expect(html).toMatch(/class="pane-title" title="こよみ">.*こよみ/);
+    expect(closeButtons(html)).toBe(1);
+    expect(html).toMatch(/class="pane-lead"[^>]*>.*文之助の画面を開いています/);
+    // 「〇〇の画面」の文字は出さない
+    expect(html).not.toContain("embed-tools");
   });
 
   it("許していない住所の embedUrl は使わず、kind ごとの表示（ページ画像）を出す", () => {

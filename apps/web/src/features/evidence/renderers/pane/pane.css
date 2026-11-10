@@ -1,0 +1,55 @@
+/*
+ * 右の欄の上の行と案内の文。
+ * 文之助のチャットの書類の欄（ask-panel-head・ask-panel-lead・ask-document-title・ask-document-close）と同じ大きさにそろえる。
+ */
+
+.pane-head {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 48px;
+  padding: 6px 8px 6px 14px;
+  border-bottom: 1px solid var(--ui-border);
+  background: var(--ui-surface);
+}
+.pane-title {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  margin: 0;
+  color: var(--ui-text);
+  font-size: 16px;
+  font-weight: 800;
+}
+.pane-title svg {
+  flex: none;
+  color: var(--ui-text-muted);
+}
+.pane-title span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/* .icon-button（base.css）より後に読まれるとは限らないので、2つの名前で指して枠線を消す */
+.icon-button.pane-close {
+  border-color: transparent;
+  background: transparent;
+}
+.icon-button.pane-close:hover:not(:disabled) {
+  background: #e6edf4;
+  color: var(--ui-text);
+}
+.pane-lead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 12px 14px;
+  color: var(--ui-text-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
