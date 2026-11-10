@@ -59,9 +59,7 @@ try {
 
     // 右の欄の表示が落ち着くまで待つ。部品の埋め込み用の画面は、準備ができるか、代わりの表示に戻るまで待つ
     await page
-      .locator(
-        ".embed-frame.is-ready, .embed-fallback-notice, .document-box.is-focus, .evidence-fallback, .evidence-empty",
-      )
+      .locator(".embed-frame.is-ready, .document-box.is-focus, .evidence-fallback, .evidence-empty")
       .first()
       .waitFor({ timeout: 30_000 });
     await page.waitForTimeout(1500);
@@ -81,7 +79,8 @@ try {
       embed: await embedState(page),
       boxes: await page.locator(".document-box").count(),
       focusBox: (await page.locator(".document-box.is-focus").count()) > 0,
-      focus: await textOf(page.locator(".document-focus")),
+      documentTitle: await textOf(page.locator(".document-title")),
+      notice: await textOf(page.locator(".document-notice, .evidence-fallback-notice")),
       evidence: await page.locator(".evidence-item").allTextContents(),
     };
     await page.screenshot({ path: `${outDir}${prefix}-${number}.png` });
@@ -122,7 +121,9 @@ try {
 
 /** 右の欄の部品の埋め込み用の画面の状態 */
 async function embedState(page: Page): Promise<string> {
-  if ((await page.locator(".embed-fallback-notice").count()) > 0) return "fallback";
+  // 埋め込めなかった知らせは、kind ごとの表示の中（書類なら道具の行の下）に出る
+  const notice = await textOf(page.locator(".document-notice, .evidence-fallback-notice"));
+  if (notice?.includes("埋め込めませんでした")) return "fallback";
   if ((await page.locator(".embed-frame.is-ready").count()) > 0) return "ready";
   if ((await page.locator(".embed-frame").count()) > 0) return "loading";
   return "none";
