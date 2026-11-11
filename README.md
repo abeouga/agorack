@@ -17,9 +17,9 @@
 | `apps/server`        | サーバー（Node + TypeScript）。会話のループ・Claude の呼び出し・部品（MCP）の接続・根拠の取り出し |
 | `packages/contracts` | 画面とサーバーの共通の契約（HTTP・SSE のイベント・根拠の型）                                      |
 | `config/`            | つなぐ部品の設定の見本                                                                            |
-| `docs/`              | 設計と決めごとの記録                                                                              |
+| `docs/`              | 設計と決めごとの記録、つなぐ部品の解説                                                            |
 
-詳しくは [設計](docs/architecture.md) と [決めごとの記録](docs/decisions/) を読んでください。
+詳しくは [設計](docs/architecture.md) と [決めごとの記録](docs/decisions/) を読んでください。つなぐ部品の設計の考え方・仕組み・ロジックは、[文之助の解説](docs/parts/fuminosuke/01-全体像.md) と [drive-logger の解説](docs/parts/drive-logger/01-全体像.md) にあります。
 
 ## 最初に打つコマンド
 
