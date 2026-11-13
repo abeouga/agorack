@@ -353,7 +353,7 @@ iframe が開けない（部品が止まっている・書類が見つからな�
 
 - 埋め込み用の画面は見るだけにする。値の修正・確定の操作は出さない（§3 の「値を直さない」）。修正したいときのために、部品の普通の画面を別のタブで開くボタン（「部品で開く」）だけを置く。
 - 埋め込み用の画面は、右の欄の「枠の中身」だけを描く。外の枠線・角の丸み・余白は描かない（Agorack が描く）。上の端に、閉じる × と、その左に「部品で開く」のアイコンのボタンを置く。
-- `agorack:highlight` の `fieldIds` があれば、その場所をまとめて強調し、`fieldId` をさらに強くする。`fieldIds` がなければ `fieldId` だけを強調する。形の合わないメッセージは丸ごと捨てる。
+- `agorack:highlight` の `targetIds` があれば、その場所をまとめて強調し、`targetId` をさらに強くする。`targetIds` がなければ `targetId` だけを強調する。形の合わないメッセージは丸ごと捨てる。
 - `Content-Security-Policy: frame-ancestors` で、設定に書いた住所（Agorack の画面）だけに埋め込みを許す。
 - 根拠に `embed_url`（その根拠を見せる画面の絶対URL）を付けて返す。
 
@@ -363,7 +363,7 @@ iframe が開けない（部品が止まっている・書類が見つからな�
 - 埋め込みを許す住所（origin）は、部品の設定（`config/sources.json` の `embed.origin`）に書き、`GET /api/sources` で画面に渡す。`embedUrl` の住所がこの一覧にないときは iframe を使わない。
 - iframe には `sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"` だけを付ける。上の画面を動かす権限やフォームを送る権限は与えない。`allow-popups-to-escape-sandbox` は、「部品で開く」で開いた部品の普通の画面に sandbox の制限が引き継がれ、ダウンロードや確認の小窓が止まるのを防ぐため。
 - 同じ記録の中で強調する場所だけが変わるときは、iframe を読み直さず `postMessage` で伝える。
-- `agorack:highlight` は、`embed:ready` を受けたあとと、根拠や選んだ場所が替わったときに送る。`fieldIds` には、この答えの根拠のうち、同じ記録の場所の ID を全部入れる（選んだ場所も含める）。
+- `agorack:highlight` は、`embed:ready` を受けたあとと、根拠や選んだ場所が替わったときに送る。`targetIds` には、この答えの根拠のうち、同じ記録の場所の ID を全部入れる（選んだ場所も含める）。
 - Agorack の画面と部品の画面の住所は、どちらも `127.0.0.1` か、どちらも `localhost` にそろえる。片方だけ違うと、ブラウザーが別のサイトと見なし、埋め込んだ画面の保存領域や Cookie が使えないおそれがある。
 - Agorack の画面は 5174 に固定し（Vite の `strictPort` で、空いていなければ起動を止める）、部品の画面と番号が入れ替わらないようにする。
 
@@ -371,12 +371,12 @@ iframe が開けない（部品が止まっている・書類が見つからな�
 
 | 向き | メッセージ | 意味 |
 |---|---|---|
-| Agorack → 部品 | `{ type: "agorack:highlight", fieldId, fieldIds? }` | 強調する場所を替える。`fieldId` は選んだ場所、`fieldIds`（なくてもよい）は根拠の欄の全部 |
+| Agorack → 部品 | `{ type: "agorack:highlight", targetId, targetIds? }` | 強調する場所を替える。`targetId` は選んだ場所、`targetIds`（なくてもよい）は根拠の場所の全部。移すあいだは古い名前の `fieldId`・`fieldIds` にも同じ値を入れる（決定 0006） |
 | 部品 → Agorack | `{ type: "embed:ready" }` | 表示の準備ができた |
 | 部品 → Agorack | `{ type: "embed:error", code }` | 記録が見つからない・表示できない |
 | 部品 → Agorack | `{ type: "embed:close" }` | 部品の画面の × が押された。Agorack は右の欄を閉じる |
 
-`fieldId` と `fieldIds` の ID は 1〜200 文字の文字列、`fieldIds` は 500 個まで。受け取る側は、相手の origin が許した住所であることを必ず確かめる。メッセージの形は `packages/contracts/src/embed.ts` に置き、zod で検証する。
+`targetId` と `targetIds` の ID は 1〜200 文字の文字列、`targetIds` は 500 個まで。ID が何を指すか（書類の欄・走行の区間など）は部品が決め、Agorack は解釈しない。受け取る側は、相手の origin が許した住所であることを必ず確かめる。メッセージの形は `packages/contracts/src/embed.ts` に置き、zod で検証する。
 
 ---
 

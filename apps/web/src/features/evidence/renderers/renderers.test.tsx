@@ -1,4 +1,4 @@
-import { type Evidence, HIGHLIGHT_FIELD_IDS_MAX } from "@agorack/contracts";
+import { type Evidence, HIGHLIGHT_TARGET_IDS_MAX } from "@agorack/contracts";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { evidenceKey } from "../selection";
@@ -205,7 +205,7 @@ describe("部品の埋め込み用の画面", () => {
       url: `${EMBED}/embed?job=1d0c139e&field=field-2`,
       origin: EMBED,
       recordKey: "fuminosuke\u00001d0c139e-5175-43d5-bba6-1d2b76d69977",
-      fieldId: "field-2",
+      targetId: "field-2",
     });
     expect(embedTarget(embedded, null)).toBeNull();
     expect(embedTarget(embedded, "http://127.0.0.1:5181")).toBeNull();
@@ -216,8 +216,8 @@ describe("部品の埋め込み用の画面", () => {
   it("同じ記録の根拠は同じ記録のキー、欄の ID は location.field_id", () => {
     const other = { ...row3, embedUrl: `${EMBED}/embed?job=1d0c139e&field=field-3` };
     expect(embedTarget(other, EMBED)?.recordKey).toBe(embedTarget(embedded, EMBED)?.recordKey);
-    expect(embedTarget(other, EMBED)?.fieldId).toBe("field-3");
-    expect(embedTarget({ ...embedded, location: {} }, EMBED)?.fieldId).toBeNull();
+    expect(embedTarget(other, EMBED)?.targetId).toBe("field-3");
+    expect(embedTarget({ ...embedded, location: {} }, EMBED)?.targetId).toBeNull();
   });
 
   it("埋め込めるときは、決めた権限だけを付けた iframe を出す", () => {
@@ -260,10 +260,14 @@ describe("埋め込み用の画面に送る強調（agorack:highlight）", () =>
 
   it("選んだ欄と、同じ記録の根拠の欄の全部を送る（選んだ欄を先に、重なりは除く）", () => {
     const chosen = prices[2] as Evidence;
+    const ids = ["field-4", "field-2", "field-3", "field-5", "field-6", "field-7", "field-8"];
     expect(highlightMessage(targetOf(chosen), [...prices, chosen])).toEqual({
       type: "agorack:highlight",
+      targetId: "field-4",
+      targetIds: ids,
+      // 移行用の古い名前にも同じ値を入れる（決定 0006）
       fieldId: "field-4",
-      fieldIds: ["field-4", "field-2", "field-3", "field-5", "field-6", "field-7", "field-8"],
+      fieldIds: ids,
     });
   });
 
@@ -275,7 +279,7 @@ describe("埋め込み用の画面に送る強調（agorack:highlight）", () =>
       otherRecord,
       otherSource,
     ]);
-    expect(message?.fieldIds).toEqual(["field-2", "field-3"]);
+    expect(message?.targetIds).toEqual(["field-2", "field-3"]);
   });
 
   it("選んだ欄がない根拠では送らない", () => {
@@ -284,15 +288,15 @@ describe("埋め込み用の画面に送る強調（agorack:highlight）", () =>
   });
 
   it("契約の上限を超えない（個数は上限まで、長すぎる ID は入れない、選んだ欄は必ず残す）", () => {
-    const many = Array.from({ length: HIGHLIGHT_FIELD_IDS_MAX + 20 }, (_, index) =>
+    const many = Array.from({ length: HIGHLIGHT_TARGET_IDS_MAX + 20 }, (_, index) =>
       withEmbed({ ...row2, location: { ...row2.location, field_id: `f-${String(index)}` } }),
     );
     const long = withEmbed({ ...row2, location: { ...row2.location, field_id: "x".repeat(201) } });
     const chosen = many.at(-1) as Evidence;
     const message = highlightMessage(targetOf(chosen), [long, ...many]);
-    expect(message?.fieldIds).toHaveLength(HIGHLIGHT_FIELD_IDS_MAX);
-    expect(message?.fieldIds?.[0]).toBe(chosen.location.field_id);
-    expect(message?.fieldIds).not.toContain("x".repeat(201));
+    expect(message?.targetIds).toHaveLength(HIGHLIGHT_TARGET_IDS_MAX);
+    expect(message?.targetIds?.[0]).toBe(chosen.location.field_id);
+    expect(message?.targetIds).not.toContain("x".repeat(201));
     // 選んだ欄の ID が契約に合わないときは送らない
     expect(highlightMessage(targetOf(long), many)).toBeNull();
   });

@@ -22,7 +22,7 @@ export type EmbedFailure = { code: string };
 /**
  * 部品の埋め込み用の画面を iframe で出す。iframe は枠線なしで右の欄いっぱいに置く（外の枠は右の欄が描く）。
  * - embed:ready が届くまで、文之助のチャットの書類の欄と同じく、上の行（書類の名前と ×）と案内の文を重ねて出す。embed:error が届く・EMBED_READY_TIMEOUT_MS で届かないときは onFailed
- * - embed:ready を受けたらすぐ、agorack:highlight（選んだ欄と、同じ記録の根拠の欄の全部 fieldIds）を送る。
+ * - embed:ready を受けたらすぐ、agorack:highlight（選んだ欄と、同じ記録の根拠の欄の全部 targetIds）を送る。
  *   選んだ欄や同じ記録の根拠が替わったときも、読み直さずに送り直す（記録が替わったら、親が key を替えて作り直す）
  * - embed:close（部品の画面の ×）が届いたら、右の欄を閉じる（onClose）
  * - 受け取るのは、この iframe から、許した住所（target.origin）で、形が合うメッセージだけ
@@ -36,7 +36,7 @@ export function EmbedEvidence({
   onClose,
 }: {
   target: EmbedTarget;
-  /** 同じ答えの根拠の全部（同じ記録の欄を fieldIds にまとめて送る） */
+  /** 同じ答えの根拠の全部（同じ記録の欄を targetIds にまとめて送る） */
   siblings: readonly Evidence[];
   /** 開いている間の上の行に出す名前（書類の名前など） */
   title: string;

@@ -4,8 +4,8 @@ import {
   ApiErrorResponseSchema,
   EmbedToAgorackMessageSchema,
   EvidenceSchema,
-  HIGHLIGHT_FIELD_ID_MAX_LENGTH,
-  HIGHLIGHT_FIELD_IDS_MAX,
+  HIGHLIGHT_TARGET_ID_MAX_LENGTH,
+  HIGHLIGHT_TARGET_IDS_MAX,
   SourceInfoSchema,
   MAX_QUESTION_LENGTH,
   StartTurnRequestSchema,
@@ -176,34 +176,50 @@ describe("部品の状態", () => {
 
 describe("埋め込みの postMessage", () => {
   it("Agorack から部品へは、強調する場所を替えるメッセージを受け付ける", () => {
+    const message = { type: "agorack:highlight", targetId: "coat" };
+    expect(AgorackToEmbedMessageSchema.parse(message)).toEqual(message);
+  });
+
+  it("強調する場所に、根拠の場所の一覧（targetIds）を添えられる", () => {
+    const message = { type: "agorack:highlight", targetId: "coat", targetIds: ["coat", "birth"] };
+    expect(AgorackToEmbedMessageSchema.parse(message)).toEqual(message);
+  });
+
+  it("移行用の古い名前（fieldId・fieldIds）を一緒に送っても、消さずに受け付ける（決定 0006）", () => {
+    const message = {
+      type: "agorack:highlight",
+      targetId: "coat",
+      targetIds: ["coat", "birth"],
+      fieldId: "coat",
+      fieldIds: ["coat", "birth"],
+    };
+    expect(AgorackToEmbedMessageSchema.parse(message)).toEqual(message);
+  });
+
+  it("古い名前（fieldId）だけで新しい名前（targetId）がないメッセージは拒否する", () => {
     const message = { type: "agorack:highlight", fieldId: "coat" };
-    expect(AgorackToEmbedMessageSchema.parse(message)).toEqual(message);
+    expect(AgorackToEmbedMessageSchema.safeParse(message).success).toBe(false);
   });
 
-  it("強調する場所に、根拠の欄の一覧（fieldIds）を添えられる", () => {
-    const message = { type: "agorack:highlight", fieldId: "coat", fieldIds: ["coat", "birth"] };
-    expect(AgorackToEmbedMessageSchema.parse(message)).toEqual(message);
-  });
-
-  it("fieldIds がないときは、選んだ場所だけのメッセージとして受け付ける", () => {
+  it("targetIds がないときは、選んだ場所だけのメッセージとして受け付ける", () => {
     const parsed = AgorackToEmbedMessageSchema.parse({
       type: "agorack:highlight",
-      fieldId: "coat",
+      targetId: "coat",
     });
-    expect(parsed).not.toHaveProperty("fieldIds");
+    expect(parsed).not.toHaveProperty("targetIds");
   });
 
-  it("fieldIds は空の一覧でも受け付ける", () => {
-    const message = { type: "agorack:highlight", fieldId: "coat", fieldIds: [] };
+  it("targetIds は空の一覧でも受け付ける", () => {
+    const message = { type: "agorack:highlight", targetId: "coat", targetIds: [] };
     expect(AgorackToEmbedMessageSchema.parse(message)).toEqual(message);
   });
 
-  it(`fieldIds は上限ちょうど（${HIGHLIGHT_FIELD_IDS_MAX} 個）、ID は上限ちょうど（${HIGHLIGHT_FIELD_ID_MAX_LENGTH} 文字）まで受け付ける`, () => {
-    const longId = "a".repeat(HIGHLIGHT_FIELD_ID_MAX_LENGTH);
-    const fieldIds = Array.from({ length: HIGHLIGHT_FIELD_IDS_MAX }, (_, i) =>
+  it(`targetIds は上限ちょうど（${HIGHLIGHT_TARGET_IDS_MAX} 個）、ID は上限ちょうど（${HIGHLIGHT_TARGET_ID_MAX_LENGTH} 文字）まで受け付ける`, () => {
+    const longId = "a".repeat(HIGHLIGHT_TARGET_ID_MAX_LENGTH);
+    const targetIds = Array.from({ length: HIGHLIGHT_TARGET_IDS_MAX }, (_, i) =>
       i === 0 ? longId : `field-${i}`,
     );
-    const message = { type: "agorack:highlight", fieldId: longId, fieldIds };
+    const message = { type: "agorack:highlight", targetId: longId, targetIds };
     expect(AgorackToEmbedMessageSchema.parse(message)).toEqual(message);
   });
 
@@ -222,49 +238,49 @@ describe("埋め込みの postMessage", () => {
 
   it.each([
     ["強調する場所がない", AgorackToEmbedMessageSchema, { type: "agorack:highlight" }],
-    ["強調する場所が空", AgorackToEmbedMessageSchema, { type: "agorack:highlight", fieldId: "" }],
+    ["強調する場所が空", AgorackToEmbedMessageSchema, { type: "agorack:highlight", targetId: "" }],
     [
       "強調する場所が長すぎる",
       AgorackToEmbedMessageSchema,
-      { type: "agorack:highlight", fieldId: "a".repeat(HIGHLIGHT_FIELD_ID_MAX_LENGTH + 1) },
+      { type: "agorack:highlight", targetId: "a".repeat(HIGHLIGHT_TARGET_ID_MAX_LENGTH + 1) },
     ],
     [
-      "fieldIds が上限を超えた",
+      "targetIds が上限を超えた",
       AgorackToEmbedMessageSchema,
       {
         type: "agorack:highlight",
-        fieldId: "coat",
-        fieldIds: Array.from({ length: HIGHLIGHT_FIELD_IDS_MAX + 1 }, (_, i) => `field-${i}`),
+        targetId: "coat",
+        targetIds: Array.from({ length: HIGHLIGHT_TARGET_IDS_MAX + 1 }, (_, i) => `field-${i}`),
       },
     ],
     [
-      "fieldIds に空文字がある",
+      "targetIds に空文字がある",
       AgorackToEmbedMessageSchema,
-      { type: "agorack:highlight", fieldId: "coat", fieldIds: ["coat", ""] },
+      { type: "agorack:highlight", targetId: "coat", targetIds: ["coat", ""] },
     ],
     [
-      "fieldIds の ID が長すぎる",
+      "targetIds の ID が長すぎる",
       AgorackToEmbedMessageSchema,
       {
         type: "agorack:highlight",
-        fieldId: "coat",
-        fieldIds: ["coat", "a".repeat(HIGHLIGHT_FIELD_ID_MAX_LENGTH + 1)],
+        targetId: "coat",
+        targetIds: ["coat", "a".repeat(HIGHLIGHT_TARGET_ID_MAX_LENGTH + 1)],
       },
     ],
     [
-      "fieldIds が配列でない",
+      "targetIds が配列でない",
       AgorackToEmbedMessageSchema,
-      { type: "agorack:highlight", fieldId: "coat", fieldIds: "coat" },
+      { type: "agorack:highlight", targetId: "coat", targetIds: "coat" },
     ],
     [
-      "fieldIds に文字列でないものがある",
+      "targetIds に文字列でないものがある",
       AgorackToEmbedMessageSchema,
-      { type: "agorack:highlight", fieldId: "coat", fieldIds: ["coat", 1] },
+      { type: "agorack:highlight", targetId: "coat", targetIds: ["coat", 1] },
     ],
     [
-      "fieldIds が null",
+      "targetIds が null",
       AgorackToEmbedMessageSchema,
-      { type: "agorack:highlight", fieldId: "coat", fieldIds: null },
+      { type: "agorack:highlight", targetId: "coat", targetIds: null },
     ],
     ["向きが逆（部品のメッセージを部品へ）", AgorackToEmbedMessageSchema, { type: "embed:ready" }],
     ["失敗の種類がない", EmbedToAgorackMessageSchema, { type: "embed:error" }],
@@ -272,7 +288,7 @@ describe("埋め込みの postMessage", () => {
     [
       "向きが逆（Agorack のメッセージを Agorack へ）",
       EmbedToAgorackMessageSchema,
-      { type: "agorack:highlight", fieldId: "coat" },
+      { type: "agorack:highlight", targetId: "coat" },
     ],
     ["向きが逆（閉じるを部品へ）", AgorackToEmbedMessageSchema, { type: "embed:close" }],
     ["知らない種類", EmbedToAgorackMessageSchema, { type: "embed:unknown" }],
