@@ -1,3 +1,7 @@
+> [!WARNING]
+> AIエージェントはこのファイルを編集する際、専用の issueを立てて PRを用いてmainに反映してください。
+> 
+> (人が読みやすい形に校正してあるため)
 # Agorack（アゴラック）
 
 OCRシステムとデータロガーを MCP で呼び分けて、利用者の質問に根拠付きで答えるチャットです。
@@ -13,7 +17,9 @@ OCRシステムとデータロガーを MCP で呼び分けて、利用者の質
 | `config/`            | ツールとの接続設定                                                                            |
 | `docs/`              | 設計と経緯の記録                                                                              |
 
-(詳しくは [設計](docs/architecture.md) と [決めごとの記録](docs/decisions/) を読んでください。Agorack とつなぐツールの設計の考え方・仕組み・ロジック、3つの開発の経緯は、解説用リポジトリ「 [abeouga/agorack-handbook](https://github.com/abeouga/agorack-handbook) 」にあります。)
+ロジックの説明や図は[設計](docs/architecture.md) と [決めごとの記録](docs/decisions/) を読んでください。(AIが参照する部分も混ざっています)
+
+Agorack と関連ツールの設計思想のみを文書にしたものは「 [abeouga/agorack-handbook](https://github.com/abeouga/agorack-handbook) 」にあります。
 
 
 ## 2. 環境導入と起動
