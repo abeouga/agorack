@@ -58,4 +58,4 @@ Agorack から部品の埋め込み用の画面へ送る `agorack:highlight` に
 
 ## 残る課題
 
-Agorack の画面が根拠の `location.field_id` を読んでおり、「Agorack は `location` を解釈しない」という根拠の約束に、まだ1か所だけ反している。カブロガーを足す前に、部品が根拠の外枠に強調する場所の ID を入れて返す形を決める（[次に決めること](../open-questions.md) の 1）。
+Agorack の画面が根拠の `location.field_id` を読んでおり、「Agorack は `location` を解釈しない」という根拠の約束に、まだ1か所だけ反している。カブロガーを足す前に、部品が根拠の外枠に強調する場所の ID を入れて返す形を決める（[次に決めること](../open-questions.md) の 1、#43）。
