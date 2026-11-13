@@ -34,7 +34,7 @@ const TargetIdSchema = z.string().min(1).max(HIGHLIGHT_TARGET_ID_MAX_LENGTH);
 const TargetIdsSchema = z.array(TargetIdSchema).max(HIGHLIGHT_TARGET_IDS_MAX);
 
 /**
- * Agorack → 部品：強調する場所を替える（決定 0005・0006）。同じ記録の中なら、iframe を読み直さずにこれで伝える。
+ * Agorack → 部品：強調する場所を替える（決定 0005、0006 は検討中）。同じ記録の中なら、iframe を読み直さずにこれで伝える。
  * Agorack は embed:ready を受けたあとと、根拠や選んだ場所が替わったときに送る。
  * 部品は、この形に合わないメッセージを丸ごと捨てる（一部だけを使わない）。
  */
@@ -48,12 +48,12 @@ const HighlightMessageSchema = z.object({
    */
   targetIds: TargetIdsSchema.optional(),
   /**
-   * @deprecated 移行用の古い名前（決定 0006）。targetId と同じ値を入れる。
+   * @deprecated 移行用の古い名前（0006、検討中）。targetId と同じ値を入れる。
    * 部品がすべて targetId を読むようになったら消す。
    */
   fieldId: TargetIdSchema.optional(),
   /**
-   * @deprecated 移行用の古い名前（決定 0006）。targetIds と同じ値を入れる。
+   * @deprecated 移行用の古い名前（0006、検討中）。targetIds と同じ値を入れる。
    * 部品がすべて targetIds を読むようになったら消す。
    */
   fieldIds: TargetIdsSchema.optional(),

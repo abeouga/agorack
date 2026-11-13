@@ -95,6 +95,7 @@ agorack/
 │  └─ sources.example.json つなぐ部品（MCP サーバー）の設定の見本
 ├─ docs/
 │  ├─ architecture.md      この文書
+│  ├─ open-questions.md    次に決めること
 │  └─ decisions/           決めごとの記録（1件1ファイル）
 ├─ .github/                Issue と PR のテンプレート
 ├─ package.json            workspaces・全体のスクリプト
@@ -371,7 +372,7 @@ iframe が開けない（部品が止まっている・書類が見つからな�
 
 | 向き | メッセージ | 意味 |
 |---|---|---|
-| Agorack → 部品 | `{ type: "agorack:highlight", targetId, targetIds? }` | 強調する場所を替える。`targetId` は選んだ場所、`targetIds`（なくてもよい）は根拠の場所の全部。移すあいだは古い名前の `fieldId`・`fieldIds` にも同じ値を入れる（決定 0006） |
+| Agorack → 部品 | `{ type: "agorack:highlight", targetId, targetIds? }` | 強調する場所を替える。`targetId` は選んだ場所、`targetIds`（なくてもよい）は根拠の場所の全部。移すあいだは古い名前の `fieldId`・`fieldIds` にも同じ値を入れる（0006、検討中） |
 | 部品 → Agorack | `{ type: "embed:ready" }` | 表示の準備ができた |
 | 部品 → Agorack | `{ type: "embed:error", code }` | 記録が見つからない・表示できない |
 | 部品 → Agorack | `{ type: "embed:close" }` | 部品の画面の × が押された。Agorack は右の欄を閉じる |

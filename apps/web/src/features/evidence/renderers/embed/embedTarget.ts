@@ -64,11 +64,11 @@ function targetIdOf(evidence: Evidence): string | null {
 }
 
 /**
- * 埋め込み用の画面に送る agorack:highlight（設計 §7.4、決定 0005・0006）。
+ * 埋め込み用の画面に送る agorack:highlight（設計 §7.4、決定 0005。0006 は検討中）。
  * - targetId：選んだ場所（target.targetId）
  * - targetIds：この答えの根拠（siblings）のうち、同じ記録の場所の ID の全部。重なりは除き、選んだ場所を必ず含める。
  *   上限（HIGHLIGHT_TARGET_IDS_MAX）を超えるときは、選んだ場所と、答えの順に前から残す
- * - fieldId・fieldIds：移行用の古い名前。targetId・targetIds と同じ値を入れる（決定 0006）
+ * - fieldId・fieldIds：移行用の古い名前。targetId・targetIds と同じ値を入れる（0006、検討中）
  * 選んだ場所がない・契約の形に合わないときは null（送らない）。送る前に契約の zod で確かめる。
  */
 export function highlightMessage(

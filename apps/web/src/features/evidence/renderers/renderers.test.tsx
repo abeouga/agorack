@@ -265,7 +265,7 @@ describe("埋め込み用の画面に送る強調（agorack:highlight）", () =>
       type: "agorack:highlight",
       targetId: "field-4",
       targetIds: ids,
-      // 移行用の古い名前にも同じ値を入れる（決定 0006）
+      // 移行用の古い名前にも同じ値を入れる（0006、検討中）
       fieldId: "field-4",
       fieldIds: ids,
     });
