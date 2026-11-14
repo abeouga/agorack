@@ -20,5 +20,7 @@ npm-debug.log*
 .vscode/
 .idea/
 .claude/
+CLAUDE.md
+AGENTS.md
 .DS_Store
 Thumbs.db

@@ -185,7 +185,7 @@ describe("埋め込みの postMessage", () => {
     expect(AgorackToEmbedMessageSchema.parse(message)).toEqual(message);
   });
 
-  it("移行用の古い名前（fieldId・fieldIds）を一緒に送っても、消さずに受け付ける（0006、検討中）", () => {
+  it("移行用の古い名前（fieldId・fieldIds）を一緒に送っても、消さずに受け付ける（0006）", () => {
     const message = {
       type: "agorack:highlight",
       targetId: "coat",

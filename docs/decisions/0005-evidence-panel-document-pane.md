@@ -53,6 +53,6 @@
 ## 影響
 
 - `packages/contracts`：`HighlightMessageSchema` に `fieldIds`、`EmbedToAgorackMessageSchema` に `embed:close` を足す。
-- Agorack の画面：右の欄の外の枠、答えの下の根拠の一覧、埋め込めないときの表示、`fieldIds` の送信と `embed:close` の受信を、それぞれ別の Issue で作る。
-- 文之助：根拠の欄をまとめて強調すること（abeouga/fuminosuke#69）と、埋め込み用の画面を「枠の中身だけ」にして × と「文之助で開く」を置くこと（abeouga/fuminosuke#70）を、文之助のリポジトリの Issue で扱う。
+- Agorack の画面：右の欄の外の枠、答えの下の根拠の一覧、埋め込めないときの表示、`fieldIds` の送信と `embed:close` の受信を足す。
+- 文之助：根拠の欄をまとめて強調すること（abeouga/fuminosuke#69）と、埋め込み用の画面を「枠の中身だけ」にして × と「文之助で開く」を置くこと（abeouga/fuminosuke#70）が要る。
 - 書類の欄の中で値を直すことはしない（見るだけのまま、[0004](0004-embed-part-views.md) の決定 4）。

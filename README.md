@@ -21,6 +21,8 @@
 
 詳しくは [設計](docs/architecture.md) と [決めごとの記録](docs/decisions/) を読んでください。Agorack とつなぐ部品（文之助・drive-logger）の設計の考え方・仕組み・ロジック、3つの開発の経緯は、解説のリポジトリ [abeouga/agorack-handbook](https://github.com/abeouga/agorack-handbook) にあります。
 
+開発中の論点・作業の段取り・手元の運用のメモは、開発用の文書のリポジトリ [abeouga/agorack-document](https://github.com/abeouga/agorack-document)（非公開）の `agorack/` に置いています。
+
 ## 最初に打つコマンド
 
 Node 22.12 以上と npm が要ります。
