@@ -2,7 +2,7 @@ import { FiClock, FiMessageSquare, FiPlus, FiSidebar, FiTrash2 } from "react-ico
 import type { Conversation } from "../chat/state/conversation";
 
 /**
- * 左の欄：会話の履歴（文之助のチャットから移した）。
+ * 左の欄：会話の履歴（見た目と動きは文之助のチャットにそろえる）。
  * 閉じているときはアイコンだけの細い列（レール）にし、開くと日付ごとに会話を並べる。
  */
 export function HistorySidebar({

@@ -1,6 +1,6 @@
 /*
  * 右の欄の上の行と案内の文。
- * 文之助のチャットの書類の欄（ask-panel-head・ask-panel-lead・ask-document-title・ask-document-close）と同じ大きさにそろえる。
+ * 文之助のチャットの書類の欄（上の行・案内の文・書類の名前・閉じる ×）と同じ大きさにそろえる。
  */
 
 .pane-head {

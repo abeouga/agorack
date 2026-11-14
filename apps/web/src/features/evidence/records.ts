@@ -8,7 +8,7 @@ import type { Evidence } from "@agorack/contracts";
 export type EvidenceRecord = {
   /** 記録を見分けるキー */
   key: string;
-  /** 人が読める記録の名前（例：繁殖台帳1021「こよみ」） */
+  /** 人が読める記録の名前（例：繁殖台帳「個体A」） */
   title: string;
   /** その記録の根拠（答えの根拠の順のまま） */
   items: Evidence[];
@@ -33,7 +33,7 @@ export function groupByRecord(evidence: readonly Evidence[]): EvidenceRecord[] {
 
 /**
  * 記録の名前：根拠のラベルに共通する頭から作る。
- * 「」で記録の名前を囲んだラベル（例：繁殖台帳1021「こよみ」の毛色）は、最後の 」 までにする。
+ * 「」で記録の名前を囲んだラベル（例：繁殖台帳「個体A」の毛色）は、最後の 」 までにする。
  * 囲みがなければ、最後の「の」の前までにする。どちらも取れなければ記録の ID にする。
  */
 function recordTitle(items: readonly Evidence[]): string {
@@ -60,7 +60,7 @@ function commonPrefix(texts: readonly string[]): string {
 }
 
 /**
- * 記録の名前を除いたラベル（例：「繁殖台帳1021「こよみ」の毛色」→「毛色」）。記録の中の一覧で、欄の名前として出す。
+ * 記録の名前を除いたラベル（例：「繁殖台帳「個体A」の毛色」→「毛色」）。記録の中の一覧で、欄の名前として出す。
  * 名前で始まらないとき・除くと空になるときは、ラベルをそのまま返す。
  */
 export function labelInRecord(evidence: Evidence, title: string): string {

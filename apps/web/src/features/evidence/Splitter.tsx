@@ -4,7 +4,7 @@ import { SPLIT_MAX, SPLIT_MIN, SPLIT_STEP, clampSplit } from "./split";
 const RESIZING_CLASS = "split-resizing";
 
 /**
- * チャットと右の欄の境目のつまみ（文之助のチャットの ask-splitter と同じ動き）。
+ * チャットと右の欄の境目のつまみ（文之助のチャットの境目のつまみと同じ動き）。
  * ドラッグか ←/→ キーで、チャットの割合（チャット＋右の欄の幅に対する割合）を変える。
  * 右の欄（.evidence-panel）の左の端に置き、すぐ前の兄弟の要素（チャットの欄）の左の端から測る。
  */

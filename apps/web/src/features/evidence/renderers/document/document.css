@@ -1,6 +1,6 @@
 /*
  * 書類の根拠：ページ画像と欄の枠。
- * 部品の画面の中の書類の表示（文之助の shelf-viewer・shelf-box）と同じ色・大きさにそろえ、
+ * 部品の画面の中の書類の表示（文之助の書類の表示と欄の枠）と同じ色・大きさにそろえ、
  * 埋め込めるときと埋め込めないときで、右の欄の見た目が変わらないようにする。
  * 外の枠線・角の丸みは右の欄が描くので、ここでは描かない。
  */
@@ -109,7 +109,7 @@
   padding: 12px;
   background: #dfe5ea;
 }
-/* 読み込み中：文之助のチャットの書類の欄と同じく、道具の行の下に案内の文を出す（ask-panel-lead） */
+/* 読み込み中：文之助のチャットの書類の欄と同じく、道具の行の下に案内の文を出す */
 .document-loading {
   position: absolute;
   inset: 0;
@@ -129,7 +129,7 @@
   user-select: none;
 }
 
-/* 同じ答えの根拠の欄（文之助の shelf-box.marked） */
+/* 同じ答えの根拠の欄（文之助の書類の表示で、印を付けた欄と同じ見た目） */
 .document-box {
   position: absolute;
   min-height: 0;
@@ -145,7 +145,7 @@
   border-color: #d9480f;
   background: #ffb02e4d;
 }
-/* 出している根拠の欄（文之助の shelf-box.marked.active）：太くして光らせる */
+/* 出している根拠の欄（文之助の書類の表示で、選んでいる欄と同じ見た目）：太くして光らせる */
 .document-box.is-focus {
   z-index: 1;
   border-color: #d9480f;
