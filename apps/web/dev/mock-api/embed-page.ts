@@ -2,8 +2,10 @@ import {
   type Evidence,
   HIGHLIGHT_TARGET_IDS_MAX,
   HIGHLIGHT_TARGET_ID_MAX_LENGTH,
+  WEB_DEV_HOST,
+  WEB_DEV_PORT,
 } from "@agorack/contracts";
-import { MOCK_EMBED_ORIGIN } from "./embed-origin";
+import { MOCK_EMBED_ORIGIN, SCREENSHOT_PORT } from "./embed-origin";
 import { koyomiFields, koyomiPrices } from "./evidence";
 
 /**
@@ -18,7 +20,10 @@ import { koyomiFields, koyomiPrices } from "./evidence";
  */
 
 /** 埋め込みを許す住所（開発の画面と、スクショを撮るときの画面） */
-const ALLOWED_PARENTS = ["http://127.0.0.1:5174", "http://127.0.0.1:5199"];
+const ALLOWED_PARENTS = [
+  `http://${WEB_DEV_HOST}:${WEB_DEV_PORT}`,
+  `http://${WEB_DEV_HOST}:${SCREENSHOT_PORT}`,
+];
 
 type PageField = { label: string; value: unknown; box: unknown };
 type PageRecord = { title: string; imageUrl: string; fields: Record<string, PageField> };

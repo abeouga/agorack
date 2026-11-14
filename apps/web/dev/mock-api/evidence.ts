@@ -5,14 +5,19 @@ import { MOCK_EMBED_ORIGIN } from "./embed-origin";
  * 偽のサーバーが返す根拠。
  * 書類の根拠は、文之助の MCP が実際に返したもの（apps/server の試験の見本：get_document・aggregate）から、
  * サーバーが取り出したあとの形（recordId・sourceId）に直して写した。apps/server は import しない。
- * image_url は手元の文之助（127.0.0.1:8010）の本物のページ画像を指す。box はその画像の画素。
+ * image_url は手元の文之助の本物のページ画像を指す（住所は FUMINOSUKE_API_URL、既定 http://127.0.0.1:8010）。
+ * box はその画像の画素。
  * embed_url は、文之助の埋め込み用の画面（/embed?job=…&field=…）と同じ形で、偽の埋め込み用の画面を指す。
  */
 
 /** 埋め込み用の画面の扱い：使う・応えない画面を指す（部品が止まっているときを試す）・付けない */
 type EmbedMode = "embed" | "silent" | "none";
 
-const FUMINOSUKE = "http://127.0.0.1:8010";
+/** 文之助の API の住所。部品の設定（config/sources.json）で MCP サーバーに渡すのと同じ名前の環境変数で替えられる */
+const FUMINOSUKE = (process.env.FUMINOSUKE_API_URL?.trim() || "http://127.0.0.1:8010").replace(
+  /\/+$/,
+  "",
+);
 const KOYOMI_JOB = "1d0c139e-5175-43d5-bba6-1d2b76d69977";
 
 type Box = { x: number; y: number; width: number; height: number };

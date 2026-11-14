@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { isAbsolute, relative, resolve } from "node:path";
+import { WEB_DEV_ORIGINS } from "@agorack/contracts";
 import { ENV_WHERE, parseEnv, type EnvConfig } from "./env.js";
 import { ConfigError, configErrorFrom, type ConfigProblem } from "./errors.js";
 import { parseSourcesFile, type SourceConfig } from "./sources.js";
@@ -8,11 +9,8 @@ export { ConfigError } from "./errors.js";
 export type { Effort } from "./env.js";
 export type { SourceConfig, SourceTransport } from "./sources.js";
 
-/**
- * 画面の開発時の住所（Vite）。この住所からの要求だけを受け付ける（設計 §9）。
- * 画面は 5174 に固定する（設計 §7.4）。部品の画面と同じく 127.0.0.1 と localhost の両方を許す。
- */
-export const WEB_DEV_ORIGINS = ["http://127.0.0.1:5174", "http://localhost:5174"] as const;
+/** 画面の開発時の住所（Vite）。この住所からの要求だけを受け付ける（設計 §9）。値は画面と共通の契約に置く */
+export { WEB_DEV_ORIGINS };
 
 /** 部品の設定ファイルの既定の場所（リポジトリの根からの相対） */
 export const DEFAULT_SOURCES_CONFIG_PATH = "config/sources.json";
