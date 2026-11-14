@@ -21,7 +21,7 @@ export type Step = { wait: number; event: TurnEvent };
 export type Scenario = {
   /** 質問がこの言葉を含むときに使う */
   keywords: string[];
-  /** 画面の見本の説明（README と偽のサーバーの一覧に出す） */
+  /** 一覧の説明 */
   description: string;
   steps: (turnId: string) => Step[];
 };
@@ -92,7 +92,7 @@ const priceRows = koyomiPrices.map((item) => {
   return `| ${row}行目 | ${String(item.value)} |`;
 });
 
-/** 根拠付きの答え（表あり）：文之助の aggregate（こよみの売却子牛の価格の合計） */
+/** 根拠付きの答え（表あり）：文之助の aggregate（1つの書類の売却子牛の価格の合計） */
 const evidenceScenario = answerScenario({
   keywords: [],
   description: "根拠付きの答え（表あり。書類の枠が出る）",

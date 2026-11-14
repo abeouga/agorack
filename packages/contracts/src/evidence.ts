@@ -18,7 +18,7 @@ export const EvidenceSchema = z.object({
   sourceId: SourceIdSchema,
   /** 部品の中の記録の ID（書類 ID・走行 ID など）。部品の MCP の `source_id` */
   recordId: z.string().min(1),
-  /** 人が読める説明（例：繁殖台帳1021「はじめ」の毛色） */
+  /** 人が読める説明（例：繁殖台帳「個体A」の毛色） */
   label: z.string().min(1),
   /** 部品ごとの位置の情報 */
   location: z.record(z.string(), z.unknown()),

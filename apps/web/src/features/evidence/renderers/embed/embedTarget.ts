@@ -27,7 +27,7 @@ export type EmbedTarget = {
 
 /**
  * 根拠から、埋め込み用の画面で強調する場所の ID を取り出す（長さはまだ確かめない）。
- * いまは書類の根拠の location.field_id だけを見る。根拠の外枠に部品に依らない ID の欄ができたら、ここだけを替える。
+ * 場所の ID は、書類の根拠の location.field_id から取る。
  */
 function rawTargetIdOf(evidence: Evidence): unknown {
   return evidence.location.field_id;
@@ -64,11 +64,11 @@ function targetIdOf(evidence: Evidence): string | null {
 }
 
 /**
- * 埋め込み用の画面に送る agorack:highlight（設計 §7.4、決定 0005、0006）。
+ * 埋め込み用の画面に送る agorack:highlight（設計 §7.4、決定 0005。0006 も参照）。
  * - targetId：選んだ場所（target.targetId）
  * - targetIds：この答えの根拠（siblings）のうち、同じ記録の場所の ID の全部。重なりは除き、選んだ場所を必ず含める。
  *   上限（HIGHLIGHT_TARGET_IDS_MAX）を超えるときは、選んだ場所と、答えの順に前から残す
- * - fieldId・fieldIds：移行用の古い名前。targetId・targetIds と同じ値を入れる（0006）
+ * - fieldId・fieldIds：targetId・targetIds を読まない部品の画面のために、同じ値を入れる（0006 を参照）
  * 選んだ場所がない・契約の形に合わないときは null（送らない）。送る前に契約の zod で確かめる。
  */
 export function highlightMessage(

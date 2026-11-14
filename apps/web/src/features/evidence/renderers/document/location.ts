@@ -28,9 +28,9 @@ const LocationSchema = z.object({
 export type DocumentLocation = {
   imageUrl: string;
   box: Box;
-  /** 書類の名前（例：こよみ）。わからなければ null */
+  /** 書類の名前（例：個体A）。わからなければ null */
   documentName: string | null;
-  /** 様式の名前を添えた書類の名前（例：繁殖台帳1021「こよみ」）。わからなければ null */
+  /** 様式の名前を添えた書類の名前（例：繁殖台帳「個体A」）。わからなければ null */
   documentTitle: string | null;
   fieldLabel: string | null;
 };

@@ -4,7 +4,7 @@ import { FiFileText, FiX } from "react-icons/fi";
 import "./pane.css";
 
 /**
- * 右の欄の上の行と案内の文（文之助のチャットの書類の欄の ask-panel-head・ask-panel-lead と同じ形）。
+ * 右の欄の上の行と案内の文（文之助のチャットの書類の欄の、上の行と案内の文と同じ形）。
  * 中身を出せるまで（部品の画面を開いている間など）と、ラベルと値だけを出すときに使う。
  */
 

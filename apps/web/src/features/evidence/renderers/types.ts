@@ -2,7 +2,7 @@ import type { Evidence } from "@agorack/contracts";
 import type { ComponentType } from "react";
 
 /**
- * 根拠の表示（埋め込み・kind ごと）に渡すもの。表示を足すときは、この形の部品を作って renderers/index.ts に登録する。
+ * 根拠の表示（埋め込み・kind ごと）に渡すもの。表示を足すときは、この形の部品を作って renderers/index.tsx に登録する。
  */
 export type EvidenceViewProps = {
   /** 出す根拠（選んだもの・ホバーしているもの、なければ最初のもの） */

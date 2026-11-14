@@ -93,14 +93,14 @@ try {
 
   // ---- 右の欄：kind ごとの表示（#10） ----
 
-  // ③ 知らない kind の根拠（ラベルと値だけ）
+  // ① 知らない kind の根拠（ラベルと値だけ）
   await newConversation(page);
   await ask(page, "11月3日の朝の走行は？");
   await waitAnswered(page);
   await page.locator(".evidence-fallback").waitFor({ timeout: TIMEOUT });
   await shoot("evidence-03-unknown-kind");
 
-  // ④ ページ画像が読めないとき（ラベルと値の表示に戻る）
+  // ② ページ画像が読めないとき（ラベルと値の表示に戻る）
   await newConversation(page);
   await ask(page, "はなこの書類の画像は？");
   await waitAnswered(page);
