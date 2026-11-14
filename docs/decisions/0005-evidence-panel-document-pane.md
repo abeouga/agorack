@@ -37,6 +37,7 @@
    - 2026-11-10 追記：文之助のチャットの書類の欄は、あとの指定で外の枠の padding を 0 にしており、12px は書類の画像のまわりの余白だった。見た目をそろえるため、外の枠の padding は 0 にし、余白は中の表示が持つ（[architecture.md §7.3](../architecture.md)）。
 2. 「根拠」の見出しと根拠の一覧は、右の欄から外し、答えの下に移す。
 3. `agorack:highlight` に、なくてもよい `fieldIds`（この答えの根拠のうち、同じ記録の場所の ID の全部。上限 500 個）を足す。Agorack は `embed:ready` を受けたあとと、根拠が替わったときに送る。
+   - 2026-11-14 追記：`fieldId`・`fieldIds` を、部品に依らない名前の `targetId`・`targetIds` に替える案を検討している（[0006](0006-highlight-target-id.md)、未決定）。
 4. 部品 → Agorack に `{ type: "embed:close" }` を足す。部品の画面の × で右の欄を閉じる。
 5. 「部品で開く」は残す。部品の画面の中で、× の左のアイコンのボタンにする（文之助のチャットの書類の欄との違いは、ここだけ）。
 6. 右の欄は、答えに根拠があるとき自動で開く（文之助のチャットは表の行を押したときに開くが、Agorack は根拠を見せることが役目のため）。× で閉じ、表の行や答えの下の根拠を押すと開き直す。
@@ -52,6 +53,6 @@
 ## 影響
 
 - `packages/contracts`：`HighlightMessageSchema` に `fieldIds`、`EmbedToAgorackMessageSchema` に `embed:close` を足す。
-- Agorack の画面：右の欄の外の枠、答えの下の根拠の一覧、埋め込めないときの表示、`fieldIds` の送信と `embed:close` の受信を、それぞれ別の Issue で作る。
-- 文之助：根拠の欄をまとめて強調すること（abeouga/fuminosuke#69）と、埋め込み用の画面を「枠の中身だけ」にして × と「文之助で開く」を置くこと（abeouga/fuminosuke#70）を、文之助のリポジトリの Issue で扱う。
+- Agorack の画面：右の欄の外の枠、答えの下の根拠の一覧、埋め込めないときの表示、`fieldIds` の送信と `embed:close` の受信を足す。
+- 文之助：根拠の欄をまとめて強調すること（abeouga/fuminosuke#69）と、埋め込み用の画面を「枠の中身だけ」にして × と「文之助で開く」を置くこと（abeouga/fuminosuke#70）が要る。
 - 書類の欄の中で値を直すことはしない（見るだけのまま、[0004](0004-embed-part-views.md) の決定 4）。

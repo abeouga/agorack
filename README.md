@@ -17,6 +17,8 @@ OCRシステムとデータロガーを MCP で呼び分けて、利用者の質
 
 Agorack と関連ツールの設計思想のみを文書にしたものは「 [abeouga/agorack-handbook](https://github.com/abeouga/agorack-handbook) 」にあります。
 
+開発中の論点・作業の段取り・手元の運用のメモは、開発用の文書のリポジトリ「 [abeouga/agorack-document](https://github.com/abeouga/agorack-document) 」（非公開）の `agorack/` にあります。
+
 
 ## 2. 環境導入と起動
 ### 2-1. 依存ライブラリを取得します

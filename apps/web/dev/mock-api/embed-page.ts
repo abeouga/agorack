@@ -1,7 +1,7 @@
 import {
   type Evidence,
-  HIGHLIGHT_FIELD_IDS_MAX,
-  HIGHLIGHT_FIELD_ID_MAX_LENGTH,
+  HIGHLIGHT_TARGET_IDS_MAX,
+  HIGHLIGHT_TARGET_ID_MAX_LENGTH,
 } from "@agorack/contracts";
 import { MOCK_EMBED_ORIGIN } from "./embed-origin";
 import { koyomiFields, koyomiPrices } from "./evidence";
@@ -9,8 +9,8 @@ import { koyomiFields, koyomiPrices } from "./evidence";
 /**
  * 偽の埋め込み用の画面（文之助の /embed?job=…&field=… の代わり）。偽のサーバーと別の住所で配る。
  * 文之助の埋め込み用の画面と同じく、ページ画像に欄の枠を描き、postMessage に答える。
- * - 親 → 画面：agorack:highlight（読み直さずに枠を移す。fieldIds があれば、その欄をまとめて薄く囲む。
- *   fieldIds が契約に合わない（500 個を超える・1〜200 文字の文字列でない）ときは、メッセージごと捨てる）
+ * - 親 → 画面：agorack:highlight（読み直さずに枠を移す。targetIds があれば、その欄をまとめて薄く囲む。
+ *   targetIds が契約に合わない（500 個を超える・1〜200 文字の文字列でない）ときは、メッセージごと捨てる）
  * - 画面 → 親：embed:ready（画像を出した）・embed:error（DOCUMENT_NOT_FOUND・FIELD_NOT_FOUND）・
  *   embed:close（右上の × を押した）
  * - mock=silent を付けると何も送らない（部品が止まっているときの、時間切れを試す）
@@ -59,7 +59,7 @@ export function renderEmbedPage(requestUrl: string): EmbedResponse {
     field: url.searchParams.get("field"),
     silent: url.searchParams.get("mock") === "silent",
     allowed: ALLOWED_PARENTS,
-    limits: { ids: HIGHLIGHT_FIELD_IDS_MAX, length: HIGHLIGHT_FIELD_ID_MAX_LENGTH },
+    limits: { ids: HIGHLIGHT_TARGET_IDS_MAX, length: HIGHLIGHT_TARGET_ID_MAX_LENGTH },
   };
   // </script> で閉じられないよう < を逃がす
   const json = JSON.stringify(data).replace(/</g, "\\u003c");
@@ -110,7 +110,7 @@ const send = (message) => {
   window.parent.postMessage(message, parentOrigin);
 };
 document.getElementById("close").addEventListener("click", () => send({ type: "embed:close" }));
-// 根拠の欄の全部（fieldIds）。届くまでは選んだ欄だけ
+// 根拠の欄の全部（targetIds）。届くまでは選んだ欄だけ
 let marked = [];
 const place = (element, b) => {
   element.style.left = (b.x / size.width) * 100 + "%";
@@ -172,12 +172,12 @@ if (!DATA.record) {
 window.addEventListener("message", (event) => {
   if (event.source !== window.parent || event.origin !== parentOrigin) return;
   const data = event.data;
-  if (!data || data.type !== "agorack:highlight" || typeof data.fieldId !== "string") return;
-  // 決まりに合わない fieldIds は、メッセージごと捨てる（一部だけを使わない）
-  if (data.fieldIds !== undefined && !validIds(data.fieldIds)) return;
+  if (!data || data.type !== "agorack:highlight" || typeof data.targetId !== "string") return;
+  // 決まりに合わない targetIds は、メッセージごと捨てる（一部だけを使わない）
+  if (data.targetIds !== undefined && !validIds(data.targetIds)) return;
   highlights += 1;
-  current = data.fieldId;
-  marked = data.fieldIds ?? [];
+  current = data.targetId;
+  marked = data.targetIds ?? [];
   showMarks();
   show(current);
   showCount();

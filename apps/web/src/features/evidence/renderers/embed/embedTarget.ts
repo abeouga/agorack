@@ -3,8 +3,8 @@ import {
   AgorackToEmbedMessageSchema,
   type Evidence,
   EmbedUrlSchema,
-  HIGHLIGHT_FIELD_IDS_MAX,
-  HIGHLIGHT_FIELD_ID_MAX_LENGTH,
+  HIGHLIGHT_TARGET_IDS_MAX,
+  HIGHLIGHT_TARGET_ID_MAX_LENGTH,
 } from "@agorack/contracts";
 import { evidenceKey } from "../../selection";
 
@@ -21,9 +21,17 @@ export type EmbedTarget = {
    * どの記録の画面か（部品の id と記録の ID）。同じ記録の中で欄だけ替わるときは、iframe を読み直さない
    */
   recordKey: string;
-  /** 強調する場所の ID（location.field_id）。ないときは null */
-  fieldId: string | null;
+  /** 強調する場所の ID（rawTargetIdOf を参照）。ないときは null */
+  targetId: string | null;
 };
+
+/**
+ * 根拠から、埋め込み用の画面で強調する場所の ID を取り出す（長さはまだ確かめない）。
+ * いまは書類の根拠の location.field_id だけを見る。根拠の外枠に部品に依らない ID の欄ができたら、ここだけを替える。
+ */
+function rawTargetIdOf(evidence: Evidence): unknown {
+  return evidence.location.field_id;
+}
 
 export function embedTarget(evidence: Evidence, embedOrigin: string | null): EmbedTarget | null {
   if (!evidence.embedUrl || !embedOrigin) return null;
@@ -36,49 +44,52 @@ export function embedTarget(evidence: Evidence, embedOrigin: string | null): Emb
     return null;
   }
   if (origin !== embedOrigin) return null;
-  const fieldId = evidence.location.field_id;
+  const targetId = rawTargetIdOf(evidence);
   return {
     url: parsed.data,
     origin,
     recordKey: recordKeyOf(evidence),
-    fieldId: typeof fieldId === "string" && fieldId.length > 0 ? fieldId : null,
+    targetId: typeof targetId === "string" && targetId.length > 0 ? targetId : null,
   };
 }
 
-/** 契約に合う場所の ID か（1〜HIGHLIGHT_FIELD_ID_MAX_LENGTH 文字の文字列） */
-function fieldIdOf(evidence: Evidence): string | null {
-  const fieldId = evidence.location.field_id;
-  return typeof fieldId === "string" &&
-    fieldId.length > 0 &&
-    fieldId.length <= HIGHLIGHT_FIELD_ID_MAX_LENGTH
-    ? fieldId
+/** 契約に合う場所の ID か（1〜HIGHLIGHT_TARGET_ID_MAX_LENGTH 文字の文字列） */
+function targetIdOf(evidence: Evidence): string | null {
+  const targetId = rawTargetIdOf(evidence);
+  return typeof targetId === "string" &&
+    targetId.length > 0 &&
+    targetId.length <= HIGHLIGHT_TARGET_ID_MAX_LENGTH
+    ? targetId
     : null;
 }
 
 /**
- * 埋め込み用の画面に送る agorack:highlight（設計 §7.4、決定 0005）。
- * - fieldId：選んだ場所（target.fieldId）
- * - fieldIds：この答えの根拠（siblings）のうち、同じ記録の場所の ID の全部。重なりは除き、選んだ場所を必ず含める。
- *   上限（HIGHLIGHT_FIELD_IDS_MAX）を超えるときは、選んだ場所と、答えの順に前から残す
+ * 埋め込み用の画面に送る agorack:highlight（設計 §7.4、決定 0005、0006）。
+ * - targetId：選んだ場所（target.targetId）
+ * - targetIds：この答えの根拠（siblings）のうち、同じ記録の場所の ID の全部。重なりは除き、選んだ場所を必ず含める。
+ *   上限（HIGHLIGHT_TARGET_IDS_MAX）を超えるときは、選んだ場所と、答えの順に前から残す
+ * - fieldId・fieldIds：移行用の古い名前。targetId・targetIds と同じ値を入れる（0006）
  * 選んだ場所がない・契約の形に合わないときは null（送らない）。送る前に契約の zod で確かめる。
  */
 export function highlightMessage(
   target: EmbedTarget,
   siblings: readonly Evidence[],
 ): AgorackToEmbedMessage | null {
-  const fieldId = target.fieldId;
-  if (!fieldId) return null;
+  const targetId = target.targetId;
+  if (!targetId) return null;
   const others = new Set<string>();
   for (const item of siblings) {
     if (recordKeyOf(item) !== target.recordKey) continue;
-    const id = fieldIdOf(item);
-    if (id && id !== fieldId) others.add(id);
+    const id = targetIdOf(item);
+    if (id && id !== targetId) others.add(id);
   }
-  const fieldIds = [fieldId, ...[...others].slice(0, HIGHLIGHT_FIELD_IDS_MAX - 1)];
+  const targetIds = [targetId, ...[...others].slice(0, HIGHLIGHT_TARGET_IDS_MAX - 1)];
   const parsed = AgorackToEmbedMessageSchema.safeParse({
     type: "agorack:highlight",
-    fieldId,
-    fieldIds,
+    targetId,
+    targetIds,
+    fieldId: targetId,
+    fieldIds: targetIds,
   });
   return parsed.success ? parsed.data : null;
 }
