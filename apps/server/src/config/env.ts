@@ -1,3 +1,5 @@
+// 既定の待ち受けの住所は、画面の転送先と同じ値にするため、画面と共通の契約に置く
+import { DEFAULT_SERVER_HOST, DEFAULT_SERVER_PORT } from "@agorack/contracts";
 import { z } from "zod";
 import { japaneseErrorMap, problemsFromZod, type ConfigProblem } from "./errors.js";
 
@@ -13,8 +15,6 @@ export type Effort = (typeof EFFORT_LEVELS)[number];
 /** 最初の版は手元の PC だけで動かすので、待ち受けるのはループバックの住所だけ（設計 §9） */
 export const LOOPBACK_HOSTS = ["127.0.0.1", "localhost", "::1"] as const;
 
-export const DEFAULT_SERVER_HOST = "127.0.0.1";
-export const DEFAULT_SERVER_PORT = 8787;
 export const DEFAULT_ANTHROPIC_MODEL = "claude-opus-5-5";
 /** 会話の応答は速さを優先して effort を低めにする（設計 §5） */
 export const DEFAULT_ANTHROPIC_EFFORT: Effort = "low";

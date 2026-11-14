@@ -11,11 +11,12 @@ import { mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { type Page, chromium } from "playwright";
 import { createServer } from "vite";
+import { SCREENSHOT_PORT } from "../dev/mock-api/embed-origin.ts";
 
 const webRoot = fileURLToPath(new URL("..", import.meta.url));
 const outDir = fileURLToPath(new URL("../screenshots/", import.meta.url));
-/** 開発用の画面（5174）と重ならない番号で開く */
-const PORT = 5199;
+/** 開発用の画面と重ならない番号で開く（偽の埋め込み用の画面が、この番号の親を許す） */
+const PORT = SCREENSHOT_PORT;
 const TIMEOUT = 15_000;
 
 const server = await createServer({

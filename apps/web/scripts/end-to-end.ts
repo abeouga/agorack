@@ -13,9 +13,11 @@
  */
 import { mkdir, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
+import { WEB_DEV_HOST, WEB_DEV_PORT } from "@agorack/contracts/dev";
 import { type Locator, type Page, chromium } from "playwright";
 
-const URL_BASE = process.env.AGORACK_WEB_URL ?? "http://127.0.0.1:5174";
+/** 開く画面の住所（既定は開発用の画面。AGORACK_WEB_URL で替えられる） */
+const URL_BASE = process.env.AGORACK_WEB_URL ?? `http://${WEB_DEV_HOST}:${WEB_DEV_PORT}`;
 const outDir = fileURLToPath(new URL("../screenshots/", import.meta.url));
 /** 出力の名前の頭（部品を止めた状態などで撮り分けるとき：AGORACK_E2E_PREFIX=e2e-offline） */
 const prefix = process.env.AGORACK_E2E_PREFIX ?? "e2e";

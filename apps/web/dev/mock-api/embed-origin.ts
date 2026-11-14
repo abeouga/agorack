@@ -4,3 +4,5 @@
  */
 export const MOCK_EMBED_PORT = 5191;
 export const MOCK_EMBED_ORIGIN = `http://127.0.0.1:${MOCK_EMBED_PORT}`;
+/** スクリーンショットを撮るときの画面の番号（開発用の画面と重ならない番号） */
+export const SCREENSHOT_PORT = 5199;
