@@ -530,11 +530,6 @@
   line-height: 1.25;
   letter-spacing: 0.01em;
 }
-.chat-welcome p {
-  margin: 0;
-  color: var(--ui-text-secondary);
-  font-size: 15px;
-}
 .chat-welcome-hello,
 .chat-welcome-ask {
   display: block;

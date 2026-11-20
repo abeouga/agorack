@@ -47,7 +47,7 @@ export function Composer({
           ref={inputRef}
           value={draft}
           rows={1}
-          placeholder="質問を入力（Enter で送信、Shift + Enter で改行）"
+          placeholder="質問を入力"
           autoFocus
           onChange={(event) => onChange(event.target.value)}
           onKeyDown={(event) => {

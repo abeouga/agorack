@@ -39,74 +39,6 @@
   font-weight: 800;
   letter-spacing: 0.02em;
 }
-.brand-sub {
-  color: var(--ui-text-muted);
-  font-size: 13px;
-  white-space: nowrap;
-}
-
-/* 部品の状態 */
-.sources-bar {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 8px;
-  margin: 0 0 0 auto;
-  padding: 0;
-  list-style: none;
-}
-.sources-note {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--ui-text-muted);
-  font-size: 13px;
-}
-.sources-note.is-danger {
-  color: var(--ui-danger);
-}
-.source-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 5px 12px 5px 10px;
-  border: 1px solid var(--ui-border);
-  border-radius: 999px;
-  background: var(--ui-surface-muted);
-  font-size: 13px;
-  cursor: default;
-}
-.source-chip.connected {
-  border-color: #bfe3cc;
-  background: #f1faf4;
-}
-.source-chip.failed {
-  border-color: #efc9c0;
-  background: #fff5f3;
-}
-.source-name {
-  font-weight: 700;
-}
-.source-status {
-  color: var(--ui-text-muted);
-}
-.source-chip.failed .source-status {
-  color: var(--ui-danger);
-}
-.source-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #a3b0bb;
-}
-.source-dot.connected {
-  background: #22a35a;
-  box-shadow: 0 0 0 3px #22a35a26;
-}
-.source-dot.failed {
-  background: #d04a3a;
-  box-shadow: 0 0 0 3px #d04a3a26;
-}
 
 /* つながっていない部品の知らせ */
 .sources-notice {
@@ -291,11 +223,6 @@ body.split-resizing .workspace {
   align-content: start;
   gap: 14px;
   padding: 0 2px;
-}
-.history-empty {
-  margin: 8px 10px;
-  color: var(--ui-text-muted);
-  font-size: 14px;
 }
 .history-group h2 {
   margin: 0 0 4px;

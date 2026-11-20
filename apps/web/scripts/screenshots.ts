@@ -46,9 +46,8 @@ try {
 
   // ---- チャット（#9） ----
 
-  // 最初の画面（部品の状態が出るまで待つ）
-  await page.goto(`http://127.0.0.1:${PORT}/`);
-  await page.getByText("接続中").first().waitFor({ timeout: TIMEOUT });
+  // 最初の画面（部品の状態を読み終えるまで待つ）
+  await withSourcesLoaded(page, () => page.goto(`http://127.0.0.1:${PORT}/`));
   await shoot("chat-01-initial");
 
   // 答えが流れている途中（道具の進み具合が出ている）
@@ -123,8 +122,7 @@ try {
   await shoot("chat-04-failures");
 
   // 読み込み直しても履歴が残る（最初の会話を開き直す）
-  await page.reload();
-  await page.getByText("接続中").first().waitFor({ timeout: TIMEOUT });
+  await withSourcesLoaded(page, () => page.reload());
   await page.locator(".history-item", { hasText: "こよみの売却子牛の価格の合計は？" }).click();
   await page.locator("tr.has-source").first().waitFor({ timeout: TIMEOUT });
   await waitEmbedReady(page);
@@ -132,6 +130,19 @@ try {
 } finally {
   await browser.close();
   await server.close();
+}
+
+/**
+ * 画面を開き、部品の状態（GET /api/sources）を読み終えるまで待つ。
+ * 部品の状態は画面に出さないので、応答が届いたことで確かめる。
+ */
+async function withSourcesLoaded(page: Page, open: () => Promise<unknown>) {
+  const loaded = page.waitForResponse(
+    (response) => new URL(response.url()).pathname === "/api/sources" && response.ok(),
+    { timeout: TIMEOUT },
+  );
+  await open();
+  await loaded;
 }
 
 async function ask(page: Page, question: string) {
