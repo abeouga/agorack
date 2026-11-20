@@ -3,7 +3,7 @@ import type { SourcesState } from "./useSources";
 
 /**
  * つながっていない部品の知らせ（上部バーの下）。
- * 上部バーの印だけでは理由が見えないので、どの部品に、なぜつながらないかを文で出す。
+ * 部品の状態は、つながっていないときだけ画面に出す。どの部品に、なぜつながらないかを文で出す。
  */
 export function SourcesNotice({ state }: { state: SourcesState }) {
   if (state.kind !== "loaded") return null;

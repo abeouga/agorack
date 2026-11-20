@@ -101,7 +101,6 @@ export function ChatPanel({
               <span className="chat-welcome-hello">{greeting(new Date())}</span>
               <span className="chat-welcome-ask">何を調べますか？</span>
             </h2>
-            <p>部品（文之助など）が返した値と根拠だけで答えます。</p>
           </div>
         ) : (
           turns.map((turn) => {

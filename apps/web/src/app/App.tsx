@@ -69,7 +69,7 @@ export function App() {
 
   return (
     <div className="app">
-      <TopBar sources={sources} />
+      <TopBar />
       <SourcesNotice state={sources} />
       <main className={workspaceClass.trim()} style={evidenceOpen ? splitStyle : undefined}>
         <HistorySidebar

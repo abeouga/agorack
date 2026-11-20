@@ -73,7 +73,6 @@ export function HistorySidebar({
           新しい会話
         </button>
         <div className="history-scroll">
-          {conversations.length === 0 && <p className="history-empty">まだ会話はありません</p>}
           {groups.map((group) => (
             <section key={group.name} className="history-group">
               <h2>{group.name}</h2>
